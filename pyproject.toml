@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm", "wheel", "toml"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "template_python"
+version = "1.0.0"
+description = "template_python"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "template_python", email = "template_python@newtec.de" }
+]
+license = {text = "BSD 3-Clause"}
+classifiers = [
+    "License :: OSI Approved :: BSD 3-Clause",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13"
+]
+
+dependencies = [
+    "toml>=0.10.2"
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest > 5.0.0",
+  "pytest-cov[all]"
+]
+
+[project.urls]
+documentation = "https://github.com/NewTec-GmbH/template_python"
+repository = "https://github.com/NewTec-GmbH/template_python"
+tracker = "https://github.com/NewTec-GmbH/template_python/issues"
+
+[project.scripts]
+template_python = "template_python.template_python:main"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
+
+[tool.setuptools.package-data]
+template_python = ["pyproject.toml"]

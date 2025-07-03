@@ -1,0 +1,40 @@
+# This Pylint rcfile contains a best-effort configuration to uphold the
+# best-practices and style described in the Google Python style guide.
+# some sections that should not be used, and some where the defautl value is ok, have been removed
+# For detailed documentation of all options see: https://pylint.pycqa.org/en/latest/user_guide/configuration/all-options.html
+#
+# The original file can be found here:
+#   https://google.github.io/styleguide/pyguide.html
+
+
+[MAIN]
+
+# Files or directories to be skipped. They should be base names, not paths.
+ignore=
+
+# Files or directories matching the regex patterns are skipped. The regex
+# matches against base names, not paths.
+ignore-patterns=
+
+# Pickle collected data for later comparisons.
+persistent=no
+
+# Use multiple processes to speed up Pylint.
+jobs=4
+
+
+[BASIC]
+
+# Good variable names which should always be accepted, separated by a comma
+good-names=main,_
+
+
+[FORMAT]
+
+# Maximum number of characters on a single line.
+max-line-length=120
+
+# Regexp for a line that is allowed to be longer than the limit.
+ignore-long-lines=(?x)(
+  ^\s*(\#\ )?<?https?://\S+>?$|
+  ^\s*(from\s+\S+\s+)?import\s+.+$)

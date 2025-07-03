@@ -1,0 +1,36 @@
+{
+    "Python Template": {
+        "prefix": "template_file_python_gplv3",
+        "scope": "python",
+        "isFileTemplate": true,
+        "body": [
+            "${1:Enter program name} - ${2:Enter brief program description here}",
+            "Copyright (c) $CURRENT_YEAR NewTec GmbH",
+            "",
+            "# This file is part of the ${1:Enter program name} program.",
+            "#",
+            "# The ${1:Enter program name} program is free software: you can redistribute it and/or modify it under",
+            "# the terms of the GNU General Public License as published by the Free Software Foundation,",
+            "# either version 3 of the License, or (at your option) any later version.",
+            "#",
+            "# The ${1:Enter program name} program is distributed in the hope that it will be useful, but",
+            "# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or",
+            "# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.",
+            "#",
+            "# You should have received a copy of the GNU General Public License along with ${1:Enter program name}.",
+            "# If not, see <https://www.gnu.org/licenses/>.",
+            "",
+            "# Imports **********************************************************************",
+            "",
+            "# Variables ********************************************************************",
+            "",
+            "# Classes **********************************************************************",
+            "",
+            "# Functions ********************************************************************",
+            "",
+            "# Main *************************************************************************",
+            ""
+        ],
+        "description": "Python Template GPLv3"
+    }
+}

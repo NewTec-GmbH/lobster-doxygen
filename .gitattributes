@@ -1,0 +1,29 @@
+# Default behaviour
+*               text=crlf
+
+# All text files are CRLF
+*.txt		    text eol=crlf
+*.h 		    text eol=crlf
+*.c 		    text eol=crlf
+*.cpp 		    text eol=crlf
+*.hpp 		    text eol=crlf
+*.py 		    text eol=crlf
+*.json 		    text eol=crlf
+*.md 		    text eol=crlf
+*.puml 		    text eol=crlf
+*.plantuml 		text eol=crlf
+*.ini 		    text eol=crlf
+*.bat 		    text eol=crlf
+*.yml 		    text eol=crlf
+*.toml 		    text eol=crlf
+*.cfg 		    text eol=crlf
+
+# Linux shell scripts should be auto, to be LF on linux host
+*.bash          text eol=auto
+*.sh            text eol=auto
+*.zsh           text eol=auto
+
+# Images should be treated as binary
+*.png           binary
+*.jpg           binary
+*.jepg          binary

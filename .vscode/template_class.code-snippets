@@ -1,0 +1,42 @@
+{
+    "Python Template": {
+        "prefix": "template_class_python",
+        "scope": "python",
+        "body": [
+            "class ${1:className}:",
+            "    \"\"\"Short description",
+            "",
+            "    Enter detailed module description here",
+            "    \"\"\"",
+            "    def __init__(self, argument: type):",
+            "        \"\"\"Short description",
+            "",
+            "        Enter detailed module description here",
+            "",
+            "        Args:",
+            "            argument (type): description",
+            "        \"\"\"",
+            "        self._member_name: int = None",
+            "",
+            "    def methodName(argument: int) -> int:",
+            "        \"\"\"Short description",
+            "",
+            "        Enter detailed module description here",
+            "",
+            "        Args:",
+            "            argument (int): description",
+            "",
+            "        Returns:",
+            "            description of return value",
+            "",
+            "        Raises:",
+            "            exception name: exception description",
+            "        \"\"\"",
+            "",
+            "",
+            "        return 42",
+            ""
+        ],
+        "description": "Python template for class body"
+    }
+}

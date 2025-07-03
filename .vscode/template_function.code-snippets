@@ -1,0 +1,27 @@
+{
+    "Python Template": {
+        "prefix": "template_function_python",
+        "scope": "python",
+        "body": [
+            "def ${1:function name}(${2:argument}: ${3:type}) -> ${4:return type}:",
+            "    \"\"\"${5:Short description}",
+            "",
+            "    ${6:Enter detailed module description here}",
+            "",
+            "    Args:",
+            "        ${7:argument} (${8:type}): ${9:description}",
+            "",
+            "    Returns:",
+            "        ${10:description of return value}",
+            "",
+            "    Raises:",
+            "        ${11:exception name}: ${12:exception description}",
+            "    \"\"\"",
+            "",
+            "",
+            "    return",
+            ""
+        ],
+        "description": "Python template for function body"
+    }
+}
