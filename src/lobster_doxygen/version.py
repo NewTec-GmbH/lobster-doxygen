@@ -1,8 +1,8 @@
 """This module provides version and author information."""
 
-#*******************************************************************************
-# Copyright (c) NewTec GmbH 2024   -   www.newtec.de
-#*******************************************************************************
+# *******************************************************************************
+# Copyright (c) NewTec GmbH 2025   -   www.newtec.de
+# *******************************************************************************
 
 # Imports **********************************************************************
 import importlib.metadata as meta
@@ -24,7 +24,7 @@ __license__ = "???"
 
 
 def resource_path(relative_path):
-    """ Get the absolute path to the resource, works for dev and for PyInstaller """
+    """Get the absolute path to the resource, works for dev and for PyInstaller"""
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         # pylint: disable=protected-access
@@ -44,14 +44,15 @@ def init_from_metadata():
         list: Tool related information
     """
 
-    my_metadata = meta.metadata('template_python')
+    my_metadata = meta.metadata("template_python")
 
-    return \
-        my_metadata['Version'], \
-        my_metadata['Author'], \
-        my_metadata['Author-email'], \
-        my_metadata['Project-URL'].replace("repository, ", ""), \
-        my_metadata['License']
+    return (
+        my_metadata["Version"],
+        my_metadata["Author"],
+        my_metadata["Author-email"],
+        my_metadata["Project-URL"].replace("repository, ", ""),
+        my_metadata["License"],
+    )
 
 
 def init_from_toml():
@@ -66,12 +67,14 @@ def init_from_toml():
     toml_file = resource_path("pyproject.toml")
     data = toml.load(toml_file)
 
-    return \
-        data["project"]["version"], \
-        data["project"]["authors"][0]["name"], \
-        data["project"]["authors"][0]["email"], \
-        data["project"]["urls"]["repository"], \
-        data["project"]["license"]["text"]
+    return (
+        data["project"]["version"],
+        data["project"]["authors"][0]["name"],
+        data["project"]["authors"][0]["email"],
+        data["project"]["urls"]["repository"],
+        data["project"]["license"]["text"],
+    )
+
 
 # Main *************************************************************************
 
