@@ -32,12 +32,12 @@ test = [
 ]
 
 [project.urls]
-documentation = "https://github.com/NewTec-GmbH/template_python"
-repository = "https://github.com/NewTec-GmbH/template_python"
-tracker = "https://github.com/NewTec-GmbH/template_python/issues"
+documentation = "https://github.com/NewTec-GmbH/lobster-doxygen"
+repository = "https://github.com/NewTec-GmbH/lobster-doxygen"
+tracker = "https://github.com/NewTec-GmbH/lobster-doxygen/issues"
 
 [project.scripts]
-template_python = "template_python.template_python:main"
+lobster_doxygen = "lobster_doxygen.lobster_doxygen:main"
 
 [tool.pytest.ini_options]
 pythonpath = [
