@@ -1,4 +1,4 @@
-.. template_python documentation master file.
+.. lobster_doxygen documentation master file.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
    This file is written in ``reStructuredText`` syntax. Dor documentation see:
@@ -9,7 +9,7 @@
  
 .. <User editable section introduction>
 
-TBD Project Name
+lobster-doxygen
 ================
 
 Overview

@@ -3,15 +3,15 @@ requires = ["setuptools", "setuptools-scm", "wheel", "toml"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "template_python"
+name = "lobster_doxygen"
 version = "1.0.0"
-description = "template_python"
+description = "Script to generate the lobster common interchange format from a doxygen XML output."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
-    { name = "template_python", email = "template_python@newtec.de" }
+    { name = "Andreas Merkle", email = "andreas.merkle@newtec.de" }
 ]
-license = {text = "BSD 3-Clause"}
+license = {text = "GNU General Public License Version 3"}
 classifiers = [
     "License :: OSI Approved :: BSD 3-Clause",
     "Operating System :: OS Independent",
@@ -45,4 +45,4 @@ pythonpath = [
 ]
 
 [tool.setuptools.package-data]
-template_python = ["pyproject.toml"]
+lobster_doxygen = ["pyproject.toml"]
