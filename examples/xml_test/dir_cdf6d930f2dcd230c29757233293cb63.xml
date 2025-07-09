@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_cdf6d930f2dcd230c29757233293cb63" kind="dir">
+    <compoundname>C:/Git/BMW_Lobster/trlcWorkInstructions/examples/cpp-greeter/test/mocks</compoundname>
+    <innerfile refid="_mock_local_time_8h">MockLocalTime.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Git/BMW_Lobster/trlcWorkInstructions/examples/cpp-greeter/test/mocks/"/>
+  </compounddef>
+</doxygen>
