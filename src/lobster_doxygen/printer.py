@@ -25,16 +25,9 @@ Author: Andreas Merkle (andreas.merkle@newtec.de)
 # Imports **********************************************************************
 from colorama import Fore, Style
 
-from lobster_doxygen.print_type import PrintType
-
 # Variables ********************************************************************
 
-COLOR = {PrintType.ERROR: Fore.RED, PrintType.WARNING: Fore.YELLOW, PrintType.INFO: Fore.WHITE}
-
-TYPE = {PrintType.ERROR: "Error", PrintType.WARNING: "Warning", PrintType.INFO: "Info"}
-
 INFO_TAB = "      "
-
 
 # Classes **********************************************************************
 
@@ -55,20 +48,41 @@ class Printer:
         """Set verbose mode for all instances of the class."""
         cls._print_verbose = True
 
-    def print_error(self, err_type: PrintType, *args: str) -> None:
-        """Print the exit error.
+    def print_error(self, *args: str) -> None:
+        """Print error message.
 
         Args:
-            type (PrintType)    The type of the msg (Error, Warning or Info).
-            args (*str):        The error information that will be printed.
+            args (*str): The error information that will be printed.
         """
 
-        if err_type is PrintType.WARNING and self._print_verbose:
-            print(COLOR[err_type] + TYPE[err_type] + ": " + Style.RESET_ALL, end="")
+        print(Fore.RED + "Error: " + Style.RESET_ALL, end="")
+        Printer._print_args(*args)
 
-        elif err_type is PrintType.ERROR:
-            print(COLOR[err_type] + TYPE[err_type] + ": " + Style.RESET_ALL, end="")
+    def print_warning(self, *args: str) -> None:
+        """Print warning message.
 
+        Args:
+            args (*str): The warning information that will be printed.
+        """
+
+        print(Fore.YELLOW + "Warning: " + Style.RESET_ALL, end="")
+        Printer._print_args(*args)
+
+    def print_info(self, *args: str) -> None:
+        """Print the information to the console.
+
+        Args:
+            args (*str): The information that will be printed.
+        """
+        Printer._print_args(*args)
+
+    @classmethod
+    def _print_args(cls, *args: str) -> None:
+        """Prints args.
+
+        Args:
+            args (*str): String to print.
+        """
         first_line = True
         for arg in args:
             if first_line:
@@ -76,22 +90,6 @@ class Printer:
                 first_line = False
             else:
                 print(INFO_TAB + arg)
-
-    def print_info(self, *args: str) -> None:
-        """Print the information to the console.
-
-        Args:
-            args (*str):          The information that will be printed.
-        """
-        first_line = True
-
-        if self._print_verbose:
-            for arg in args:
-                if first_line:
-                    print("Info: " + arg)
-                    first_line = False
-                else:
-                    print(INFO_TAB + arg)
 
 
 # Functions ********************************************************************

@@ -24,7 +24,6 @@ Author: Andreas Merkle (andreas.merkle@newtec.de)
 from lobster_doxygen.lobster_item import LobsterItem
 from lobster_doxygen.lobster_kind import LobsterKind
 from lobster_doxygen.printer import Printer
-from lobster_doxygen.print_type import PrintType
 
 # Variables ********************************************************************
 
@@ -51,7 +50,6 @@ def rule_check(lobster_items: list[LobsterItem]) -> bool:
         if lobster_item.kind == LobsterKind.FILE:
             if lobster_item.has_refs() or lobster_item.has_just_up():
                 LOG.print_error(
-                    PrintType.ERROR,
                     f"The {lobster_item.kind.value} '{lobster_item.name}' "
                     f"has requirements or justifications on file level.",
                 )
@@ -64,14 +62,12 @@ def rule_check(lobster_items: list[LobsterItem]) -> bool:
                 for lobster_item_child in lobster_item.get_children():
                     if lobster_item_child.has_refs():
                         LOG.print_error(
-                            PrintType.ERROR,
                             f"The {lobster_item.kind.value} '{lobster_item.name}' "
                             f"has child item '{lobster_item_child.name}' with requirements.",
                         )
                         success = False
                     elif lobster_item_child.has_just_up():
                         LOG.print_error(
-                            PrintType.ERROR,
                             f"The {lobster_item.kind.value} '{lobster_item.name}' "
                             f"has child item '{lobster_item_child.name}' with justification.",
                         )
