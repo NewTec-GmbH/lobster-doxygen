@@ -48,16 +48,4 @@ class Ret:
     }
 
 
-@dataclass
-class Warnings:
-    """The messages corresponding to the return values and warnings."""
-
-    class CODE(IntEnum):
-        """Th Warnings of the modules."""
-
-        None
-
-    MSG = {}
-
-
 # Functions ********************************************************************
