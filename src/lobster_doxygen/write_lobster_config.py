@@ -25,7 +25,7 @@ from io import TextIOWrapper
 
 from lobster_doxygen.lobster_item import LobsterItem
 from lobster_doxygen.lobster_kind import LobsterKind
-from lobster_doxygen.indent import indent
+from lobster_doxygen.utils import indent
 
 # Variables ********************************************************************
 

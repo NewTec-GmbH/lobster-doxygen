@@ -1,4 +1,4 @@
-"""Module set indent to string.
+"""Module utils.
 
 Author: Andreas Merkle (andreas.merkle@newtec.de)
 """

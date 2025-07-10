@@ -25,7 +25,7 @@ Author: Andreas Merkle (andreas.merkle@newtec.de)
 # Imports **********************************************************************
 from colorama import Fore, Style
 
-from lobster_doxygen.indent import indent
+from lobster_doxygen.utils import indent
 
 # Variables ********************************************************************
 
