@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm", "wheel", "toml"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "lobster_doxygen"
+name = "lobster-doxygen"
 version = "1.0.0"
 description = "Script to generate the lobster common interchange format from a doxygen XML output."
 readme = "README.md"
@@ -17,24 +17,23 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13"
+    "Programming Language :: Python :: 3.12"
 ]
 
 dependencies = [
-    "toml>=0.10.2"
+    "toml>=0.10.2",
+    "bmw-lobster==0.12.1",
+    "doxmlparser>=1.13.2",
+    "myst-parser>=4.0.0",
+    "sphinxcontrib-plantuml>=0.30",
+    "m2r>=0.3.1",
+    "colorama==0.4.6"
 ]
 
 [project.optional-dependencies]
 test = [
   "pytest > 5.0.0",
-  "pytest-cov[all]",
-  "toml==0.10.2",
-  "bmw-lobster==0.12.1",
-  "doxmlparser>=1.13.2",
-  "myst-parser>=4.0.0",
-  "sphinxcontrib-plantuml>=0.30",
-  "m2r>=0.3.1"
+  "pytest-cov[all]"
 ]
 
 [project.urls]
@@ -43,7 +42,7 @@ repository = "https://github.com/NewTec-GmbH/lobster-doxygen"
 tracker = "https://github.com/NewTec-GmbH/lobster-doxygen/issues"
 
 [project.scripts]
-lobster_doxygen = "lobster_doxygen.lobster_doxygen:main"
+lobster-doxygen = "lobster_doxygen.__main__:main"
 
 [tool.pytest.ini_options]
 pythonpath = [

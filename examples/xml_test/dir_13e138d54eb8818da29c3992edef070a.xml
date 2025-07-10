@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_13e138d54eb8818da29c3992edef070a" kind="dir">
+    <compoundname>C:/Git/BMW_Lobster/trlcWorkInstructions/examples/cpp-greeter/test</compoundname>
+    <innerdir refid="dir_cdf6d930f2dcd230c29757233293cb63">C:/Git/BMW_Lobster/trlcWorkInstructions/examples/cpp-greeter/test/mocks</innerdir>
+    <innerfile refid="lobster__gtest_8h">lobster_gtest.h</innerfile>
+    <innerfile refid="test_cmd_line_8cpp">testCmdLine.cpp</innerfile>
+    <innerfile refid="test_greet_8cpp">testGreet.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Git/BMW_Lobster/trlcWorkInstructions/examples/cpp-greeter/test/"/>
+  </compounddef>
+</doxygen>
