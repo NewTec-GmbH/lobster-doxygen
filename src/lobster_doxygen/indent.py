@@ -41,3 +41,6 @@ def indent(level: int, text: str) -> str:
         str: The indented text.
     """
     return " " * (_INDENT_SPACES * level) + text
+
+
+# Main *************************************************************************

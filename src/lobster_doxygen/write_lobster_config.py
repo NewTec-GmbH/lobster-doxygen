@@ -29,7 +29,6 @@ from lobster_doxygen.indent import indent
 
 # Variables ********************************************************************
 
-
 # Classes **********************************************************************
 
 # Functions ********************************************************************
@@ -178,3 +177,6 @@ def write_lobster_config(file_name: str, lobster_items: list[LobsterItem]) -> No
 
         output_file.write("\n")
         _write_lobster_tail(output_file)
+
+
+# Main *************************************************************************

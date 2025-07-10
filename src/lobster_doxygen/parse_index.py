@@ -225,3 +225,6 @@ def parse_index(path: str) -> list[LobsterItem]:
         lobster_items.extend(_parse_compound(path, compound.get_refid()))
 
     return lobster_items
+
+
+# Main *************************************************************************

@@ -80,3 +80,6 @@ def rule_check(lobster_items: list[LobsterItem]) -> bool:
             break
 
     return success
+
+
+# Main *************************************************************************
