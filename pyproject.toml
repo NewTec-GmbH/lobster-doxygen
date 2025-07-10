@@ -17,25 +17,23 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13"
+    "Programming Language :: Python :: 3.12"
 ]
 
 dependencies = [
-    "toml>=0.10.2"
+    "toml>=0.10.2",
+    "bmw-lobster==0.12.1",
+    "doxmlparser>=1.13.2",
+    "myst-parser>=4.0.0",
+    "sphinxcontrib-plantuml>=0.30",
+    "m2r>=0.3.1",
+    "colorama==0.4.6"
 ]
 
 [project.optional-dependencies]
 test = [
   "pytest > 5.0.0",
-  "pytest-cov[all]",
-  "toml==0.10.2",
-  "bmw-lobster==0.12.1",
-  "doxmlparser>=1.13.2",
-  "myst-parser>=4.0.0",
-  "sphinxcontrib-plantuml>=0.30",
-  "m2r>=0.3.1",
-  "colorama==0.4.6"
+  "pytest-cov[all]"
 ]
 
 [project.urls]
