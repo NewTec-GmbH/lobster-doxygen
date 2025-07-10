@@ -13,7 +13,7 @@
             "args": [
                 "-v",
                 "-o",
-                ".\\out\\sw_test_result-lobster.json",
+                ".\\examples\\out\\sw_test_result-lobster.json",
                 ".\\examples\\xml_test"
             ]
         }
