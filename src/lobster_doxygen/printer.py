@@ -25,9 +25,9 @@ Author: Andreas Merkle (andreas.merkle@newtec.de)
 # Imports **********************************************************************
 from colorama import Fore, Style
 
-# Variables ********************************************************************
+from lobster_doxygen.indent import indent
 
-INFO_TAB = "      "
+# Variables ********************************************************************
 
 # Classes **********************************************************************
 
@@ -89,7 +89,7 @@ class Printer:
                 print(arg)
                 first_line = False
             else:
-                print(INFO_TAB + arg)
+                print(indent(1, arg))
 
 
 # Functions ********************************************************************
