@@ -74,6 +74,28 @@ ALIASES                = "implements{1}=@xrefitem implements \"Implements\" \"Re
                          "justification{1}=@xrefitem justified \"Justified\" \"Justification Overview\" Justification: \1"
 ```
 
+Change extract settings that Doxygen will use all entities in documentation:
+
+```bash
+EXTRACT_ALL            = YES
+```
+
+```bash
+EXTRACT_PRIVATE        = YES
+```
+
+```bash
+EXTRACT_PRIV_VIRTUAL   = YES
+```
+
+```bash
+EXTRACT_PACKAGE        = YES
+```
+
+```bash
+EXTRACT_STATIC         = YES
+```
+
 To enable the XML output:
 
 ```bash
@@ -81,6 +103,7 @@ GENERATE_XML           = YES
 ```
 
 Once doxygen has run successfully, the `xml` directory can be set as the `doxygen_folder` in the application.
+Example `Doxyfile` can be found in the [examples](./examples) directory.
 
 ## Examples
 
@@ -103,8 +126,6 @@ Used 3rd party libraries which are not part of the standard Python package:
 | [bmw-lobster](https://github.com/bmw-software-engineering/lobster)| | GPLv3 |
 | [doxmlparser](https://github.com/doxygen/doxygen) | Parsing Doxygen XML | GPLv2 |
 | [colorama](https://pypi.org/project/colorama/) | Console output color | BSD |
-
-see also [requirements.txt](requirements.txt)
 
 ---
 Sections below, for Github only
