@@ -6,7 +6,7 @@ exit codes.
 Author: Andreas Merkle (andreas.merkle@newtec.de)
 """
 
-# lobster-doxygen
+# lobster-doxygen - Doxygen XML to LOBSTER common interchange format converter
 # Copyright (c) NewTec GmbH 2025   -   www.newtec.de
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,9 +20,10 @@ Author: Andreas Merkle (andreas.merkle@newtec.de)
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # Imports **********************************************************************
+
 from colorama import Fore, Style
 
 from lobster_doxygen.utils import indent
