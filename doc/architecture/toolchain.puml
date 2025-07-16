@@ -1,0 +1,138 @@
+@startuml toolchain
+
+left to right direction
+skinparam linetype ortho
+<style>
+component {
+    BackgroundColor #lightgreen
+}
+.config {
+    BackgroundColor #orange
+}
+
+.cuif {
+    BackgroundColor #LightBlue
+}
+</style>
+
+component "lobster-report" as lobsterReport <<tool>>
+file "trlc-lobster.json" as trlcLobsterFile <<cuif>>
+file "doxygen-lobster.json" as doxygenLobsterFile <<cuif>>
+file "report-lobster.json" as reportLobsterFile <<cuif>>
+file "lobster.conf" as lobsterConf <<config>>
+
+
+package "Trace Doxygen XML files to requirements" {
+    component "lobster-doxygen" as lobsterDoxygen <<tool>>
+    file "Doxygen XML file(s)\n(*.xml)" as doxygenFiles
+
+    doxygenFiles ..> lobsterDoxygen: <<flow>>
+    lobsterDoxygen ..> doxygenLobsterFile: <<create>>
+}
+
+package "Trace source code to requirements in Doxygen documentation" {
+    file "Source file(s) supported by\nDoxygen (e.g. *.cpp, *.c, *.java)" as applicationSourceFiles
+    component "Doxygen" as doxygen <<tool>>
+
+    applicationSourceFiles ..> doxygen: <<flow>>
+    doxygen ..> doxygenFiles: <<creates>>
+}
+
+package "Trace logical levels on trlc basis" {
+    component "lobster-trlc" as lobsterTrlc <<tool>>
+    file "lobster-trlc.conf" as lobsterTrlcConf <<config>>
+    file "lobster-trlc.yaml" as lobsterTrlcYaml <<config>>
+    file "Source file(s)\n(*.trlc)" as trlcSourceFiles
+    file "Model(s)\n(*.rls)" as modelFiles
+
+    lobsterTrlcYaml ..> lobsterTrlc: <<flow>>
+    lobsterTrlcYaml ..> lobsterTrlcConf: <<select>>
+    lobsterTrlcConf ..> lobsterTrlc: <<flow>>
+    trlcSourceFiles ..> lobsterTrlc: <<flow>>
+    modelFiles ..> lobsterTrlc: <<flow>>
+}
+
+package "Local HTML report" {
+    component "lobster-html-report" as lobsterHtmlReport<<tool>>
+    file "tracing_report.html" as tracingReportHtml
+
+    lobsterHtmlReport .> tracingReportHtml: <<create>>
+}
+
+package "Online HTML report" {
+    component "lobster-online-report" as lobsterOnlineReport <<tool>>
+    component "lobster-html-report" as lobsterHtmlReportOnline <<tool>>
+    file "online-report-lobster.json" as onlineReportLobsterFile <<cuif>>
+    file "tracing_online_report.html" as tracingOnlineReportHtml
+
+    lobsterOnlineReport .> onlineReportLobsterFile: <<create>>
+    onlineReportLobsterFile .> lobsterHtmlReportOnline: <<flow>>
+    lobsterHtmlReportOnline .> tracingOnlineReportHtml: <<create>>
+}
+
+lobsterTrlc ..> trlcLobsterFile: <<create>>
+lobsterConf .> lobsterReport: <<flow>>
+lobsterReport  .> reportLobsterFile: <<create>>
+trlcLobsterFile <.. lobsterConf: <<select>>
+doxygenLobsterFile <.. lobsterConf: <<select>>
+trlcLobsterFile ..> lobsterReport: <<flow>>
+doxygenLobsterFile ..> lobsterReport: <<flow>>
+reportLobsterFile ..> lobsterHtmlReport: <<flow>>
+reportLobsterFile ...> lobsterOnlineReport: <<flow>>
+
+note left of lobsterTrlcConf
+    Defines which attributes shall be taken over
+    into the report from the sources (*.trlc).
+end note
+
+note left of lobsterTrlcYaml
+    Defines which files/directories are used and
+    which .conf file shall be used
+end note
+
+note bottom of doxygenLobsterFile
+    Common interchange format.
+end note
+
+note top of lobsterConf
+    Tracing policy.
+end note
+
+note top of trlcLobsterFile
+    Common interchange format.
+end note
+
+note left of trlcSourceFiles
+    The requirements written in TRLC.
+end note
+
+note left of modelFiles
+    The requirements language specification.
+end note
+
+note left of applicationSourceFiles 
+    The implementation of the program which
+    contains the lobster traces.
+end note
+
+note bottom of reportLobsterFile
+    Common interchange format.
+end note
+
+note bottom of tracingReportHtml
+    The user friendly HTML report, which links to
+    the local sources.
+    
+    It can't not be used for online deployment,
+    because of the links to local files.
+end note
+
+note bottom of tracingOnlineReportHtml
+    The user friendly HTML report, which links to
+    the sources in the repository, by considering
+    branch and commit hash.
+
+    Its used to be deployed online.
+end note
+
+@enduml
