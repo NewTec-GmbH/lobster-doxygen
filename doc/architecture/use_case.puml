@@ -1,0 +1,47 @@
+@startuml use_cases
+
+' Setting ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+left to right direction
+skinparam linetype ortho
+
+<style>
+actor {
+  BackgroundColor #E3F2FD
+  LineColor #1E88E5
+  FontColor #0D47A1
+  FontWeight bold
+}
+
+usecase {
+  BackgroundColor #E8F5E9
+  BorderColor #388E3C
+  FontColor #1B5E20
+  RoundCorner 20
+  FontSize 12
+  FontStyle bold
+}
+</style>
+
+' Components '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+rectangle "System" {
+    usecase "Print command overview to console" as uc_help
+    usecase "Transform XML to LOBSTER common interchange file" as uc_transform
+    usecase "Provide Doxygen XML input" as uc_xml_input
+    usecase "Pharse Doxygen XML" as uc_parse_xml
+    usecase "Generate LOBSTER common interchange file" as uc_output
+}
+
+actor "User" as user
+
+' Flows ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+user --> uc_xml_input
+user --> uc_help
+user --> uc_transform
+uc_transform --> uc_output : includes
+uc_transform --> uc_parse_xml : includes
+uc_transform --> uc_xml_input : includes
+
+@enduml

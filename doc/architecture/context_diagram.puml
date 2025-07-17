@@ -1,0 +1,55 @@
+@startuml context_diagram
+
+' Setting ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+left to right direction
+skinparam linetype ortho
+<style>
+component {
+    BackgroundColor #lightgreen
+}
+.config {
+    BackgroundColor #orange
+}
+
+.cuif {
+    BackgroundColor #LightBlue
+}
+</style>
+
+' Components '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+package "Input" {
+    file "Source file(s) supported by Doxygen\n(e.g. *cpp, *c, *.java), with doxygen documentation" as source_code <<files>>
+    note bottom of source_code
+        With implements and justification links 
+        to TRLC requirements 
+    end note
+}
+
+package "Doxygen Toolchain" {
+    component "Doxygen" as doxygen <<tool>>
+    file "Doxyfile" as doxygen_configuration <<config>>
+
+    note right of doxygen_configuration
+        With implements and justification aliases. 
+        Extract all and XML output enabled. 
+    end note
+
+    file "XML output" as xml_output <<files>>
+}
+
+package LOBSTER {
+    component "lobster-doxygen" as lobster_doxygen <<tool>> 
+    file "LOBSTER common interchange\nformat file (*.json)" as lobster_configuration_file 
+}
+
+' Flows ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+source_code .down..> doxygen :  <<flow>>
+doxygen --> doxygen_configuration : <<uses>>
+doxygen .down..> xml_output : <<generates>>
+xml_output .down.> lobster_doxygen : <<input>>
+lobster_doxygen .down..> lobster_configuration_file : <<generates>>
+
+@enduml
