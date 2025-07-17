@@ -68,6 +68,7 @@ def add_parser() -> argparse.ArgumentParser:
     # folder that contains the XML output.
     parser = argparse.ArgumentParser(prog=PROG_NAME, description=PROG_DESC, epilog=PROG_COPYRIGHT)
 
+    parser.add_argument("--version", action="version", version="%(prog)s " + __version__)
     parser.add_argument("doxygen_folder", type=str, help="Path to the doxygen XML output folder.")
     parser.add_argument("-o", "--output", type=str, help="Output file name.", default="lobster.cfg")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output.")
