@@ -1,6 +1,6 @@
 """Module with script error codes.
 
-Author: Andreas Merkle (andreas.merkle@newtec.de)
+Author: Dominik Knoll (dominik.knoll@newtec.de)
 """
 
 # lobster-doxygen - Doxygen XML to LOBSTER common interchange format converter

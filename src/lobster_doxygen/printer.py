@@ -3,7 +3,7 @@
 Contains the print error function and the error messages corresponding to the
 exit codes.
 
-Author: Andreas Merkle (andreas.merkle@newtec.de)
+Author: Dominik Knoll (dominik.knoll@newtec.de)
 """
 
 # lobster-doxygen - Doxygen XML to LOBSTER common interchange format converter

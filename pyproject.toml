@@ -9,7 +9,8 @@ description = "Script to generate the lobster common interchange format from a d
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
-    { name = "Andreas Merkle", email = "andreas.merkle@newtec.de" }
+    { name = "Andreas Merkle", email = "andreas.merkle@newtec.de" },
+    { name = "Dominik Knoll", email = "dominik.knoll@newtec.de"}
 ]
 license = "GPL-3.0-only" 
 classifiers = [

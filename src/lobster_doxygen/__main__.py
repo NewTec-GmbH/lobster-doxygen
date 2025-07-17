@@ -2,7 +2,7 @@
 
 Script to generate the lobster common interchange format from a doxygen XML output.
 
-Author: Andreas Merkle (andreas.merkle@newtec.de)
+Author: Dominik Knoll (dominik.knoll@newtec.de)
 """
 
 # lobster-doxygen - Doxygen XML to LOBSTER common interchange format converter
