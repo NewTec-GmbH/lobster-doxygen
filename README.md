@@ -1,6 +1,6 @@
 # lobster-doxygen <!-- omit in toc -->
 
-[![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://choosealicense.com/licenses/gpl-3.0/) [![Repo Status](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![CI](https://github.com/NewTec-GmbH/lobster-doxygen/actions/workflows/test.yml/badge.svg)](https://github.com/NewTec-GmbH/lobster_doxygen/actions/workflows/test.yml)
+[![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://choosealicense.com/licenses/gpl-3.0/) [![Repo Status](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![CI](https://github.com/NewTec-GmbH/lobster-doxygen/actions/workflows/test.yml/badge.svg)](https://github.com/NewTec-GmbH/lobster-doxygen/actions/workflows/test.yml)
 
 - [Overview](#overview)
 - [Installation](#installation)
