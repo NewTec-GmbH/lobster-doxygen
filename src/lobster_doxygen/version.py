@@ -56,7 +56,7 @@ def init_from_metadata():
         list: Tool related information
     """
 
-    my_metadata = meta.metadata("lobster_doxygen")
+    my_metadata = meta.metadata("lobster-doxygen")
 
     return (
         my_metadata["Version"],
