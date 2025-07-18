@@ -31,7 +31,7 @@ update_doc.update_pylint()
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "lobster_doxygen"
+project = "lobster-doxygen"
 copyright = "%Y, NewTec GmbH"
 author = "Andreas Merkle"
 release = "V0.???"

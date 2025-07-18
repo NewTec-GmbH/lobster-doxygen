@@ -8,31 +8,46 @@
    otherwise they will be overwritten by intputs from the project during sphinx generation
  
 .. <User editable section introduction>
+.. role:: raw-html-m2r(raw)
+   :format: html
 
-lobster-doxygen
-================
+
+lobster-doxygen :raw-html-m2r:`<!-- omit in toc -->`
+========================================================
 
 Overview
 --------
 
-..
+lobster-doxygen is a tool to extract requirement annotations from doxygen XML output files.
+It produces the `LOBSTER common interchange format <https://github.com/bmw-software-engineering/lobster/blob/main/documentation/schemas.md>`_ as output.
 
-   TODO
+One major advantage of lobster-doxygen is that the XML input files can come from many different programming languages, including C, C++, Python, Java, Objective-C, PHP, Fortran, and more. This allows  a straightforward and standardized integration into the LOBSTER TRLC toolchain.
+
+An overview of how lobster-doxygen fits into the LOBSTER toolchain:
+
+.. image:: ./doc/architecture/toolchain.png
+   :target: ./doc/architecture/toolchain.png
+   :alt: lobster-doxygen in LOBSTER toolchain
 
 
 Usage
 -----
 
-..
-
-   TODO
-
+lobster-doxygen is a command line application that is configured via command line arguments.
 
 .. code-block:: bash
 
-   example [-h] [-v] {command} {command_options}
+   usage: lobster-doxygen [-h] [-o OUTPUT] [-v] doxygen_folder
 
-Detailed descriptions of arguments
+   Script to generate the lobster common interchange format from a doxygen XML output.
+
+   positional arguments:
+     doxygen_folder       Path to the doxygen XML output folder.
+
+   options:
+     -h, --help           show this help message and exit
+     -o, --output OUTPUT  Output file name.
+     -v, --verbose        Enable verbose output.
 
 .. </User editable section introduction>
 
@@ -55,7 +70,15 @@ Software Detailed Design
    :template: custom-module-template.rst
    :recursive:
 
-   template_python
+   lobster_item
+   lobster_kind
+   parse_index
+   printer
+   ret
+   rule_check
+   utils
+   write_lobster_config
+   __main__
 .. </User editable section source> 
 
 Testing
@@ -70,7 +93,6 @@ Software Detailed Design
    :recursive:
 
    test_empty
-   test_empty2
 
 .. </User editable section unittest> 
 
