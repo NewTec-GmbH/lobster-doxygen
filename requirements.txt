@@ -1,6 +1,0 @@
-toml==0.10.2
-bmw-lobster==0.12.1
-doxmlparser>=1.13.2
-myst-parser>=4.0.0
-sphinxcontrib-plantuml>=0.30
-m2r>=0.3.1
