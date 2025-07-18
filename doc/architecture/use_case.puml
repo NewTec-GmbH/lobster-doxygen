@@ -25,23 +25,27 @@ usecase {
 
 ' Components '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
+actor "User" as user
+file "Doxygen XML files (*.xml)" as doxygen_xml
+
 rectangle "System" {
+    usecase "Show tool version" as uc_version
     usecase "Print command overview to console" as uc_help
     usecase "Transform XML to LOBSTER common interchange file" as uc_transform
-    usecase "Provide Doxygen XML input" as uc_xml_input
-    usecase "Pharse Doxygen XML" as uc_parse_xml
+    usecase "Phrase Doxygen XML" as uc_parse_xml
     usecase "Generate LOBSTER common interchange file" as uc_output
 }
 
-actor "User" as user
+file "LOBSTER common interchange format file" as lobster_file
 
 ' Flows ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-user --> uc_xml_input
-user --> uc_help
-user --> uc_transform
+user --> uc_help : request help 
+user --> uc_version : request version 
+user --> uc_transform : request conversion
+doxygen_xml --> uc_transform
 uc_transform --> uc_output : includes
 uc_transform --> uc_parse_xml : includes
-uc_transform --> uc_xml_input : includes
+uc_output --> lobster_file 
 
 @enduml

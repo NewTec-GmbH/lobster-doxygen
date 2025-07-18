@@ -40,7 +40,9 @@ package "Doxygen Toolchain" {
 }
 
 package LOBSTER {
-    component "lobster-doxygen" as lobster_doxygen <<tool>> 
+    package "System" {
+        component "lobster-doxygen" as lobster_doxygen <<tool>> 
+    }
     file "LOBSTER common interchange\nformat file (*.json)" as lobster_configuration_file 
 }
 
