@@ -1,4 +1,7 @@
-"""This module provides version and author information."""
+"""This module provides version and author information.
+
+Author: Dominik Knoll (dominik.knoll@newtec.de)
+"""
 
 # lobster-doxygen - Doxygen XML to LOBSTER common interchange format converter
 # Copyright (c) NewTec GmbH 2025   -   www.newtec.de
