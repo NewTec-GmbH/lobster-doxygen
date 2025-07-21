@@ -36,6 +36,13 @@ from lobster_doxygen.utils import indent
 
 LOG = Printer()
 
+
+# Requirement specifier, which is configured in the doxygen configuration, see alias.
+_REQ_SPECIFIER = "Requirement"
+
+# Justification specifier, which is configured in the doxygen configuration, see alias.
+_JUSTIFICATION_SPECIFIER = "Justification"
+
 # Classes **********************************************************************
 
 # Functions ********************************************************************
@@ -55,16 +62,16 @@ def _parse_xrefdescription(lobster_item: LobsterItem, xrefdescription: descripti
         value = para.get_valueOf_().strip()
 
         # Is it a requirement reference?
-        if value.startswith("Requirement: "):
+        if value.startswith(f"{_REQ_SPECIFIER}: "):
             req_id = value[13:]
             refs.append(req_id)
-            LOG.print_info(indent(3, f"Requirement: {req_id}"))
+            LOG.print_info(indent(3, f"{_REQ_SPECIFIER}: {req_id}"))
 
         # Is it a justification?
-        elif value.startswith("Justification: "):
+        elif value.startswith(f"{_JUSTIFICATION_SPECIFIER}: "):
             just_up_id = value[15:]
             just_up.append(just_up_id)
-            LOG.print_info(indent(3, f"Justification: {just_up_id}"))
+            LOG.print_info(indent(3, f"{_JUSTIFICATION_SPECIFIER}: {just_up_id}"))
 
     lobster_item.refs.extend(refs)
     lobster_item.just_up.extend(just_up)
@@ -208,21 +215,30 @@ def _parse_compound(path: str, base_name: str) -> list[LobsterItem]:
     return lobster_items
 
 
-def parse_index(path: str) -> list[LobsterItem]:
-    """Parse the index file, process each compound defined in it and build
+def parse_index(doxygen_xml_folder: str) -> list[LobsterItem] | None:
+    """Parse the xml index file, process each compound defined in it and build
         the lobster items.
 
     Args:
-        path (str): The directory name where the index file is located.
+        doxygen_xml_folder (str): The Doxygen XML output directory, where the
+                                  file index.xml is located.
 
     Returns:
-        list[LobsterItem]: The list of lobster items.
+        list[LobsterItem] | None: The list of lobster items. If an error occurs,
+                                  None is returned.
     """
     lobster_items = []
-    root_obj = doxmlparser.index.parse(path + "/index.xml", True)
 
-    for compound in root_obj.get_compound():  # for each compound defined in the index
-        lobster_items.extend(_parse_compound(path, compound.get_refid()))
+    try:
+        root_obj = doxmlparser.index.parse(doxygen_xml_folder + "/index.xml", True)
+
+        for compound in root_obj.get_compound():  # for each compound defined in the index
+            lobster_items.extend(_parse_compound(doxygen_xml_folder, compound.get_refid()))
+
+    # pylint: disable=broad-exception-caught
+    except Exception as e:
+        LOG.print_error(f"{e}")
+        lobster_items = None
 
     return lobster_items
 

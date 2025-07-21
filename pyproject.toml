@@ -24,7 +24,7 @@ dependencies = [
     "toml>=0.10.2",
     "bmw-lobster==0.12.1",
     "doxmlparser>=1.13.2",
-    "colorama==0.4.6"
+    "rich==14.0.0"
 ]
 
 [project.optional-dependencies]
