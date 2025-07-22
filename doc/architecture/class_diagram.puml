@@ -62,9 +62,9 @@ end note
 
 ' Flows ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-main "1" --> "*" LobsterItem 
-main "1" --> "1" Ret : uses
-LobsterItem --> "1" LobsterKind : uses
-LobsterItem --> "*" LobsterItem : has children
+main "1" ..> "*" LobsterItem : <<use>>
+main "1" ..> "1" Ret : <<use>>
+LobsterItem ..o "1" LobsterKind : <<use>>
+LobsterItem ..> "*" LobsterItem : <<has children>>
 
 @enduml
