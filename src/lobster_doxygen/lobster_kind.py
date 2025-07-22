@@ -40,6 +40,7 @@ class LobsterKind(enum.Enum):
     INTERFACE = "Interface"
     FILE = "File"
     NAMESPACE = "Namespace"
+    GROUP = "Group"
 
 
 # Functions ********************************************************************

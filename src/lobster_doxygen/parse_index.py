@@ -101,6 +101,7 @@ def _parse_members(lobster_item: LobsterItem, compounddef: compounddefType, sect
     function_like_kind = [DoxMemberKind.FUNCTION, DoxMemberKind.PROTOTYPE]
 
     for memberdef in sectiondef.get_memberdef():
+        skip = False
         lobster_item_child = None
         lobster_item_namespace = None
         lobster_item_id = memberdef.get_id()
@@ -114,7 +115,7 @@ def _parse_members(lobster_item: LobsterItem, compounddef: compounddefType, sect
                 lobster_item_namespace = compounddef.get_compoundname()
             else:
                 # Skip other member kinds
-                continue
+                skip = True
 
         elif compounddef.get_kind() in [DoxCompoundKind.FILE, DoxCompoundKind.NAMESPACE]:
             if memberdef.get_kind() in function_like_kind:
@@ -123,10 +124,28 @@ def _parse_members(lobster_item: LobsterItem, compounddef: compounddefType, sect
                 lobster_item_child.kind = LobsterKind.FUNCTION
             else:
                 # Skip other member kinds
-                continue
+                skip = True
+
+        elif compounddef.get_kind() == DoxCompoundKind.GROUP:
+            if memberdef.get_kind() in function_like_kind:
+                # Process function-like members
+                lobster_item_child = LobsterItem(lobster_item_id)
+                lobster_item_child.kind = LobsterKind.FUNCTION
+            else:
+                # Skip other member kinds
+                skip = True
+
+        else:
+            # Skip unsupported compound kinds
+            skip = True
 
         LOG.print_info(indent(2, f"member: {memberdef.get_name()}"))
-        LOG.print_info(indent(3, f"kind: {memberdef.get_kind()}"))
+
+        if skip is False:
+            LOG.print_info(indent(3, f"kind: {memberdef.get_kind()}"))
+        else:
+            LOG.print_info(indent(3, f"kind: {memberdef.get_kind()} (skipped)"))
+            continue
 
         lobster_item_child.language = compounddef.get_language()
 
@@ -170,6 +189,7 @@ def _parse_compound(path: str, base_name: str) -> list[LobsterItem]:
     root_obj = doxmlparser.compound.parse(path + "/" + base_name + ".xml", True)
 
     for compounddef in root_obj.get_compounddef():
+        skip = False
         lobster_item = None
         kind = compounddef.get_kind()
         lobster_item_id = compounddef.get_id()
@@ -194,18 +214,33 @@ def _parse_compound(path: str, base_name: str) -> list[LobsterItem]:
             lobster_item = LobsterItem(lobster_item_id)
             lobster_item.kind = LobsterKind.NAMESPACE
 
+        elif DoxCompoundKind.GROUP == kind:
+            lobster_item = LobsterItem(lobster_item_id)
+            lobster_item.kind = LobsterKind.GROUP
+
         else:
-            # Skip other compound kinds
-            continue
+            skip = True
 
         LOG.print_info(f"compound: {compounddef.get_compoundname()}")
-        LOG.print_info(indent(1, f"kind: {kind}"))
+
+        if skip is False:
+            LOG.print_info(indent(1, f"kind: {kind}"))
+        else:
+            LOG.print_info(indent(1, f"kind: {kind} (skipped)"))
+            continue
 
         lobster_item.language = compounddef.get_language()
         lobster_item.name = compounddef.get_compoundname()
-        lobster_item.file_name = compounddef.get_location().get_file()
-        lobster_item.line = compounddef.get_location().get_line()
-        lobster_item.column = compounddef.get_location().get_column()
+
+        # A group has no location information on compounddef level.
+        if compounddef.get_location() is None:
+            lobster_item.file_name = ""
+            lobster_item.line = 0
+            lobster_item.column = 0
+        else:
+            lobster_item.file_name = compounddef.get_location().get_file()
+            lobster_item.line = compounddef.get_location().get_line()
+            lobster_item.column = compounddef.get_location().get_column()
 
         _parse_detail_description(lobster_item, compounddef.get_detaileddescription())
         _parse_sections(lobster_item, compounddef)
