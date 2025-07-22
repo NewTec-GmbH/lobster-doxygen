@@ -4,23 +4,20 @@
 
 ' Components '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-class Main {
+class main <<module>> {
   + main(): Ret.CODE
-  - add_parser(): argparse.ArgumentParser
+  + add_parser(): argparse.ArgumentParser
 }
 
-class Ret {
-
-}
-
-enum CODE {
+enum Ret <<enum>> {
     RET_OK
     RET_ERROR
     RET_ERROR_ARGPARSE
     RET_ERROR_FILEPATH_INVALID
+    RET_ERROR_NO_LOBSTER_ITEMS 
 }
 
-enum LobsterKind {
+enum LobsterKind <<enum>> {
     UNDEFINED
     FUNCTION
     PROTOTYPE
@@ -30,6 +27,7 @@ enum LobsterKind {
     INTERFACE
     FILE
     NAMESPACE
+    GROUP
 }
 
 note right of LobsterKind
@@ -48,7 +46,7 @@ class LobsterItem {
     + kind: LobsterKind
     - _children: List<LobsterItem>
 
-    + append_lobster_child(item: LobsterItem): void
+    + append_lobster_child(item: LobsterItem): None 
     + get_children(): List<LobsterItem>
     + has_children(): bool
     + has_refs(): bool
@@ -57,16 +55,15 @@ class LobsterItem {
     + get_tag(): str
 }
 
-note right of LobsterItem
+note top of LobsterItem
   Class to represent a lobster item.
 end note
 
 
 ' Flows ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-Main "1" --> "*" LobsterItem 
-Ret +-> CODE : contains 
-Main "1" --> "1" Ret : uses
+main "1" --> "*" LobsterItem 
+main "1" --> "1" Ret : uses
 LobsterItem --> "1" LobsterKind : uses
 LobsterItem --> "*" LobsterItem : has children
 
