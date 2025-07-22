@@ -64,7 +64,7 @@ end note
 
 main "1" ..> "*" LobsterItem : <<use>>
 main "1" ..> "1" Ret : <<use>>
-LobsterItem ..o "1" LobsterKind : <<use>>
+LobsterItem --o "1" LobsterKind : <<use>>
 LobsterItem ..> "*" LobsterItem : <<has children>>
 
 @enduml
