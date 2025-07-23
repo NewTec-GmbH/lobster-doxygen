@@ -8,7 +8,7 @@
             "name": "Python Debugger: lobster-doxygen with Arguments",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/src/lobster-doxygen/__main__.py",
+            "program": "${workspaceFolder}/src/lobster_doxygen/__main__.py",
             "console": "integratedTerminal",
             "args": [
                 "-v",
