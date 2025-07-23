@@ -5,16 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python Debugger: Current File with Arguments",
+            "name": "Python Debugger: lobster-doxygen with Arguments",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "${workspaceFolder}/src/lobster_doxygen/__main__.py",
             "console": "integratedTerminal",
             "args": [
                 "-v",
                 "-o",
-                ".\\examples\\out\\sw_test_result-lobster.json",
-                ".\\examples\\xml_test"
+                ".\\examples\\simple-cpp-application\\out\\simple-cpp-application-lobster.json",
+                ".\\examples\\simple-cpp-application\\out\\xml",
             ]
         }
     ]

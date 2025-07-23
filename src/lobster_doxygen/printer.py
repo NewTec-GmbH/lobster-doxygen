@@ -24,9 +24,9 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 
 # Imports **********************************************************************
 
-from colorama import Fore, Style
+import sys
+from rich import print as rprint
 
-from lobster_doxygen.utils import indent
 
 # Variables ********************************************************************
 
@@ -49,48 +49,32 @@ class Printer:
         """Set verbose mode for all instances of the class."""
         cls._print_verbose = True
 
-    def print_error(self, *args: str) -> None:
-        """Print error message.
+    def print_error(self, message: str) -> None:
+        """Print error message to standard error stream.
 
         Args:
-            args (*str): The error information that will be printed.
+            args (str): The error information that will be printed.
         """
+        rprint(f"[bold red]Error: [/bold red]{message}", end="", file=sys.stderr)
 
-        print(Fore.RED + "Error: " + Style.RESET_ALL, end="")
-        Printer._print_args(*args)
-
-    def print_warning(self, *args: str) -> None:
-        """Print warning message.
+    def print_warning(self, message: str) -> None:
+        """Print warning message to standard error stream.
 
         Args:
-            args (*str): The warning information that will be printed.
+            args (str): The warning information that will be printed.
         """
 
-        print(Fore.YELLOW + "Warning: " + Style.RESET_ALL, end="")
-        Printer._print_args(*args)
+        if self._print_verbose is True:
+            rprint(f"[bold yellow]Warning: [/bold yellow]{message}", end="", file=sys.stderr)
 
-    def print_info(self, *args: str) -> None:
-        """Print the information to the console.
+    def print_info(self, message: str) -> None:
+        """Print the information to the console standard output.
 
         Args:
-            args (*str): The information that will be printed.
+            args (str): The information that will be printed.
         """
-        Printer._print_args(*args)
-
-    @classmethod
-    def _print_args(cls, *args: str) -> None:
-        """Prints args.
-
-        Args:
-            args (*str): String to print.
-        """
-        first_line = True
-        for arg in args:
-            if first_line:
-                print(arg)
-                first_line = False
-            else:
-                print(indent(1, arg))
+        if self._print_verbose is True:
+            rprint(message)
 
 
 # Functions ********************************************************************

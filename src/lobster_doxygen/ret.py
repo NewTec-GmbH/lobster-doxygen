@@ -22,31 +22,20 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 # Imports **********************************************************************
 
 from enum import IntEnum
-from dataclasses import dataclass
 
 # Variables ********************************************************************
 
 # Classes **********************************************************************
 
 
-@dataclass
-class Ret:
+class Ret(IntEnum):
     """The Error codes of lobster-doxygen tool."""
 
-    class CODE(IntEnum):
-        """The exit statuses of the modules."""
-
-        RET_OK = 0
-        RET_ERROR = 1
-        RET_ERROR_ARGPARSE = 2  # Must be 2 to match the argparse error code.
-        RET_ERROR_FILEPATH_INVALID = 3
-
-    MSG = {
-        CODE.RET_OK: "Process successful.",
-        CODE.RET_ERROR: "Error occurred.",
-        CODE.RET_ERROR_ARGPARSE: "Error while parsing arguments.",
-        CODE.RET_ERROR_FILEPATH_INVALID: "The provided filepath does not exist.",
-    }
+    RET_OK = 0
+    RET_ERROR = 1
+    RET_ERROR_ARGPARSE = 2  # Must be 2 to match the argparse error code.
+    RET_ERROR_FILEPATH_INVALID = 3
+    RET_ERROR_NO_LOBSTER_ITEMS = 4
 
 
 # Functions ********************************************************************

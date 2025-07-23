@@ -50,18 +50,31 @@ An overview of how lobster-doxygen fits into the LOBSTER toolchain:
 
 lobster-doxygen is a command line application that is configured via command line arguments.
 
-```bash
-usage: lobster-doxygen [-h] [-o OUTPUT] [-v] doxygen_folder
+```md
+usage: lobster-doxygen [-h] [--version] [-o OUTPUT] [-v] doxygen_xml_folder
 
-Script to generate the lobster common interchange format from a doxygen XML output.
+Convert doxygen XML output to lobster common interchange format.
+
+- The source code header requires a doxygen header with at least the @file tag.
+  - Rational: The doxygen XML output will consider the aliases on file level only if the file has the @file tag.
+- Tracing supports the following levels:
+  - Class/Struct/Union/Namespace
+  - Method
+  - Function
+- Tracing on file level is possible, but not recommended and therefore the tool will abort with an error.
+
+To specify a requirement use @implements{REQ}.
+To specify a justification use @justification{JUSTIFICATION}.
 
 positional arguments:
-  doxygen_folder       Path to the doxygen XML output folder.
+  doxygen_xml_folder        Path to the doxygen XML output folder.
 
 options:
-  -h, --help           show this help message and exit
-  -o, --output OUTPUT  Output file name.
-  -v, --verbose        Enable verbose output.
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -o OUTPUT, --output OUTPUT
+                        Output file name. Default: lobster.json
+  -v, --verbose         Enable verbose output.
 ```
 
 ## Doxygen XML files
@@ -102,7 +115,7 @@ To enable the XML output:
 GENERATE_XML           = YES
 ```
 
-Once doxygen has run successfully, the `xml` directory can be set as the `doxygen_folder` in the application.
+Once doxygen has run successfully, the `xml` directory can be set as the `doxygen_xml_folder` in the application.
 Example `Doxyfile` can be found in the [examples](./examples) directory.
 
 ## Examples
@@ -125,7 +138,7 @@ Used 3rd party libraries which are not part of the standard Python package:
 | [toml](https://github.com/uiri/toml) | Parsing [TOML](https://en.wikipedia.org/wiki/TOML) | MIT |
 | [bmw-lobster](https://github.com/bmw-software-engineering/lobster)| | GPLv3 |
 | [doxmlparser](https://github.com/doxygen/doxygen) | Parsing Doxygen XML | GPLv2 |
-| [colorama](https://pypi.org/project/colorama/) | Console output color | BSD |
+| [rich](https://rich.readthedocs.io/en/stable/index.html) | Console output | MIT |
 
 ---
 Sections below, for Github only

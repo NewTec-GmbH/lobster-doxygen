@@ -63,13 +63,13 @@ def rule_check(lobster_items: list[LobsterItem]) -> bool:
                     if lobster_item_child.has_refs():
                         LOG.print_error(
                             f"The {lobster_item.kind.value} '{lobster_item.name}' "
-                            f"has child item '{lobster_item_child.name}' with requirements.",
+                            f"has child item '{lobster_item_child.name}' with requirements."
                         )
                         success = False
                     elif lobster_item_child.has_just_up():
                         LOG.print_error(
                             f"The {lobster_item.kind.value} '{lobster_item.name}' "
-                            f"has child item '{lobster_item_child.name}' with justification.",
+                            f"has child item '{lobster_item_child.name}' with justification."
                         )
                         success = False
 

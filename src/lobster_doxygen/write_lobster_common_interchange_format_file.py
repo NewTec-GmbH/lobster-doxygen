@@ -1,4 +1,4 @@
-"""Module to write lobster configuration file.
+"""Module to write LOBSTER common interchange format file.
 
 Author: Andreas Merkle (andreas.merkle@newtec.de)
 """
@@ -64,7 +64,7 @@ def _write_lobster_tail(output_file: TextIOWrapper) -> None:
         output_file (TextIOWrapper): The output file to write the results to.
     """
     _write_with_indent(output_file, 1, "],\n")
-    _write_with_indent(output_file, 1, '"generator": "doxygen2lobster",\n')
+    _write_with_indent(output_file, 1, '"generator": "lobster-doxygen",\n')
     _write_with_indent(output_file, 1, '"schema": "lobster-imp-trace",\n')
     _write_with_indent(output_file, 1, '"version": 3\n')
     _write_with_indent(output_file, 0, "}\n")
@@ -131,18 +131,20 @@ def _write_lobster_item(output_file: TextIOWrapper, lobster_item: LobsterItem) -
     _write_with_indent(output_file, 2, "}")
 
 
-def write_lobster_config(file_name: str, lobster_items: list[LobsterItem]) -> None:
-    """Write the lobster configuration file.
+def write_lobster_common_interchange_format_file(lobster_items: list[LobsterItem], output_file_name: str) -> None:
+    """Write the LOBSTER common interchange format file with lobster_items.
+    File format as described in
+    https://github.com/bmw-software-engineering/lobster/blob/main/documentation/schemas.md.
 
     Args:
-        file_name (str): The name of the file.
         lobster_items (List[LobsterItem]): The list of lobster items.
+        output_file_name (str): Path and file name for LOBSTER common interchange format file.
     """
     cnt = 0
 
     container_kind = [LobsterKind.CLASS, LobsterKind.STRUCT, LobsterKind.INTERFACE, LobsterKind.NAMESPACE]
 
-    with open(file_name, "w", encoding="utf-8") as output_file:
+    with open(output_file_name, "w", encoding="utf-8") as output_file:
         _write_lobster_header(output_file)
 
         for lobster_item in lobster_items:
