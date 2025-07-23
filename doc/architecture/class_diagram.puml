@@ -6,7 +6,9 @@
 
 class main <<module>> {
   + main(): Ret.CODE
-  + add_parser(): argparse.ArgumentParser
+  - _add_parser(): argparse.ArgumentParser
+  - _print_program_arguments(args: argparse.Namespace): None
+  - _convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder: str, output_file_name: str): Ret
 }
 
 enum Ret <<enum>> {

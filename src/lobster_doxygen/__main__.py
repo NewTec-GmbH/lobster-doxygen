@@ -98,7 +98,7 @@ class RawDescriptionHelpFormatterWithNL(argparse.RawDescriptionHelpFormatter):
 # Functions ********************************************************************
 
 
-def add_parser() -> argparse.ArgumentParser:
+def _add_parser() -> argparse.ArgumentParser:
     """Add parser for command line arguments and set the execute function of
     each cmd module as callback for the subparser command.
     Return the parser after all the modules have been registered and added their
@@ -120,7 +120,7 @@ def add_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def print_program_arguments(args: argparse.Namespace) -> None:
+def _print_program_arguments(args: argparse.Namespace) -> None:
     """Print program argument information.
 
     Args:
@@ -132,7 +132,7 @@ def print_program_arguments(args: argparse.Namespace) -> None:
     LOG.print_info("\n")
 
 
-def convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder: str, output_file_name: str) -> Ret:
+def _convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder: str, output_file_name: str) -> Ret:
     """Convert xml files in doxygen_xml_folder to LOBSTER common interchange format file with name
     output.
 
@@ -181,7 +181,7 @@ def main() -> Ret:
     args = None
 
     # Get parser
-    parser = add_parser()
+    parser = _add_parser()
 
     # Parse command line arguments.
     # If error occurs, exits the program from this point with code 2.
@@ -193,11 +193,11 @@ def main() -> Ret:
         # In verbose mode print all program arguments
         if args.verbose:
             LOG.set_verbose()
-            print_program_arguments(args)
+            _print_program_arguments(args)
 
         # Check if the doxygen folder exists in the arguments.
         if args.doxygen_xml_folder:
-            ret_status = convert_doxygen_xml_to_lobster_common_interchange_format(args.doxygen_xml_folder, args.output)
+            ret_status = _convert_doxygen_xml_to_lobster_common_interchange_format(args.doxygen_xml_folder, args.output)
 
     return ret_status
 
