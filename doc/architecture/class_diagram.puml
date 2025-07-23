@@ -1,0 +1,70 @@
+@startuml class_diagram
+
+' Setting ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+' Components '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+class main <<module>> {
+  + main(): Ret.CODE
+  + add_parser(): argparse.ArgumentParser
+}
+
+enum Ret <<enum>> {
+    RET_OK
+    RET_ERROR
+    RET_ERROR_ARGPARSE
+    RET_ERROR_FILEPATH_INVALID
+    RET_ERROR_NO_LOBSTER_ITEMS 
+}
+
+enum LobsterKind <<enum>> {
+    UNDEFINED
+    FUNCTION
+    PROTOTYPE
+    METHOD
+    CLASS
+    STRUCT
+    INTERFACE
+    FILE
+    NAMESPACE
+    GROUP
+}
+
+note right of LobsterKind
+  Enum to represent the kind of lobster item.
+end note
+
+class LobsterItem {
+    + item_id: str
+    + file_name: str
+    + line: int
+    + column: int
+    + name: str
+    + refs: List
+    + just_up: List
+    + language: str
+    + kind: LobsterKind
+    - _children: List<LobsterItem>
+
+    + append_lobster_child(item: LobsterItem): None 
+    + get_children(): List<LobsterItem>
+    + has_children(): bool
+    + has_refs(): bool
+    + has_just_up(): bool
+    - _language_to_tag_prefix(language: str): str
+    + get_tag(): str
+}
+
+note top of LobsterItem
+  Class to represent a lobster item.
+end note
+
+
+' Flows ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+main "1" ..> "*" LobsterItem : <<use>>
+main "1" ..> "1" Ret : <<use>>
+LobsterItem ..> "1" LobsterKind : <<use>>
+LobsterItem <--o "*" LobsterItem : <<has children>>
+
+@enduml
