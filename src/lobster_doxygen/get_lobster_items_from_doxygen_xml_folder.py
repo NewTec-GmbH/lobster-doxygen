@@ -77,9 +77,7 @@ def _get_xrefdescriptions_from_detaileddescription(detaileddescription: descript
     return xrefdescriptions
 
 
-def _get_refs_and_just_up_from_detaileddescription(
-    detaileddescription: descriptionType,
-) -> tuple[list[str], list[str]]:
+def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descriptionType) -> tuple[list[str], list[str]]:
     """Parse the detaileddescription for xrefdescription to retrieve requirement
     with _REQ_SPECIFIER and justification with _JUSTIFICATION_SPECIFIER
     references and return them with two separate lists.
