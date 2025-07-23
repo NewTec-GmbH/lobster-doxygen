@@ -41,7 +41,7 @@ from lobster_doxygen.ret import Ret
 from lobster_doxygen.printer import Printer
 from lobster_doxygen.rule_check import rule_check
 from lobster_doxygen.write_lobster_common_interchange_format_file import write_lobster_common_interchange_format_file
-from lobster_doxygen.parse_index import parse_index
+from lobster_doxygen.get_lobster_items_from_doxygen_xml_folder import get_lobster_items_from_doxygen_xml_folder
 
 # Variables ********************************************************************
 
@@ -157,7 +157,7 @@ def convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder:
         is_index_file_found = True
 
     if is_index_file_found:
-        lobster_items = parse_index(doxygen_xml_folder)
+        lobster_items = get_lobster_items_from_doxygen_xml_folder(doxygen_xml_folder)
         # Continue only if no error during parsing.
         if lobster_items is not None:
             # Check if lobster items are found.
