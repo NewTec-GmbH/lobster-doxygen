@@ -55,6 +55,7 @@ class Printer:
         Args:
             args (str): The error information that will be printed.
         """
+        # lobster-trace: SwRequirements.sw_req_stderr_output
         rprint(f"[bold red]Error: [/bold red]{message}", end="", file=sys.stderr)
 
     def print_warning(self, message: str) -> None:
@@ -63,7 +64,7 @@ class Printer:
         Args:
             args (str): The warning information that will be printed.
         """
-
+        # lobster-trace: SwRequirements.sw_req_stderr_output
         if self._print_verbose is True:
             rprint(f"[bold yellow]Warning: [/bold yellow]{message}", end="", file=sys.stderr)
 
@@ -73,6 +74,7 @@ class Printer:
         Args:
             args (str): The information that will be printed.
         """
+        # lobster-trace: SwRequirements.sw_req_stdout_output
         if self._print_verbose is True:
             rprint(message)
 
