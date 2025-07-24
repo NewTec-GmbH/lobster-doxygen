@@ -7,4 +7,5 @@ section "SW Requirement Specification" {
     Generic.Info sw_req_info_about_sw_req {
         description = "This file contains the software requirements for the lobster-doxygen tool."
     }
+
 }

@@ -3,7 +3,7 @@ package SwArch
 import Generic
 import SwRequirements
 
-section "Greeter SW Architecture" {
+section "lobster-doxygen SW Architecture" {
 
     Generic.Info sw_arch_info_about {
         description = "This file contains the software architecture for the lobster-doxygen tool."
