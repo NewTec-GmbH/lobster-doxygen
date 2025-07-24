@@ -1,0 +1,6 @@
+inputs:
+    - ./../../trlc/model/
+    - ./../../trlc/swe-arch/
+    - ./../../trlc/swe-req/
+
+trlc_config_file: ./lobster-sw-arch.conf
