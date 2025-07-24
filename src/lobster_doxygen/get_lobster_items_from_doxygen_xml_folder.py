@@ -114,13 +114,6 @@ def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descript
     return refs, just_up
 
 
-def _get_lobster_item_from_memberdef(memberdef) -> LobsterItem:
-    LOG.print_info(indent(2, f"member: {memberdef.get_name()}"))
-    lobster_item = LobsterItem(memberdef.get_id())
-
-    return lobster_item
-
-
 def _get_lobster_item_children_from_compounddef(compounddef: compounddefType) -> list[LobsterItem]:
     """Parse the members of the compound definition and returns list of
     children LobsterItems.
