@@ -178,3 +178,9 @@ cython_debug/
 
 # Development Scripts
 dev/
+
+# Generated files
+tools/traceReport/out
+tools/trlc2other/out
+tools/testReport/out
+tools/deployDoc/build
