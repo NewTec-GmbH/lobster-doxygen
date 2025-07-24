@@ -177,6 +177,7 @@ def _lobster_item_from_compounddef(compounddef: compounddefType) -> LobsterItem:
     Returns:
         LobsterItem: LobsterItem created from compounddef.
     """
+    # lobster-trace: SwRequirements.sw_req_unspecified
     lobster_item = LobsterItem(compounddef.get_id())
 
     # DoxCompoundKind to LobsterKind
@@ -216,6 +217,12 @@ def _get_lobster_items_from_compound(compound_path: str) -> list[LobsterItem]:
     Returns:
         list[LobsterItem]: The list of LobsterItems from compound.
     """
+    # lobster-trace: SwRequirements.sw_req_file_level
+    # lobster-trace: SwRequirements.sw_req_func_level
+    # lobster-trace: SwRequirements.sw_req_type_level
+    # lobster-trace: SwRequirements.sw_req_ns_level
+    # lobster-trace: SwRequirements.sw_req_method_level
+    # lobster-trace: SwRequirements.sw_req_interface_level
     lobster_items = []
     root_obj = doxmlparser.compound.parse(compound_path, True)
 
@@ -223,6 +230,7 @@ def _get_lobster_items_from_compound(compound_path: str) -> list[LobsterItem]:
         LOG.print_info(f"compound: {compounddef.get_compoundname()}")
 
         kind = compounddef.get_kind()
+
         if kind in _LOBSTER_ITEM_KINDS:
             LOG.print_info(indent(1, f"kind: {kind}"))
             lobster_item = _lobster_item_from_compounddef(compounddef)
@@ -248,6 +256,7 @@ def get_lobster_items_from_doxygen_xml_folder(doxygen_xml_folder: str) -> list[L
     lobster_items = []
 
     try:
+        # lobster-trace: SwRequirements.sw_req_input_root
         root_obj = doxmlparser.index.parse(doxygen_xml_folder + "/index.xml", True)
 
         for compound in root_obj.get_compound():  # for each compound defined in the index

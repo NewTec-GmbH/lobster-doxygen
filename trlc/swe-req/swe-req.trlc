@@ -8,4 +8,160 @@ section "SW Requirement Specification" {
         description = "This file contains the software requirements for the lobster-doxygen tool."
     }
 
+    section "Software Requirements" {
+        section "General" {
+
+            SwReq sw_req_cli {
+                description = "The software shall be a command-line interface (CLI) application."
+                verification_criteria = "Every feature shall be accessible via the command line. Therefore its verified by CLI tests."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_stdout_output {
+                description = "The software shall show provide all user informational texts as console output on stdout."
+                verification_criteria = "Every feature user visible information shall be compared with a reference by capturing the console stdout output."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_stderr_output {
+                description = "The software shall show provide all user error texts as console output on stderr."
+                verification_criteria = "Call the tool with an invalid option and capture stderr."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }      
+        }
+
+        section "Functionality" {
+
+            SwReq sw_req_input_root {
+                description = "The software shall parse the doxygen xml output using the index.xml file as root."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_file_level {
+                description = "The software shall support to specify requirements and justification on file level."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_func_level {
+                description = "The software shall support to specify requirements and justification on function/prototype level."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_type_level {
+                description = "The software shall support to specify requirements and justification on struct/union/class level."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_ns_level {
+                description = "The software shall support to specify requirements and justification on namespace level."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_method_level {
+                description = "The software shall support to specify requirements and justification on method level independent of visibility."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_interface_level {
+                description = "The software shall support to specify requirements and justification on interface level."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_no_group {
+                description = "The software shall support requirements and justification outside of doxygen groups."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_group {
+                description = "The software shall support requirements and justification in doxygen groups."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_rule_file {
+                description = "The software shall abort with an error if requirements are specified on file level."
+                verification_criteria = ""
+                note = "Similar to the lobster-python behavior. File level is bad."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_rule_class {
+                description = "The software shall abort with an error if requirements are specified on class/interface/namespace level and at least on of its methods."
+                verification_criteria = ""
+                note = "Similar to the lobster-python behaviour. Mixing levels is bad."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_unspecified {
+                description = "The software shall output all supported levels without requirements or a justification too."
+                verification_criteria = ""
+                note = "This is reuqired to detect untraced sourcecode."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+        }
+
+        section "User Interface" {
+
+            SwReq sw_req_cli_help {
+                description = "The software shall support the command line argument '-h' or '--help' to show usage help information."
+                verification_criteria = "Verify by calling the software with either '-h' or --help' and check if the help information is shown."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_cli_version {
+                description = "The software shall print its version by '--version'."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_cli_output {
+                description = "The software shall support to set the output folder and output file name by command line argument '-o' or '--output'."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_cli_verbose {
+                description = "The software shall verbose informations about the parsed nodes in the doxygen xml intput file by command line argument '-v' or '--verbose'."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_cli_input {
+                description = "The software shall require the doxygen folder with the generated XML output as positional argument."
+                verification_criteria = ""
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+        }
+
+        section "Software Constraints" {
+
+            SwConstraint sw_constraint_os_win {
+                description = "The software shall support the Windows operating system."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwConstraint sw_constraint_os_linux {
+                description = "The software shall support the Linux operating system."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwConstraint sw_constraint_prog_c {
+                description = "The software shall support the programming language C."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwConstraint sw_constraint_prog_cpp {
+                description = "The software shall support the programming language C/C++."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+        }
+    }
 }

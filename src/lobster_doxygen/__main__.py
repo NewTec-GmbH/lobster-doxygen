@@ -109,12 +109,18 @@ def _add_parser() -> argparse.ArgumentParser:
     """
     # Create argument parser which accepts one mandatory parameter for the doxygen
     # folder that contains the XML output.
+
+    # lobster-trace: SwRequirements.sw_req_cli_help
     parser = argparse.ArgumentParser(description=_HELP_DESCRIPTION, formatter_class=RawDescriptionHelpFormatterWithNL)
+    # lobster-trace: SwRequirements.sw_req_cli_version
     parser.add_argument("--version", action="version", version="%(prog)s " + __version__)
+    # lobster-trace: SwRequirements.sw_req_cli_input
     parser.add_argument("doxygen_xml_folder", type=str, help="Path to the doxygen XML output folder.")
+    # lobster-trace:SwRequirements.sw_req_cli_output
     parser.add_argument(
         "-o", "--output", type=str, help="Output file name. Default: lobster.json", default="lobster.json"
     )
+    # lobster-trace: SwRequirements.sw_req_cli_verbose
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output.")
 
     return parser
@@ -177,6 +183,8 @@ def main() -> Ret:
     Returns:
         int: System exit status
     """
+    # lobster-trace: SwRequirements.sw_req_cli
+    # lobster-trace: SwRequirements.sw_req_stdout_output
     ret_status = Ret.RET_OK
     args = None
 
