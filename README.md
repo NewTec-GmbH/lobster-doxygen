@@ -87,7 +87,7 @@ options:
 
 ### Sourcecode
 
-The following example shows how in the sourecode it will look like. Please note that it doesn't show all possibilites.
+The following example shows how it will look like in the sourecode. Please note that it doesn't show all possibilites.
 
 ```cpp
 
