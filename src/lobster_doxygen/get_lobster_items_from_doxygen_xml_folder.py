@@ -101,13 +101,13 @@ def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descript
 
             # Look for requirement reference
             if value.startswith(f"{_REQ_SPECIFIER}: "):
-                req_id = value[13:]
+                req_id = value.removeprefix(f"{_REQ_SPECIFIER}: ")
                 refs.append(req_id)
                 LOG.print_info(indent(3, f"{_REQ_SPECIFIER}: {req_id}"))
 
             # Look for justification
             elif value.startswith(f"{_JUSTIFICATION_SPECIFIER}: "):
-                just_up_id = value[15:]
+                just_up_id = value.removeprefix(f"{_JUSTIFICATION_SPECIFIER}: ")
                 just_up.append(just_up_id)
                 LOG.print_info(indent(3, f"{_JUSTIFICATION_SPECIFIER}: {just_up_id}"))
 
