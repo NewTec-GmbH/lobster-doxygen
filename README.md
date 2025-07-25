@@ -5,7 +5,9 @@
 - [Overview](#overview)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Doxygen XML files](#doxygen-xml-files)
+  - [Tool](#tool)
+  - [Sourcecode](#sourcecode)
+- [Doxygen Configuration](#doxygen-configuration)
 - [Examples](#examples)
 - [SW Documentation](#sw-documentation)
 - [Used Libraries](#used-libraries)
@@ -19,6 +21,10 @@ lobster-doxygen is a tool to extract requirement annotations from doxygen XML ou
 It produces the [LOBSTER common interchange format](https://github.com/bmw-software-engineering/lobster/blob/main/documentation/schemas.md) as output.
 
 One major advantage of lobster-doxygen is that the XML input files can come from many different programming languages, including C, C++, Python, Java, Objective-C, PHP, Fortran, and more. This allows  a straightforward and standardized integration into the LOBSTER TRLC toolchain.
+
+Note, at the moment C and C++ is in focus!
+
+Using a doxygen alias makes the tracing in code quite simple. Use ```@implements{<REQ-ID>}``` for tracing and ```@justification{<JUSTIFY-PLEASE>}``` to justify why no tracing is required, but the code fragment is needed.
 
 An overview of how lobster-doxygen fits into the LOBSTER toolchain:
 ![lobster-doxygen in LOBSTER toolchain](doc/architecture/toolchain.png)
@@ -47,6 +53,8 @@ An overview of how lobster-doxygen fits into the LOBSTER toolchain:
   For more details about handling Venv, see [Python venv: How To Create, Activate, Deactivate, And Delete](https://python.land/virtual-environments/virtualenv#Python_venv_activation)
 
 ## Usage
+
+### Tool
 
 lobster-doxygen is a command line application that is configured via command line arguments.
 
@@ -77,7 +85,38 @@ options:
   -v, --verbose         Enable verbose output.
 ```
 
-## Doxygen XML files
+### Sourcecode
+
+The following example shows how in the sourecode it will look like. Please note that it doesn't show all possibilites.
+
+```cpp
+
+/**
+ * @brief This is my class.
+ *
+ * @implements{SwRequirement.myClass}
+ */
+class MyClass;
+
+/**
+ * @brief This is my function.
+ *
+ * @implements{SwRequirement.myFunc}
+ */
+extern myFunc();
+
+/**
+ * @brief This is my class to show a justification.
+ *
+ * @justification{This is my justification ...}
+ */
+class JustifyMeClass;
+
+```
+
+Please be aware of how to document in general using doxygen, see the [attention hint in the doxygen documentation](https://www.doxygen.nl/manual/docblocks.html#structuralcommands). Otherwise traces may be missed or undocumented code will be hidden.
+
+## Doxygen Configuration
 
 In order to feed lobster-doxygen with the correct data, Doxygen needs to be configured.
 For the requirement annotation the `Doxyfile` needs the following aliases:
@@ -109,6 +148,18 @@ EXTRACT_PACKAGE        = YES
 EXTRACT_STATIC         = YES
 ```
 
+```bash
+EXTRACT_LOCAL_CLASSES  = YES
+```
+
+```bash
+EXTRACT_LOCAL_METHODS  = YES
+```
+
+```bash
+EXTRACT_ANON_NSPACES   = YES
+```
+
 To enable the XML output:
 
 ```bash
@@ -120,7 +171,7 @@ Example `Doxyfile` can be found in the [examples](./examples) directory.
 
 ## Examples
 
-Check out the all the [Examples](./examples).
+Check out the [Examples](./examples).
 
 ## SW Documentation
 
@@ -136,12 +187,11 @@ Used 3rd party libraries which are not part of the standard Python package:
 | Library | Description | License |
 | ------- | ----------- | ------- |
 | [toml](https://github.com/uiri/toml) | Parsing [TOML](https://en.wikipedia.org/wiki/TOML) | MIT |
-| [bmw-lobster](https://github.com/bmw-software-engineering/lobster)| | GPLv3 |
+| [trlc](https://github.com/bmw-software-engineering/trlc) | Treat Requirements Like Code | GPL-3.0 |
 | [doxmlparser](https://github.com/doxygen/doxygen) | Parsing Doxygen XML | GPLv2 |
 | [rich](https://rich.readthedocs.io/en/stable/index.html) | Console output | MIT |
 
 ---
-Sections below, for Github only
 
 ## Issues, Ideas And Bugs
 
