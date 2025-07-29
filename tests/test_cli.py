@@ -21,6 +21,7 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 
 # Imports **********************************************************************
 
+import tomllib
 import re
 import pytest
 
@@ -45,7 +46,7 @@ def test_tc_help(record_property, capsys, monkeypatch):
     """
     record_property("lobster-trace", "SwTests.tc_help")
 
-    # Mock program arguments to simulate running the script without any arguments.
+    # Mock program arguments to simulate running the script with --help argument.
     monkeypatch.setattr("sys.argv", ["lobster-doxygen", "--help"])
 
     # argparse will raise an exception if --help is provided.
@@ -59,8 +60,43 @@ def test_tc_help(record_property, capsys, monkeypatch):
     print(f"{captured.out}")
     regex = r"usage: lobster-doxygen \[\-h\] \[\-\-version\] \[\-o OUTPUT\] \[\-v\] doxygen_xml_folder"
 
-    print(f"{regex=}")
     assert re.match(regex, captured.out)
+
+
+def test_tc_version(record_property, capsys, monkeypatch):
+    # lobster-trace: SwTests.tc_version
+    """
+    Check that with '--version' argument program output is the tool name with version from pyproject.toml.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+        capsys (Any): Used to capture stdout and stderr.
+        monkeypatch (Any): Used to mock program arguments.
+    """
+    record_property("lobster-trace", "SwTests.tc_version")
+
+    # Mock program arguments to simulate running the script --version argument.
+    monkeypatch.setattr("sys.argv", ["lobster-doxygen", "--version"])
+
+    # argparse will raise an exception if --version is provided.
+    with pytest.raises(SystemExit):
+        main()
+
+    # Capture stdout and stderr.
+    captured = capsys.readouterr()
+
+    # Check just the first line of the version message.
+    print(f"{captured.out}")
+
+    # Get version from pyproject.toml.
+    with open("pyproject.toml", "rb") as f:
+        data = tomllib.load(f)
+    current_version = data["project"]["version"]
+
+    expected_program_output = f"lobster-doxygen {current_version}"
+
+    # Check that program output is as expected.
+    assert re.match(expected_program_output, captured.out)
 
 
 # Main *************************************************************************
