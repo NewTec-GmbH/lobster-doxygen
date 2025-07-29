@@ -21,11 +21,11 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 
 # Imports **********************************************************************
 
-import tomllib
 import re
 import pytest
 
 from lobster_doxygen.__main__ import main
+from lobster_doxygen.version import __version__
 
 # Variables ********************************************************************
 
@@ -88,12 +88,7 @@ def test_tc_version(record_property, capsys, monkeypatch):
     # Check just the first line of the version message.
     print(f"{captured.out}")
 
-    # Get version from pyproject.toml.
-    with open("pyproject.toml", "rb") as f:
-        data = tomllib.load(f)
-    current_version = data["project"]["version"]
-
-    expected_program_output = f"lobster-doxygen {current_version}"
+    expected_program_output = f"lobster-doxygen {__version__}"
 
     # Check that program output is as expected.
     assert re.match(expected_program_output, captured.out)
