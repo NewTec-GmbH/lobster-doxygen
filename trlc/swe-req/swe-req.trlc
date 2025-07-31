@@ -96,14 +96,14 @@ section "SW Requirement Specification" {
             SwReq sw_req_rule_class {
                 description = "The software shall abort with an error if requirements are specified on class/interface/namespace level and at least on of its methods."
                 verification_criteria = ""
-                note = "Similar to the lobster-python behaviour. Mixing levels is bad."
+                note = "Similar to the lobster-python behavior. Mixing levels is bad."
                 valid_status = AbstractRequirements.VALID_STATUS.valid
             }
 
             SwReq sw_req_unspecified {
                 description = "The software shall output all supported levels without requirements or a justification too."
                 verification_criteria = ""
-                note = "This is reuqired to detect untraced sourcecode."
+                note = "This is required to detect untraced sourcecode."
                 valid_status = AbstractRequirements.VALID_STATUS.valid
             }
         }
@@ -129,7 +129,7 @@ section "SW Requirement Specification" {
             }
 
             SwReq sw_req_cli_verbose {
-                description = "The software shall verbose informations about the parsed nodes in the doxygen xml intput file by command line argument '-v' or '--verbose'."
+                description = "The software shall verbose information about the parsed nodes in the doxygen xml input file by command line argument '-v' or '--verbose'."
                 verification_criteria = ""
                 valid_status = AbstractRequirements.VALID_STATUS.valid
             }
