@@ -37,7 +37,10 @@ from lobster_doxygen.version import __version__
 def test_tc_help(record_property, capsys, monkeypatch):
     # lobster-trace: SwTests.tc_help
     """
-    Check for the help information in case there is no project specific converter available.
+    Check that with '--help' argument the first line of program output is:
+    ```md
+    usage: lobster-doxygen [-h] [--version] [-o OUTPUT] [-v] doxygen_xml_folder
+    ```
 
     Args:
         record_property (Any): Used to inject the test case reference into the test results.
@@ -66,7 +69,8 @@ def test_tc_help(record_property, capsys, monkeypatch):
 def test_tc_version(record_property, capsys, monkeypatch):
     # lobster-trace: SwTests.tc_version
     """
-    Check that with '--version' argument program output is the tool name with version from pyproject.toml.
+    Check that with '--version' argument program output is the tool name with version from
+    pyproject.toml.
 
     Args:
         record_property (Any): Used to inject the test case reference into the test results.
