@@ -21,6 +21,7 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 
 # Imports **********************************************************************
 
+import re
 import sys
 from pathlib import Path
 import pytest
