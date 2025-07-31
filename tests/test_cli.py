@@ -34,7 +34,7 @@ from lobster_doxygen.version import __version__
 # Functions ********************************************************************
 
 
-def test_tc_help(record_property, capsys):
+def test_tc_help(record_property, capsys) -> None:
     # lobster-trace: SwTests.tc_help
     """
     Test the command-line interface (CLI) help message of the `main` function.
@@ -45,7 +45,7 @@ def test_tc_help(record_property, capsys):
     """
     record_property("lobster-trace", "SwTests.tc_help")
 
-    expected_help_output_lines = [
+    expected_output_lines = [
         "usage: lobster-doxygen [-h] [--version] [-o OUTPUT] [-v] doxygen_xml_folder",
         "",
         "Convert doxygen XML output to lobster common interchange format.",
@@ -80,12 +80,12 @@ def test_tc_help(record_property, capsys):
 
     captured = capsys.readouterr()
 
-    assert expected_help_output_lines == captured.out.split("\n")
-    assert pytest_wrapped_e.type == SystemExit
-    assert pytest_wrapped_e.value.code == 0
+    assert expected_output_lines == captured.out.split("\n"), "Program standard output not as expected."
+    assert pytest_wrapped_e.type == SystemExit, "Program exit not as expected."
+    assert pytest_wrapped_e.value.code == 0, "ExitCode not as expected."
 
 
-def test_tc_version(record_property, capsys):
+def test_tc_version(record_property, capsys) -> None:
     # lobster-trace: SwTests.tc_version
     """
     Test the command-line interface (CLI) version message of the `main` function.
@@ -93,11 +93,10 @@ def test_tc_version(record_property, capsys):
     Args:
         record_property (Any): Used to inject the test case reference into the test results.
         capsys (Any): Used to capture stdout and stderr.
-        monkeypatch (Any): Used to mock program arguments.
     """
     record_property("lobster-trace", "SwTests.tc_version")
 
-    expected_help_output_lines = [
+    expected_output_lines = [
         f"lobster-doxygen {__version__}",
         "",
     ]
@@ -109,9 +108,11 @@ def test_tc_version(record_property, capsys):
 
     captured = capsys.readouterr()
 
-    assert expected_help_output_lines == captured.out.split("\n")
-    assert pytest_wrapped_e.type == SystemExit
-    assert pytest_wrapped_e.value.code == 0
+    assert expected_output_lines == captured.out.split("\n"), "Program standard output not as expected."
+    assert pytest_wrapped_e.type == SystemExit, "Program exit not as expected."
+    assert pytest_wrapped_e.value.code == 0, "ExitCode not as expected."
+
+
 
 
 # Main *************************************************************************
