@@ -21,7 +21,7 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 
 # Imports **********************************************************************
 
-import re
+import sys
 import pytest
 
 from lobster_doxygen.__main__ import main
@@ -34,43 +34,61 @@ from lobster_doxygen.version import __version__
 # Functions ********************************************************************
 
 
-def test_tc_help(record_property, capsys, monkeypatch):
+def test_tc_help(record_property, capsys):
     # lobster-trace: SwTests.tc_help
     """
-    Check that with '--help' argument the first line of program output is:
-    ```md
-    usage: lobster-doxygen [-h] [--version] [-o OUTPUT] [-v] doxygen_xml_folder
-    ```
+    Test the command-line interface (CLI) help message of the `main` function.
 
     Args:
         record_property (Any): Used to inject the test case reference into the test results.
         capsys (Any): Used to capture stdout and stderr.
-        monkeypatch (Any): Used to mock program arguments.
     """
     record_property("lobster-trace", "SwTests.tc_help")
 
-    # Mock program arguments to simulate running the script with --help argument.
-    monkeypatch.setattr("sys.argv", ["lobster-doxygen", "--help"])
+    expected_help_output_lines = [
+        "usage: lobster-doxygen [-h] [--version] [-o OUTPUT] [-v] doxygen_xml_folder",
+        "",
+        "Convert doxygen XML output to lobster common interchange format.",
+        "",
+        "- The source code header requires a doxygen header with at least the @file tag.",
+        "  - Rational: The doxygen XML output will consider the aliases on file level only if the file has the @file tag.",
+        "- Tracing supports the following levels:",
+        "  - Class/Struct/Union/Namespace",
+        "  - Method",
+        "  - Function",
+        "- Tracing on file level is possible, but not recommended and therefore the tool will abort with an error.",
+        "",
+        "To specify a requirement use @implements{REQ}.",
+        "To specify a justification use @justification{JUSTIFICATION}.",
+        "",
+        "positional arguments:",
+        "  doxygen_xml_folder    Path to the doxygen XML output folder.",
+        "",
+        "options:",
+        "  -h, --help            show this help message and exit",
+        "  --version             show program's version number and exit",
+        "  -o OUTPUT, --output OUTPUT",
+        "                        Output file name. Default: lobster.json",
+        "  -v, --verbose         Enable verbose output.",
+        "",
+    ]
 
-    # argparse will raise an exception if --help is provided.
-    with pytest.raises(SystemExit):
+    sys.argv = ["lobster-doxygen", "--help"]
+
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
         main()
 
-    # Capture stdout and stderr.
     captured = capsys.readouterr()
 
-    # Check just the first line of the help message.
-    print(f"{captured.out}")
-    regex = r"usage: lobster-doxygen \[\-h\] \[\-\-version\] \[\-o OUTPUT\] \[\-v\] doxygen_xml_folder"
-
-    assert re.match(regex, captured.out)
+    assert expected_help_output_lines == captured.out.split("\n")
+    assert pytest_wrapped_e.type == SystemExit
+    assert pytest_wrapped_e.value.code == 0
 
 
-def test_tc_version(record_property, capsys, monkeypatch):
+def test_tc_version(record_property, capsys):
     # lobster-trace: SwTests.tc_version
     """
-    Check that with '--version' argument program output is the tool name with version from
-    pyproject.toml.
+    Test the command-line interface (CLI) version message of the `main` function.
 
     Args:
         record_property (Any): Used to inject the test case reference into the test results.
@@ -79,23 +97,21 @@ def test_tc_version(record_property, capsys, monkeypatch):
     """
     record_property("lobster-trace", "SwTests.tc_version")
 
-    # Mock program arguments to simulate running the script --version argument.
-    monkeypatch.setattr("sys.argv", ["lobster-doxygen", "--version"])
+    expected_help_output_lines = [
+        f"lobster-doxygen {__version__}",
+        "",
+    ]
 
-    # argparse will raise an exception if --version is provided.
-    with pytest.raises(SystemExit):
+    sys.argv = ["lobster-doxygen", "--version"]
+
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
         main()
 
-    # Capture stdout and stderr.
     captured = capsys.readouterr()
 
-    # Check just the first line of the version message.
-    print(f"{captured.out}")
-
-    expected_program_output = f"lobster-doxygen {__version__}"
-
-    # Check that program output is as expected.
-    assert re.match(expected_program_output, captured.out)
+    assert expected_help_output_lines == captured.out.split("\n")
+    assert pytest_wrapped_e.type == SystemExit
+    assert pytest_wrapped_e.value.code == 0
 
 
 # Main *************************************************************************
