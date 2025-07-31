@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="implements" kind="page">
+    <compoundname>implements</compoundname>
+    <title>Requirement Traceability</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Member <ref refid="main_8cpp_1ab7c242550b0e07889a040b75b58956ff" kindref="member">print_title</ref>  (void)</term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000001"/> Requirement: SwRequirements.sw_req_text_output </para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+    <location file="implements"/>
+  </compounddef>
+</doxygen>
