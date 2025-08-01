@@ -12,12 +12,17 @@ section "SW-Tests" {
     section "Command Line Arguments" {
 
         SwTestCase tc_help {
-            description = "This test case checks whether the help information is shown with '--help' without project specific converter."
+            description = "This test case checks whether the help information is shown with '--help' argument."
             verifies = [SwRequirements.sw_req_cli_help]
         }
         SwTestCase tc_output {
             description = "This test case checks that the software correctly sets the output file name when provided via the -o or --output command-line argument."
             verifies = [SwRequirements.sw_req_cli_output]
+        }
+
+        SwTestCase tc_version {
+            description = "This test case checks whether the version information is shown with '--version' argument."
+            verifies = [SwRequirements.sw_req_cli_version]
         }
     }
 }
