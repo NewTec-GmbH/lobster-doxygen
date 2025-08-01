@@ -144,4 +144,57 @@ def test_tc_output(record_property, capsys) -> None:
     assert Path(expected_output_file).is_file(), "Expected output path is not a file"
 
 
+def test_tc_verbose(record_property, capsys) -> None:
+    # lobster-trace: SwTest.tc_verbose
+    """
+    This test verifies the verbose output of the lobster-doxygen program when run with the -v (verbose) flag.
+    It ensures that the program produces the expected stdout output when parsing the specified Doxygen XML
+    directory.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+        capsys (Any): Used to capture stdout and stderr.
+    """
+    record_property("lobster-trace", "SwTests.tc_verbose")
+
+    expected_output_lines = [
+        "Program arguments: ",
+        "* doxygen_xml_folder = ./tests/utils/xml",
+        "* output = ./tests/utils/output-test.json",
+        "* verbose = True",
+        "",
+        "",
+        "compound: main.cpp",
+        "    kind: file",
+        "        member: print_title",
+        "            kind: function",
+        "            Requirement: SwRequirements.sw_req_text_output",
+        "        member: main",
+        "            kind: function",
+        "compound: main_group",
+        "    kind: group",
+        "compound: implements",
+        "    kind: page (skipped)",
+        "compound: src",
+        "    kind: dir (skipped)",
+        "",
+    ]
+    output_file = "./tests/utils/output-test.json"
+
+    sys.argv = ["lobster-doxygen", "-v", "--output", output_file, "./tests/utils/xml"]
+
+    main()
+
+    captured = capsys.readouterr()
+    error_output = captured.err.split("\n")
+    standard_output = captured.out.split("\n")
+
+    # Delete the generated LOBSTER file if it exists
+    if Path(output_file).exists() and Path(output_file).is_file():
+        Path(output_file).unlink()
+
+    assert error_output == [""], f"Program exit with error: {error_output}"
+    assert expected_output_lines == standard_output, "Standard output not as expected."
+
+
 # Main *************************************************************************
