@@ -62,11 +62,11 @@ def init_from_metadata():
     my_metadata = meta.metadata("lobster-doxygen")
 
     return (
-        my_metadata["Version"],
-        my_metadata["Author"],
-        my_metadata["Author-email"],
-        my_metadata["Project-URL"].replace("repository, ", ""),
-        my_metadata["License"],
+        my_metadata.get("Version", "Unknown"),
+        my_metadata.get("Author", "Unknown"),
+        my_metadata.get("Author-email", "Unknown"),
+        my_metadata.get("Project-URL", "Unknown").replace("repository, ", ""),
+        my_metadata.get("License", "Unknown"),
     )
 
 

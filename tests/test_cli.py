@@ -30,9 +30,46 @@ from lobster_doxygen.version import __version__
 
 # Variables ********************************************************************
 
+# LOBSTER output file that is created and deleted for tests.
+TEST_LOBSTER_OUTPUT_FILE = "./tests/utils/output-test.json"
+
+# Directory with Doxygen XML files.
+TEST_XML_FOLDER = "./tests/utils/xml"
+
+# stdout if program is called with verbose parameter
+STD_OUTPUT_WITH_VERBOSE = [
+    "Program arguments: ",
+    f"* doxygen_xml_folder = {TEST_XML_FOLDER}",
+    f"* output = {TEST_LOBSTER_OUTPUT_FILE}",
+    "* verbose = True",
+    "",
+    "",
+    "compound: main.cpp",
+    "    kind: file",
+    "        member: print_title",
+    "            kind: function",
+    "            Requirement: SwRequirements.sw_req_text_output",
+    "        member: main",
+    "            kind: function",
+    "compound: main_group",
+    "    kind: group",
+    "compound: implements",
+    "    kind: page (skipped)",
+    "compound: src",
+    "    kind: dir (skipped)",
+    "",
+]
+
 # Classes **********************************************************************
 
 # Functions ********************************************************************
+
+
+def _delete_test_lobster_output_file() -> None:
+    """Delete the LOBSTER file if it exists."""
+    if Path(TEST_LOBSTER_OUTPUT_FILE).exists() and Path(TEST_LOBSTER_OUTPUT_FILE).is_file():
+        Path(TEST_LOBSTER_OUTPUT_FILE).unlink()
+
 
 
 def test_tc_help(record_property, capsys) -> None:
@@ -126,13 +163,9 @@ def test_tc_output(record_property, capsys) -> None:
     """
     record_property("lobster-trace", "SwTests.tc_output")
 
-    expected_output_file = "./tests/utils/output-test.json"
+    _delete_test_lobster_output_file()
 
-    # Delete the LOBSTER file if it exists
-    if Path(expected_output_file).exists() and Path(expected_output_file).is_file():
-        Path(expected_output_file).unlink()
-
-    sys.argv = ["lobster-doxygen", "--output", expected_output_file, "./tests/utils/xml"]
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
 
     main()
 
@@ -140,8 +173,36 @@ def test_tc_output(record_property, capsys) -> None:
     error_output = captured.err.split("\n")
 
     assert error_output == [""], f"Program exit with error: {error_output}"
-    assert Path(expected_output_file).exists(), "Expected output file was not created"
-    assert Path(expected_output_file).is_file(), "Expected output path is not a file"
+    assert Path(TEST_LOBSTER_OUTPUT_FILE).exists(), "Expected output file was not created"
+    assert Path(TEST_LOBSTER_OUTPUT_FILE).is_file(), "Expected output path is not a file"
+
+
+def test_tc_verbose(record_property, capsys) -> None:
+    # lobster-trace: SwTest.tc_verbose
+    """
+    This test verifies the verbose output of the lobster-doxygen program when run with the -v (verbose) flag.
+    It ensures that the program produces the expected stdout output when parsing the specified Doxygen XML
+    directory.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+        capsys (Any): Used to capture stdout and stderr.
+    """
+    record_property("lobster-trace", "SwTests.tc_verbose")
+
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
+
+    main()
+
+    captured = capsys.readouterr()
+    error_output = captured.err.split("\n")
+    standard_output = captured.out.split("\n")
+
+    _delete_test_lobster_output_file()
+
+    assert error_output == [""], f"Program exit with error: {error_output}"
+    assert STD_OUTPUT_WITH_VERBOSE == standard_output, "Standard output not as expected."
+
 
 
 # Main *************************************************************************
