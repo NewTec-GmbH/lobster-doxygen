@@ -22,6 +22,7 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 # Imports **********************************************************************
 
 import sys
+from pathlib import Path
 import pytest
 
 from lobster_doxygen.__main__ import main
@@ -113,6 +114,34 @@ def test_tc_version(record_property, capsys) -> None:
     assert pytest_wrapped_e.value.code == 0, "ExitCode not as expected."
 
 
+def test_tc_output(record_property, capsys) -> None:
+    # lobster-trace: SwTest.tc_output
+    """
+    Test to confirm that the program creates the expected output file when a '--output' argument
+    is provided, and that it exits without error messages.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+        capsys (Any): Used to capture stdout and stderr.
+    """
+    record_property("lobster-trace", "SwTests.tc_output")
+
+    expected_output_file = "./tests/utils/output-test.json"
+
+    # Delete the LOBSTER file if it exists
+    if Path(expected_output_file).exists() and Path(expected_output_file).is_file():
+        Path(expected_output_file).unlink()
+
+    sys.argv = ["lobster-doxygen", "--output", expected_output_file, "./tests/utils/xml"]
+
+    main()
+
+    captured = capsys.readouterr()
+    error_output = captured.err.split("\n")
+
+    assert error_output == [""], f"Program exit with error: {error_output}"
+    assert Path(expected_output_file).exists(), "Expected output file was not created"
+    assert Path(expected_output_file).is_file(), "Expected output path is not a file"
 
 
 # Main *************************************************************************

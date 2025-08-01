@@ -3,6 +3,9 @@ examples/simple-cpp-application/warnings.log
 examples/simple-cpp-application/out/html/*
 examples/simple-cpp-application/out/xml/*
 
+# tests folder
+tests/utils/output-test.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
