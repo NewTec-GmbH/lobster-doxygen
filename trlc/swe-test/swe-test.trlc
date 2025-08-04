@@ -27,6 +27,8 @@ section "SW-Tests" {
         }
     }
 
+    section "User Interface" {
+
         SwTestCase tc_help {
             description = "This test case checks whether the help information is shown with '--help' argument."
             verifies = [SwRequirements.sw_req_cli_help]
