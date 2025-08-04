@@ -31,5 +31,9 @@ section "SW-Tests" {
             verifies = [SwRequirements.sw_req_cli_verbose]
         }
 
+        SwTestCase tc_doxygen_xml_folder {
+            description = "This test case checks whether the doxygen_xml_folder is a positional argument."
+            verifies = [SwRequirements.sw_req_cli_doxygen_xml_folder]
+        }
     }
 }
