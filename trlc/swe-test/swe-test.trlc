@@ -17,6 +17,24 @@ section "SW-Tests" {
         }
     }
 
+    section "General" {
+
+        SwTestCase tc_cli {
+            description = "This test case checks whether the tool supports the command line arguments."
+            verifies = [SwRequirements.sw_req_cli]
+        }
+
+        SwTestCase tc_stdout {
+            description = "This test case checks whether the normal program output is printed to the stdout stream."
+            verifies = [SwRequirements.sw_req_stdout_output]
+        }
+
+        SwTestCase tc_stderr {
+            description = "This test case checks whether the program output is printed to the stderr stream if the program throws an error."
+            verifies = [SwRequirements.sw_req_stderr_output]
+        }
+    }
+
     section "User Interface" {
 
         SwTestCase tc_help {
