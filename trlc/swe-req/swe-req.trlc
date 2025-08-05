@@ -134,7 +134,7 @@ section "SW Requirement Specification" {
                 valid_status = AbstractRequirements.VALID_STATUS.valid
             }
 
-            SwReq sw_req_cli_input {
+            SwReq sw_req_cli_doxygen_xml_folder {
                 description = "The software shall require the doxygen folder with the generated XML output as positional argument."
                 verification_criteria = ""
                 valid_status = AbstractRequirements.VALID_STATUS.valid

@@ -9,6 +9,14 @@ section "SW-Tests" {
         description = "This file contains the software test cases for the lobster-doxygen tool."
     }
 
+
+    section "Functionality" {
+        SwTestCase tc_input_root {
+            description = "This test case verifies that the tool parses the Doxygen XML output file 'index.xml' as the root file."
+            verifies = [SwRequirements.sw_req_input_root]
+        }
+    }
+
     section "General" {
 
         SwTestCase tc_cli {
@@ -49,5 +57,9 @@ section "SW-Tests" {
             verifies = [SwRequirements.sw_req_cli_verbose]
         }
 
+        SwTestCase tc_doxygen_xml_folder {
+            description = "This test case checks whether the doxygen_xml_folder is a positional argument."
+            verifies = [SwRequirements.sw_req_cli_doxygen_xml_folder]
+        }
     }
 }

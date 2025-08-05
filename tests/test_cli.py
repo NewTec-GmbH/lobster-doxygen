@@ -60,6 +60,9 @@ STD_OUTPUT_WITH_VERBOSE = [
     "",
 ]
 
+# Directory with Doxygen XML files.
+EMPTY_FOLDER = "./tests/utils/empty_folder"
+
 # Classes **********************************************************************
 
 # Functions ********************************************************************
@@ -273,6 +276,96 @@ def test_tc_verbose(record_property, capsys) -> None:
     assert error_output == [""], f"Program exit with error: {error_output}"
     assert STD_OUTPUT_WITH_VERBOSE == standard_output, "Standard output not as expected."
 
+
+def test_tc_doxygen_xml_folder(record_property) -> None:
+    # lobster-trace: SwTest.tc_doxygen_xml_folder
+    """
+    Test calls program with and without positional doxygen_xml_folder argument and verifies
+    that the exit code is as expected.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+    """
+    record_property("lobster-trace", "SwTests.tc_doxygen_xml_folder")
+
+    _test_program_with_positional_doxygen_xml_folder_argument()
+    _test_program_without_positional_doxygen_xml_folder_argument()
+
+
+def _test_program_with_positional_doxygen_xml_folder_argument() -> None:
+    """
+    Test calls program with positional doxygen_xml_folder path and checks that program returns
+    success exit code.
+    """
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
+
+    exit_code = main()
+
+    assert exit_code == 0, "Exit Code returns no success."
+
+
+def _test_program_without_positional_doxygen_xml_folder_argument() -> None:
+    """
+    Test calls program without positional doxygen_xml_folder path and checks that program returns
+    no success exit code.
+    """
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE]
+
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
+        main()
+
+    assert pytest_wrapped_e.value.code != 0, "Exit Code returns success."
+
+
+def test_tc_input_root(record_property, capsys) -> None:
+    # lobster-trace: SwTest.tc_input_root
+    """
+    Test calls program with doxygen_xml_folder path where a valid index.xml file is inside and
+    checks that the program runs successfully.
+    After that program is called with doxygen_xml_folder path where no index.xml file is inside
+    and checks that the program returns an error.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+        capsys (Any): Used to capture stdout and stderr.
+    """
+    record_property("lobster-trace", "SwTests.tc_input_root")
+
+    _test_program_with_valid_directory_to_index_file()
+    _test_program_with_directory_with_no_index_file(capsys)
+
+
+def _test_program_with_valid_directory_to_index_file() -> None:
+    """
+    Test calls program with doxygen_xml_folder path where a valid index.xml file is inside and
+    checks that the program runs successfully.
+    """
+
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
+
+    exit_code = main()
+
+    _delete_test_lobster_output_file()
+
+    assert exit_code == 0, "Exit Code returns no success."
+
+
+def _test_program_with_directory_with_no_index_file(capsys) -> None:
+    """
+    After that program is called with doxygen_xml_folder path where no index.xml file is inside
+    and checks that the program returns an error.
+
+    Args:
+        capsys (Any): Used to capture stdout and stderr.
+    """
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, EMPTY_FOLDER]
+
+    exit_code = main()
+
+    captured = capsys.readouterr()
+    error_output = captured.err.split("\n")
+    assert exit_code != 0, "Exit Code returns success."
+    assert error_output == ["Error: No doxygen index.xml file in doxygen_xml_folder ", f"{EMPTY_FOLDER}."]
 
 
 # Main *************************************************************************
