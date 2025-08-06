@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="justified" kind="page">
+    <compoundname>justified</compoundname>
+    <title>Justification Overview</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Member <ref refid="_foo_8cpp_1a234a57e95feaec9372c39b489ba8d1a9" kindref="member">foo2</ref>  (void)</term></varlistentry>
+<listitem><para><anchor id="justified_1_justified000002"/> Justification: foo2 justification  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="_foo_8cpp_1a614f6d242f3a407b28c9baf942e703d1" kindref="member">foo3</ref>  (void)</term></varlistentry>
+<listitem><para><anchor id="justified_1_justified000001"/> Justification: foo3 justification </para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+    <location file="justified"/>
+  </compounddef>
+</doxygen>
