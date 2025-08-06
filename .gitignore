@@ -5,6 +5,8 @@ examples/simple-cpp-application/out/xml/*
 
 # tests folder
 tests/utils/output-test.json
+tests/utils/cpp-function-prototype/out/html
+tests/utils/cpp-function-prototype/warnings.log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

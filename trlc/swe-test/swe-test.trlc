@@ -9,11 +9,15 @@ section "SW-Tests" {
         description = "This file contains the software test cases for the lobster-doxygen tool."
     }
 
-
     section "Functionality" {
         SwTestCase tc_input_root {
             description = "This test case verifies that the tool parses the Doxygen XML output file 'index.xml' as the root file."
             verifies = [SwRequirements.sw_req_input_root]
+        }
+
+        SwTestCase tc_func_level {
+            description = "This test case checks whether requirements and justifications can be specified in function/prototype level."
+            verifies = [SwRequirements.sw_req_func_level]
         }
     }
 
