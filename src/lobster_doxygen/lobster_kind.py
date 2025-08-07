@@ -37,6 +37,7 @@ class LobsterKind(enum.Enum):
     METHOD = "Method"
     CLASS = "Class"
     STRUCT = "Struct"
+    UNION = "Union"
     INTERFACE = "Interface"
     FILE = "File"
     NAMESPACE = "Namespace"
