@@ -38,6 +38,9 @@ TEST_XML_FOLDER = "./tests/utils/xml"
 # Directory with Doxygen XML files from cpp-function-prototype project.
 TEST_FUNCTION_PROTOTYPE_XML_FOLDER = "./tests/utils/cpp-function-prototype/out/xml"
 
+# Directory with Doxygen XML files from cpp-struct-union-class project.
+TEST_TYPE_XML_FOLDER = "./tests/utils/cpp-struct-union-class/out/xml"
+
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
 
@@ -53,11 +56,55 @@ def _delete_test_lobster_output_file() -> None:
 
 
 def _get_data_items_from_lobster_file() -> dict:
+    """
+    Get dictionary of data section in TEST_LOBSTER_OUTPUT file.
+
+    Returns:
+        dict: Dictionary of data section.
+    """
     with open(TEST_LOBSTER_OUTPUT_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     data_items = data.get("data", [])
     return data_items
+
+
+def _is_string_in_lobster_output_file_ref(search_string: str) -> bool:
+    """
+    Checks if search_string is TEST_LOBSTER_OUTPUT_FILE file in a data refs section.
+
+    Args:
+        search_string (str): Search string to lock for under refs.
+
+    Returns:
+        bool: True is search_string is found.
+    """
+    data_items = _get_data_items_from_lobster_file()
+    refs = []
+    for data_item in data_items:
+        if data_item["refs"] != []:
+            refs.extend(data_item["refs"])
+
+    return search_string in refs
+
+
+def _is_string_in_lobster_output_file_just_up(search_string: str) -> bool:
+    """
+    Checks if search_string is TEST_LOBSTER_OUTPUT_FILE file in a data just_up section.
+
+    Args:
+        search_string (str): Search string to lock for under just_up.
+
+    Returns:
+        bool: True is search_string is found.
+    """
+    data_items = _get_data_items_from_lobster_file()
+    just_ups = []
+    for data_item in data_items:
+        if data_item["just_up"] != []:
+            just_ups.extend(data_item["just_up"])
+
+    return search_string in just_ups
 
 
 def test_tc_input_root(record_property, capsys) -> None:
@@ -112,7 +159,7 @@ def _test_program_with_directory_with_no_index_file(capsys) -> None:
 
 
 def test_func_level(record_property) -> None:
-    # lobster-trace: SwTest.tc_input_root
+    # lobster-trace: SwTest.tc_func_level
     """
     The test case calls the program with cpp-function-prototype XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_foo1" and "req SwRequirements.sw_req_foo" strings
@@ -123,34 +170,57 @@ def test_func_level(record_property) -> None:
     Args:
         record_property (Any): Used to inject the test case reference into the test results.
     """
-    record_property("lobster-trace", "SwTests.tc_input_root")
+    record_property("lobster-trace", "SwTests.tc_func_level")
 
+    _delete_test_lobster_output_file()
     sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_FUNCTION_PROTOTYPE_XML_FOLDER]
 
     exit_code = main()
 
-    data_items = _get_data_items_from_lobster_file()
-    refs = []
-    just_ups = []
-    for data_item in data_items:
-        if data_item["refs"] != []:
-            refs.extend(data_item["refs"])
-        if data_item["just_up"] != []:
-            just_ups.extend(data_item["just_up"])
-
-    _delete_test_lobster_output_file()
-
     assert exit_code == 0, "Exit Code returns no success."
 
-    assert (
-        "req SwRequirements.sw_req_foo1" in refs
+    assert True is _is_string_in_lobster_output_file_ref(
+        "req SwRequirements.sw_req_foo1"
     ), "Requirement not found in XML files of cpp-function-prototype project."
-    assert (
-        "req SwRequirements.sw_req_foo" in refs
+    assert True is _is_string_in_lobster_output_file_ref(
+        "req SwRequirements.sw_req_foo"
     ), "Requirement not found in XML files of cpp-function-prototype project."
 
-    assert "foo2 justification" in just_ups, "Justification not found in XML files of cpp-function-prototype project."
-    assert "foo3 justification" in just_ups, "Justification not found in XML files of cpp-function-prototype project."
+    assert True is _is_string_in_lobster_output_file_just_up(
+        "foo2 justification"
+    ), "Justification not found in XML files of cpp-function-prototype project."
+    assert True is _is_string_in_lobster_output_file_just_up(
+        "foo3 justification"
+    ), "Justification not found in XML files of cpp-function-prototype project."
+
+
+def test_type_level(record_property) -> None:
+    # lobster-trace: SwTest.tc_type_level
+    """
+    The test case calls the program with cpp-struct-union-class XML folder as doxygen_xml_folder and
+    verifies that the "req SwRequirement.sw_req_numbers_struct", "req SwRequirements.sw_req_memory_union"
+    and "req SwRequirements.sw_req_counter_class" strings are found in the data items.
+    The test also verifies that "struct justification", "union justification" and "class justification"
+    strings are found in the just_up data items.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+    """
+    record_property("lobster-trace", "SwTests.tc_type_level")
+
+    _delete_test_lobster_output_file()
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_TYPE_XML_FOLDER]
+
+    exit_code = main()
+
+    assert exit_code == 0, "Exit Code returns no success."
+    assert True is _is_string_in_lobster_output_file_ref("req SwRequirements.sw_req_numbers_struct")
+    assert True is _is_string_in_lobster_output_file_ref("req SwRequirements.sw_req_memory_union")
+    assert True is _is_string_in_lobster_output_file_ref("req SwRequirements.sw_req_counter_class")
+
+    assert True is _is_string_in_lobster_output_file_just_up("struct justification")
+    assert True is _is_string_in_lobster_output_file_just_up("union justification")
+    assert True is _is_string_in_lobster_output_file_just_up("class justification")
 
 
 # Main *************************************************************************

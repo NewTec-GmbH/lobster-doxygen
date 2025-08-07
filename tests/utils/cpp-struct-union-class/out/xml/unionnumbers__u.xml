@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="unionnumbers__u" kind="union" language="C++" prot="public">
+    <compoundname>numbers_u</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="unionnumbers__u_1a47315fb24c953ce3519c8ebaad817421" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t numbers_u::number</definition>
+        <argsstring></argsstring>
+        <name>number</name>
+        <qualifiedname>numbers_u::number</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="70" column="14" bodyfile="src/main.cpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionnumbers__u_1ad8fc232816185339ff60baaf5ea6bf6d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t numbers_u::same_number</definition>
+        <argsstring></argsstring>
+        <name>same_number</name>
+        <qualifiedname>numbers_u::same_number</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="71" column="14" bodyfile="src/main.cpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Foo union. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="justified_1_justified000003"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: union justification </para>
+</xrefdescription></xrefsect></para>
+    </detaileddescription>
+    <location file="src/main.cpp" line="69" column="1" bodyfile="src/main.cpp" bodystart="69" bodyend="72"/>
+    <listofallmembers>
+      <member refid="unionnumbers__u_1a47315fb24c953ce3519c8ebaad817421" prot="public" virt="non-virtual"><scope>numbers_u</scope><name>number</name></member>
+      <member refid="unionnumbers__u_1ad8fc232816185339ff60baaf5ea6bf6d" prot="public" virt="non-virtual"><scope>numbers_u</scope><name>same_number</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

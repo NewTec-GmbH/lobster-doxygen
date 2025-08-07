@@ -19,6 +19,11 @@ section "SW-Tests" {
             description = "This test case checks whether requirements and justifications can be specified in function/prototype level."
             verifies = [SwRequirements.sw_req_func_level]
         }
+
+        SwTestCase tc_type_level {
+            description = "This test case checks whether requirements and justifications can be specified in struct/union/class level."
+            verifies = [SwRequirements.sw_req_type_level]
+        }
     }
 
     section "General" {

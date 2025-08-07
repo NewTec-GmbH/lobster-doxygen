@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_foo_class" kind="class" language="C++" prot="public">
+    <compoundname>FooClass</compoundname>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_foo_class_1a16fdf93042e3c2839ac5605cd5a5db6e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FooClass::FooClass</definition>
+        <argsstring>(void)</argsstring>
+        <name>FooClass</name>
+        <qualifiedname>FooClass::FooClass</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="50" column="5" bodyfile="src/main.cpp" bodystart="50" bodyend="52"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Foo class. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="justified_1_justified000001"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: class justification </para>
+</xrefdescription></xrefsect></para>
+    </detaileddescription>
+    <location file="src/main.cpp" line="48" column="1" bodyfile="src/main.cpp" bodystart="48" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_foo_class_1a16fdf93042e3c2839ac5605cd5a5db6e" prot="public" virt="non-virtual"><scope>FooClass</scope><name>FooClass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
