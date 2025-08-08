@@ -11,6 +11,8 @@ tests/utils/cpp-struct-union-class/out/html
 tests/utils/cpp-struct-union-class/warnings.log
 tests/utils/cpp-namespace/out/html
 tests/utils/cpp-namespace/warnings.log
+tests/utils/cpp-method/out/html
+tests/utils/cpp-method/warnings.log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
