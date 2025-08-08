@@ -2,42 +2,45 @@
   (c) NewTec GmbH 2025   -   www.newtec.de
 ***************************************************************************************************/
 /**
- @ingroup main_group 
- @defgroup foo_group Foo module 
-
- @brief Foo module 
-
- Module with functions and prototypes.
-
- @file Foo.h
+ @ingroup counter_group
+ @file Counter.cpp
 ***************************************************************************************************/
-#ifndef FOO_H
-#define FOO_H
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif
 
 /* INCLUDES ***************************************************************************************/
+
+#include "Counter.h"
+#include <iostream>
+
+using namespace std;
 
 /* CONSTANTS **************************************************************************************/
 
 /* MACROS *****************************************************************************************/
 
-/* TYPES ******************************************************************************************/
+/* TYPES AND CLASSES ******************************************************************************/
 
 /* PROTOTYPES *************************************************************************************/
 
-/**
- * This function is for requirement in prototype. 
- * 
- * @implements{SwRequirements.sw_req_foo}
- */
-extern void Foo_foo(void);
+/* VARIABLES **************************************************************************************/
 
-#ifdef __cplusplus
+/* EXTERNAL FUNCTIONS *****************************************************************************/
+
+Counter::Counter(void) 
+{
+  /* Nothing to do. */
 }
-#endif
 
-#endif  /* FOO_H */
+int Counter::get_counter(void)
+{
+    return counter;
+}
+
+void Counter::count_up(void)
+{
+    counter++;
+}
+
+/* INTERNAL FUNCTIONS *****************************************************************************/
+
+
+

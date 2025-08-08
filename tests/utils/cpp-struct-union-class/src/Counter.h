@@ -3,16 +3,16 @@
 ***************************************************************************************************/
 /**
  @ingroup main_group 
- @defgroup foo_group Foo module 
+ @defgroup counter_group counter module 
 
- @brief Foo module 
+ @brief Counter module 
 
- Module with functions and prototypes.
+ Module with counter class.
 
- @file Foo.h
+ @file Counter.h
 ***************************************************************************************************/
-#ifndef FOO_H
-#define FOO_H
+#ifndef COUNTER_H
+#define COUNTER_H
 
 #ifdef __cplusplus
 extern "C"
@@ -30,14 +30,38 @@ extern "C"
 /* PROTOTYPES *************************************************************************************/
 
 /**
- * This function is for requirement in prototype. 
+ * @brief Counter
  * 
- * @implements{SwRequirements.sw_req_foo}
+ * Class to test requirements and justification in class level
+ * 
+ * @implements{SwRequirements.sw_req_counter_class}
  */
-extern void Foo_foo(void);
+class Counter {
+public:
+    /**
+     * @brief Construct a new Counter object
+     * 
+     */
+    Counter(void);
+
+    /**
+     * @brief Getter for counter value
+     */
+    int get_counter(void);
+
+    /**
+     * @brief Count up
+     */
+    void count_up(void);
+private:
+    /** 
+     * @brief Internal counter value 
+     */
+    int counter = 0; 
+};
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  /* FOO_H */
+#endif  /* COUNTER_H */

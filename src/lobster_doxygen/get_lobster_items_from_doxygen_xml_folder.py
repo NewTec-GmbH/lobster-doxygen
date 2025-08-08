@@ -46,6 +46,7 @@ _JUSTIFICATION_SPECIFIER = "Justification"
 _LOBSTER_ITEM_KINDS = [
     DoxCompoundKind.CLASS,
     DoxCompoundKind.STRUCT,
+    DoxCompoundKind.UNION,
     DoxCompoundKind.INTERFACE,
     DoxCompoundKind.FILE,
     DoxCompoundKind.NAMESPACE,
