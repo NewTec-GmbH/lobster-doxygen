@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_function_prototype_8cpp" kind="file" language="C++">
+    <compoundname>FunctionPrototype.cpp</compoundname>
+    <includes local="no">cstdlib</includes>
+    <includes local="no">iostream</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>src/FunctionPrototype.cpp</label>
+        <link refid="_function_prototype_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdlib</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="_function_prototype_8cpp_1aabcede9a76c6e6cf1abaa3fd7a3f94df" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void foo1</definition>
+        <argsstring>(void)</argsstring>
+        <name>foo1</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is for requirement in function.</para>
+<para><xrefsect id="implements_1_implements000001"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_function </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/FunctionPrototype.cpp" line="49" column="13" bodyfile="src/FunctionPrototype.cpp" bodystart="49" bodyend="52" declfile="src/FunctionPrototype.cpp" declline="22" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="_function_prototype_8cpp_1a234a57e95feaec9372c39b489ba8d1a9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void foo2</definition>
+        <argsstring>(void)</argsstring>
+        <name>foo2</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is for justification in function.</para>
+<para><xrefsect id="justified_1_justified000002"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Function justification </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/FunctionPrototype.cpp" line="59" column="13" bodyfile="src/FunctionPrototype.cpp" bodystart="59" bodyend="62" declfile="src/FunctionPrototype.cpp" declline="23" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="_function_prototype_8cpp_1a614f6d242f3a407b28c9baf942e703d1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void foo3</definition>
+        <argsstring>(void)</argsstring>
+        <name>foo3</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is for justification in prototype.</para>
+<para><xrefsect id="justified_1_justified000001"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Prototype justification </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/FunctionPrototype.cpp" line="64" column="13" bodyfile="src/FunctionPrototype.cpp" bodystart="64" bodyend="67" declfile="src/FunctionPrototype.cpp" declline="29" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="_function_prototype_8cpp_1a92171bdfebb75b46aff6c1547bb21559" prot="public" static="no" extern="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FunctionPrototype_foo</definition>
+        <argsstring>(void)</argsstring>
+        <name>FunctionPrototype_foo</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is for requirement in prototype.</para>
+<para><xrefsect id="implements_1_implements000002"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_prototype </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/FunctionPrototype.cpp" line="35" column="13" bodyfile="src/FunctionPrototype.cpp" bodystart="35" bodyend="40" declfile="src/FunctionPrototype.cpp" declline="35" declcolumn="13"/>
+        <references refid="_function_prototype_8cpp_1aabcede9a76c6e6cf1abaa3fd7a3f94df" compoundref="_function_prototype_8cpp" startline="49" endline="52">foo1</references>
+        <references refid="_function_prototype_8cpp_1a234a57e95feaec9372c39b489ba8d1a9" compoundref="_function_prototype_8cpp" startline="59" endline="62">foo2</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/***************************************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/><sp/>(c)<sp/>NewTec<sp/>GmbH<sp/>2025<sp/><sp/><sp/>-<sp/><sp/><sp/>www.newtec.de</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">***************************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>INCLUDES<sp/>***************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>CONSTANTS<sp/>**************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>MACROS<sp/>*****************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>TYPES<sp/>AND<sp/>CLASSES<sp/>******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>PROTOTYPES<sp/>*************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_function_prototype_8cpp_1aabcede9a76c6e6cf1abaa3fd7a3f94df" kindref="member">foo1</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_function_prototype_8cpp_1a234a57e95feaec9372c39b489ba8d1a9" kindref="member">foo2</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_function_prototype_8cpp_1a614f6d242f3a407b28c9baf942e703d1" kindref="member">foo3</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>VARIABLES<sp/>**************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EXTERNAL<sp/>FUNCTIONS<sp/>*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="_function_prototype_8cpp_1a92171bdfebb75b46aff6c1547bb21559" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_function_prototype_8cpp_1a92171bdfebb75b46aff6c1547bb21559" kindref="member">FunctionPrototype_foo</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_function_prototype_8cpp_1aabcede9a76c6e6cf1abaa3fd7a3f94df" kindref="member">foo1</ref>();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_function_prototype_8cpp_1a234a57e95feaec9372c39b489ba8d1a9" kindref="member">foo2</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>INTERNAL<sp/>FUNCTIONS<sp/>*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="_function_prototype_8cpp_1aabcede9a76c6e6cf1abaa3fd7a3f94df" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_function_prototype_8cpp_1aabcede9a76c6e6cf1abaa3fd7a3f94df" kindref="member">foo1</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;foo1&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="_function_prototype_8cpp_1a234a57e95feaec9372c39b489ba8d1a9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_function_prototype_8cpp_1a234a57e95feaec9372c39b489ba8d1a9" kindref="member">foo2</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;foo2&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="_function_prototype_8cpp_1a614f6d242f3a407b28c9baf942e703d1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_function_prototype_8cpp_1a614f6d242f3a407b28c9baf942e703d1" kindref="member">foo3</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;foo3&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/FunctionPrototype.cpp"/>
+  </compounddef>
+</doxygen>

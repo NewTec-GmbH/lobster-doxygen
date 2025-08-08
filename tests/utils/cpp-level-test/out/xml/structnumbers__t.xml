@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structnumbers__t" kind="struct" language="C++" prot="public">
+    <compoundname>numbers_t</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnumbers__t_1aa71a9de4609f8f241b63bb82d592530d" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t numbers_t::number_1</definition>
+        <argsstring></argsstring>
+        <name>number_1</name>
+        <qualifiedname>numbers_t::number_1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/StructUnionClass.cpp" line="25" column="14" bodyfile="src/StructUnionClass.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnumbers__t_1a07bc1377eae9ec2ac9bbe3ba0c0358f6" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t numbers_t::number_2</definition>
+        <argsstring></argsstring>
+        <name>number_2</name>
+        <qualifiedname>numbers_t::number_2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/StructUnionClass.cpp" line="26" column="14" bodyfile="src/StructUnionClass.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Numbers struct. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="implements_1_implements000008"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_struct </para>
+</xrefdescription></xrefsect></para>
+    </detaileddescription>
+    <location file="src/StructUnionClass.cpp" line="24" column="1" bodyfile="src/StructUnionClass.cpp" bodystart="24" bodyend="27"/>
+    <listofallmembers>
+      <member refid="structnumbers__t_1aa71a9de4609f8f241b63bb82d592530d" prot="public" virt="non-virtual"><scope>numbers_t</scope><name>number_1</name></member>
+      <member refid="structnumbers__t_1a07bc1377eae9ec2ac9bbe3ba0c0358f6" prot="public" virt="non-virtual"><scope>numbers_t</scope><name>number_2</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

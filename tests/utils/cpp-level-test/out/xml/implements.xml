@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="implements" kind="page">
+    <compoundname>implements</compoundname>
+    <title>Requirement Traceability</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Class <ref refid="class_counter" kindref="compound">Counter</ref>  </term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000010"/> Requirement: SwRequirements.sw_req_class  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="_function_prototype_8cpp_1aabcede9a76c6e6cf1abaa3fd7a3f94df" kindref="member">foo1</ref>  (void)</term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000001"/> Requirement: SwRequirements.sw_req_function  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="_function_prototype_8h_1a92171bdfebb75b46aff6c1547bb21559" kindref="member">FunctionPrototype_foo</ref>  (void)</term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000002"/> Requirement: SwRequirements.sw_req_prototype  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="class_game_1a2c6b6a3d2b52fa15239a5928c0efe2ba" kindref="member">Game::private_method</ref>  (void)</term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000006"/> Requirement: SwRequirements.sw_req_private_method  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="class_game_1a80fba99997ca90406432c7918f3b7c2e" kindref="member">Game::protected_method</ref>  (void)</term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000005"/> Requirement: SwRequirements.sw_req_protected_method  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="class_game_1a105bcabd06e3c355666581ca00f99eb1" kindref="member">Game::public_method</ref>  (void)</term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000004"/> Requirement: SwRequirements.sw_req_public_method  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="class_i_shape_1a63a956f01adf5616b9758ec80439d788" kindref="member">IShape::draw</ref>  ()=0</term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000003"/> Requirement: SwRequirements.sw_req_interface_method  </para>
+</listitem>
+<varlistentry><term>Namespace <ref refid="namespacemath" kindref="compound">math</ref>  </term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000007"/> Requirement: SwRequirements.sw_req_namespace  </para>
+</listitem>
+<varlistentry><term>Union <ref refid="unionmemory__t" kindref="compound">memory_t</ref>  </term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000009"/> Requirement: SwRequirements.sw_req_union  </para>
+</listitem>
+<varlistentry><term>Struct <ref refid="structnumbers__t" kindref="compound">numbers_t</ref>  </term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000008"/> Requirement: SwRequirements.sw_req_struct </para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+    <location file="implements"/>
+  </compounddef>
+</doxygen>

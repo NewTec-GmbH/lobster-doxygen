@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="group__main__group" kind="group">
+    <compoundname>main_group</compoundname>
+    <title>Main file</title>
+    <innergroup refid="group__function__prototype__group">FunctionPrototype module</innergroup>
+    <innergroup refid="group__interface__group">Interface module</innergroup>
+    <innergroup refid="group__method__group">Method module</innergroup>
+    <innergroup refid="group__namespace__group">Namespace module</innergroup>
+    <innergroup refid="group__struct__union__class__group">FunctionPrototype module</innergroup>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

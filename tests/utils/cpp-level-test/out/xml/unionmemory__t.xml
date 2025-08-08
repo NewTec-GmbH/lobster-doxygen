@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="unionmemory__t" kind="union" language="C++" prot="public">
+    <compoundname>memory_t</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="unionmemory__t_1aeabb5383d30cdd9585c879057e7aa17f" prot="public" static="no" mutable="no">
+        <type><ref refid="structnumbers__t" kindref="compound">numbers_t</ref></type>
+        <definition>numbers_t memory_t::numbers</definition>
+        <argsstring></argsstring>
+        <name>numbers</name>
+        <qualifiedname>memory_t::numbers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/StructUnionClass.cpp" line="35" column="15" bodyfile="src/StructUnionClass.cpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionmemory__t_1a0aa7eddf66fd6b71a7599b27324e6da0" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t memory_t::number</definition>
+        <argsstring></argsstring>
+        <name>number</name>
+        <qualifiedname>memory_t::number</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/StructUnionClass.cpp" line="36" column="14" bodyfile="src/StructUnionClass.cpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Memory struct. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="implements_1_implements000009"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_union </para>
+</xrefdescription></xrefsect></para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>memory_t</label>
+        <link refid="unionmemory__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>numbers</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>numbers_t</label>
+        <link refid="structnumbers__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/StructUnionClass.cpp" line="34" column="1" bodyfile="src/StructUnionClass.cpp" bodystart="34" bodyend="37"/>
+    <listofallmembers>
+      <member refid="unionmemory__t_1a0aa7eddf66fd6b71a7599b27324e6da0" prot="public" virt="non-virtual"><scope>memory_t</scope><name>number</name></member>
+      <member refid="unionmemory__t_1aeabb5383d30cdd9585c879057e7aa17f" prot="public" virt="non-virtual"><scope>memory_t</scope><name>numbers</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

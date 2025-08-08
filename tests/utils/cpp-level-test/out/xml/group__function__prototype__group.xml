@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="group__function__prototype__group" kind="group">
+    <compoundname>function_prototype_group</compoundname>
+    <title>FunctionPrototype module</title>
+    <innerfile refid="_function_prototype_8cpp">FunctionPrototype.cpp</innerfile>
+    <briefdescription>
+<para>Function prototype module. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Module with functions and prototypes. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

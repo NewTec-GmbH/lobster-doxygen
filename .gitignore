@@ -5,16 +5,8 @@ examples/simple-cpp-application/out/xml/*
 
 # tests folder
 tests/utils/output-test.json
-tests/utils/cpp-function-prototype/out/html
-tests/utils/cpp-function-prototype/warnings.log
-tests/utils/cpp-struct-union-class/out/html
-tests/utils/cpp-struct-union-class/warnings.log
-tests/utils/cpp-namespace/out/html
-tests/utils/cpp-namespace/warnings.log
-tests/utils/cpp-method/out/html
-tests/utils/cpp-method/warnings.log
-tests/utils/cpp-interface/out/html
-tests/utils/cpp-interface/warnings.log
+tests/utils/cpp-level-test/out/html
+tests/utils/cpp-level-test/warnings.log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_struct_union_class_8cpp" kind="file" language="C++">
+    <compoundname>StructUnionClass.cpp</compoundname>
+    <includes local="no">stdint.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>src/StructUnionClass.cpp</label>
+        <link refid="_struct_union_class_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structnumbers__t" prot="public">numbers_t</innerclass>
+    <innerclass refid="unionmemory__t" prot="public">memory_t</innerclass>
+    <innerclass refid="class_counter" prot="public">Counter</innerclass>
+    <innerclass refid="class_foo_class" prot="public">FooClass</innerclass>
+    <innerclass refid="structfoo__t" prot="public">foo_t</innerclass>
+    <innerclass refid="unionnumbers__u" prot="public">numbers_u</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/***************************************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/><sp/>(c)<sp/>NewTec<sp/>GmbH<sp/>2025<sp/><sp/><sp/>-<sp/><sp/><sp/>www.newtec.de</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">***************************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>INCLUDES<sp/>***************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>CONSTANTS<sp/>**************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>MACROS<sp/>*****************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>TYPES<sp/>AND<sp/>CLASSES<sp/>******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="structnumbers__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25" refid="structnumbers__t_1aa71a9de4609f8f241b63bb82d592530d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structnumbers__t_1aa71a9de4609f8f241b63bb82d592530d" kindref="member">number_1</ref>;</highlight></codeline>
+<codeline lineno="26" refid="structnumbers__t_1a07bc1377eae9ec2ac9bbe3ba0c0358f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structnumbers__t_1a07bc1377eae9ec2ac9bbe3ba0c0358f6" kindref="member">number_2</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}<sp/><ref refid="structnumbers__t" kindref="compound">numbers_t</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="unionmemory__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35" refid="unionmemory__t_1aeabb5383d30cdd9585c879057e7aa17f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structnumbers__t" kindref="compound">numbers_t</ref><sp/><ref refid="unionmemory__t_1aeabb5383d30cdd9585c879057e7aa17f" kindref="member">numbers</ref>;</highlight></codeline>
+<codeline lineno="36" refid="unionmemory__t_1a0aa7eddf66fd6b71a7599b27324e6da0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="unionmemory__t_1a0aa7eddf66fd6b71a7599b27324e6da0" kindref="member">number</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}<ref refid="unionmemory__t" kindref="compound">memory_t</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="class_counter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_counter_1a424d25be2a0c638f7b8c72195fa8c2ef" kindref="member">Counter</ref><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_counter_1a424d25be2a0c638f7b8c72195fa8c2ef" kindref="member">Counter</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="class_foo_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_foo_class_1a16fdf93042e3c2839ac5605cd5a5db6e" kindref="member">FooClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62" refid="class_foo_class_1a16fdf93042e3c2839ac5605cd5a5db6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_foo_class_1a16fdf93042e3c2839ac5605cd5a5db6e" kindref="member">FooClass</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="structfoo__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73" refid="structfoo__t_1a4d721b4f68c5908957c4d47f671b35f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structfoo__t_1a4d721b4f68c5908957c4d47f671b35f8" kindref="member">number</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}<ref refid="structfoo__t" kindref="compound">foo_t</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="unionnumbers__u" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">union</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82" refid="unionnumbers__u_1a47315fb24c953ce3519c8ebaad817421" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="unionnumbers__u_1a47315fb24c953ce3519c8ebaad817421" kindref="member">number</ref>;</highlight></codeline>
+<codeline lineno="83" refid="unionnumbers__u_1ad8fc232816185339ff60baaf5ea6bf6d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="unionnumbers__u_1ad8fc232816185339ff60baaf5ea6bf6d" kindref="member">same_number</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}<ref refid="unionnumbers__u" kindref="compound">numbers_u</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>PROTOTYPES<sp/>*************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>VARIABLES<sp/>**************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EXTERNAL<sp/>FUNCTIONS<sp/>*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>INTERNAL<sp/>FUNCTIONS<sp/>*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="class_counter_1a424d25be2a0c638f7b8c72195fa8c2ef" refkind="member"><highlight class="normal"><ref refid="class_counter_1a424d25be2a0c638f7b8c72195fa8c2ef" kindref="member">Counter::Counter</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Nothing<sp/>to<sp/>do.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/StructUnionClass.cpp"/>
+  </compounddef>
+</doxygen>

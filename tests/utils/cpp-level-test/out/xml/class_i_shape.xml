@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_i_shape" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>IShape</compoundname>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_i_shape_1a63a956f01adf5616b9758ec80439d788" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void IShape::draw</definition>
+        <argsstring>()=0</argsstring>
+        <name>draw</name>
+        <qualifiedname>IShape::draw</qualifiedname>
+        <briefdescription>
+<para>Draw. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="implements_1_implements000003"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_interface_method </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Interface.cpp" line="25" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_shape_1ade3663decd01042be1e663930af811b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>double</type>
+        <definition>virtual double IShape::area</definition>
+        <argsstring>()=0</argsstring>
+        <name>area</name>
+        <qualifiedname>IShape::area</qualifiedname>
+        <briefdescription>
+<para>Area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="justified_1_justified000003"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Interface method justification </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Interface.cpp" line="32" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_shape_1abecc7b52521ee60efa01d65a855dd652" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual IShape::~IShape</definition>
+        <argsstring>()</argsstring>
+        <name>~IShape</name>
+        <qualifiedname>IShape::~IShape</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Interface.cpp" line="37" column="13" bodyfile="src/Interface.cpp" bodystart="37" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Interface.cpp" line="17" column="1" bodyfile="src/Interface.cpp" bodystart="18" bodyend="38"/>
+    <listofallmembers>
+      <member refid="class_i_shape_1ade3663decd01042be1e663930af811b3" prot="public" virt="pure-virtual"><scope>IShape</scope><name>area</name></member>
+      <member refid="class_i_shape_1a63a956f01adf5616b9758ec80439d788" prot="public" virt="pure-virtual"><scope>IShape</scope><name>draw</name></member>
+      <member refid="class_i_shape_1abecc7b52521ee60efa01d65a855dd652" prot="public" virt="virtual"><scope>IShape</scope><name>~IShape</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
