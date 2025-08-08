@@ -69,42 +69,23 @@ def _get_data_items_from_lobster_file() -> dict:
     return data_items
 
 
-def _is_string_in_lobster_output_file_ref(search_string: str) -> bool:
+def _is_string_in_lobster_output_file(search_string: str, property_to_lock: str) -> bool:
     """
-    Checks if search_string is TEST_LOBSTER_OUTPUT_FILE file in a data refs section.
+    Checks if search_string is TEST_LOBSTER_OUTPUT_FILE file in a property of data section.
 
     Args:
-        search_string (str): Search string to lock for under refs.
+        search_string (str): Search string to lock for.
+        property_to_lock (str): Specific data item property to look for string.
 
     Returns:
         bool: True is search_string is found.
     """
     data_items = _get_data_items_from_lobster_file()
-    refs = []
     for data_item in data_items:
-        if data_item["refs"] != []:
-            refs.extend(data_item["refs"])
+        if search_string in data_item[property_to_lock]:
+            return True
 
-    return search_string in refs
-
-
-def _is_string_in_lobster_output_file_just_up(search_string: str) -> bool:
-    """
-    Checks if search_string is TEST_LOBSTER_OUTPUT_FILE file in a data just_up section.
-
-    Args:
-        search_string (str): Search string to lock for under just_up.
-
-    Returns:
-        bool: True is search_string is found.
-    """
-    data_items = _get_data_items_from_lobster_file()
-    just_ups = []
-    for data_item in data_items:
-        if data_item["just_up"] != []:
-            just_ups.extend(data_item["just_up"])
-
-    return search_string in just_ups
+    return False
 
 
 def test_tc_input_root(record_property, capsys) -> None:
@@ -179,18 +160,18 @@ def test_func_level(record_property) -> None:
 
     assert exit_code == 0, "Exit Code returns no success."
 
-    assert True is _is_string_in_lobster_output_file_ref(
-        "req SwRequirements.sw_req_foo1"
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_foo1", "refs"
     ), "Requirement not found in XML files of cpp-function-prototype project."
-    assert True is _is_string_in_lobster_output_file_ref(
-        "req SwRequirements.sw_req_foo"
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_foo", "refs"
     ), "Requirement not found in XML files of cpp-function-prototype project."
 
-    assert True is _is_string_in_lobster_output_file_just_up(
-        "foo2 justification"
+    assert True is _is_string_in_lobster_output_file(
+        "foo2 justification", "just_up"
     ), "Justification not found in XML files of cpp-function-prototype project."
-    assert True is _is_string_in_lobster_output_file_just_up(
-        "foo3 justification"
+    assert True is _is_string_in_lobster_output_file(
+        "foo3 justification", "just_up"
     ), "Justification not found in XML files of cpp-function-prototype project."
 
 
@@ -214,13 +195,14 @@ def test_type_level(record_property) -> None:
     exit_code = main()
 
     assert exit_code == 0, "Exit Code returns no success."
-    assert True is _is_string_in_lobster_output_file_ref("req SwRequirements.sw_req_numbers_struct")
-    assert True is _is_string_in_lobster_output_file_ref("req SwRequirements.sw_req_memory_union")
-    assert True is _is_string_in_lobster_output_file_ref("req SwRequirements.sw_req_counter_class")
+    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_numbers_struct", "refs")
+    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_memory_union", "refs")
+    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_counter_class", "refs")
 
-    assert True is _is_string_in_lobster_output_file_just_up("struct justification")
-    assert True is _is_string_in_lobster_output_file_just_up("union justification")
-    assert True is _is_string_in_lobster_output_file_just_up("class justification")
+    assert True is _is_string_in_lobster_output_file("struct justification", "just_up")
+    assert True is _is_string_in_lobster_output_file("union justification", "just_up")
+    assert True is _is_string_in_lobster_output_file("class justification", "just_up")
+
 
 
 # Main *************************************************************************
