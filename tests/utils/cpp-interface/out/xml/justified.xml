@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="justified" kind="page">
+    <compoundname>justified</compoundname>
+    <title>Justification Overview</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Member <ref refid="class_i_shape_1ade3663decd01042be1e663930af811b3" kindref="member">IShape::area</ref>  ()=0</term></varlistentry>
+<listitem><para><anchor id="justified_1_justified000001"/> Justification: Interface method justification </para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+    <location file="justified"/>
+  </compounddef>
+</doxygen>
