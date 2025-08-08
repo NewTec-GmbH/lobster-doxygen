@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_game" kind="class" language="C++" prot="public">
+    <compoundname>Game</compoundname>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_game_1a3ae96cfdab80ddfed4e942b23c59cfd9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Game::Game</definition>
+        <argsstring>(void)</argsstring>
+        <name>Game</name>
+        <qualifiedname>Game::Game</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para><ref refid="class_game" kindref="compound">Game</ref> constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Method.cpp" line="23" column="5" bodyfile="src/Method.cpp" bodystart="23" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_1a105bcabd06e3c355666581ca00f99eb1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Game::public_method</definition>
+        <argsstring>(void)</argsstring>
+        <name>public_method</name>
+        <qualifiedname>Game::public_method</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Public method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="implements_1_implements000004"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_public_method </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Method.cpp" line="33" column="10" bodyfile="src/Method.cpp" bodystart="33" bodyend="36"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_game_1a80fba99997ca90406432c7918f3b7c2e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Game::protected_method</definition>
+        <argsstring>(void)</argsstring>
+        <name>protected_method</name>
+        <qualifiedname>Game::protected_method</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Protected method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="implements_1_implements000005"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_protected_method </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Method.cpp" line="43" column="10" bodyfile="src/Method.cpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_game_1a2c6b6a3d2b52fa15239a5928c0efe2ba" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Game::private_method</definition>
+        <argsstring>(void)</argsstring>
+        <name>private_method</name>
+        <qualifiedname>Game::private_method</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Private method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="implements_1_implements000006"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_private_method </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Method.cpp" line="52" column="10" bodyfile="src/Method.cpp" bodystart="52" bodyend="54"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Method.cpp" line="17" column="1" bodyfile="src/Method.cpp" bodystart="18" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_game_1a3ae96cfdab80ddfed4e942b23c59cfd9" prot="public" virt="non-virtual"><scope>Game</scope><name>Game</name></member>
+      <member refid="class_game_1a2c6b6a3d2b52fa15239a5928c0efe2ba" prot="private" virt="non-virtual"><scope>Game</scope><name>private_method</name></member>
+      <member refid="class_game_1a80fba99997ca90406432c7918f3b7c2e" prot="protected" virt="non-virtual"><scope>Game</scope><name>protected_method</name></member>
+      <member refid="class_game_1a105bcabd06e3c355666581ca00f99eb1" prot="public" virt="non-virtual"><scope>Game</scope><name>public_method</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

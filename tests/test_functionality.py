@@ -35,20 +35,8 @@ TEST_LOBSTER_OUTPUT_FILE = "./tests/utils/output-test.json"
 # Directory with Doxygen XML files.
 TEST_XML_FOLDER = "./tests/utils/xml"
 
-# Directory with Doxygen XML files from cpp-function-prototype project.
-TEST_FUNCTION_PROTOTYPE_XML_FOLDER = "./tests/utils/cpp-function-prototype/out/xml"
-
-# Directory with Doxygen XML files from cpp-struct-union-class project.
-TEST_TYPE_XML_FOLDER = "./tests/utils/cpp-struct-union-class/out/xml"
-
-# Directory with Doxygen XML files from cpp-namespace project.
-TEST_NAMESPACE_XML_FOLDER = "./tests/utils/cpp-namespace/out/xml"
-
-# Directory with Doxygen XML files from cpp-method project.
-TEST_METHOD_XML_FOLDER = "./tests/utils/cpp-method/out/xml"
-
-# Directory with Doxygen XML files from cpp-method project.
-TEST_INTERFACE_XML_FOLDER = "./tests/utils/cpp-interface/out/xml"
+# Directory with Doxygen XML files from cpp-level-test project, to test @implementation and @justification.
+TEST_LEVEL_XML_FOLDER = "./tests/utils/cpp-level-test/out/xml"
 
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
@@ -151,10 +139,10 @@ def _test_program_with_directory_with_no_index_file(capsys) -> None:
 def test_func_level(record_property) -> None:
     # lobster-trace: SwTest.tc_func_level
     """
-    The test case calls the program with cpp-function-prototype XML folder as doxygen_xml_folder and
-    verifies that the "req SwRequirement.sw_req_foo1" and "req SwRequirements.sw_req_foo" strings
+    The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
+    verifies that the "req SwRequirement.sw_req_prototype" and "req SwRequirements.sw_req_function" strings
     are found in the data items.
-    The test also verifies that "foo2 justification" and "foo3 justification" strings are found in
+    The test also verifies that "Prototype justification" and "Function justification" strings are found in
     the just_up data items.
 
     Args:
@@ -163,34 +151,34 @@ def test_func_level(record_property) -> None:
     record_property("lobster-trace", "SwTests.tc_func_level")
 
     _delete_test_lobster_output_file()
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_FUNCTION_PROTOTYPE_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
     assert exit_code == 0, "Exit Code returns no success."
 
     assert True is _is_string_in_lobster_output_file(
-        "req SwRequirements.sw_req_foo1", "refs"
+        "req SwRequirements.sw_req_prototype", "refs"
     ), "Requirement not found in XML files of cpp-function-prototype project."
     assert True is _is_string_in_lobster_output_file(
-        "req SwRequirements.sw_req_foo", "refs"
+        "req SwRequirements.sw_req_function", "refs"
     ), "Requirement not found in XML files of cpp-function-prototype project."
 
     assert True is _is_string_in_lobster_output_file(
-        "foo2 justification", "just_up"
+        "Prototype justification", "just_up"
     ), "Justification not found in XML files of cpp-function-prototype project."
     assert True is _is_string_in_lobster_output_file(
-        "foo3 justification", "just_up"
+        "Function justification", "just_up"
     ), "Justification not found in XML files of cpp-function-prototype project."
 
 
 def test_type_level(record_property) -> None:
     # lobster-trace: SwTest.tc_type_level
     """
-    The test case calls the program with cpp-struct-union-class XML folder as doxygen_xml_folder and
-    verifies that the "req SwRequirement.sw_req_numbers_struct", "req SwRequirements.sw_req_memory_union"
-    and "req SwRequirements.sw_req_counter_class" strings are found in the data items.
-    The test also verifies that "struct justification", "union justification" and "class justification"
+    The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
+    verifies that the "req SwRequirement.sw_req_struct", "req SwRequirements.sw_req_union"
+    and "req SwRequirements.sw_req_class" strings are found in the data items.
+    The test also verifies that "Struct justification", "Union justification" and "Class justification"
     strings are found in the just_up data items.
 
     Args:
@@ -199,24 +187,24 @@ def test_type_level(record_property) -> None:
     record_property("lobster-trace", "SwTests.tc_type_level")
 
     _delete_test_lobster_output_file()
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_TYPE_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
     assert exit_code == 0, "Exit Code returns no success."
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_numbers_struct", "refs")
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_memory_union", "refs")
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_counter_class", "refs")
+    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_struct", "refs")
+    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_union", "refs")
+    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_class", "refs")
 
-    assert True is _is_string_in_lobster_output_file("struct justification", "just_up")
-    assert True is _is_string_in_lobster_output_file("union justification", "just_up")
-    assert True is _is_string_in_lobster_output_file("class justification", "just_up")
+    assert True is _is_string_in_lobster_output_file("Struct justification", "just_up")
+    assert True is _is_string_in_lobster_output_file("Union justification", "just_up")
+    assert True is _is_string_in_lobster_output_file("Class justification", "just_up")
 
 
 def test_namespace_level(record_property) -> None:
     # lobster-trace: SwTest.tc_namespace_level
     """
-    The test case calls the program with cpp-namespace XML folder as doxygen_xml_folder and
+    The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_namespace" string are found in the data items.
     The test also verifies that "namespace justification" string are found in the just_up data
     items.
@@ -227,19 +215,19 @@ def test_namespace_level(record_property) -> None:
     record_property("lobster-trace", "SwTests.tc_namespace_level")
 
     _delete_test_lobster_output_file()
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_NAMESPACE_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
     assert exit_code == 0, "Exit Code returns no success."
     assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_namespace", "refs")
-    assert True is _is_string_in_lobster_output_file("namespace justification", "just_up")
+    assert True is _is_string_in_lobster_output_file("Namespace justification", "just_up")
 
 
 def test_method_level(record_property) -> None:
     # lobster-trace: SwTest.tc_method_level
     """
-    The test case calls the program with cpp-method XML folder as doxygen_xml_folder and
+    The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_public_method",
     "req SwRequirement.sw_req_protected_method" and "req SwRequirement.sw_req_private_method"
     strings are found in refs of the data items.
@@ -253,7 +241,7 @@ def test_method_level(record_property) -> None:
     record_property("lobster-trace", "SwTests.tc_method_level")
 
     _delete_test_lobster_output_file()
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_METHOD_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
@@ -271,10 +259,10 @@ def test_method_level(record_property) -> None:
 def test_interface_level(record_property) -> None:
     # lobster-trace: SwTest.tc_interface_level
     """
-    The test case calls the program with cpp-method XML folder as doxygen_xml_folder and
+    The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_interface_method" string is found in refs of the
     data items.
-    The test also verifies that "Public method justification" string is found in the just_up data
+    The test also verifies that "Interface method justification" string is found in the just_up data
     items.
 
     Args:
@@ -284,7 +272,7 @@ def test_interface_level(record_property) -> None:
     record_property("lobster-trace", "SwTests.tc_interface_level")
 
     _delete_test_lobster_output_file()
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_INTERFACE_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="group__method__group" kind="group">
+    <compoundname>method_group</compoundname>
+    <title>Method module</title>
+    <innerfile refid="_method_8cpp">Method.cpp</innerfile>
+    <briefdescription>
+<para>Method module. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Module with class with methods. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

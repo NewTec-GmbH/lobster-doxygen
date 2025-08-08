@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.14.0" xml:lang="en-US">
+  <compound refid="class_counter" kind="class"><name>Counter</name>
+    <member refid="class_counter_1a424d25be2a0c638f7b8c72195fa8c2ef" kind="function"><name>Counter</name></member>
+  </compound>
+  <compound refid="class_foo" kind="class"><name>Foo</name>
+    <member refid="class_foo_1abddcaf1806543646a2757c81fdd98deb" kind="function"><name>Foo</name></member>
+    <member refid="class_foo_1ae80bc6738df4d2cfb0f01438fc525567" kind="function"><name>public_method</name></member>
+    <member refid="class_foo_1ad9e21eff87e45c9a42e56a5afbc9f050" kind="function"><name>protected_method</name></member>
+    <member refid="class_foo_1a3097612237a5c7b4331880368953d346" kind="function"><name>private_method</name></member>
+  </compound>
+  <compound refid="structfoo__t" kind="struct"><name>foo_t</name>
+    <member refid="structfoo__t_1a4d721b4f68c5908957c4d47f671b35f8" kind="variable"><name>number</name></member>
+  </compound>
+  <compound refid="class_foo_class" kind="class"><name>FooClass</name>
+    <member refid="class_foo_class_1a16fdf93042e3c2839ac5605cd5a5db6e" kind="function"><name>FooClass</name></member>
+  </compound>
+  <compound refid="class_game" kind="class"><name>Game</name>
+    <member refid="class_game_1a3ae96cfdab80ddfed4e942b23c59cfd9" kind="function"><name>Game</name></member>
+    <member refid="class_game_1a105bcabd06e3c355666581ca00f99eb1" kind="function"><name>public_method</name></member>
+    <member refid="class_game_1a80fba99997ca90406432c7918f3b7c2e" kind="function"><name>protected_method</name></member>
+    <member refid="class_game_1a2c6b6a3d2b52fa15239a5928c0efe2ba" kind="function"><name>private_method</name></member>
+  </compound>
+  <compound refid="class_i_shape" kind="class"><name>IShape</name>
+    <member refid="class_i_shape_1a63a956f01adf5616b9758ec80439d788" kind="function"><name>draw</name></member>
+    <member refid="class_i_shape_1ade3663decd01042be1e663930af811b3" kind="function"><name>area</name></member>
+    <member refid="class_i_shape_1abecc7b52521ee60efa01d65a855dd652" kind="function"><name>~IShape</name></member>
+  </compound>
+  <compound refid="unionmemory__t" kind="union"><name>memory_t</name>
+    <member refid="unionmemory__t_1aeabb5383d30cdd9585c879057e7aa17f" kind="variable"><name>numbers</name></member>
+    <member refid="unionmemory__t_1a0aa7eddf66fd6b71a7599b27324e6da0" kind="variable"><name>number</name></member>
+  </compound>
+  <compound refid="structnumbers__t" kind="struct"><name>numbers_t</name>
+    <member refid="structnumbers__t_1aa71a9de4609f8f241b63bb82d592530d" kind="variable"><name>number_1</name></member>
+    <member refid="structnumbers__t_1a07bc1377eae9ec2ac9bbe3ba0c0358f6" kind="variable"><name>number_2</name></member>
+  </compound>
+  <compound refid="unionnumbers__u" kind="union"><name>numbers_u</name>
+    <member refid="unionnumbers__u_1a47315fb24c953ce3519c8ebaad817421" kind="variable"><name>number</name></member>
+    <member refid="unionnumbers__u_1ad8fc232816185339ff60baaf5ea6bf6d" kind="variable"><name>same_number</name></member>
+  </compound>
+  <compound refid="namespacegame" kind="namespace"><name>game</name>
+  </compound>
+  <compound refid="namespacemath" kind="namespace"><name>math</name>
+    <member refid="namespacemath_1abb40ce7b6914681aec0fbc536df3f708" kind="function"><name>add</name></member>
+  </compound>
+  <compound refid="_function_prototype_8cpp" kind="file"><name>FunctionPrototype.cpp</name>
+    <member refid="_function_prototype_8cpp_1aabcede9a76c6e6cf1abaa3fd7a3f94df" kind="function"><name>foo1</name></member>
+    <member refid="_function_prototype_8cpp_1a234a57e95feaec9372c39b489ba8d1a9" kind="function"><name>foo2</name></member>
+    <member refid="_function_prototype_8cpp_1a614f6d242f3a407b28c9baf942e703d1" kind="function"><name>foo3</name></member>
+    <member refid="_function_prototype_8cpp_1a92171bdfebb75b46aff6c1547bb21559" kind="function"><name>FunctionPrototype_foo</name></member>
+  </compound>
+  <compound refid="_function_prototype_8h" kind="file"><name>FunctionPrototype.h</name>
+    <member refid="_function_prototype_8h_1a92171bdfebb75b46aff6c1547bb21559" kind="function"><name>FunctionPrototype_foo</name></member>
+  </compound>
+  <compound refid="_interface_8cpp" kind="file"><name>Interface.cpp</name>
+  </compound>
+  <compound refid="_interface_8h" kind="file"><name>Interface.h</name>
+  </compound>
+  <compound refid="main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="_method_8cpp" kind="file"><name>Method.cpp</name>
+  </compound>
+  <compound refid="_method_8h" kind="file"><name>Method.h</name>
+  </compound>
+  <compound refid="_namespace_8cpp" kind="file"><name>Namespace.cpp</name>
+  </compound>
+  <compound refid="_namespace_8h" kind="file"><name>Namespace.h</name>
+  </compound>
+  <compound refid="_struct_union_class_8cpp" kind="file"><name>StructUnionClass.cpp</name>
+  </compound>
+  <compound refid="_struct_union_class_8h" kind="file"><name>StructUnionClass.h</name>
+  </compound>
+  <compound refid="group__function__prototype__group" kind="group"><name>function_prototype_group</name>
+  </compound>
+  <compound refid="group__interface__group" kind="group"><name>interface_group</name>
+  </compound>
+  <compound refid="group__main__group" kind="group"><name>main_group</name>
+  </compound>
+  <compound refid="group__method__group" kind="group"><name>method_group</name>
+  </compound>
+  <compound refid="group__namespace__group" kind="group"><name>namespace_group</name>
+  </compound>
+  <compound refid="group__struct__union__class__group" kind="group"><name>struct_union_class_group</name>
+  </compound>
+  <compound refid="justified" kind="page"><name>justified</name>
+  </compound>
+  <compound refid="implements" kind="page"><name>implements</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+</doxygenindex>

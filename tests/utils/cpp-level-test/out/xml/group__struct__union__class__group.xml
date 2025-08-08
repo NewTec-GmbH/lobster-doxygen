@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="group__struct__union__class__group" kind="group">
+    <compoundname>struct_union_class_group</compoundname>
+    <title>FunctionPrototype module</title>
+    <innerfile refid="_struct_union_class_8cpp">StructUnionClass.cpp</innerfile>
+    <briefdescription>
+<para>Struct union class module. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Module with structs, unions and classes. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>
