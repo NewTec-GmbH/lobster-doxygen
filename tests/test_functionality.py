@@ -41,6 +41,9 @@ TEST_FUNCTION_PROTOTYPE_XML_FOLDER = "./tests/utils/cpp-function-prototype/out/x
 # Directory with Doxygen XML files from cpp-struct-union-class project.
 TEST_TYPE_XML_FOLDER = "./tests/utils/cpp-struct-union-class/out/xml"
 
+# Directory with Doxygen XML files from cpp-namespace project.
+TEST_NAMESPACE_XML_FOLDER = "./tests/utils/cpp-namespace/out/xml"
+
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
 
@@ -202,6 +205,29 @@ def test_type_level(record_property) -> None:
     assert True is _is_string_in_lobster_output_file("struct justification", "just_up")
     assert True is _is_string_in_lobster_output_file("union justification", "just_up")
     assert True is _is_string_in_lobster_output_file("class justification", "just_up")
+
+
+def test_namespace_level(record_property) -> None:
+    # lobster-trace: SwTest.tc_namespace_level
+    """
+    The test case calls the program with cpp-namespace XML folder as doxygen_xml_folder and
+    verifies that the "req SwRequirement.sw_req_namespace" string are found in the data items.
+    The test also verifies that "namespace justification" string are found in the just_up data
+    items.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+    """
+    record_property("lobster-trace", "SwTests.tc_namespace_level")
+
+    _delete_test_lobster_output_file()
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_NAMESPACE_XML_FOLDER]
+
+    exit_code = main()
+
+    assert exit_code == 0, "Exit Code returns no success."
+    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_namespace", "refs")
+    assert True is _is_string_in_lobster_output_file("namespace justification", "just_up")
 
 
 

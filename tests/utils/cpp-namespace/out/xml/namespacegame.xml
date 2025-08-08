@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="namespacegame" kind="namespace" language="C++">
+    <compoundname>game</compoundname>
+    <briefdescription>
+<para>Game namespace. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="justified_1_justified000001"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: namespace justification </para>
+</xrefdescription></xrefsect></para>
+    </detaileddescription>
+    <location file="src/main.cpp" line="45" column="1"/>
+  </compounddef>
+</doxygen>
