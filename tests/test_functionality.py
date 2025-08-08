@@ -47,6 +47,9 @@ TEST_NAMESPACE_XML_FOLDER = "./tests/utils/cpp-namespace/out/xml"
 # Directory with Doxygen XML files from cpp-method project.
 TEST_METHOD_XML_FOLDER = "./tests/utils/cpp-method/out/xml"
 
+# Directory with Doxygen XML files from cpp-method project.
+TEST_INTERFACE_XML_FOLDER = "./tests/utils/cpp-interface/out/xml"
+
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
 
@@ -263,6 +266,32 @@ def test_method_level(record_property) -> None:
     assert True is _is_string_in_lobster_output_file("Public method justification", "just_up")
     assert True is _is_string_in_lobster_output_file("Protected method justification", "just_up")
     assert True is _is_string_in_lobster_output_file("Private method justification", "just_up")
+
+
+def test_interface_level(record_property) -> None:
+    # lobster-trace: SwTest.tc_interface_level
+    """
+    The test case calls the program with cpp-method XML folder as doxygen_xml_folder and
+    verifies that the "req SwRequirement.sw_req_interface_method" string is found in refs of the
+    data items.
+    The test also verifies that "Public method justification" string is found in the just_up data
+    items.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+    """
+
+    record_property("lobster-trace", "SwTests.tc_interface_level")
+
+    _delete_test_lobster_output_file()
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_INTERFACE_XML_FOLDER]
+
+    exit_code = main()
+
+    assert exit_code == 0, "Exit Code returns no success."
+
+    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_interface_method", "refs")
+    assert True is _is_string_in_lobster_output_file("Interface method justification", "just_up")
 
 
 # Main *************************************************************************

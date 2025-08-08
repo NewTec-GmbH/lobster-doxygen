@@ -34,6 +34,11 @@ section "SW-Tests" {
             description = "This test case checks whether requirements and justifications can be specified in methods level independent of visibility."
             verifies = [SwRequirements.sw_req_method_level]
         }
+
+        SwTestCase tc_interface_level {
+            description = "This test case checks whether requirements and justifications can be specified in interface level."
+            verifies = [SwRequirements.sw_req_interface_level]
+        }
     }
 
     section "General" {

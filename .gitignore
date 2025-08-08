@@ -13,6 +13,8 @@ tests/utils/cpp-namespace/out/html
 tests/utils/cpp-namespace/warnings.log
 tests/utils/cpp-method/out/html
 tests/utils/cpp-method/warnings.log
+tests/utils/cpp-interface/out/html
+tests/utils/cpp-interface/warnings.log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
