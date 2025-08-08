@@ -221,7 +221,7 @@ def _get_lobster_items_from_compound(compound_path: str) -> list[LobsterItem]:
     # lobster-trace: SwRequirements.sw_req_file_level
     # lobster-trace: SwRequirements.sw_req_func_level
     # lobster-trace: SwRequirements.sw_req_type_level
-    # lobster-trace: SwRequirements.sw_req_ns_level
+    # lobster-trace: SwRequirements.sw_req_namespace_level
     # lobster-trace: SwRequirements.sw_req_method_level
     # lobster-trace: SwRequirements.sw_req_interface_level
     lobster_items = []

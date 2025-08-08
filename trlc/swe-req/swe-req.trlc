@@ -56,7 +56,7 @@ section "SW Requirement Specification" {
                 valid_status = AbstractRequirements.VALID_STATUS.valid
             }
 
-            SwReq sw_req_ns_level {
+            SwReq sw_req_namespace_level {
                 description = "The software shall support to specify requirements and justification on namespace level."
                 verification_criteria = ""
                 valid_status = AbstractRequirements.VALID_STATUS.valid

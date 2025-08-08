@@ -24,6 +24,16 @@ section "SW-Tests" {
             description = "This test case checks whether requirements and justifications can be specified in struct/union/class level."
             verifies = [SwRequirements.sw_req_type_level]
         }
+
+        SwTestCase tc_namespace_level {
+            description = "This test case checks whether requirements and justifications can be specified in namespace level."
+            verifies = [SwRequirements.sw_req_namespace_level]
+        }
+
+        SwTestCase tc_method_level {
+            description = "This test case checks whether requirements and justifications can be specified in methods level independent of visibility."
+            verifies = [SwRequirements.sw_req_method_level]
+        }
     }
 
     section "General" {
