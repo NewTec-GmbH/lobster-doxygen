@@ -11,6 +11,8 @@
     <innerfile refid="_method_8h">Method.h</innerfile>
     <innerfile refid="_namespace_8cpp">Namespace.cpp</innerfile>
     <innerfile refid="_namespace_8h">Namespace.h</innerfile>
+    <innerfile refid="_outside_group_8cpp">OutsideGroup.cpp</innerfile>
+    <innerfile refid="_outside_group_8h">OutsideGroup.h</innerfile>
     <innerfile refid="_struct_union_class_8cpp">StructUnionClass.cpp</innerfile>
     <innerfile refid="_struct_union_class_8h">StructUnionClass.h</innerfile>
     <briefdescription>

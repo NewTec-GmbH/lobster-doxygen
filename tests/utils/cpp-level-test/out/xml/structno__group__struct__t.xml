@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structno__group__struct__t" kind="struct" language="C++" prot="public">
+    <compoundname>no_group_struct_t</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structno__group__struct__t_1a79a245b35ff1316d5603d89530a70182" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int no_group_struct_t::number</definition>
+        <argsstring></argsstring>
+        <name>number</name>
+        <qualifiedname>no_group_struct_t::number</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OutsideGroup.cpp" line="24" column="9" bodyfile="src/OutsideGroup.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This struct is for no group justification.</para>
+<para><xrefsect id="justified_1_justified000008"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: No group struct justification </para>
+</xrefdescription></xrefsect></para>
+    </detaileddescription>
+    <location file="src/OutsideGroup.cpp" line="23" column="1" bodyfile="src/OutsideGroup.cpp" bodystart="23" bodyend="25"/>
+    <listofallmembers>
+      <member refid="structno__group__struct__t_1a79a245b35ff1316d5603d89530a70182" prot="public" virt="non-virtual"><scope>no_group_struct_t</scope><name>number</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -9,6 +9,7 @@
     <includes refid="_namespace_8h" local="yes">Namespace.h</includes>
     <includes refid="_method_8h" local="yes">Method.h</includes>
     <includes refid="_interface_8h" local="yes">Interface.h</includes>
+    <includes refid="_outside_group_8h" local="yes">OutsideGroup.h</includes>
     <incdepgraph>
       <node id="4">
         <label>FunctionPrototype.h</label>
@@ -25,6 +26,10 @@
       <node id="6">
         <label>Namespace.h</label>
         <link refid="_namespace_8h"/>
+      </node>
+      <node id="9">
+        <label>OutsideGroup.h</label>
+        <link refid="_outside_group_8h"/>
       </node>
       <node id="5">
         <label>StructUnionClass.h</label>
@@ -46,6 +51,8 @@
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -70,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/main.cpp" line="33" column="5" bodyfile="src/main.cpp" bodystart="33" bodyend="37"/>
+        <location file="src/main.cpp" line="34" column="5" bodyfile="src/main.cpp" bodystart="34" bodyend="38"/>
         <references refid="_function_prototype_8cpp_1a92171bdfebb75b46aff6c1547bb21559" compoundref="_function_prototype_8cpp" startline="35" endline="40">FunctionPrototype_foo</references>
       </memberdef>
     </sectiondef>
@@ -92,26 +99,27 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_namespace_8h" kindref="compound">Namespace.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_method_8h" kindref="compound">Method.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_interface_8h" kindref="compound">Interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>CONSTANTS<sp/>**************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>MACROS<sp/>*****************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>TYPES<sp/>AND<sp/>CLASSES<sp/>******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>PROTOTYPES<sp/>*************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>VARIABLES<sp/>**************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EXTERNAL<sp/>FUNCTIONS<sp/>*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>INTERNAL<sp/>FUNCTIONS<sp/>*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33" refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" kindref="member">main</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_function_prototype_8cpp_1a92171bdfebb75b46aff6c1547bb21559" kindref="member">FunctionPrototype_foo</ref>();</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;<sp/></highlight></codeline>
-<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_outside_group_8h" kindref="compound">OutsideGroup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>CONSTANTS<sp/>**************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>MACROS<sp/>*****************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>TYPES<sp/>AND<sp/>CLASSES<sp/>******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>PROTOTYPES<sp/>*************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>VARIABLES<sp/>**************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EXTERNAL<sp/>FUNCTIONS<sp/>*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>INTERNAL<sp/>FUNCTIONS<sp/>*****************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" kindref="member">main</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_function_prototype_8cpp_1a92171bdfebb75b46aff6c1547bb21559" kindref="member">FunctionPrototype_foo</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="src/main.cpp"/>
   </compounddef>

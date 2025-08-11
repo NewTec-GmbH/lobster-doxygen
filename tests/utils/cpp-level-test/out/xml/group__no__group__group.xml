@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="group__no__group__group" kind="group">
+    <compoundname>no_group_group</compoundname>
+    <title>Group for no group module</title>
+    <innerfile refid="_outside_group_8cpp">OutsideGroup.cpp</innerfile>
+    <briefdescription>
+<para>Module with doxygen no group. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Module with no doxygen group. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

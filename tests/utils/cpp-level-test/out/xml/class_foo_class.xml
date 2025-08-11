@@ -25,7 +25,7 @@
 <para><ref refid="class_foo" kindref="compound">Foo</ref> class. </para>
     </briefdescription>
     <detaileddescription>
-<para><xrefsect id="justified_1_justified000008"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Class justification </para>
+<para><xrefsect id="justified_1_justified000009"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Class justification </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <location file="src/StructUnionClass.cpp" line="60" column="1" bodyfile="src/StructUnionClass.cpp" bodystart="60" bodyend="65"/>

@@ -2,26 +2,27 @@
   (c) NewTec GmbH 2025   -   www.newtec.de
 ***************************************************************************************************/
 /**
- @defgroup main_group Main file
- @file main.cpp
+ @file OutsideGroup.cpp
 ***************************************************************************************************/
 
 /* INCLUDES ***************************************************************************************/
 
-#include <cstdlib>
 #include <iostream>
-#include "FunctionPrototype.h"
-#include "StructUnionClass.h"
-#include "Namespace.h"
-#include "Method.h"
-#include "Interface.h"
-#include "OutsideGroup.h"
 
 /* CONSTANTS **************************************************************************************/
 
 /* MACROS *****************************************************************************************/
 
 /* TYPES AND CLASSES ******************************************************************************/
+
+/**
+ * This struct is for no group justification.
+ *  
+ * @justification{No group struct justification}
+ */
+typedef struct {
+    int number;      
+} no_group_struct_t;
 
 /* PROTOTYPES *************************************************************************************/
 
@@ -31,8 +32,12 @@
 
 /* INTERNAL FUNCTIONS *****************************************************************************/
 
-int main(void)
+/**
+ * This function is for requirement in no group function. 
+ *
+ * @implements{SwRequirements.sw_req_no_group_function}
+ */
+static void no_group_function(void)
 {
-    FunctionPrototype_foo();
-    return EXIT_SUCCESS; 
+    std::cout << "no doxygen group function";
 }

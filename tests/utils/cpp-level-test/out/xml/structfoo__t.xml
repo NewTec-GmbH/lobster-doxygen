@@ -22,7 +22,7 @@
 <para><ref refid="class_foo" kindref="compound">Foo</ref> stuct. </para>
     </briefdescription>
     <detaileddescription>
-<para><xrefsect id="justified_1_justified000009"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Struct justification </para>
+<para><xrefsect id="justified_1_justified000010"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Struct justification </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <location file="src/StructUnionClass.cpp" line="72" column="1" bodyfile="src/StructUnionClass.cpp" bodystart="72" bodyend="74"/>

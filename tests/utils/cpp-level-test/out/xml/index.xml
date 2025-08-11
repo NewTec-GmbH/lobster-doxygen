@@ -30,6 +30,9 @@
     <member refid="unionmemory__t_1aeabb5383d30cdd9585c879057e7aa17f" kind="variable"><name>numbers</name></member>
     <member refid="unionmemory__t_1a0aa7eddf66fd6b71a7599b27324e6da0" kind="variable"><name>number</name></member>
   </compound>
+  <compound refid="structno__group__struct__t" kind="struct"><name>no_group_struct_t</name>
+    <member refid="structno__group__struct__t_1a79a245b35ff1316d5603d89530a70182" kind="variable"><name>number</name></member>
+  </compound>
   <compound refid="structnumbers__t" kind="struct"><name>numbers_t</name>
     <member refid="structnumbers__t_1aa71a9de4609f8f241b63bb82d592530d" kind="variable"><name>number_1</name></member>
     <member refid="structnumbers__t_1a07bc1377eae9ec2ac9bbe3ba0c0358f6" kind="variable"><name>number_2</name></member>
@@ -66,6 +69,11 @@
   <compound refid="_namespace_8cpp" kind="file"><name>Namespace.cpp</name>
   </compound>
   <compound refid="_namespace_8h" kind="file"><name>Namespace.h</name>
+  </compound>
+  <compound refid="_outside_group_8cpp" kind="file"><name>OutsideGroup.cpp</name>
+    <member refid="_outside_group_8cpp_1a71fe1b5269d8506f03b66bf7f54b3068" kind="function"><name>no_group_function</name></member>
+  </compound>
+  <compound refid="_outside_group_8h" kind="file"><name>OutsideGroup.h</name>
   </compound>
   <compound refid="_struct_union_class_8cpp" kind="file"><name>StructUnionClass.cpp</name>
   </compound>
