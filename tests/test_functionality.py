@@ -297,7 +297,7 @@ def test_no_group(record_property) -> None:
         record_property (Any): Used to inject the test case reference into the test results.
     """
 
-    record_property("lobster-trace", "Tests.tc_no_group")
+    record_property("lobster-trace", "SwTests.tc_no_group")
 
     _delete_test_lobster_output_file()
     sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
