@@ -8,7 +8,7 @@
     <detaileddescription>
 <para><variablelist>
 <varlistentry><term>Class <ref refid="class_counter" kindref="compound">Counter</ref>  </term></varlistentry>
-<listitem><para><anchor id="implements_1_implements000010"/> Requirement: SwRequirements.sw_req_class  </para>
+<listitem><para><anchor id="implements_1_implements000011"/> Requirement: SwRequirements.sw_req_class  </para>
 </listitem>
 <varlistentry><term>Member <ref refid="_function_prototype_8cpp_1aabcede9a76c6e6cf1abaa3fd7a3f94df" kindref="member">foo1</ref>  (void)</term></varlistentry>
 <listitem><para><anchor id="implements_1_implements000001"/> Requirement: SwRequirements.sw_req_function  </para>
@@ -32,10 +32,13 @@
 <listitem><para><anchor id="implements_1_implements000007"/> Requirement: SwRequirements.sw_req_namespace  </para>
 </listitem>
 <varlistentry><term>Union <ref refid="unionmemory__t" kindref="compound">memory_t</ref>  </term></varlistentry>
-<listitem><para><anchor id="implements_1_implements000009"/> Requirement: SwRequirements.sw_req_union  </para>
+<listitem><para><anchor id="implements_1_implements000010"/> Requirement: SwRequirements.sw_req_union  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="_outside_group_8cpp_1a71fe1b5269d8506f03b66bf7f54b3068" kindref="member">no_group_function</ref>  (void)</term></varlistentry>
+<listitem><para><anchor id="implements_1_implements000008"/> Requirement: SwRequirements.sw_req_no_group_function  </para>
 </listitem>
 <varlistentry><term>Struct <ref refid="structnumbers__t" kindref="compound">numbers_t</ref>  </term></varlistentry>
-<listitem><para><anchor id="implements_1_implements000008"/> Requirement: SwRequirements.sw_req_struct </para>
+<listitem><para><anchor id="implements_1_implements000009"/> Requirement: SwRequirements.sw_req_struct </para>
 </listitem>
 </variablelist>
 </para>

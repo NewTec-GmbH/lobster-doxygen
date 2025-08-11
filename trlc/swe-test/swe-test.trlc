@@ -39,6 +39,11 @@ section "SW-Tests" {
             description = "This test case checks whether requirements and justifications can be specified in interface level."
             verifies = [SwRequirements.sw_req_interface_level]
         }
+
+        SwTestCase tc_no_group {
+            description = "This test case checks whether requirements and justifications work outside of doxygen groups."
+            verifies = [SwRequirements.sw_req_no_group]
+        }
     }
 
     section "General" {

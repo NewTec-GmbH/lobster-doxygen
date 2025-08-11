@@ -282,4 +282,32 @@ def test_interface_level(record_property) -> None:
     assert True is _is_string_in_lobster_output_file("Interface method justification", "just_up")
 
 
+def test_no_group(record_property) -> None:
+    # lobster-trace: SwTest.tc_no_group
+    """
+    The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
+    verifies that the "req SwRequirement.sw_req_no_group_function" string is found in refs of the
+    data items.
+    The test also verifies that "No group struct justification" string is found in the just_up data
+    items.
+    The function and struct are in no group because there is no defgroup or ingroup in the file
+    header.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+    """
+
+    record_property("lobster-trace", "SwTests.tc_no_group")
+
+    _delete_test_lobster_output_file()
+    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+
+    exit_code = main()
+
+    assert exit_code == 0, "Exit Code returns no success."
+
+    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_no_group_function", "refs")
+    assert True is _is_string_in_lobster_output_file("No group struct justification", "just_up")
+
+
 # Main *************************************************************************

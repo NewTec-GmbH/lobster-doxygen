@@ -36,7 +36,7 @@
 <para>Memory struct. </para>
     </briefdescription>
     <detaileddescription>
-<para><xrefsect id="implements_1_implements000009"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_union </para>
+<para><xrefsect id="implements_1_implements000010"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_union </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <collaborationgraph>

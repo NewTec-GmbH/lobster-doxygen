@@ -2,37 +2,32 @@
   (c) NewTec GmbH 2025   -   www.newtec.de
 ***************************************************************************************************/
 /**
- @defgroup main_group Main file
- @file main.cpp
+ @brief Module with doxygen no group
+
+ Module with no doxygen group.
+
+ @file OutsideGroup.h
 ***************************************************************************************************/
+#ifndef OUTSIDE_GROUP_H
+#define OUTSIDE_GROUP_H
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 /* INCLUDES ***************************************************************************************/
-
-#include <cstdlib>
-#include <iostream>
-#include "FunctionPrototype.h"
-#include "StructUnionClass.h"
-#include "Namespace.h"
-#include "Method.h"
-#include "Interface.h"
-#include "OutsideGroup.h"
 
 /* CONSTANTS **************************************************************************************/
 
 /* MACROS *****************************************************************************************/
 
-/* TYPES AND CLASSES ******************************************************************************/
+/* TYPES ******************************************************************************************/
 
 /* PROTOTYPES *************************************************************************************/
 
-/* VARIABLES **************************************************************************************/
-
-/* EXTERNAL FUNCTIONS *****************************************************************************/
-
-/* INTERNAL FUNCTIONS *****************************************************************************/
-
-int main(void)
-{
-    FunctionPrototype_foo();
-    return EXIT_SUCCESS; 
+#ifdef __cplusplus
 }
+#endif
+
+#endif  /* OUTSIDE_GROUP_H */
