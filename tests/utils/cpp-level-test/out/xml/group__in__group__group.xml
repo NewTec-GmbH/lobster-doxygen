@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="group__in__group__group" kind="group">
+    <compoundname>in_group_group</compoundname>
+    <title>Module in doxygen group</title>
+    <innerfile refid="_in_group_8cpp">InGroup.cpp</innerfile>
+    <briefdescription>
+<para>Module with doxygen group. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Module with doxygen group. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

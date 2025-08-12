@@ -15,9 +15,10 @@ section "SW-Tests" {
             verifies = [SwRequirements.sw_req_input_root]
         }
 
-        SwTestCase tc_func_level {
+
+        SwTestCase tc_function_level {
             description = "This test case checks whether requirements and justifications can be specified in function/prototype level."
-            verifies = [SwRequirements.sw_req_func_level]
+            verifies = [SwRequirements.sw_req_function_level]
         }
 
         SwTestCase tc_type_level {
@@ -43,6 +44,21 @@ section "SW-Tests" {
         SwTestCase tc_no_group {
             description = "This test case checks whether requirements and justifications work outside of doxygen groups."
             verifies = [SwRequirements.sw_req_no_group]
+        }
+
+        SwTestCase tc_group {
+            description = "This test case checks whether requirements and justifications work in doxygen groups."
+            verifies = [SwRequirements.sw_req_group]
+        }
+
+        SwTestCase tc_rule_file {
+            description = "This test case checks that the program abort with an error if requirements or justifications are specified on file level."
+            verifies = [SwRequirements.sw_req_file_level, SwRequirements.sw_req_rule_file]
+        }
+
+        SwTestCase tc_rule_class {
+            description = "This test case checks that the program abort with an error if requirements or justifications on class/interface/namespace level and at least on of its methods."
+            verifies = []
         }
     }
 

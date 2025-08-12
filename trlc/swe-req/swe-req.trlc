@@ -44,7 +44,7 @@ section "SW Requirement Specification" {
                 valid_status = AbstractRequirements.VALID_STATUS.valid
             }
 
-            SwReq sw_req_func_level {
+            SwReq sw_req_function_level {
                 description = "The software shall support to specify requirements and justification on function/prototype level."
                 verification_criteria = ""
                 valid_status = AbstractRequirements.VALID_STATUS.valid
@@ -87,14 +87,14 @@ section "SW Requirement Specification" {
             }
 
             SwReq sw_req_rule_file {
-                description = "The software shall abort with an error if requirements are specified on file level."
+                description = "The software shall abort with an error if requirements or justification are specified on file level."
                 verification_criteria = ""
                 note = "Similar to the lobster-python behavior. File level is bad."
                 valid_status = AbstractRequirements.VALID_STATUS.valid
             }
 
             SwReq sw_req_rule_class {
-                description = "The software shall abort with an error if requirements are specified on class/interface/namespace level and at least on of its methods."
+                description = "The software shall abort with an error if requirements or justifications are specified on class/interface/namespace level and at least on of its methods."
                 verification_criteria = ""
                 note = "Similar to the lobster-python behavior. Mixing levels is bad."
                 valid_status = AbstractRequirements.VALID_STATUS.valid

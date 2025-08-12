@@ -44,7 +44,7 @@ def rule_check(lobster_items: list[LobsterItem]) -> bool:
         bool: True if the rules are satisfied, False otherwise.
     """
     # lobster-trace: SwRequirements.sw_req_no_group
-    # lobster-trace: SwREquirements.sw_req_group
+    # lobster-trace: SwRequirements.sw_req_group
     # lobster-trace: SwRequirements.sw_req_rule_file
     success = True
 

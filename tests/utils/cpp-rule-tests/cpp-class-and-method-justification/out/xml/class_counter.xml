@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_counter" kind="class" language="C++" prot="public">
+    <compoundname>Counter</compoundname>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_counter_1a424d25be2a0c638f7b8c72195fa8c2ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Counter::Counter</definition>
+        <argsstring>(void)</argsstring>
+        <name>Counter</name>
+        <qualifiedname>Counter::Counter</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="class_counter" kindref="compound">Counter</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="justified_1_justified000002"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Method justification </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ClassAndMethodRequiement.cpp" line="32" column="5" bodyfile="src/ClassAndMethodRequiement.cpp" bodystart="43" bodyend="46"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="class_counter" kindref="compound">Counter</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Class to test justification in class method level.</para>
+<para><xrefsect id="justified_1_justified000001"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Class justification </para>
+</xrefdescription></xrefsect></para>
+    </detaileddescription>
+    <location file="src/ClassAndMethodRequiement.cpp" line="26" column="1" bodyfile="src/ClassAndMethodRequiement.cpp" bodystart="26" bodyend="33"/>
+    <listofallmembers>
+      <member refid="class_counter_1a424d25be2a0c638f7b8c72195fa8c2ef" prot="public" virt="non-virtual"><scope>Counter</scope><name>Counter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

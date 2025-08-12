@@ -13,7 +13,7 @@
 <para>Draw. </para>
         </briefdescription>
         <detaileddescription>
-<para><xrefsect id="implements_1_implements000003"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_interface_method </para>
+<para><xrefsect id="implements_1_implements000004"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_interface_method </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -30,7 +30,7 @@
 <para>Area. </para>
         </briefdescription>
         <detaileddescription>
-<para><xrefsect id="justified_1_justified000003"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Interface method justification </para>
+<para><xrefsect id="justified_1_justified000004"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Interface method justification </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>

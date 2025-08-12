@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.14.0" xml:lang="en-US">
+  <compound refid="class_counter" kind="class"><name>Counter</name>
+    <member refid="class_counter_1a424d25be2a0c638f7b8c72195fa8c2ef" kind="function"><name>Counter</name></member>
+  </compound>
+  <compound refid="_class_and_method_requiement_8cpp" kind="file"><name>ClassAndMethodRequiement.cpp</name>
+  </compound>
+  <compound refid="group__class__and__method__requirement__group" kind="group"><name>class_and_method_requirement_group</name>
+  </compound>
+  <compound refid="implements" kind="page"><name>implements</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+</doxygenindex>

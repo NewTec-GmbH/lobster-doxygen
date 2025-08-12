@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_i_counter" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ICounter</compoundname>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_i_counter_1ad92e83df8ad0aafae92406f53058ed62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ICounter::ICounter</definition>
+        <argsstring>(void)</argsstring>
+        <name>ICounter</name>
+        <qualifiedname>ICounter::ICounter</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Construct a new Counter object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ClassAndInterfaceRequiement.cpp" line="29" column="5" bodyfile="src/ClassAndInterfaceRequiement.cpp" bodystart="47" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_counter_1a9112f99250d25982ff99a85858f8ddd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ICounter::count_up</definition>
+        <argsstring>(void)=0</argsstring>
+        <name>count_up</name>
+        <qualifiedname>ICounter::count_up</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Count up. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="implements_1_implements000002"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_interface_method </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/ClassAndInterfaceRequiement.cpp" line="36" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Counter. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Interface class to test requirements in class and interface level</para>
+<para><xrefsect id="implements_1_implements000001"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_class </para>
+</xrefdescription></xrefsect></para>
+    </detaileddescription>
+    <location file="src/ClassAndInterfaceRequiement.cpp" line="24" column="1" bodyfile="src/ClassAndInterfaceRequiement.cpp" bodystart="24" bodyend="37"/>
+    <listofallmembers>
+      <member refid="class_i_counter_1a9112f99250d25982ff99a85858f8ddd2" prot="public" virt="pure-virtual"><scope>ICounter</scope><name>count_up</name></member>
+      <member refid="class_i_counter_1ad92e83df8ad0aafae92406f53058ed62" prot="public" virt="non-virtual"><scope>ICounter</scope><name>ICounter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

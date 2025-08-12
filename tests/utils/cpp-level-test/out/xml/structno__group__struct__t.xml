@@ -22,7 +22,7 @@
     </briefdescription>
     <detaileddescription>
 <para>This struct is for no group justification.</para>
-<para><xrefsect id="justified_1_justified000008"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: No group struct justification </para>
+<para><xrefsect id="justified_1_justified000009"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: No group struct justification </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <location file="src/OutsideGroup.cpp" line="23" column="1" bodyfile="src/OutsideGroup.cpp" bodystart="23" bodyend="25"/>

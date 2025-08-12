@@ -36,7 +36,7 @@
 <para>Numbers struct. </para>
     </briefdescription>
     <detaileddescription>
-<para><xrefsect id="implements_1_implements000009"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_struct </para>
+<para><xrefsect id="implements_1_implements000010"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_struct </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <location file="src/StructUnionClass.cpp" line="24" column="1" bodyfile="src/StructUnionClass.cpp" bodystart="24" bodyend="27"/>

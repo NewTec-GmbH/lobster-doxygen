@@ -4,6 +4,8 @@
     <compoundname>src</compoundname>
     <innerfile refid="_function_prototype_8cpp">FunctionPrototype.cpp</innerfile>
     <innerfile refid="_function_prototype_8h">FunctionPrototype.h</innerfile>
+    <innerfile refid="_in_group_8cpp">InGroup.cpp</innerfile>
+    <innerfile refid="_in_group_8h">InGroup.h</innerfile>
     <innerfile refid="_interface_8cpp">Interface.cpp</innerfile>
     <innerfile refid="_interface_8h">Interface.h</innerfile>
     <innerfile refid="main_8cpp">main.cpp</innerfile>
