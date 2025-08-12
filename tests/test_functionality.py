@@ -109,7 +109,7 @@ def _test_program_with_valid_directory_to_index_file() -> None:
     checks that the program runs successfully.
     """
 
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
 
     exit_code = main()
 
@@ -126,7 +126,7 @@ def _test_program_with_directory_with_no_index_file(capsys) -> None:
     Args:
         capsys (Any): Used to capture stdout and stderr.
     """
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, EMPTY_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, EMPTY_FOLDER]
 
     exit_code = main()
 
@@ -151,7 +151,7 @@ def test_func_level(record_property) -> None:
     record_property("lobster-trace", "SwTests.tc_func_level")
 
     _delete_test_lobster_output_file()
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
@@ -187,7 +187,7 @@ def test_type_level(record_property) -> None:
     record_property("lobster-trace", "SwTests.tc_type_level")
 
     _delete_test_lobster_output_file()
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
@@ -215,7 +215,7 @@ def test_namespace_level(record_property) -> None:
     record_property("lobster-trace", "SwTests.tc_namespace_level")
 
     _delete_test_lobster_output_file()
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
@@ -241,7 +241,7 @@ def test_method_level(record_property) -> None:
     record_property("lobster-trace", "SwTests.tc_method_level")
 
     _delete_test_lobster_output_file()
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
@@ -272,7 +272,7 @@ def test_interface_level(record_property) -> None:
     record_property("lobster-trace", "SwTests.tc_interface_level")
 
     _delete_test_lobster_output_file()
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
@@ -300,7 +300,7 @@ def test_no_group(record_property) -> None:
     record_property("lobster-trace", "SwTests.tc_no_group")
 
     _delete_test_lobster_output_file()
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
@@ -308,6 +308,35 @@ def test_no_group(record_property) -> None:
 
     assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_no_group_function", "refs")
     assert True is _is_string_in_lobster_output_file("No group struct justification", "just_up")
+
+
+def test_group(record_property) -> None:
+    # lobster-trace: SwTest.tc_group
+    """
+    The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
+    verifies that the "req SwRequirement.sw_req_in_group_function" string is found in refs of the
+    data items.
+    The test also verifies that "In group struct justification" string is found in the just_up data
+    items.
+    The function and struct are in a group because defgroup or ingroup is defined in the file
+    header.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+    """
+
+    record_property("lobster-trace", "SwTests.tc_group")
+
+    _delete_test_lobster_output_file()
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+
+    exit_code = main()
+
+    assert exit_code == 0, "Exit Code returns no success."
+
+    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_in_group_function", "refs")
+    assert True is _is_string_in_lobster_output_file("In group struct justification", "just_up")
+
 
 
 # Main *************************************************************************

@@ -44,6 +44,12 @@ section "SW-Tests" {
             description = "This test case checks whether requirements and justifications work outside of doxygen groups."
             verifies = [SwRequirements.sw_req_no_group]
         }
+
+        SwTestCase tc_group {
+            description = "This test case checks whether requirements and justifications work in doxygen groups."
+            verifies = [SwRequirements.sw_req_group]
+        }
+
     }
 
     section "General" {

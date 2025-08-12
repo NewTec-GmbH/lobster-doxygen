@@ -30,7 +30,7 @@
 <para>Math namespace. </para>
     </briefdescription>
     <detaileddescription>
-<para><xrefsect id="implements_1_implements000007"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_namespace </para>
+<para><xrefsect id="implements_1_implements000008"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_namespace </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <location file="src/Namespace.cpp" line="31" column="1"/>

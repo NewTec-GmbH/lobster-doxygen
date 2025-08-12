@@ -27,7 +27,7 @@
     </briefdescription>
     <detaileddescription>
 <para>Class to test requirements and justification in class level</para>
-<para><xrefsect id="implements_1_implements000011"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_class </para>
+<para><xrefsect id="implements_1_implements000012"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_class </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <location file="src/StructUnionClass.cpp" line="46" column="1" bodyfile="src/StructUnionClass.cpp" bodystart="46" bodyend="53"/>

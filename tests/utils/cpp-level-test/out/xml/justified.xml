@@ -14,31 +14,34 @@
 <listitem><para><anchor id="justified_1_justified000001"/> Justification: Prototype justification  </para>
 </listitem>
 <varlistentry><term>Member <ref refid="class_foo_1a3097612237a5c7b4331880368953d346" kindref="member">Foo::private_method</ref>  (void)</term></varlistentry>
-<listitem><para><anchor id="justified_1_justified000006"/> Justification: Private method justification  </para>
+<listitem><para><anchor id="justified_1_justified000007"/> Justification: Private method justification  </para>
 </listitem>
 <varlistentry><term>Member <ref refid="class_foo_1ad9e21eff87e45c9a42e56a5afbc9f050" kindref="member">Foo::protected_method</ref>  (void)</term></varlistentry>
-<listitem><para><anchor id="justified_1_justified000005"/> Justification: Protected method justification  </para>
+<listitem><para><anchor id="justified_1_justified000006"/> Justification: Protected method justification  </para>
 </listitem>
 <varlistentry><term>Member <ref refid="class_foo_1ae80bc6738df4d2cfb0f01438fc525567" kindref="member">Foo::public_method</ref>  (void)</term></varlistentry>
-<listitem><para><anchor id="justified_1_justified000004"/> Justification: Public method justification  </para>
+<listitem><para><anchor id="justified_1_justified000005"/> Justification: Public method justification  </para>
 </listitem>
 <varlistentry><term>Struct <ref refid="structfoo__t" kindref="compound">foo_t</ref>  </term></varlistentry>
-<listitem><para><anchor id="justified_1_justified000010"/> Justification: Struct justification  </para>
+<listitem><para><anchor id="justified_1_justified000011"/> Justification: Struct justification  </para>
 </listitem>
 <varlistentry><term>Class <ref refid="class_foo_class" kindref="compound">FooClass</ref>  </term></varlistentry>
-<listitem><para><anchor id="justified_1_justified000009"/> Justification: Class justification  </para>
+<listitem><para><anchor id="justified_1_justified000010"/> Justification: Class justification  </para>
 </listitem>
 <varlistentry><term>Namespace <ref refid="namespacegame" kindref="compound">game</ref>  </term></varlistentry>
-<listitem><para><anchor id="justified_1_justified000007"/> Justification: Namespace justification  </para>
+<listitem><para><anchor id="justified_1_justified000008"/> Justification: Namespace justification  </para>
+</listitem>
+<varlistentry><term>Struct <ref refid="structin__group__struct__t" kindref="compound">in_group_struct_t</ref>  </term></varlistentry>
+<listitem><para><anchor id="justified_1_justified000003"/> Justification: In group struct justification  </para>
 </listitem>
 <varlistentry><term>Member <ref refid="class_i_shape_1ade3663decd01042be1e663930af811b3" kindref="member">IShape::area</ref>  ()=0</term></varlistentry>
-<listitem><para><anchor id="justified_1_justified000003"/> Justification: Interface method justification  </para>
+<listitem><para><anchor id="justified_1_justified000004"/> Justification: Interface method justification  </para>
 </listitem>
 <varlistentry><term>Struct <ref refid="structno__group__struct__t" kindref="compound">no_group_struct_t</ref>  </term></varlistentry>
-<listitem><para><anchor id="justified_1_justified000008"/> Justification: No group struct justification  </para>
+<listitem><para><anchor id="justified_1_justified000009"/> Justification: No group struct justification  </para>
 </listitem>
 <varlistentry><term>Union <ref refid="unionnumbers__u" kindref="compound">numbers_u</ref>  </term></varlistentry>
-<listitem><para><anchor id="justified_1_justified000011"/> Justification: Union justification </para>
+<listitem><para><anchor id="justified_1_justified000012"/> Justification: Union justification </para>
 </listitem>
 </variablelist>
 </para>

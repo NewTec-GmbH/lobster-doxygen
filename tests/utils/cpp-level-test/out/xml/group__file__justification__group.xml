@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="group__file__justification__group" kind="group">
+    <compoundname>file_justification_group</compoundname>
+    <title>Module for justification in file</title>
+    <briefdescription>
+<para>File justification module. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Module with justification in file level.</para>
+<para><xrefsect id="justified_1_justified000001"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: File justification</para>
+</xrefdescription></xrefsect></para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

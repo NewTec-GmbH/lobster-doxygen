@@ -34,7 +34,7 @@
 <para>Public method. </para>
         </briefdescription>
         <detaileddescription>
-<para><xrefsect id="implements_1_implements000004"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_public_method </para>
+<para><xrefsect id="implements_1_implements000005"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_public_method </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -56,7 +56,7 @@
 <para>Protected method. </para>
         </briefdescription>
         <detaileddescription>
-<para><xrefsect id="implements_1_implements000005"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_protected_method </para>
+<para><xrefsect id="implements_1_implements000006"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_protected_method </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
@@ -78,7 +78,7 @@
 <para>Private method. </para>
         </briefdescription>
         <detaileddescription>
-<para><xrefsect id="implements_1_implements000006"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_private_method </para>
+<para><xrefsect id="implements_1_implements000007"><xreftitle>Implements</xreftitle><xrefdescription><para>Requirement: SwRequirements.sw_req_private_method </para>
 </xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>

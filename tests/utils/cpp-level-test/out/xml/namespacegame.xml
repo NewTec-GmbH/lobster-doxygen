@@ -6,7 +6,7 @@
 <para><ref refid="class_game" kindref="compound">Game</ref> namespace. </para>
     </briefdescription>
     <detaileddescription>
-<para><xrefsect id="justified_1_justified000007"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Namespace justification </para>
+<para><xrefsect id="justified_1_justified000008"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: Namespace justification </para>
 </xrefdescription></xrefsect></para>
     </detaileddescription>
     <location file="src/Namespace.cpp" line="44" column="1"/>

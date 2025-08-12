@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structin__group__struct__t" kind="struct" language="C++" prot="public">
+    <compoundname>in_group_struct_t</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structin__group__struct__t_1aa77636aaee9fb9cf5e0813a3caa619a7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int in_group_struct_t::number</definition>
+        <argsstring></argsstring>
+        <name>number</name>
+        <qualifiedname>in_group_struct_t::number</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/InGroup.cpp" line="25" column="9" bodyfile="src/InGroup.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This struct is for in group justification.</para>
+<para><xrefsect id="justified_1_justified000003"><xreftitle>Justified</xreftitle><xrefdescription><para>Justification: In group struct justification </para>
+</xrefdescription></xrefsect></para>
+    </detaileddescription>
+    <location file="src/InGroup.cpp" line="24" column="1" bodyfile="src/InGroup.cpp" bodystart="24" bodyend="26"/>
+    <listofallmembers>
+      <member refid="structin__group__struct__t_1aa77636aaee9fb9cf5e0813a3caa619a7" prot="public" virt="non-virtual"><scope>in_group_struct_t</scope><name>number</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
