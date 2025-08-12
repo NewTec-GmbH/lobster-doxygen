@@ -44,6 +44,43 @@ TEST_RULE_FILE_REQUIREMENT_XML_FOLDER = "./tests/utils/cpp-rule-tests/cpp-file-r
 # Directory with Doxygen XML files from cpp-file-justification project, to test justification abort rule on file level.
 TEST_RULE_FILE_JUSTIFICATION_XML_FOLDER = "./tests/utils/cpp-rule-tests/cpp-file-justification/out/xml"
 
+# Directory with Doxygen XML files from cpp-class-and-method-requirement project, to test
+# requirements abort rule on class and method level.
+TEST_RULE_CLASS_AND_METHOD_REQUIREMENTS_XML_FOLDER = (
+    "./tests/utils/cpp-rule-tests/cpp-class-and-method-requirement/out/xml"
+)
+
+# Directory with Doxygen XML files from cpp-class-and-method-justification project, to test
+# justifications abort rule on class and method level.
+TEST_RULE_CLASS_AND_METHOD_JUSTIFICATIONS_XML_FOLDER = (
+    "./tests/utils/cpp-rule-tests/cpp-class-and-method-justification/out/xml"
+)
+
+
+# Directory with Doxygen XML files from cpp-class-and-interface-requirement project, to test
+# requirements abort rule on class and interface level.
+TEST_RULE_CLASS_AND_INTERFACE_REQUIREMENTS_XML_FOLDER = (
+    "./tests/utils/cpp-rule-tests/cpp-class-and-interface-requirement/out/xml"
+)
+
+# Directory with Doxygen XML files from cpp-class-and-interface-justification project, to test
+# justifications abort rule on class and interface level.
+TEST_RULE_CLASS_AND_INTERFACE_JUSTIFICATIONS_XML_FOLDER = (
+    "./tests/utils/cpp-rule-tests/cpp-class-and-interface-justification/out/xml"
+)
+
+
+# Directory with Doxygen XML files from cpp-namespace-and-function-requirement project, to test
+# requirements abort rule on namespace and function level.
+TEST_RULE_NAMESPACE_AND_FUNCTION_REQUIREMENTS_XML_FOLDER = (
+    "./tests/utils/cpp-rule-tests/cpp-namespace-and-function-requirement/out/xml"
+)
+
+# Directory with Doxygen XML files from cpp-namespace-and-function-justification project, to test
+# justifications abort rule on namespace and function level.
+TEST_RULE_NAMESPACE_AND_FUNCTION_JUSTIFICATIONS_XML_FOLDER = (
+    "./tests/utils/cpp-rule-tests/cpp-namespace-and-function-justification/out/xml"
+)
 
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
@@ -358,6 +395,179 @@ def test_rule_file(record_property) -> None:
     _test_abort_with_requirement_on_file_level()
     _test_abort_with_justification_on_file_level()
 
+
+def _test_abort_with_requirement_on_file_level() -> None:
+    """
+    The test case calls the program with cpp-file-requirement XML folder as doxygen_xml_folder and
+    ensures that the program aborts with a no success exit code.
+    In the cpp-file-requirement project a requirement is specified at file level.
+    """
+    _delete_test_lobster_output_file()
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_RULE_FILE_REQUIREMENT_XML_FOLDER]
+
+    exit_code = main()
+
+    assert exit_code != 0, "Exit Code returns success."
+
+
+def _test_abort_with_justification_on_file_level() -> None:
+    """
+    The test case calls the program with cpp-file-justification XML folder as doxygen_xml_folder and
+    ensures that the program aborts with a no success exit code.
+    In the cpp-file-justification project a justification is specified at file level.
+    """
+    _delete_test_lobster_output_file()
+    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_RULE_FILE_JUSTIFICATION_XML_FOLDER]
+
+    exit_code = main()
+
+    assert exit_code != 0, "Exit Code returns success."
+
+
+def test_rule_class(record_property) -> None:
+    # lobster-trace: SwTest.tc_rule_class
+    """
+    This test case tests if the program abort if requirements or justifications are defined in class
+    and method, class and interface or namespace and function level.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+    """
+    record_property("lobster-trace", "SwTests.tc_rule_class")
+    _test_abort_with_requirements_in_class_and_method_level()
+    _test_abort_with_justification_in_class_and_method_level()
+
+    _test_abort_with_requirements_in_class_and_interface_level()
+    _test_abort_with_justification_in_class_and_interface_level()
+
+    _test_abort_with_requirements_in_namespace_and_function_level()
+    _test_abort_with_justification_in_namespace_and_function_level()
+
+
+def _test_abort_with_requirements_in_class_and_method_level() -> None:
+    """
+    The test case calls the program with cpp-class-and-method-requirement XML folder as
+    doxygen_xml_folder and ensures that the program aborts with a no success exit code.
+    In the cpp-class-and-method-requirement project, requirements are specified at class and
+    method level of the class.
+    """
+    _delete_test_lobster_output_file()
+    sys.argv = [
+        "lobster-doxygen",
+        "-v",
+        "--output",
+        TEST_LOBSTER_OUTPUT_FILE,
+        TEST_RULE_CLASS_AND_METHOD_REQUIREMENTS_XML_FOLDER,
+    ]
+
+    exit_code = main()
+
+    assert exit_code != 0, "Exit Code returns success."
+
+
+def _test_abort_with_justification_in_class_and_method_level() -> None:
+    """
+    The test case calls the program with cpp-class-and-method-justification XML folder as
+    doxygen_xml_folder and ensures that the program aborts with a no success exit code.
+    In the cpp-class-and-method-justification project, justifications are specified at class and
+    method level of the class.
+    """
+    _delete_test_lobster_output_file()
+    sys.argv = [
+        "lobster-doxygen",
+        "-v",
+        "--output",
+        TEST_LOBSTER_OUTPUT_FILE,
+        TEST_RULE_CLASS_AND_METHOD_JUSTIFICATIONS_XML_FOLDER,
+    ]
+
+    exit_code = main()
+
+    assert exit_code != 0, "Exit Code returns success."
+
+
+def _test_abort_with_requirements_in_class_and_interface_level() -> None:
+    """
+    The test case calls the program with cpp-class-and-interface-requirement XML folder as
+    doxygen_xml_folder and ensures that the program aborts with a no success exit code.
+    In the cpp-class-and-interface-requirement project, requirements are specified at class and
+    interface method level of the class.
+    """
+    _delete_test_lobster_output_file()
+    sys.argv = [
+        "lobster-doxygen",
+        "-v",
+        "--output",
+        TEST_LOBSTER_OUTPUT_FILE,
+        TEST_RULE_CLASS_AND_INTERFACE_REQUIREMENTS_XML_FOLDER,
+    ]
+
+    exit_code = main()
+
+    assert exit_code != 0, "Exit Code returns success."
+
+
+def _test_abort_with_justification_in_class_and_interface_level() -> None:
+    """
+    The test case calls the program with cpp-class-and-interface-justification XML folder as
+    doxygen_xml_folder and ensures that the program aborts with a no success exit code.
+    In the cpp-class-and-interface-justification project, justifications are specified at class and
+    interface method level of the class.
+    """
+    _delete_test_lobster_output_file()
+    sys.argv = [
+        "lobster-doxygen",
+        "-v",
+        "--output",
+        TEST_LOBSTER_OUTPUT_FILE,
+        TEST_RULE_CLASS_AND_INTERFACE_JUSTIFICATIONS_XML_FOLDER,
+    ]
+
+    exit_code = main()
+
+    assert exit_code != 0, "Exit Code returns success."
+
+
+def _test_abort_with_requirements_in_namespace_and_function_level() -> None:
+    """
+    The test case calls the program with cpp-namespace-and-function-requirement XML folder as
+    doxygen_xml_folder and ensures that the program aborts with a no success exit code.
+    In the cpp-namespace-and-function-requirement project, requirements are specified at namespace and
+    function level of the namespace.
+    """
+    _delete_test_lobster_output_file()
+    sys.argv = [
+        "lobster-doxygen",
+        "-v",
+        "--output",
+        TEST_LOBSTER_OUTPUT_FILE,
+        TEST_RULE_NAMESPACE_AND_FUNCTION_REQUIREMENTS_XML_FOLDER,
+    ]
+
+    exit_code = main()
+
+    assert exit_code != 0, "Exit Code returns success."
+
+
+def _test_abort_with_justification_in_namespace_and_function_level() -> None:
+    """
+    The test case calls the program with cpp-namespace-and-function-justification XML folder as
+    doxygen_xml_folder and ensures that the program aborts with a no success exit code.
+    In the cpp-namespace-and-function-justification project, justifications are specified at namespace and
+    function level of the namespace.
+    """
+    _delete_test_lobster_output_file()
+    sys.argv = [
+        "lobster-doxygen",
+        "-v",
+        "--output",
+        TEST_LOBSTER_OUTPUT_FILE,
+        TEST_RULE_NAMESPACE_AND_FUNCTION_JUSTIFICATIONS_XML_FOLDER,
+    ]
+
+    exit_code = main()
+
+    assert exit_code != 0, "Exit Code returns success."
 
 
 # Main *************************************************************************

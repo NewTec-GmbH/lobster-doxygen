@@ -7,6 +7,22 @@ examples/simple-cpp-application/out/xml/*
 tests/utils/output-test.json
 tests/utils/cpp-level-test/out/html
 tests/utils/cpp-level-test/warnings.log
+tests/utils/cpp-rule-tests/cpp-file-requirement/out/html
+tests/utils/cpp-rule-tests/cpp-file-requirement/warnings.log
+tests/utils/cpp-rule-tests/cpp-file-justification/out/html
+tests/utils/cpp-rule-tests/cpp-file-justification/warnings.log
+tests/utils/cpp-rule-tests/cpp-class-and-method-requirement/out/html
+tests/utils/cpp-rule-tests/cpp-class-and-method-requirement/warnings.log
+tests/utils/cpp-rule-tests/cpp-class-and-method-justification/out/html
+tests/utils/cpp-rule-tests/cpp-class-and-method-justification/warnings.log
+tests/utils/cpp-rule-tests/cpp-class-and-interface-requirement/out/html
+tests/utils/cpp-rule-tests/cpp-class-and-interface-requirement/warnings.log
+tests/utils/cpp-rule-tests/cpp-class-and-interface-justification/out/html
+tests/utils/cpp-rule-tests/cpp-class-and-interface-justification/warnings.log
+tests/utils/cpp-rule-tests/cpp-namespace-and-function-requirement/out/html
+tests/utils/cpp-rule-tests/cpp-namespace-and-function-requirement/warnings.log
+tests/utils/cpp-rule-tests/cpp-namespace-and-function-justification/out/html
+tests/utils/cpp-rule-tests/cpp-namespace-and-function-justification/warnings.log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -94,7 +94,7 @@ section "SW Requirement Specification" {
             }
 
             SwReq sw_req_rule_class {
-                description = "The software shall abort with an error if requirements are specified on class/interface/namespace level and at least on of its methods."
+                description = "The software shall abort with an error if requirements or justifications are specified on class/interface/namespace level and at least on of its methods."
                 verification_criteria = ""
                 note = "Similar to the lobster-python behavior. Mixing levels is bad."
                 valid_status = AbstractRequirements.VALID_STATUS.valid

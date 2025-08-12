@@ -56,6 +56,10 @@ section "SW-Tests" {
             verifies = [SwRequirements.sw_req_file_level, SwRequirements.sw_req_rule_file]
         }
 
+        SwTestCase tc_rule_class {
+            description = "This test case checks that the program abort with an error if requirements or justifications on class/interface/namespace level and at least on of its methods."
+            verifies = []
+        }
     }
 
     section "General" {

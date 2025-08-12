@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.14.0" xml:lang="en-US">
+  <compound refid="class_i_counter" kind="class"><name>ICounter</name>
+    <member refid="class_i_counter_1ad92e83df8ad0aafae92406f53058ed62" kind="function"><name>ICounter</name></member>
+    <member refid="class_i_counter_1a9112f99250d25982ff99a85858f8ddd2" kind="function"><name>count_up</name></member>
+  </compound>
+  <compound refid="_class_and_interface_justification_8cpp" kind="file"><name>ClassAndInterfaceJustification.cpp</name>
+  </compound>
+  <compound refid="group__class__and__interface__justification__group" kind="group"><name>class_and_interface_justification_group</name>
+  </compound>
+  <compound refid="justified" kind="page"><name>justified</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+</doxygenindex>

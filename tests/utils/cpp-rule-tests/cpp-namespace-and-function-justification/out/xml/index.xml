@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.14.0" xml:lang="en-US">
+  <compound refid="namespacemath" kind="namespace"><name>math</name>
+    <member refid="namespacemath_1abb40ce7b6914681aec0fbc536df3f708" kind="function"><name>add</name></member>
+  </compound>
+  <compound refid="_namespace_and_function_justification_8cpp" kind="file"><name>NamespaceAndFunctionJustification.cpp</name>
+  </compound>
+  <compound refid="group__namespace__and__function__justification__group" kind="group"><name>namespace_and_function_justification_group</name>
+  </compound>
+  <compound refid="justified" kind="page"><name>justified</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+</doxygenindex>

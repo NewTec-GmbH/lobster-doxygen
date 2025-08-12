@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="justified" kind="page">
+    <compoundname>justified</compoundname>
+    <title>Justification Overview</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Namespace <ref refid="namespacemath" kindref="compound">math</ref>  </term></varlistentry>
+<listitem><para><anchor id="justified_1_justified000001"/> Justification: Namespace justification  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="namespacemath_1abb40ce7b6914681aec0fbc536df3f708" kindref="member">math::add</ref>  (int val1, int val2)</term></varlistentry>
+<listitem><para><anchor id="justified_1_justified000002"/> Justification: Namespace function justification </para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+    <location file="justified"/>
+  </compounddef>
+</doxygen>
