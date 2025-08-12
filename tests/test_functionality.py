@@ -38,6 +38,13 @@ TEST_XML_FOLDER = "./tests/utils/xml"
 # Directory with Doxygen XML files from cpp-level-test project, to test @implementation and @justification.
 TEST_LEVEL_XML_FOLDER = "./tests/utils/cpp-level-test/out/xml"
 
+# Directory with Doxygen XML files from cpp-file-requirement project, to test requirement abort rule on file level.
+TEST_RULE_FILE_REQUIREMENT_XML_FOLDER = "./tests/utils/cpp-rule-tests/cpp-file-requirement/out/xml"
+
+# Directory with Doxygen XML files from cpp-file-justification project, to test justification abort rule on file level.
+TEST_RULE_FILE_JUSTIFICATION_XML_FOLDER = "./tests/utils/cpp-rule-tests/cpp-file-justification/out/xml"
+
+
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
 
@@ -336,6 +343,20 @@ def test_group(record_property) -> None:
 
     assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_in_group_function", "refs")
     assert True is _is_string_in_lobster_output_file("In group struct justification", "just_up")
+
+
+def test_rule_file(record_property) -> None:
+    # lobster-trace: SwTest.tc_rule_file
+    """
+    This test case test abort with requirement on file level and abort with justification on file
+    level.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+    """
+    record_property("lobster-trace", "SwTests.tc_rule_file")
+    _test_abort_with_requirement_on_file_level()
+    _test_abort_with_justification_on_file_level()
 
 
 

@@ -51,6 +51,11 @@ section "SW-Tests" {
             verifies = [SwRequirements.sw_req_group]
         }
 
+        SwTestCase tc_rule_file {
+            description = "This test case checks that the program abort with an error if requirements or justifications are specified on file level."
+            verifies = [SwRequirements.sw_req_file_level, SwRequirements.sw_req_rule_file]
+        }
+
     }
 
     section "General" {
