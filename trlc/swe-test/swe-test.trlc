@@ -15,9 +15,10 @@ section "SW-Tests" {
             verifies = [SwRequirements.sw_req_input_root]
         }
 
-        SwTestCase tc_func_level {
+
+        SwTestCase tc_function_level {
             description = "This test case checks whether requirements and justifications can be specified in function/prototype level."
-            verifies = [SwRequirements.sw_req_func_level]
+            verifies = [SwRequirements.sw_req_function_level]
         }
 
         SwTestCase tc_type_level {

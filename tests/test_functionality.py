@@ -136,8 +136,8 @@ def _test_program_with_directory_with_no_index_file(capsys) -> None:
     assert error_output == ["Error: No doxygen index.xml file in doxygen_xml_folder ", f"{EMPTY_FOLDER}."]
 
 
-def test_func_level(record_property) -> None:
-    # lobster-trace: SwTest.tc_func_level
+def test_function_level(record_property) -> None:
+    # lobster-trace: SwTest.tc_function_level
     """
     The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_prototype" and "req SwRequirements.sw_req_function" strings
@@ -148,7 +148,7 @@ def test_func_level(record_property) -> None:
     Args:
         record_property (Any): Used to inject the test case reference into the test results.
     """
-    record_property("lobster-trace", "SwTests.tc_func_level")
+    record_property("lobster-trace", "SwTests.tc_function_level")
 
     _delete_test_lobster_output_file()
     sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]

@@ -44,7 +44,7 @@ section "SW Requirement Specification" {
                 valid_status = AbstractRequirements.VALID_STATUS.valid
             }
 
-            SwReq sw_req_func_level {
+            SwReq sw_req_function_level {
                 description = "The software shall support to specify requirements and justification on function/prototype level."
                 verification_criteria = ""
                 valid_status = AbstractRequirements.VALID_STATUS.valid
