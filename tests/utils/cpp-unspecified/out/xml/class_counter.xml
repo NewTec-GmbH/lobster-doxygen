@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_counter" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Counter</compoundname>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_counter_1a424d25be2a0c638f7b8c72195fa8c2ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Counter::Counter</definition>
+        <argsstring>(void)</argsstring>
+        <name>Counter</name>
+        <qualifiedname>Counter::Counter</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor method with no requirement or justification </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="43" column="5" bodyfile="src/main.cpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_counter_1a4a8ead38cb01e08843fb42aeda92c57e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Counter::count_up</definition>
+        <argsstring>(void)=0</argsstring>
+        <name>count_up</name>
+        <qualifiedname>Counter::count_up</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Interface with no requirement or justification </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="50" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class with no requirement or justification </para>
+    </detaileddescription>
+    <location file="src/main.cpp" line="38" column="1" bodyfile="src/main.cpp" bodystart="38" bodyend="51"/>
+    <listofallmembers>
+      <member refid="class_counter_1a4a8ead38cb01e08843fb42aeda92c57e" prot="public" virt="pure-virtual"><scope>Counter</scope><name>count_up</name></member>
+      <member refid="class_counter_1a424d25be2a0c638f7b8c72195fa8c2ef" prot="public" virt="non-virtual"><scope>Counter</scope><name>Counter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -82,6 +82,10 @@ TEST_RULE_NAMESPACE_AND_FUNCTION_JUSTIFICATIONS_XML_FOLDER = (
     "./tests/utils/cpp-rule-tests/cpp-namespace-and-function-justification/out/xml"
 )
 
+# Directory with Doxygen XML files from cpp-unspecified project, to test supported kind with no
+# requirement or justification.
+TEST_UNSPECIFIED_XML_FOLDER = "./tests/utils/cpp-unspecified/out/xml"
+
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
 
@@ -130,7 +134,7 @@ def _is_string_in_lobster_output_file(search_string: str, property_to_lock: str)
 
 
 def test_tc_input_root(record_property, capsys) -> None:
-    # lobster-trace: SwTest.tc_input_root
+    # lobster-trace: SwTests.tc_input_root
     """
     Test calls program with doxygen_xml_folder path where a valid index.xml file is inside and
     checks that the program runs successfully.
@@ -181,7 +185,7 @@ def _test_program_with_directory_with_no_index_file(capsys) -> None:
 
 
 def test_function_level(record_property) -> None:
-    # lobster-trace: SwTest.tc_function_level
+    # lobster-trace: SwTests.tc_function_level
     """
     The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_prototype" and "req SwRequirements.sw_req_function" strings
@@ -217,7 +221,7 @@ def test_function_level(record_property) -> None:
 
 
 def test_type_level(record_property) -> None:
-    # lobster-trace: SwTest.tc_type_level
+    # lobster-trace: SwTests.tc_type_level
     """
     The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_struct", "req SwRequirements.sw_req_union"
@@ -246,7 +250,7 @@ def test_type_level(record_property) -> None:
 
 
 def test_namespace_level(record_property) -> None:
-    # lobster-trace: SwTest.tc_namespace_level
+    # lobster-trace: SwTests.tc_namespace_level
     """
     The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_namespace" string are found in the data items.
@@ -269,7 +273,7 @@ def test_namespace_level(record_property) -> None:
 
 
 def test_method_level(record_property) -> None:
-    # lobster-trace: SwTest.tc_method_level
+    # lobster-trace: SwTests.tc_method_level
     """
     The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_public_method",
@@ -301,7 +305,7 @@ def test_method_level(record_property) -> None:
 
 
 def test_interface_level(record_property) -> None:
-    # lobster-trace: SwTest.tc_interface_level
+    # lobster-trace: SwTests.tc_interface_level
     """
     The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_interface_method" string is found in refs of the
@@ -327,7 +331,7 @@ def test_interface_level(record_property) -> None:
 
 
 def test_no_group(record_property) -> None:
-    # lobster-trace: SwTest.tc_no_group
+    # lobster-trace: SwTests.tc_no_group
     """
     The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_no_group_function" string is found in refs of the
@@ -355,7 +359,7 @@ def test_no_group(record_property) -> None:
 
 
 def test_group(record_property) -> None:
-    # lobster-trace: SwTest.tc_group
+    # lobster-trace: SwTests.tc_group
     """
     The test case calls the program with cpp-level-test XML folder as doxygen_xml_folder and
     verifies that the "req SwRequirement.sw_req_in_group_function" string is found in refs of the
@@ -383,7 +387,7 @@ def test_group(record_property) -> None:
 
 
 def test_rule_file(record_property) -> None:
-    # lobster-trace: SwTest.tc_rule_file
+    # lobster-trace: SwTests.tc_rule_file
     """
     This test case test abort with requirement on file level and abort with justification on file
     level.
@@ -425,7 +429,7 @@ def _test_abort_with_justification_on_file_level() -> None:
 
 
 def test_rule_class(record_property) -> None:
-    # lobster-trace: SwTest.tc_rule_class
+    # lobster-trace: SwTests.tc_rule_class
     """
     This test case tests if the program abort if requirements or justifications are defined in class
     and method, class and interface or namespace and function level.
@@ -568,6 +572,31 @@ def _test_abort_with_justification_in_namespace_and_function_level() -> None:
     exit_code = main()
 
     assert exit_code != 0, "Exit Code returns success."
+
+
+def test_unspecified(record_property) -> None:
+    # lobster-trace: SwTests.tc_unspecified
+    """
+    This test case calls the program with cpp-unspecified XML folder as doxygen_xml_folder and
+    ensures that the program is executed without errors.
+    In the cpp-unspecified project are all supported levels without a requirements or justifications.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+    """
+    record_property("lobster-trace", "SwTests.tc_unspecified")
+    _delete_test_lobster_output_file()
+    sys.argv = [
+        "lobster-doxygen",
+        "-v",
+        "--output",
+        TEST_LOBSTER_OUTPUT_FILE,
+        TEST_UNSPECIFIED_XML_FOLDER,
+    ]
+
+    exit_code = main()
+
+    assert exit_code == 0, "Exit Code returns no success."
 
 
 # Main *************************************************************************
