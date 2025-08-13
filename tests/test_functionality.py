@@ -82,6 +82,10 @@ TEST_RULE_NAMESPACE_AND_FUNCTION_JUSTIFICATIONS_XML_FOLDER = (
     "./tests/utils/cpp-rule-tests/cpp-namespace-and-function-justification/out/xml"
 )
 
+# Directory with Doxygen XML files from cpp-unspecified project, to test supported kind with no
+# requirement or justification.
+TEST_UNSPECIFIED_XML_FOLDER = "./tests/utils/cpp-unspecified/out/xml"
+
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
 
@@ -568,6 +572,31 @@ def _test_abort_with_justification_in_namespace_and_function_level() -> None:
     exit_code = main()
 
     assert exit_code != 0, "Exit Code returns success."
+
+
+def test_unspecified(record_property) -> None:
+    # lobster-trace: SwTest.tc_unspecified
+    """
+    This test case calls the program with cpp-unspecified XML folder as doxygen_xml_folder and
+    ensures that the program is executed without errors.
+    In the cpp-unspecified project are all supported levels without a requirements or justifications.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+    """
+    record_property("lobster-trace", "SwTests.tc_unspecified")
+    _delete_test_lobster_output_file()
+    sys.argv = [
+        "lobster-doxygen",
+        "-v",
+        "--output",
+        TEST_LOBSTER_OUTPUT_FILE,
+        TEST_UNSPECIFIED_XML_FOLDER,
+    ]
+
+    exit_code = main()
+
+    assert exit_code == 0, "Exit Code returns no success."
 
 
 # Main *************************************************************************

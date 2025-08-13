@@ -23,6 +23,8 @@ tests/utils/cpp-rule-tests/cpp-namespace-and-function-requirement/out/html
 tests/utils/cpp-rule-tests/cpp-namespace-and-function-requirement/warnings.log
 tests/utils/cpp-rule-tests/cpp-namespace-and-function-justification/out/html
 tests/utils/cpp-rule-tests/cpp-namespace-and-function-justification/warnings.log
+tests/utils/cpp-unspecified/out/html
+tests/utils/cpp-unspecified/warnings.log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
