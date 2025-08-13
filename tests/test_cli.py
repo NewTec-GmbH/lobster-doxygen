@@ -225,7 +225,7 @@ def test_tc_version(record_property, capsys) -> None:
 
 
 def test_tc_output(record_property, capsys) -> None:
-    # lobster-trace: SwTest.tc_output
+    # lobster-trace: SwTests.tc_output
     """
     Test to confirm that the program creates the expected output file when a '--output' argument
     is provided, and that it exits without error messages.
@@ -251,7 +251,7 @@ def test_tc_output(record_property, capsys) -> None:
 
 
 def test_tc_verbose(record_property, capsys) -> None:
-    # lobster-trace: SwTest.tc_verbose
+    # lobster-trace: SwTests.tc_verbose
     """
     This test verifies the verbose output of the lobster-doxygen program when run with the -v (verbose) flag.
     It ensures that the program produces the expected stdout output when parsing the specified Doxygen XML
@@ -278,7 +278,7 @@ def test_tc_verbose(record_property, capsys) -> None:
 
 
 def test_tc_doxygen_xml_folder(record_property) -> None:
-    # lobster-trace: SwTest.tc_doxygen_xml_folder
+    # lobster-trace: SwTests.tc_doxygen_xml_folder
     """
     Test calls program with and without positional doxygen_xml_folder argument and verifies
     that the exit code is as expected.
