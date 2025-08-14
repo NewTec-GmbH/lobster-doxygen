@@ -95,12 +95,14 @@ EMPTY_FOLDER = "./tests/utils/empty_folder"
 
 
 def _delete_test_lobster_output_file() -> None:
+    # lobster-exclude: This is a simple helper function that improves the readability of the tests.
     """Delete the LOBSTER file if it exists."""
     if Path(TEST_LOBSTER_OUTPUT_FILE).exists() and Path(TEST_LOBSTER_OUTPUT_FILE).is_file():
         Path(TEST_LOBSTER_OUTPUT_FILE).unlink()
 
 
 def _get_data_items_from_lobster_file() -> dict:
+    # lobster-exclude: Helper function for all tests in module.
     """
     Get dictionary of data section in TEST_LOBSTER_OUTPUT file.
 
@@ -115,6 +117,7 @@ def _get_data_items_from_lobster_file() -> dict:
 
 
 def _is_string_in_lobster_output_file(search_string: str, property_to_lock: str) -> bool:
+    # lobster-exclude: Helper function for all tests in module.
     """
     Checks if search_string is TEST_LOBSTER_OUTPUT_FILE file in a property of data section.
 
@@ -152,6 +155,7 @@ def test_tc_input_root(record_property, capsys) -> None:
 
 
 def _test_program_with_valid_directory_to_index_file() -> None:
+    # lobster-trace: SwTests.tc_input_root
     """
     Test calls program with doxygen_xml_folder path where a valid index.xml file is inside and
     checks that the program runs successfully.
@@ -167,6 +171,7 @@ def _test_program_with_valid_directory_to_index_file() -> None:
 
 
 def _test_program_with_directory_with_no_index_file(capsys) -> None:
+    # lobster-trace: SwTests.tc_input_root
     """
     After that program is called with doxygen_xml_folder path where no index.xml file is inside
     and checks that the program returns an error.
@@ -401,6 +406,7 @@ def test_rule_file(record_property) -> None:
 
 
 def _test_abort_with_requirement_on_file_level() -> None:
+    # lobster-trace: SwTests.tc_rule_file
     """
     The test case calls the program with cpp-file-requirement XML folder as doxygen_xml_folder and
     ensures that the program aborts with a no success exit code.
@@ -415,6 +421,7 @@ def _test_abort_with_requirement_on_file_level() -> None:
 
 
 def _test_abort_with_justification_on_file_level() -> None:
+    # lobster-trace: SwTests.tc_rule_file
     """
     The test case calls the program with cpp-file-justification XML folder as doxygen_xml_folder and
     ensures that the program aborts with a no success exit code.
@@ -449,6 +456,7 @@ def test_rule_class(record_property) -> None:
 
 
 def _test_abort_with_requirements_in_class_and_method_level() -> None:
+    # lobster-trace: SwTests.tc_rule_class
     """
     The test case calls the program with cpp-class-and-method-requirement XML folder as
     doxygen_xml_folder and ensures that the program aborts with a no success exit code.
@@ -470,6 +478,7 @@ def _test_abort_with_requirements_in_class_and_method_level() -> None:
 
 
 def _test_abort_with_justification_in_class_and_method_level() -> None:
+    # lobster-trace: SwTests.tc_rule_class
     """
     The test case calls the program with cpp-class-and-method-justification XML folder as
     doxygen_xml_folder and ensures that the program aborts with a no success exit code.
@@ -491,6 +500,7 @@ def _test_abort_with_justification_in_class_and_method_level() -> None:
 
 
 def _test_abort_with_requirements_in_class_and_interface_level() -> None:
+    # lobster-trace: SwTests.tc_rule_class
     """
     The test case calls the program with cpp-class-and-interface-requirement XML folder as
     doxygen_xml_folder and ensures that the program aborts with a no success exit code.
@@ -512,6 +522,7 @@ def _test_abort_with_requirements_in_class_and_interface_level() -> None:
 
 
 def _test_abort_with_justification_in_class_and_interface_level() -> None:
+    # lobster-trace: SwTests.tc_rule_class
     """
     The test case calls the program with cpp-class-and-interface-justification XML folder as
     doxygen_xml_folder and ensures that the program aborts with a no success exit code.
@@ -533,6 +544,7 @@ def _test_abort_with_justification_in_class_and_interface_level() -> None:
 
 
 def _test_abort_with_requirements_in_namespace_and_function_level() -> None:
+    # lobster-trace: SwTests.tc_rule_class
     """
     The test case calls the program with cpp-namespace-and-function-requirement XML folder as
     doxygen_xml_folder and ensures that the program aborts with a no success exit code.
@@ -554,6 +566,7 @@ def _test_abort_with_requirements_in_namespace_and_function_level() -> None:
 
 
 def _test_abort_with_justification_in_namespace_and_function_level() -> None:
+    # lobster-trace: SwTests.tc_rule_class
     """
     The test case calls the program with cpp-namespace-and-function-justification XML folder as
     doxygen_xml_folder and ensures that the program aborts with a no success exit code.
