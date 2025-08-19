@@ -65,11 +65,15 @@ STD_OUTPUT_WITH_VERBOSE = [
 # Functions ********************************************************************
 
 
-def _delete_test_lobster_output_file() -> None:
-    # lobster-exclude: This is a simple helper function that improves the readability of the test.
-    """Delete the LOBSTER file if it exists."""
+@pytest.fixture(autouse=True)
+def _setup_and_teardown():
+    # lobster-exclude: This is a simple helper function that prepares and cleanup the tests.
+    """Before running the test, delete the LOBSTER file if it exists."""
+    # Preparation:
     if Path(TEST_LOBSTER_OUTPUT_FILE).exists() and Path(TEST_LOBSTER_OUTPUT_FILE).is_file():
         Path(TEST_LOBSTER_OUTPUT_FILE).unlink()
+    yield
+    # Teardown:
 
 
 def test_tc_cli(record_property):
@@ -81,13 +85,10 @@ def test_tc_cli(record_property):
 
     Args:
         record_property (Any): Used to inject the test case reference into the test results.
-        capsys (Any): Used to capture stdout and stderr.
     """
     record_property("lobster-trace", "SwTests.tc_cli")
-
+    print("Run test")
     sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
-
-    _delete_test_lobster_output_file()
 
     assert main() == 0
 
@@ -109,7 +110,6 @@ def test_tc_stdout(record_property, capsys):
     main()
 
     standard_output_captured = capsys.readouterr().out.split("\n")
-    _delete_test_lobster_output_file()
 
     assert STD_OUTPUT_WITH_VERBOSE == standard_output_captured, "Standard output not as expected."
 
