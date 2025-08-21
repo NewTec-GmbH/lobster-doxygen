@@ -69,80 +69,10 @@ EMPTY_FOLDER = "./tests/utils/empty_folder"
 
 
 def _delete_test_lobster_output_file() -> None:
+    # lobster-exclude: This is a simple helper function that improves the readability of the test.
     """Delete the LOBSTER file if it exists."""
     if Path(TEST_LOBSTER_OUTPUT_FILE).exists() and Path(TEST_LOBSTER_OUTPUT_FILE).is_file():
         Path(TEST_LOBSTER_OUTPUT_FILE).unlink()
-
-
-def test_tc_cli(record_property):
-    # lobster-trace: SwTests.tc_cli
-    """
-    Test the command-line interface (CLI) argument handling of the `main` function.
-    This test simulates passing a command-line argument to the program and verifies
-    that the `main` function executes successfully with the provided input.
-
-    Args:
-        record_property (Any): Used to inject the test case reference into the test results.
-        capsys (Any): Used to capture stdout and stderr.
-    """
-    record_property("lobster-trace", "SwTests.tc_cli")
-
-    sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
-
-    _delete_test_lobster_output_file()
-
-    assert main() == 0
-
-
-def test_tc_stdout(record_property, capsys):
-    # lobster-trace: SwTests.tc_stdout
-    """
-    Test that the program prints its output to the standard output stream if it does not throw an
-    error.
-
-    Args:
-        record_property (Any): Used to inject the test case reference into the test results.
-        capsys (Any): Used to capture stdout and stderr.
-    """
-    record_property("lobster-trace", "SwTests.tc_stdout")
-
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
-
-    main()
-
-    standard_output_captured = capsys.readouterr().out.split("\n")
-    _delete_test_lobster_output_file()
-
-    assert STD_OUTPUT_WITH_VERBOSE == standard_output_captured, "Standard output not as expected."
-
-
-def test_tc_stderr(record_property, capsys):
-    # lobster-trace: SwTests.tc_stderr
-    """
-    Test that the program prints its output to the error output stream if it is called with the
-    wrong parameter.
-
-    Args:
-        record_property (Any): Used to inject the test case reference into the test results.
-        capsys (Any): Used to capture stdout and stderr.
-    """
-    record_property("lobster-trace", "SwTests.tc_stderr")
-
-    expected_error_output = [
-        "usage: lobster-doxygen [-h] [--version] [-o OUTPUT] [-v] doxygen_xml_folder",
-        "lobster-doxygen: error: the following arguments are required: doxygen_xml_folder",
-        "",
-    ]
-
-    # Call program with no arguments
-    sys.argv = ["lobster-doxygen"]
-
-    with pytest.raises(SystemExit):
-        main()
-
-    error_output_captured = capsys.readouterr().err.split("\n")
-
-    assert expected_error_output == error_output_captured, "Error output not as expected."
 
 
 def test_tc_help(record_property, capsys) -> None:
@@ -196,6 +126,17 @@ def test_tc_help(record_property, capsys) -> None:
     assert pytest_wrapped_e.value.code == 0, "ExitCode not as expected."
 
 
+@pytest.fixture(autouse=True)
+def _setup_and_teardown():
+    # lobster-exclude: This is a simple helper function that prepares and cleanup the tests.
+    """Before running the test, delete the LOBSTER file if it exists."""
+    # Preparation:
+    if Path(TEST_LOBSTER_OUTPUT_FILE).exists() and Path(TEST_LOBSTER_OUTPUT_FILE).is_file():
+        Path(TEST_LOBSTER_OUTPUT_FILE).unlink()
+    yield
+    # Teardown:
+
+
 def test_tc_version(record_property, capsys) -> None:
     # lobster-trace: SwTests.tc_version
     """
@@ -236,8 +177,6 @@ def test_tc_output(record_property, capsys) -> None:
     """
     record_property("lobster-trace", "SwTests.tc_output")
 
-    _delete_test_lobster_output_file()
-
     sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
 
     main()
@@ -271,32 +210,20 @@ def test_tc_verbose(record_property, capsys) -> None:
     error_output = captured.err.split("\n")
     standard_output = captured.out.split("\n")
 
-    _delete_test_lobster_output_file()
-
     assert error_output == [""], f"Program exit with error: {error_output}"
     assert STD_OUTPUT_WITH_VERBOSE == standard_output, "Standard output not as expected."
 
 
-def test_tc_doxygen_xml_folder(record_property) -> None:
+def test_tc_doxygen_xml_folder_program_with_positional_doxygen_xml_folder_argument(record_property) -> None:
     # lobster-trace: SwTests.tc_doxygen_xml_folder
     """
-    Test calls program with and without positional doxygen_xml_folder argument and verifies
-    that the exit code is as expected.
-
+    Test calls program with positional doxygen_xml_folder path and checks that program returns
+    success exit code.
     Args:
         record_property (Any): Used to inject the test case reference into the test results.
     """
     record_property("lobster-trace", "SwTests.tc_doxygen_xml_folder")
 
-    _test_program_with_positional_doxygen_xml_folder_argument()
-    _test_program_without_positional_doxygen_xml_folder_argument()
-
-
-def _test_program_with_positional_doxygen_xml_folder_argument() -> None:
-    """
-    Test calls program with positional doxygen_xml_folder path and checks that program returns
-    success exit code.
-    """
     sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
 
     exit_code = main()
@@ -304,11 +231,17 @@ def _test_program_with_positional_doxygen_xml_folder_argument() -> None:
     assert exit_code == 0, "Exit Code returns no success."
 
 
-def _test_program_without_positional_doxygen_xml_folder_argument() -> None:
+def test_tc_doxygen_xml_folder_program_without_positional_doxygen_xml_folder_argument(record_property) -> None:
+    # lobster-trace: SwTests.tc_doxygen_xml_folder
     """
     Test calls program without positional doxygen_xml_folder path and checks that program returns
     no success exit code.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
     """
+    record_property("lobster-trace", "SwTests.tc_doxygen_xml_folder")
+
     sys.argv = ["lobster-doxygen", "--output", TEST_LOBSTER_OUTPUT_FILE]
 
     with pytest.raises(SystemExit) as pytest_wrapped_e:
