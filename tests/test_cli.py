@@ -68,11 +68,15 @@ EMPTY_FOLDER = "./tests/utils/empty_folder"
 # Functions ********************************************************************
 
 
-def _delete_test_lobster_output_file() -> None:
-    # lobster-exclude: This is a simple helper function that improves the readability of the test.
-    """Delete the LOBSTER file if it exists."""
+@pytest.fixture(autouse=True)
+def _setup_and_teardown():
+    # lobster-exclude: This is a simple helper function that prepares and cleanup the tests.
+    """Before running the test, delete the LOBSTER file if it exists."""
+    # Preparation:
     if Path(TEST_LOBSTER_OUTPUT_FILE).exists() and Path(TEST_LOBSTER_OUTPUT_FILE).is_file():
         Path(TEST_LOBSTER_OUTPUT_FILE).unlink()
+    yield
+    # Teardown:
 
 
 def test_tc_help(record_property, capsys) -> None:
@@ -124,17 +128,6 @@ def test_tc_help(record_property, capsys) -> None:
     assert expected_output_lines == captured.out.split("\n"), "Program standard output not as expected."
     assert pytest_wrapped_e.type == SystemExit, "Program exit not as expected."
     assert pytest_wrapped_e.value.code == 0, "ExitCode not as expected."
-
-
-@pytest.fixture(autouse=True)
-def _setup_and_teardown():
-    # lobster-exclude: This is a simple helper function that prepares and cleanup the tests.
-    """Before running the test, delete the LOBSTER file if it exists."""
-    # Preparation:
-    if Path(TEST_LOBSTER_OUTPUT_FILE).exists() and Path(TEST_LOBSTER_OUTPUT_FILE).is_file():
-        Path(TEST_LOBSTER_OUTPUT_FILE).unlink()
-    yield
-    # Teardown:
 
 
 def test_tc_version(record_property, capsys) -> None:
