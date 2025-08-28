@@ -32,10 +32,11 @@ section "SW Requirement Specification" {
 
         section "Functionality" {
 
-            SwReq sw_req_input_root {
-                description = "The software shall parse the doxygen xml output using the index.xml file as root."
+            SwReq sw_req_output_file_format {
+                description = "The software shall generate a file in the LOBSTER common interchange format based on the information from the doxygen XML output."
                 verification_criteria = ""
                 valid_status = AbstractRequirements.VALID_STATUS.valid
+                note = "The doxygen index.xml file should be parsed as root."
             }
 
             SwReq sw_req_file_level {
