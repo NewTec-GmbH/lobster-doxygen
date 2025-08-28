@@ -126,6 +126,7 @@ section "SW Requirement Specification" {
             SwReq sw_req_cli_output {
                 description = "The software shall support to set the output folder and output file name by command line argument '-o' or '--output'."
                 verification_criteria = ""
+                note = "If this argument is not specified, the output file should be named 'lobster.json'."
                 valid_status = AbstractRequirements.VALID_STATUS.valid
             }
 
