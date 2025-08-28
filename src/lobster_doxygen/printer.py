@@ -41,11 +41,9 @@ class Printer:
 
     _print_verbose = False
 
-    def __init__(self):
-        pass
-
     @classmethod
     def set_verbose(cls):
+        # lobster-trace: SwRequirements.sw_req_cli_verbose
         """Set verbose mode for all instances of the class."""
         cls._print_verbose = True
 

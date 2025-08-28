@@ -31,6 +31,7 @@ from lobster_doxygen.lobster_kind import LobsterKind
 
 
 class LobsterItem:  # pylint: disable=too-many-instance-attributes
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     """Class to represent a lobster item."""
 
     def __init__(self, item_id: str) -> None:
