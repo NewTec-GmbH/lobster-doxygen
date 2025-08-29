@@ -31,7 +31,7 @@ _INDENT_SPACES = 4
 
 
 def indent(level: int, text: str) -> str:
-    # lobster-trace: SwRequirements.sw_req_output_file_format
+    # lobster-exclude: Helper function that improves readability.
     """Indent the given text with the specified level.
 
     Args:
