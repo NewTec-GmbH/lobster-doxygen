@@ -35,6 +35,7 @@ from lobster_doxygen.utils import indent
 
 
 def _write_with_indent(output_file: TextIOWrapper, level: int, text: str) -> None:
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     """Write the given text to the output file with indentation.
 
     Args:
@@ -46,6 +47,7 @@ def _write_with_indent(output_file: TextIOWrapper, level: int, text: str) -> Non
 
 
 def _write_lobster_header(output_file: TextIOWrapper) -> None:
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     """Write the header of the lobster configuration file.
 
     Args:
@@ -56,6 +58,7 @@ def _write_lobster_header(output_file: TextIOWrapper) -> None:
 
 
 def _write_lobster_tail(output_file: TextIOWrapper) -> None:
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     """Write the tail of the lobster configuration file.
     This function finalizes the lobster configuration file by closing the data array
     and adding metadata about the generator and schema.
@@ -71,6 +74,7 @@ def _write_lobster_tail(output_file: TextIOWrapper) -> None:
 
 
 def _write_lobster_item(output_file: TextIOWrapper, lobster_item: LobsterItem) -> None:
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     """Write a lobster item to the output file.
 
     Args:
@@ -132,6 +136,7 @@ def _write_lobster_item(output_file: TextIOWrapper, lobster_item: LobsterItem) -
 
 
 def write_lobster_common_interchange_format_file(lobster_items: list[LobsterItem], output_file_name: str) -> None:
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     """Write the LOBSTER common interchange format file with lobster_items.
     File format as described in
     https://github.com/bmw-software-engineering/lobster/blob/main/documentation/schemas.md.

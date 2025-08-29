@@ -8,7 +8,6 @@
 
 /* INCLUDES ***************************************************************************************/
 
-#include <cstdlib>
 #include <iostream>
 
 /* CONSTANTS **************************************************************************************/
@@ -33,10 +32,21 @@ static void print_title(void)
 	std::cout << "simple-cpp-application for lobster-doxygen example\n";
 }
 
+/**
+ * Print information
+ * 
+ * @justification{Justification text for this function.}
+ */
+static void print_info(void)
+{
+    std::cout << "information" << "\n";
+}
+
 /* INTERNAL FUNCTIONS *****************************************************************************/
 
 int main(void)
 {
     print_title();
+    print_info();
     return EXIT_SUCCESS; 
 }

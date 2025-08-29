@@ -29,6 +29,15 @@ import enum
 
 
 class LobsterKind(enum.Enum):
+    # lobster-trace: SwRequirements.sw_req_unspecified
+    # lobster-trace: SwRequirements.sw_req_function_level
+    # lobster-trace: SwRequirements.sw_req_type_level
+    # lobster-trace: SwRequirements.sw_req_namespace_level
+    # lobster-trace: SwRequirements.sw_req_method_level
+    # lobster-trace: SwRequirements.sw_req_interface_level
+    # lobster-trace: SwRequirements.sw_req_file_level
+    # lobster-trace: SwRequirements.sw_req_no_group
+    # lobster-trace: SwRequirements.sw_req_group
     """Enum to represent the kind of lobster item."""
 
     UNDEFINED = "Undefined"

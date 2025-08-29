@@ -59,6 +59,7 @@ _LOBSTER_ITEM_KINDS = [
 
 
 def _get_xrefdescriptions_from_detaileddescription(detaileddescription: descriptionType) -> list[descriptionType]:
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     """Get a list with xrefdescriptions from detaileddescription.
 
     Args:
@@ -79,6 +80,7 @@ def _get_xrefdescriptions_from_detaileddescription(detaileddescription: descript
 
 
 def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descriptionType) -> tuple[list[str], list[str]]:
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     """Parse the detaileddescription for xrefdescription to retrieve requirement
     with _REQ_SPECIFIER and justification with _JUSTIFICATION_SPECIFIER
     references and return them with two separate lists.
@@ -116,6 +118,7 @@ def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descript
 
 
 def _get_lobster_item_children_from_compounddef(compounddef: compounddefType) -> list[LobsterItem]:
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     """Parse the members of the compound definition and returns list of
     children LobsterItems.
 
@@ -169,6 +172,7 @@ def _get_lobster_item_children_from_compounddef(compounddef: compounddefType) ->
 
 
 def _lobster_item_from_compounddef(compounddef: compounddefType) -> LobsterItem:
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     """Creates a LobsterItem from comppunddef.
 
     Args:
@@ -178,7 +182,6 @@ def _lobster_item_from_compounddef(compounddef: compounddefType) -> LobsterItem:
     Returns:
         LobsterItem: LobsterItem created from compounddef.
     """
-    # lobster-trace: SwRequirements.sw_req_unspecified
     lobster_item = LobsterItem(compounddef.get_id())
 
     # DoxCompoundKind to LobsterKind
@@ -218,14 +221,16 @@ def _get_lobster_items_from_compound(compound_path: str) -> list[LobsterItem]:
     Returns:
         list[LobsterItem]: The list of LobsterItems from compound.
     """
-    # lobster-trace: SwRequirements.sw_req_no_group
-    # lobster-trace: SwRequirements.sw_req_group
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     # lobster-trace: SwRequirements.sw_req_file_level
     # lobster-trace: SwRequirements.sw_req_function_level
     # lobster-trace: SwRequirements.sw_req_type_level
     # lobster-trace: SwRequirements.sw_req_namespace_level
     # lobster-trace: SwRequirements.sw_req_method_level
     # lobster-trace: SwRequirements.sw_req_interface_level
+    # lobster-trace: SwRequirements.sw_req_no_group
+    # lobster-trace: SwRequirements.sw_req_group
+    # lobster-trace: SwRequirements.sw_req_unspecified
     lobster_items = []
     root_obj = doxmlparser.compound.parse(compound_path, True)
 
@@ -256,10 +261,10 @@ def get_lobster_items_from_doxygen_xml_folder(doxygen_xml_folder: str) -> list[L
         list[LobsterItem] | None: The list of lobster items. If an error occurs,
         None is returned.
     """
+    # lobster-trace: SwRequirements.sw_req_output_file_format
     lobster_items = []
 
     try:
-        # lobster-trace: SwRequirements.sw_req_input_root
         root_obj = doxmlparser.index.parse(doxygen_xml_folder + "/index.xml", True)
 
         for compound in root_obj.get_compound():  # for each compound defined in the index

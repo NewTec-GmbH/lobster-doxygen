@@ -31,6 +31,7 @@ _INDENT_SPACES = 4
 
 
 def indent(level: int, text: str) -> str:
+    # lobster-exclude: Helper function that improves readability.
     """Indent the given text with the specified level.
 
     Args:

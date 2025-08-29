@@ -78,6 +78,7 @@ LOG = Printer()
 
 
 class RawDescriptionHelpFormatterWithNL(argparse.RawDescriptionHelpFormatter):
+    # lobster-trace: SwRequirements.sw_req_cli_help
     """Custom help formatter to keep newlines in the description."""
 
     def _fill_text(self, text, width, indent):
@@ -127,6 +128,7 @@ def _add_parser() -> argparse.ArgumentParser:
 
 
 def _print_program_arguments(args: argparse.Namespace) -> None:
+    # lobster-trace: SwRequirements.sw_req_cli_verbose
     """Print program argument information.
 
     Args:
@@ -139,6 +141,9 @@ def _print_program_arguments(args: argparse.Namespace) -> None:
 
 
 def _convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder: str, output_file_name: str) -> Ret:
+    # lobster-trace: SwRequirements.sw_req_cli_doxygen_xml_folder
+    # lobster-trace: SwRequirements.sw_req_output_file_format
+    # lobster-trace: SwRequirements.sw_req_cli_output
     """Convert xml files in doxygen_xml_folder to LOBSTER common interchange format file with name
     output.
 

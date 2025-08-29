@@ -90,6 +90,70 @@ TEST_UNSPECIFIED_XML_FOLDER = "./tests/utils/cpp-unspecified/out/xml"
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
 
+# Expected data in LOBSTER file for TEST_XML_FOLDER.
+EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT = [
+    "{",
+    '    "data": [',
+    "        {",
+    '            "tag": "cpp main_8cpp_1ab7c242550b0e07889a040b75b58956ff",',
+    '            "location": {',
+    '                "kind": "file",',
+    '                "file": "src/main.cpp",',
+    '                "line": 31,',
+    '                "column": 13',
+    "            },",
+    '            "name": "print_title",',
+    '            "messages": [],',
+    '            "just_up": [],',
+    '            "just_down": [],',
+    '            "just_global": [],',
+    '            "refs": [',
+    '                "req SwRequirements.sw_req_text_output"',
+    "            ],",
+    '            "language": "C++",',
+    '            "kind": "Function"',
+    "        },",
+    "        {",
+    '            "tag": "cpp main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe",',
+    '            "location": {',
+    '                "kind": "file",',
+    '                "file": "src/main.cpp",',
+    '                "line": 38,',
+    '                "column": 5',
+    "            },",
+    '            "name": "main",',
+    '            "messages": [],',
+    '            "just_up": [],',
+    '            "just_down": [],',
+    '            "just_global": [],',
+    '            "refs": [],',
+    '            "language": "C++",',
+    '            "kind": "Function"',
+    "        },",
+    "        {",
+    '            "tag": "unknown  group__main__group",',
+    '            "location": {',
+    '                "kind": "file",',
+    '                "file": "",',
+    '                "line": 0,',
+    '                "column": 0',
+    "            },",
+    '            "name": "main_group",',
+    '            "messages": [],',
+    '            "just_up": [],',
+    '            "just_down": [],',
+    '            "just_global": [],',
+    '            "refs": [],',
+    '            "language": "None",',
+    '            "kind": "Group"',
+    "        }",
+    "    ],",
+    '    "generator": "lobster-doxygen",',
+    '    "schema": "lobster-imp-trace",',
+    '    "version": 3',
+    "}",
+]
+
 # Classes **********************************************************************
 
 # Functions ********************************************************************
@@ -141,23 +205,27 @@ def _is_string_in_lobster_output_file(search_string: str, property_to_lock: str)
     return False
 
 
-def test_tc_input_root_program_with_valid_directory_to_index_file(record_property) -> None:
-    # lobster-trace: SwTests.tc_input_root
+def test_tc_output_file_format_verify_generated_file(record_property) -> None:
+    # lobster-trace: SwTests.tc_output_file_format
     """
     Test calls program with doxygen_xml_folder path where a valid index.xml file is inside and
     checks that the program runs successfully.
+    The test verifies that the generated LOBSTER common interchange file contains the expected data.
     """
-    record_property("lobster-trace", "SwTests.tc_input_root")
+    record_property("lobster-trace", "SwTests.tc_output_file_format")
 
     sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
 
     exit_code = main()
+    with open(TEST_LOBSTER_OUTPUT_FILE, "r", encoding="utf-8") as lobster_file:
+        lobster_file_content = [line.strip("\n") for line in lobster_file.readlines()]
 
     assert exit_code == 0, "Exit Code returns no success."
+    assert lobster_file_content == EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT
 
 
-def test_tc_input_root_program_with_directory_with_no_index_file(record_property, capsys) -> None:
-    # lobster-trace: SwTests.tc_input_root
+def test_tc_output_file_format_program_with_directory_with_no_index_file(record_property, capsys) -> None:
+    # lobster-trace: SwTests.tc_output_file_format
     """
     After that program is called with doxygen_xml_folder path where no index.xml file is inside
     and checks that the program returns an error.
@@ -165,7 +233,7 @@ def test_tc_input_root_program_with_directory_with_no_index_file(record_property
     Args:
         capsys (Any): Used to capture stdout and stderr.
     """
-    record_property("lobster-trace", "SwTests.tc_input_root")
+    record_property("lobster-trace", "SwTests.tc_output_file_format")
 
     sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, EMPTY_FOLDER]
 

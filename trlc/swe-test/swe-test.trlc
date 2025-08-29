@@ -10,9 +10,9 @@ section "SW-Tests" {
     }
 
     section "Functionality" {
-        SwTestCase tc_input_root {
-            description = "This test case verifies that the tool parses the Doxygen XML output file 'index.xml' as the root file."
-            verifies = [SwRequirements.sw_req_input_root]
+        SwTestCase tc_output_file_format {
+            description = "This test case verifies that the tool parses the 'index.xml' Doxygen XML output file as the root file, and that the output file is in the LOBSTER common interchange format."
+            verifies = [SwRequirements.sw_req_output_file_format]
         }
 
         SwTestCase tc_function_level {
