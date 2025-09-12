@@ -64,6 +64,11 @@ section "SW-Tests" {
             description = "This test case checks whether the program works with all supported levels without requirements or a justification."
             verifies = [SwRequirements.sw_req_unspecified]
         }
+
+        SwTestCase tc_no_trace {
+            description = "This test case checks whether the program outputs a warning and creates a 'empty' lobster common interchange file."
+            verifies = [SwRequirements.sw_req_no_trace]
+        }
     }
 
     section "General" {
