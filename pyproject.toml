@@ -22,7 +22,7 @@ classifiers = [
 
 dependencies = [
     "toml>=0.10.2",
-    "bmw-lobster==0.12.1",
+    "bmw-lobster==1.0.*",
     "doxmlparser>=1.13.2",
     "rich==14.0.0"
 ]
