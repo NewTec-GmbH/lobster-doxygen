@@ -90,9 +90,9 @@ TEST_UNSPECIFIED_XML_FOLDER = "./tests/utils/cpp-unspecified/out/xml"
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
 
-# Directory with Doxygen XML files from cpp-no-sourcecode project, to test that providing no
-# source code does not cause an error.
-TEST_NO_SOURCECODE_XML_FOLDER = "./tests/utils/cpp-no-sourcecode/out/xml"
+# Directory with Doxygen XML files from cpp-no-trace project, to test that providing no
+# source code and the generated doxygen XML code does not cause an error.
+TEST_NO_TRACE_XML_FOLDER = "./tests/utils/cpp-no-trace/out/xml"
 
 # Expected data in LOBSTER file for TEST_XML_FOLDER.
 EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT = [
@@ -157,6 +157,8 @@ EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT = [
     '    "version": 3',
     "}",
 ]
+
+WARNING_OUTPUT_NO_LOBSTER_ITMES = "Warning: No lobster items found in the doxygen XML output."
 
 # Classes **********************************************************************
 
@@ -695,15 +697,15 @@ def test_tc_unspecified(record_property) -> None:
     assert exit_code == 0, "Exit Code returns no success."
 
 
-def test_tc_no_source_code(record_property) -> None:
+def test_tc_no_trace(record_property, capsys) -> None:
     # lobster-trace: SwTests.tc_no_trace
     """
-    This test case calls the program with cpp-unspecified XML folder as doxygen_xml_folder and
+    This test case calls the program with cpp-no-trace XML folder as doxygen_xml_folder and
     ensures that the program is executed without errors.
-    In the cpp-unspecified project are all supported levels without a requirements or justifications.
 
     Args:
         record_property (Any): Used to inject the test case reference into the test results.
+        capsys (Any): Used to capture the output of the program.
     """
     record_property("lobster-trace", "SwTests.tc_no_trace")
 
@@ -712,10 +714,16 @@ def test_tc_no_source_code(record_property) -> None:
         "-v",
         "--output",
         TEST_LOBSTER_OUTPUT_FILE,
-        TEST_NO_SOURCECODE_XML_FOLDER,
+        TEST_NO_TRACE_XML_FOLDER,
     ]
 
     exit_code = main()
+
+    captured = capsys.readouterr()
+    error_output = captured.err.split("\n")
+
+    assert [
+        WARNING_OUTPUT_NO_LOBSTER_ITMES] == error_output, f"Program exit with error: {error_output}"
 
     assert exit_code == 0, "Exit Code returns no success."
 
