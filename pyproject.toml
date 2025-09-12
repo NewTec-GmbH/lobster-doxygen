@@ -12,7 +12,7 @@ authors = [
     { name = "Andreas Merkle", email = "andreas.merkle@newtec.de" },
     { name = "Dominik Knoll", email = "dominik.knoll@newtec.de"}
 ]
-license = "GPL-3.0-only" 
+license = "GPL-3.0-or-later" 
 classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.10",
