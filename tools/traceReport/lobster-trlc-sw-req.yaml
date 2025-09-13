@@ -2,4 +2,9 @@ inputs:
     - ./../../trlc/model/
     - ./../../trlc/swe-req/
 
-trlc_config_file: ./lobster-sw-req.conf
+conversion-rules:
+    - package: SwRequirements
+      record-type: SwReq
+      namespace: req
+      description-fields:
+        - description

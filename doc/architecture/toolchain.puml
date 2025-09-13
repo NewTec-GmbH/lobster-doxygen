@@ -21,7 +21,6 @@ file "doxygen-lobster.json" as doxygenLobsterFile <<cuif>>
 file "report-lobster.json" as reportLobsterFile <<cuif>>
 file "lobster.conf" as lobsterConf <<config>>
 
-
 package "Trace Doxygen XML files to requirements" {
     component "lobster-doxygen" as lobsterDoxygen <<tool>>
     file "Doxygen XML file(s)\n(*.xml)" as doxygenFiles
@@ -40,14 +39,11 @@ package "Trace source code to requirements in Doxygen documentation" {
 
 package "Trace logical levels on trlc basis" {
     component "lobster-trlc" as lobsterTrlc <<tool>>
-    file "lobster-trlc.conf" as lobsterTrlcConf <<config>>
     file "lobster-trlc.yaml" as lobsterTrlcYaml <<config>>
     file "Source file(s)\n(*.trlc)" as trlcSourceFiles
     file "Model(s)\n(*.rls)" as modelFiles
 
     lobsterTrlcYaml ..> lobsterTrlc: <<flow>>
-    lobsterTrlcYaml ..> lobsterTrlcConf: <<select>>
-    lobsterTrlcConf ..> lobsterTrlc: <<flow>>
     trlcSourceFiles ..> lobsterTrlc: <<flow>>
     modelFiles ..> lobsterTrlc: <<flow>>
 }
@@ -80,14 +76,10 @@ doxygenLobsterFile ..> lobsterReport: <<flow>>
 reportLobsterFile ..> lobsterHtmlReport: <<flow>>
 reportLobsterFile ...> lobsterOnlineReport: <<flow>>
 
-note left of lobsterTrlcConf
-    Defines which attributes shall be taken over
-    into the report from the sources (*.trlc).
-end note
-
 note left of lobsterTrlcYaml
     Defines which files/directories are used and
-    which .conf file shall be used
+    which attributes shall be taken over
+    into the report from the sources (*.trlc).
 end note
 
 note bottom of doxygenLobsterFile

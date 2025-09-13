@@ -3,4 +3,12 @@ inputs:
     - ./../../trlc/swe-test/
     - ./../../trlc/swe-req/
     - ./../testReport/out/
-trlc_config_file: ./lobster-sw-test-result.conf
+
+conversion-rules:
+    - package: SwTests
+      record-type: SwTestCaseResult
+      namespace: req
+      description-fields:
+        - name
+      tags:
+        - relates
