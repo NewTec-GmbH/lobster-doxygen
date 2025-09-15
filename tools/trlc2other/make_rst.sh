@@ -45,13 +45,13 @@ else
     rm -rf "$OUTPUT_DIR"/*
 fi
 
-$TRLC_CONVERTER --source=../../trlc/swe-req --include=../../trlc/model --verbose --out="$OUTPUT_DIR" --project="$CONVERTER" "$OUT_FORMAT"
+$TRLC_CONVERTER --source=../../trlc/swe-req --include=../../trlc/model --translation=converter/translation.json --verbose --out="$OUTPUT_DIR" --project="$CONVERTER" "$OUT_FORMAT"
 
 if [ $? -ne 0 ]; then
     exit 1
 fi
 
-$TRLC_CONVERTER --source=../../trlc/swe-arch --include=../../trlc/model --include=../../trlc/swe-req --exclude=../../trlc/swe-req --verbose --out="$OUTPUT_DIR" --project="$CONVERTER" "$OUT_FORMAT"
+$TRLC_CONVERTER --source=../../trlc/swe-arch --include=../../trlc/model --include=../../trlc/swe-req --exclude=../../trlc/swe-req --translation=converter/translation.json --verbose --out="$OUTPUT_DIR" --project="$CONVERTER" "$OUT_FORMAT"
 
 if [ $? -ne 0 ]; then
     exit 1

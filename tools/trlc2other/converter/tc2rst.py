@@ -21,19 +21,14 @@
 
 # Imports **********************************************************************
 
-from pyTRLCConverter.base_converter import RecordsPolicy
-from pyTRLCConverter.ret import Ret
-
-from pyTRLCConverter.trlc_helper import Record_Object
-
-# pylint: disable=wrong-import-order
+# pylint: disable=import-error
 from generic_rsl_rst_converter import GenericRslRstConverter
 
 # Variables ********************************************************************
 
 # Classes **********************************************************************
 
-
+# pylint: disable=too-few-public-methods
 class TestCaseRstConverter(GenericRslRstConverter):
     """Custom Project specific reStructuredText converter for test cases.
     """
@@ -51,11 +46,9 @@ class TestCaseRstConverter(GenericRslRstConverter):
            {
                 "Image": self._print_image,
                 "Info": self._print_info,
-                "PlantUML": self._print_plantuml,
-                "SwTestCase": self._print_sw_test_case,
+                "PlantUML": self._print_plantuml
            }
         )
-        self._record_policy = RecordsPolicy.RECORD_SKIP_UNDEFINED
 
     @staticmethod
     def get_description() -> str:
@@ -65,26 +58,6 @@ class TestCaseRstConverter(GenericRslRstConverter):
             str: Converter description
         """
         return "Convert test case definitions into project extended reStructuredText format."
-
-    def _print_sw_test_case(self, sw_test_case: Record_Object, level: int) -> Ret:
-        """Prints the software test case.
-
-        Args:
-            sw_test_case (Record_Object): Software test case to print
-            level (int): Current level of the record object
-
-        Returns:
-            Ret: Status
-        """
-
-        self._write_empty_line_on_demand()
-
-        attribute_translation = {
-            "description": "Description",
-            "verifies": "Verifies"
-        }
-
-        return self._convert_record_object(sw_test_case, level, attribute_translation)
 
 # Functions ********************************************************************
 

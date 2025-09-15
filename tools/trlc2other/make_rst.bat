@@ -51,13 +51,13 @@ if not exist "%OUTPUT_DIR%" (
     del /q /s "%OUTPUT_DIR%\*" >nul
 )
 
-%TRLC_CONVERTER% --source=..\..\trlc\swe-req --include=..\..\trlc\model --verbose --out=%OUTPUT_DIR% --project=%CONVERTER% %OUT_FORMAT%
+%TRLC_CONVERTER% --source=..\..\trlc\swe-req --include=..\..\trlc\model --translation=converter\translation.json --verbose --out=%OUTPUT_DIR% --project=%CONVERTER% %OUT_FORMAT%
 
 if errorlevel 1 (
     goto error
 )
 
-%TRLC_CONVERTER% --source=..\..\trlc\swe-arch --include=..\..\trlc\model --include=..\..\trlc\swe-req --exclude=..\..\trlc\swe-req --verbose --out=%OUTPUT_DIR% --project=%CONVERTER% %OUT_FORMAT%
+%TRLC_CONVERTER% --source=..\..\trlc\swe-arch --include=..\..\trlc\model --include=..\..\trlc\swe-req --exclude=..\..\trlc\swe-req --translation=converter\translation.json --verbose --out=%OUTPUT_DIR% --project=%CONVERTER% %OUT_FORMAT%
 
 if errorlevel 1 (
     goto error
