@@ -20,18 +20,15 @@
 # If not, see <https://www.gnu.org/licenses/>.
 
 # Imports **********************************************************************
-from pyTRLCConverter.base_converter import RecordsPolicy
-from pyTRLCConverter.ret import Ret
-from pyTRLCConverter.trlc_helper import Record_Object
 
-# pylint: disable=wrong-import-order
+# pylint: disable=import-error
 from generic_rsl_markdown_converter import GenericRslMarkdownConverter
 
 # Variables ********************************************************************
 
 # Classes **********************************************************************
 
-
+# pylint: disable=too-few-public-methods
 class ProjectMarkdownConverter(GenericRslMarkdownConverter):
     """Custom Project specific Markdown Converter.
     """
@@ -47,15 +44,9 @@ class ProjectMarkdownConverter(GenericRslMarkdownConverter):
            {
                 "Image":self._print_image,
                 "Info": self._print_info,
-                "PlantUML": self._print_plantuml,
-                "SwReq": self._print_sw_req,
-                "SwReqNonFunc": self._print_sw_req_non_func,
-                "SwConstraint": self._print_sw_constraint,
-                "SwArchSpec":self._convert_sw_arch_spec
+                "PlantUML": self._print_plantuml
            }
         )
-
-        self._record_policy = RecordsPolicy.RECORD_SKIP_UNDEFINED
 
     @staticmethod
     def get_description() -> str:
@@ -65,75 +56,6 @@ class ProjectMarkdownConverter(GenericRslMarkdownConverter):
             str: Converter description
         """
         return "Convert into project extended markdown format."
-
-    def _print_sw_req(self, sw_req: Record_Object, level: int) -> Ret:
-        """Prints the software requirement.
-
-        Args:
-            sw_req (Record_Object): Software requirement to print
-            level (int): Current level of the record object
-        """
-        self._write_empty_line_on_demand()
-
-        attribute_translation = {
-            "description": "Description",
-            "note": "Note",
-            "verification_criteria": "Verification Criteria",
-            "derived": "Derived"
-        }
-
-        return self._convert_record_object(sw_req, level, attribute_translation)
-
-    def _print_sw_req_non_func(self, sw_req: Record_Object, level: int) -> Ret:
-        """Prints the software non-functional requirement.
-
-        Args:
-            sw_req (Record_Object): Software non-functional requirement to print
-            level (int): Current level of the record object
-        """
-        self._write_empty_line_on_demand()
-
-        attribute_translation = {
-            "description": "Description",
-            "note": "Note",
-            "derived": "Derived"
-        }
-
-        return self._convert_record_object(sw_req, level, attribute_translation)
-
-    def _print_sw_constraint(self, sw_constraint: Record_Object, level: int) -> Ret:
-        """Prints the software constraint.
-
-        Args:
-            sw_constraint (Record_Object): Software constraint to print
-            level (int): Current level of the record object
-        """
-        self._write_empty_line_on_demand()
-
-        attribute_translation = {
-            "description": "Description",
-            "note": "Note",
-            "derived": "Derived"
-        }
-
-        return self._convert_record_object(sw_constraint, level, attribute_translation)
-
-    def _convert_sw_arch_spec(self, sw_arch_spec: Record_Object, level: int) -> Ret:
-        """Convert a software architecture specification.
-
-        Args:
-            sw_arch_spec (Record_Object): Software arch specification to print
-            level (int): Current level of the record object
-        """
-        self._write_empty_line_on_demand()
-
-        attribute_translation = {
-            "description": "Description",
-            "note": "Note",
-            "satisfies": "Satisfies"
-        }
-
-        return self._convert_record_object(sw_arch_spec, level, attribute_translation)
 
 # Functions ********************************************************************
 

@@ -26,6 +26,7 @@ support for the TRLC record types defined in Generic.rsl.
 # Imports **********************************************************************
 import os
 import shutil
+from typing import Optional
 from pyTRLCConverter.ret import Ret
 from pyTRLCConverter.markdown_converter import MarkdownConverter
 from pyTRLCConverter.trlc_helper import Record_Object
@@ -43,12 +44,17 @@ class GenericRslMarkdownConverter(MarkdownConverter):
     """
 
     # pylint: disable=unused-argument
-    def _print_info(self, info: Record_Object, level: int) -> Ret:
+    def _print_info(self, info: Record_Object, level: int, translation: Optional[dict]) -> Ret:
         """Prints the information.
 
         Args:
-            info (Record_Object): Information to print
-            level (int): Current level of the record object
+            info (Record_Object): Information to print.
+            level (int): Current level of the record object.
+            translation (Optional[dict]): Translation dictionary for the record object.
+                                            If None, no translation is applied.
+
+        Returns:
+           Ret: Status
         """
         self._write_empty_line_on_demand()
 
@@ -61,12 +67,17 @@ class GenericRslMarkdownConverter(MarkdownConverter):
         return Ret.OK
 
     # pylint: disable=unused-argument
-    def _print_plantuml(self, diagram: Record_Object, level: int) -> Ret:
+    def _print_plantuml(self, diagram: Record_Object, level: int, translation: Optional[dict]) -> Ret:
         """Prints a plantuml diagram.
 
         Args:
-            diagram (Record_Object): Diagram to print
-            level (int): Current level of the record object
+            diagram (Record_Object): Diagram to print.
+            level (int): Current level of the record object.
+            translation (Optional[dict]): Translation dictionary for the record object.
+                                            If None, no translation is applied.
+
+        Returns:
+           Ret: Status
         """
         image_file = convert_plantuml_to_image(
             self._get_attribute(diagram, "file_path"),
@@ -85,12 +96,17 @@ class GenericRslMarkdownConverter(MarkdownConverter):
         return Ret.OK
 
     # pylint: disable=unused-argument
-    def _print_image(self, image: Record_Object, level: int) -> Ret:
+    def _print_image(self, image: Record_Object, level: int, translation: Optional[dict]) -> Ret:
         """Prints the image.
 
         Args:
-            image (Record_Object): Diagram to print
-            level (int): Current level of the record object
+            image (Record_Object): Diagram to print.
+            level (int): Current level of the record object.
+            translation (Optional[dict]): Translation dictionary for the record object.
+                                            If None, no translation is applied.
+
+        Returns:
+           Ret: Status
         """
         image_file = locate_file(self._get_attribute(image, "file_path"), self._args.source)
         if image_file is not None:
