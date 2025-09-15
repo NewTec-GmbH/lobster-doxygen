@@ -83,7 +83,7 @@ class CustomRstConverter(RstConverter):
 
     # pylint: disable=unused-argument
     def _append_test_case_result(self, record: Record_Object, level: int, translation: Optional[dict]) -> Ret:
-        """Prints the information.
+        """Append test case result.
 
         Args:
             record (Record_Object): Record object to convert.
