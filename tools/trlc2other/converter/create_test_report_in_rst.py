@@ -86,7 +86,7 @@ class CustomRstConverter(RstConverter):
         """Prints the information.
 
         Args:
-            info (Record_Object): Information to print.
+            record (Record_Object): Record object to convert.
             level (int): Current level of the record object.
             translation (Optional[dict]): Translation dictionary for the record object.
                                             If None, no translation is applied.
