@@ -160,6 +160,18 @@ EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT = [
 
 WARNING_OUTPUT_NO_LOBSTER_ITMES = "Warning: No lobster items found in the doxygen XML output."
 
+# Expected data in LOBSTER file for TEST_NO_TRACE_XML_FOLDER.
+EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT_NO_TRACE = [
+    "{",
+    '    "data": [',
+    '',
+    "    ],",
+    '    "generator": "lobster-doxygen",',
+    '    "schema": "lobster-imp-trace",',
+    '    "version": 3',
+    "}",
+]
+
 # Classes **********************************************************************
 
 # Functions ********************************************************************
@@ -726,5 +738,11 @@ def test_tc_no_trace(record_property, capsys) -> None:
         WARNING_OUTPUT_NO_LOBSTER_ITMES] == error_output, f"Program exit with error: {error_output}"
 
     assert exit_code == 0, "Exit Code returns no success."
+
+    with open(TEST_LOBSTER_OUTPUT_FILE, "r", encoding="utf-8") as lobster_file:
+        lobster_file_content = [line.strip("\n")
+                                for line in lobster_file.readlines()]
+
+    assert lobster_file_content == EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT_NO_TRACE, "Output file content is not as expected."
 
 # Main *************************************************************************
