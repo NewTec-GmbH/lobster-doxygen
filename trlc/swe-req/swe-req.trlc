@@ -107,6 +107,13 @@ section "SW Requirement Specification" {
                 note = "This is required to detect untraced sourcecode."
                 valid_status = AbstractRequirements.VALID_STATUS.valid
             }
+
+            SwReq sw_req_no_trace {
+                description = "The software shall output a warning and create a lobster common interchange file if doxygen XML contains no traces."
+                verification_criteria = ""
+                note = "This is required to detect untraced sourcecode, but doesn't break any toolchain flow."
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
         }
 
         section "User Interface" {

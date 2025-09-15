@@ -116,13 +116,17 @@ def _add_parser() -> argparse.ArgumentParser:
     # lobster-trace: SwRequirements.sw_req_cli_doxygen_xml_folder
     # lobster-trace: SwRequirements.sw_req_cli_output
     # lobster-trace: SwRequirements.sw_req_cli_verbose
-    parser = argparse.ArgumentParser(description=_HELP_DESCRIPTION, formatter_class=RawDescriptionHelpFormatterWithNL)
-    parser.add_argument("--version", action="version", version="%(prog)s " + __version__)
-    parser.add_argument("doxygen_xml_folder", type=str, help="Path to the doxygen XML output folder.")
+    parser = argparse.ArgumentParser(
+        description=_HELP_DESCRIPTION, formatter_class=RawDescriptionHelpFormatterWithNL)
+    parser.add_argument("--version", action="version",
+                        version="%(prog)s " + __version__)
+    parser.add_argument("doxygen_xml_folder", type=str,
+                        help="Path to the doxygen XML output folder.")
     parser.add_argument(
         "-o", "--output", type=str, help="Output file name. Default: lobster.json", default="lobster.json"
     )
-    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output.")
+    parser.add_argument("-v", "--verbose", action="store_true",
+                        help="Enable verbose output.")
 
     return parser
 
@@ -144,6 +148,7 @@ def _convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder
     # lobster-trace: SwRequirements.sw_req_cli_doxygen_xml_folder
     # lobster-trace: SwRequirements.sw_req_output_file_format
     # lobster-trace: SwRequirements.sw_req_cli_output
+    # lobster-trace: SwRequirements.sw_req_no_trace
     """Convert xml files in doxygen_xml_folder to LOBSTER common interchange format file with name
     output.
 
@@ -154,29 +159,32 @@ def _convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder
     Return:
         Ret.RET_OK: LOBSTER common interchange format file successful created.
         Ret.RET_ERROR_FILEPATH_INVALID: No index.xml file in doxygen_folder
-        Ret.RET_ERROR_NO_LOBSTER_ITEMS: No LOBSTER items found in index.xml file.
         Ret.RET_ERROR: Conversion not successful.
     """
     ret_status = Ret.RET_ERROR
     is_index_file_found = False
 
     if not os.path.isfile(doxygen_xml_folder + "/index.xml"):
-        LOG.print_error(f"No doxygen index.xml file in doxygen_xml_folder {doxygen_xml_folder}.")
+        LOG.print_error(
+            f"No doxygen index.xml file in doxygen_xml_folder {doxygen_xml_folder}.")
         ret_status = Ret.RET_ERROR_FILEPATH_INVALID
         is_index_file_found = False
     else:
         is_index_file_found = True
 
     if is_index_file_found:
-        lobster_items = get_lobster_items_from_doxygen_xml_folder(doxygen_xml_folder)
+        lobster_items = get_lobster_items_from_doxygen_xml_folder(
+            doxygen_xml_folder)
         # Continue only if no error during parsing.
         if lobster_items is not None:
             # Check if lobster items are found.
             if 0 == len(lobster_items):
-                LOG.print_error("No lobster items found in the doxygen XML output.")
-                ret_status = Ret.RET_ERROR_NO_LOBSTER_ITEMS
-            elif rule_check(lobster_items) is True:
-                write_lobster_common_interchange_format_file(lobster_items, output_file_name)
+                LOG.print_warning(
+                    "No lobster items found in the doxygen XML output.")
+
+            if rule_check(lobster_items) is True:
+                write_lobster_common_interchange_format_file(
+                    lobster_items, output_file_name)
                 ret_status = Ret.RET_OK
 
     return ret_status
@@ -210,7 +218,8 @@ def main() -> Ret:
 
         # Check if the doxygen folder exists in the arguments.
         if args.doxygen_xml_folder:
-            ret_status = _convert_doxygen_xml_to_lobster_common_interchange_format(args.doxygen_xml_folder, args.output)
+            ret_status = _convert_doxygen_xml_to_lobster_common_interchange_format(
+                args.doxygen_xml_folder, args.output)
 
     return ret_status
 

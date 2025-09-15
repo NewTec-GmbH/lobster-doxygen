@@ -90,6 +90,10 @@ TEST_UNSPECIFIED_XML_FOLDER = "./tests/utils/cpp-unspecified/out/xml"
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
 
+# Directory with Doxygen XML files from cpp-no-trace project, to test that providing no
+# source code and the generated doxygen XML code does not cause an error.
+TEST_NO_TRACE_XML_FOLDER = "./tests/utils/cpp-no-trace/out/xml"
+
 # Expected data in LOBSTER file for TEST_XML_FOLDER.
 EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT = [
     "{",
@@ -147,6 +151,20 @@ EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT = [
     '            "language": "None",',
     '            "kind": "Group"',
     "        }",
+    "    ],",
+    '    "generator": "lobster-doxygen",',
+    '    "schema": "lobster-imp-trace",',
+    '    "version": 3',
+    "}",
+]
+
+WARNING_OUTPUT_NO_LOBSTER_ITMES = "Warning: No lobster items found in the doxygen XML output."
+
+# Expected data in LOBSTER file for TEST_NO_TRACE_XML_FOLDER.
+EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT_NO_TRACE = [
+    "{",
+    '    "data": [',
+    '',
     "    ],",
     '    "generator": "lobster-doxygen",',
     '    "schema": "lobster-imp-trace",',
@@ -214,11 +232,13 @@ def test_tc_output_file_format_verify_generated_file(record_property) -> None:
     """
     record_property("lobster-trace", "SwTests.tc_output_file_format")
 
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, TEST_XML_FOLDER]
 
     exit_code = main()
     with open(TEST_LOBSTER_OUTPUT_FILE, "r", encoding="utf-8") as lobster_file:
-        lobster_file_content = [line.strip("\n") for line in lobster_file.readlines()]
+        lobster_file_content = [line.strip("\n")
+                                for line in lobster_file.readlines()]
 
     assert exit_code == 0, "Exit Code returns no success."
     assert lobster_file_content == EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT
@@ -235,14 +255,16 @@ def test_tc_output_file_format_program_with_directory_with_no_index_file(record_
     """
     record_property("lobster-trace", "SwTests.tc_output_file_format")
 
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, EMPTY_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, EMPTY_FOLDER]
 
     exit_code = main()
 
     captured = capsys.readouterr()
     error_output = captured.err.split("\n")
     assert exit_code != 0, "Exit Code returns success."
-    assert error_output == ["Error: No doxygen index.xml file in doxygen_xml_folder ", f"{EMPTY_FOLDER}."]
+    assert error_output == [
+        "Error: No doxygen index.xml file in doxygen_xml_folder ", f"{EMPTY_FOLDER}."]
 
 
 def test_tc_function_level(record_property) -> None:
@@ -259,7 +281,8 @@ def test_tc_function_level(record_property) -> None:
     """
     record_property("lobster-trace", "SwTests.tc_function_level")
 
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
@@ -294,18 +317,25 @@ def test_tc_type_level(record_property) -> None:
     """
     record_property("lobster-trace", "SwTests.tc_type_level")
 
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
     assert exit_code == 0, "Exit Code returns no success."
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_struct", "refs")
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_union", "refs")
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_class", "refs")
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_struct", "refs")
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_union", "refs")
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_class", "refs")
 
-    assert True is _is_string_in_lobster_output_file("Struct justification", "just_up")
-    assert True is _is_string_in_lobster_output_file("Union justification", "just_up")
-    assert True is _is_string_in_lobster_output_file("Class justification", "just_up")
+    assert True is _is_string_in_lobster_output_file(
+        "Struct justification", "just_up")
+    assert True is _is_string_in_lobster_output_file(
+        "Union justification", "just_up")
+    assert True is _is_string_in_lobster_output_file(
+        "Class justification", "just_up")
 
 
 def test_tc_namespace_level(record_property) -> None:
@@ -321,13 +351,16 @@ def test_tc_namespace_level(record_property) -> None:
     """
     record_property("lobster-trace", "SwTests.tc_namespace_level")
 
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
     assert exit_code == 0, "Exit Code returns no success."
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_namespace", "refs")
-    assert True is _is_string_in_lobster_output_file("Namespace justification", "just_up")
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_namespace", "refs")
+    assert True is _is_string_in_lobster_output_file(
+        "Namespace justification", "just_up")
 
 
 def test_tc_method_level(record_property) -> None:
@@ -346,19 +379,26 @@ def test_tc_method_level(record_property) -> None:
     """
     record_property("lobster-trace", "SwTests.tc_method_level")
 
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
     assert exit_code == 0, "Exit Code returns no success."
 
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_public_method", "refs")
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_protected_method", "refs")
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_private_method", "refs")
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_public_method", "refs")
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_protected_method", "refs")
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_private_method", "refs")
 
-    assert True is _is_string_in_lobster_output_file("Public method justification", "just_up")
-    assert True is _is_string_in_lobster_output_file("Protected method justification", "just_up")
-    assert True is _is_string_in_lobster_output_file("Private method justification", "just_up")
+    assert True is _is_string_in_lobster_output_file(
+        "Public method justification", "just_up")
+    assert True is _is_string_in_lobster_output_file(
+        "Protected method justification", "just_up")
+    assert True is _is_string_in_lobster_output_file(
+        "Private method justification", "just_up")
 
 
 def test_tc_interface_level(record_property) -> None:
@@ -376,14 +416,17 @@ def test_tc_interface_level(record_property) -> None:
 
     record_property("lobster-trace", "SwTests.tc_interface_level")
 
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
     assert exit_code == 0, "Exit Code returns no success."
 
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_interface_method", "refs")
-    assert True is _is_string_in_lobster_output_file("Interface method justification", "just_up")
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_interface_method", "refs")
+    assert True is _is_string_in_lobster_output_file(
+        "Interface method justification", "just_up")
 
 
 def test_tc_no_group(record_property) -> None:
@@ -403,14 +446,17 @@ def test_tc_no_group(record_property) -> None:
 
     record_property("lobster-trace", "SwTests.tc_no_group")
 
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
     assert exit_code == 0, "Exit Code returns no success."
 
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_no_group_function", "refs")
-    assert True is _is_string_in_lobster_output_file("No group struct justification", "just_up")
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_no_group_function", "refs")
+    assert True is _is_string_in_lobster_output_file(
+        "No group struct justification", "just_up")
 
 
 def test_tc_group(record_property) -> None:
@@ -430,14 +476,17 @@ def test_tc_group(record_property) -> None:
 
     record_property("lobster-trace", "SwTests.tc_group")
 
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, TEST_LEVEL_XML_FOLDER]
 
     exit_code = main()
 
     assert exit_code == 0, "Exit Code returns no success."
 
-    assert True is _is_string_in_lobster_output_file("req SwRequirements.sw_req_in_group_function", "refs")
-    assert True is _is_string_in_lobster_output_file("In group struct justification", "just_up")
+    assert True is _is_string_in_lobster_output_file(
+        "req SwRequirements.sw_req_in_group_function", "refs")
+    assert True is _is_string_in_lobster_output_file(
+        "In group struct justification", "just_up")
 
 
 def test_tc_rule_file_abort_with_requirement_on_file_level(record_property) -> None:
@@ -452,7 +501,8 @@ def test_tc_rule_file_abort_with_requirement_on_file_level(record_property) -> N
     """
     record_property("lobster-trace", "SwTests.tc_rule_file")
 
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_RULE_FILE_REQUIREMENT_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, TEST_RULE_FILE_REQUIREMENT_XML_FOLDER]
 
     exit_code = main()
 
@@ -471,7 +521,8 @@ def test_tc_rule_file_abort_with_justification_on_file_level(record_property) ->
     """
     record_property("lobster-trace", "SwTests.tc_rule_file")
 
-    sys.argv = ["lobster-doxygen", "-v", "--output", TEST_LOBSTER_OUTPUT_FILE, TEST_RULE_FILE_JUSTIFICATION_XML_FOLDER]
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, TEST_RULE_FILE_JUSTIFICATION_XML_FOLDER]
 
     exit_code = main()
 
@@ -657,5 +708,41 @@ def test_tc_unspecified(record_property) -> None:
 
     assert exit_code == 0, "Exit Code returns no success."
 
+
+def test_tc_no_trace(record_property, capsys) -> None:
+    # lobster-trace: SwTests.tc_no_trace
+    """
+    This test case calls the program with cpp-no-trace XML folder as doxygen_xml_folder and
+    ensures that the program is executed without errors.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+        capsys (Any): Used to capture the output of the program.
+    """
+    record_property("lobster-trace", "SwTests.tc_no_trace")
+
+    sys.argv = [
+        "lobster-doxygen",
+        "-v",
+        "--output",
+        TEST_LOBSTER_OUTPUT_FILE,
+        TEST_NO_TRACE_XML_FOLDER,
+    ]
+
+    exit_code = main()
+
+    captured = capsys.readouterr()
+    error_output = captured.err.split("\n")
+
+    assert [
+        WARNING_OUTPUT_NO_LOBSTER_ITMES] == error_output, f"Program exit with error: {error_output}"
+
+    assert exit_code == 0, "Exit Code returns no success."
+
+    with open(TEST_LOBSTER_OUTPUT_FILE, "r", encoding="utf-8") as lobster_file:
+        lobster_file_content = [line.strip("\n")
+                                for line in lobster_file.readlines()]
+
+    assert lobster_file_content == EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT_NO_TRACE, "Output file content is not as expected."
 
 # Main *************************************************************************
