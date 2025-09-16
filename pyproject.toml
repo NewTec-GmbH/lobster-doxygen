@@ -10,7 +10,8 @@ readme = "README.md"
 requires-python = ">=3.10, <3.13"
 authors = [
     { name = "Andreas Merkle", email = "andreas.merkle@newtec.de" },
-    { name = "Dominik Knoll", email = "dominik.knoll@newtec.de"}
+    { name = "Dominik Knoll", email = "dominik.knoll@newtec.de"},
+    { name = "Schulz Norbert", email = "norbert.schulz@newtec.de"},
 ]
 license = "GPL-3.0-or-later" 
 classifiers = [
