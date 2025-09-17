@@ -41,9 +41,9 @@ REPORT_TOOL_PATH=./tools/testReport
 TEST_RESULT_REPORT_XML=test_result_report.xml
 TEST_RESULT_REPORT_TRLC=test_result_report.trlc
 TRLC_CONVERTER=pyTRLCConverter
-CONVERTER_DIR=trlc2other/converter
+CONVERTER_DIR=../trlc2other/converter
 OUTPUT_DIR=out
-CONVERTER=../trlc2other/create_test_report_in_rst.py
+CONVERTER=$CONVERTER_DIR/create_test_report_in_rst.py
 OUT_FORMAT=rst
 
 if [ ! -d "$OUT_DIR" ]; then
