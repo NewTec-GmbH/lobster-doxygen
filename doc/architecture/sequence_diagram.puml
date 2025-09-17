@@ -21,7 +21,7 @@ user -> main: doxygen-lobster <arguments>
         return rule check results
         alt rule check passed
             converter -> writer: write lobster common interchange format file
-            return write result
+            return result code
         end
     return result code
 return result code

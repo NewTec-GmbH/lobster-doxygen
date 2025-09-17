@@ -1,4 +1,5 @@
 @startuml class_diagram
+skinparam linetype ortho
 
 package "PyPI Libraries" {
     class bmw-lobster     
@@ -6,7 +7,7 @@ package "PyPI Libraries" {
     class rich 
 }
 
-note bottom of "PyPI Libraries"
+note left of "PyPI Libraries"
     External 3rd party libraries
     used by lobster_doxygen
 end note
