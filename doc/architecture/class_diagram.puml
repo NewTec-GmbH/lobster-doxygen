@@ -1,23 +1,15 @@
 @startuml class_diagram
 
-' Setting ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-' Components '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-
 package "PyPI Libraries" {
-    class bmw-lobster {
-
-    }
-
-    class doxmlparser {
-
-    }
-
-    class rich {
-      
-    }
+    class bmw-lobster     
+    class doxmlparser 
+    class rich 
 }
+
+note bottom of "PyPI Libraries"
+    External 3rd party libraries
+    used by lobster_doxygen
+end note
 
 package lobster_doxygen {
     class main {
@@ -59,8 +51,8 @@ package lobster_doxygen {
     }
 
     note top of checker
-        Rule based checks for
-        LobsterItems.
+        Rule based validation
+        for LobsterItem contents.
     end note
 
     class LobsterItem {
@@ -75,18 +67,19 @@ package lobster_doxygen {
 }
 
 package Utilities {
-        class Printer {
-        }
+ 
+    class Printer    
+    class Version     
+    class utils 
+    
+    utils .d[hidden].> Version
+    Version .d[hidden].> Printer
+}
 
-        class Version {
-        }
-
-        class utils 
-
-        utils .d[hidden].> Version
-        Version .d[hidden].> Printer
-    }
-' Flows ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+note top of Utilities
+    Helper functions used
+    across lobster_doxygen.
+end note
 
 
 main .d.> converter
@@ -99,4 +92,5 @@ reader .d.> doxmlparser
 writer .d.> "bmw-lobster"
 
 Printer .d.> rich
+
 @enduml
