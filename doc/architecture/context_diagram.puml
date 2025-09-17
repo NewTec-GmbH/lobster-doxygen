@@ -2,7 +2,6 @@
 
 ' Setting ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-left to right direction
 skinparam linetype ortho
 <style>
 component {
@@ -20,20 +19,24 @@ component {
 ' Components '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 package "Input" {
-    file "Source file(s) supported by Doxygen\n(e.g. *cpp, *c, *.java), with doxygen documentation" as source_code <<files>>
-    note bottom of source_code
-        With implements and justification links 
-        to TRLC requirements 
+    file "Source file(s) supported by Doxygen\n(e.g. *cpp, *c, *.java), with Doxygen comments" as source_code <<files>>
+    note left of source_code
+        With implements and justification
+        links to TRLC requirements 
     end note
 }
 
 package "Doxygen Toolchain" {
-    component "Doxygen" as doxygen <<tool>>
+    component "doxygen" as doxygen <<tool>>
     file "Doxyfile" as doxygen_configuration <<config>>
 
-    note right of doxygen_configuration
-        With implements and justification aliases. 
-        Extract all and XML output enabled. 
+    note left of doxygen_configuration
+        With
+        - Aliases for 
+         * implements
+         * justification
+        - Extract all
+        - XML output enabled. 
     end note
 
     file "XML output" as xml_output <<files>>
@@ -48,10 +51,10 @@ package LOBSTER {
 
 ' Flows ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-source_code .down..> doxygen :  <<flow>>
-doxygen --> doxygen_configuration : <<uses>>
-doxygen .down..> xml_output : <<generates>>
+source_code .down.> doxygen :  <<flow>>
+doxygen ..left..> doxygen_configuration : <<use>>
+doxygen .down.> xml_output : <<generates>>
 xml_output .down.> lobster_doxygen : <<input>>
-lobster_doxygen .down..> lobster_configuration_file : <<generates>>
+lobster_doxygen .down.> lobster_configuration_file : <<generates>>
 
 @enduml

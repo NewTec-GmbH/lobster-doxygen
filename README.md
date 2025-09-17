@@ -17,16 +17,28 @@
 
 ## Overview
 
-lobster-doxygen is a tool to extract requirement annotations from doxygen XML output files.
-It produces the [LOBSTER common interchange format](https://github.com/bmw-software-engineering/lobster/blob/main/documentation/schemas.md) as output.
+lobster-doxygen is a python commandline tool to extract requirement annotations from doxygen comments using
+doxygen's XML output format. It produces the
+[LOBSTER common interchange format](https://github.com/bmw-software-engineering/lobster/blob/main/documentation/schemas.md)
+as output. A major advantage of lobster-doxygen is that the XML input files can come from every doxygen supported programming
+language, including C, C++, Python, Java, Objective-C, PHP, Fortran, and more. This allows a straightforward and standardized
+integration into the LOBSTER TRLC toolchain. Note, at the moment C and C++ are in focus!
 
-One major advantage of lobster-doxygen is that the XML input files can come from many different programming languages, including C, C++, Python, Java, Objective-C, PHP, Fortran, and more. This allows  a straightforward and standardized integration into the LOBSTER TRLC toolchain.
+Using [doxygen aliases](https://www.doxygen.nl/manual/config.html#cfg_aliases) inside source code comments makes tracing from
+code quite simple. The following aliases are supported:
 
-Note, at the moment C and C++ is in focus!
+- ```@implements{<REQ-ID>}```  to link to requirments for tracing.
 
-Using a doxygen alias makes the tracing in code quite simple. Use ```@implements{<REQ-ID>}``` for tracing and ```@justification{<JUSTIFY-PLEASE>}``` to justify why no tracing is required, but the code fragment is needed.
+- ```@justification{<JUSTIFY-PLEASE>}```  to justify why no tracing is required, but the code fragment is needed.
 
-An overview of how lobster-doxygen fits into the LOBSTER toolchain:
+> [!NOTE]  
+> lobster-doxygen is not a standalone solution, but a component extending the
+> [BMW LOBSTER tooling](https://github.com/bmw-software-engineering/lobster). Understanding of the LOBSTER tool purpose and usage
+> is required to benefit from lobster-doxygen.
+
+The following diagram shows how lobster-doxygen fits into the LOBSTER toolchain. It provides a data flow path from source code
+to the LOBSTER common interchange format.
+
 ![lobster-doxygen in LOBSTER toolchain](doc/architecture/toolchain.png)
 
 ## Installation
@@ -87,7 +99,7 @@ options:
 
 ### Sourcecode
 
-The following example shows how it will look like in the sourecode. Please note that it doesn't show all possibilites.
+The following example shows how requirement annotations in source code will look like, using doxygen annotation.
 
 ```cpp
 
@@ -119,14 +131,14 @@ Please be aware of how to document in general using doxygen, see the [attention 
 ## Doxygen Configuration
 
 In order to feed lobster-doxygen with the correct data, Doxygen needs to be configured.
-For the requirement annotation the `Doxyfile` needs the following aliases:
+The following ALIASES definitions inside the `Doxyfile` are needed to support the requirement annotations:
 
 ```bash
 ALIASES                = "implements{1}=@xrefitem implements \"Implements\" \"Requirement Traceability\" Requirement: \1" \
                          "justification{1}=@xrefitem justified \"Justified\" \"Justification Overview\" Justification: \1"
 ```
 
-Change extract settings that Doxygen will use all entities in documentation:
+Change the extract settings as follows to instruct Doxygen to use all entities in documentation:
 
 ```bash
 EXTRACT_ALL            = YES
@@ -160,22 +172,22 @@ EXTRACT_LOCAL_METHODS  = YES
 EXTRACT_ANON_NSPACES   = YES
 ```
 
-To enable the XML output:
+Finally enable the XML output generation:
 
 ```bash
 GENERATE_XML           = YES
 ```
 
-Once doxygen has run successfully, the `xml` directory can be set as the `doxygen_xml_folder` in the application.
-Example `Doxyfile` can be found in the [examples](./examples) directory.
+Once doxygen has run successfully, the `xml` directory can be used as the `doxygen_xml_folder` when calling lobster-doxygen.
+An example `Doxyfile` can be found in the [examples](./examples) directory.
 
 ## Examples
 
-Check out the [Examples](./examples).
+Check out the [Examples](./examples) subpage for using the included example(s).
 
 ## SW Documentation
 
-More information on the deployment and architecture can be found in the [documentation](./doc/README.md)
+More information on the deployment and architecture can be found in the [documentation](./doc/README.md) subpage.
 
 For Detailed Software Design run `$ /doc/detailed-design/make html` to generate the detailed design documentation that then can be found
 in the folder `/doc/detailed-design/_build/html/index.html`

@@ -1,79 +1,97 @@
 @startuml class_diagram
+skinparam linetype ortho
 
-' Setting ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-' Components '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-class main <<module>> {
-  + main(): Ret.CODE
-  - _add_parser(): argparse.ArgumentParser
-  - _print_program_arguments(args: argparse.Namespace): None
-  - _convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder: str, output_file_name: str): Ret
+package "PyPI Libraries" {
+    class bmw-lobster     
+    class doxmlparser 
+    class rich 
 }
 
-enum Ret <<enum>> {
-    RET_OK
-    RET_ERROR
-    RET_ERROR_ARGPARSE
-    RET_ERROR_FILEPATH_INVALID
-    RET_ERROR_NO_LOBSTER_ITEMS 
-}
-
-enum LobsterKind <<enum>> {
-    UNDEFINED
-    FUNCTION
-    PROTOTYPE
-    METHOD
-    CLASS
-    STRUCT
-    INTERFACE
-    FILE
-    NAMESPACE
-    GROUP
-}
-
-note right of LobsterKind
-  Enum to represent the kind of lobster item.
+note left of "PyPI Libraries"
+    External 3rd party libraries
+    used by lobster_doxygen
 end note
 
-class LobsterItem {
-    + item_id: str
-    + file_name: str
-    + line: int
-    + column: int
-    + name: str
-    + refs: List
-    + just_up: List
-    + language: str
-    + kind: LobsterKind
-    - _children: List<LobsterItem>
+package lobster_doxygen {
+    class main {
 
-    + append_lobster_child(item: LobsterItem): None 
-    + get_children(): List<LobsterItem>
-    + has_children(): bool
-    + has_refs(): bool
-    + has_just_up(): bool
-    - _language_to_tag_prefix(language: str): str
-    + get_tag(): str
+    } 
+
+    note top of main
+        Entry point and
+        argument handling.
+    end note
+
+    class "doxygen_to_lobster_converter" as converter {
+    }
+
+    note top of converter
+        Conversion processor
+    end note
+
+    class "write_lobster_common_interchange_format_file" as writer {
+
+    }
+
+    note top of writer
+        Lobster interchange
+        format output
+        file writer.
+    end note
+
+    class "get_lobster_items_from_doxygen_xml_folder" as reader {
+    }
+
+
+    note left of reader
+        Doxygen XML 
+        input reader.
+    end note
+    class "rule_check" as checker{
+
+    }
+
+    note top of checker
+        Rule based validation
+        for LobsterItem contents.
+    end note
+
+    class LobsterItem {
+
+    }
+
+        note top of LobsterItem
+        Lobster item
+        representation.
+    end note
+
 }
 
-note top of LobsterItem
-  Class to represent a lobster item.
+package Utilities {
+ 
+    class Printer    
+    class Version     
+    class utils 
+    
+    utils .d[hidden].> Version
+    Version .d[hidden].> Printer
+}
+
+note top of Utilities
+    Helper functions used
+    across lobster_doxygen.
 end note
 
-class Printer {
-    + set_verbose(): None <<classmethod>>
-    + print_error(message: str): None
-    + print_warning(message: str): None
-    + print_info(message: str): None
-}
 
-' Flows ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+main .d.> converter
+converter .d.> reader
+converter .d.> writer
+converter .r.> checker
+converter "*" o.l.> LobsterItem 
 
-main "1" ..> "*" LobsterItem : <<use>>
-main "1" ..> "1" Ret : <<use>>
-main "1" ..> "1" Printer : <<use>>
-LobsterItem ..> "1" LobsterKind : <<use>>
-LobsterItem <--o "*" LobsterItem : <<has children>>
+reader .d.> doxmlparser
+writer .d.> "bmw-lobster"
+
+Printer .d.> rich
 
 @enduml

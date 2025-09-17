@@ -11,5 +11,10 @@ This is an example of a C++ application to generates Doxygen XML output for the 
 
 ## XML Output generation
 
-- `doxygen` to generate XML output.
-- `lobster-doxygen -v -o .\out\sw_test_result-lobster.json .\out\xml` to generate LOBSTER common interchange format file.
+Call `doxygen` to generate XML output.
+
+## XML conversion to LOBSTER interchange format
+
+Call `lobster-doxygen --verbose --output ./out/sw_test_result-lobster.json ./out/xml` to generate the LOBSTER common interchange format file.
+
+This will create the file ```out/sw_test_result-lobster.json``` containing the trace information from the source code.

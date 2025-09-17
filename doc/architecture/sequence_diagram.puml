@@ -1,0 +1,43 @@
+@startuml sequence_diagram
+
+Actor user 
+participant main
+participant doxygen_to_lobster_converter as converter
+participant get_lobster_items_from_doxygen_xml_folder as reader
+participant rule_check as checker
+participant write_lobster_common_interchange_format_file as writer
+
+autoactivate on
+
+== Convert doxygen XML to Lobster common interchange format ==
+
+user -> main: doxygen-lobster <arguments>
+    main -> main: parse arguments
+    return
+    main -> converter: call converter
+        converter -> reader: read doxygen XML folder
+        return lobster items
+        converter -> checker: perform rule checks
+        return rule check results
+        alt rule check passed
+            converter -> writer: write lobster common interchange format file
+            return result code
+        end
+    return result code
+return result code
+
+== show version ==
+
+user -> main: doxygen-lobster --version
+    main -> main: print version info
+    return
+return
+
+== show help ==
+
+user -> main: doxygen-lobster --help
+    main -> main: print help message
+    return
+return
+
+@enduml

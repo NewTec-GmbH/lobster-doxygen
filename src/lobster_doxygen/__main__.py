@@ -25,7 +25,6 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 
 import argparse
 import sys
-import os
 
 try:
     from lobster_doxygen.version import __version__, __author__, __email__, __repository__, __license__
@@ -39,9 +38,7 @@ except ModuleNotFoundError:
     __license__ = "GPLv3"
 from lobster_doxygen.ret import Ret
 from lobster_doxygen.printer import Printer
-from lobster_doxygen.rule_check import rule_check
-from lobster_doxygen.write_lobster_common_interchange_format_file import write_lobster_common_interchange_format_file
-from lobster_doxygen.get_lobster_items_from_doxygen_xml_folder import get_lobster_items_from_doxygen_xml_folder
+from lobster_doxygen.doxygen_to_lobster_converter import convert_doxygen_xml_to_lobster_common_interchange_format
 
 # Variables ********************************************************************
 
@@ -143,53 +140,6 @@ def _print_program_arguments(args: argparse.Namespace) -> None:
         LOG.print_info(f"* {arg} = {vars(args)[arg]}")
     LOG.print_info("\n")
 
-
-def _convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder: str, output_file_name: str) -> Ret:
-    # lobster-trace: SwRequirements.sw_req_cli_doxygen_xml_folder
-    # lobster-trace: SwRequirements.sw_req_output_file_format
-    # lobster-trace: SwRequirements.sw_req_cli_output
-    # lobster-trace: SwRequirements.sw_req_no_trace
-    """Convert xml files in doxygen_xml_folder to LOBSTER common interchange format file with name
-    output.
-
-    Args:
-        doxygen_xml_folder (str): The Doxygen XML output directory, where the file index.xml is located.
-        output_file_name (str): Path and file name for LOBSTER common interchange format file.
-
-    Return:
-        Ret.RET_OK: LOBSTER common interchange format file successful created.
-        Ret.RET_ERROR_FILEPATH_INVALID: No index.xml file in doxygen_folder
-        Ret.RET_ERROR: Conversion not successful.
-    """
-    ret_status = Ret.RET_ERROR
-    is_index_file_found = False
-
-    if not os.path.isfile(doxygen_xml_folder + "/index.xml"):
-        LOG.print_error(
-            f"No doxygen index.xml file in doxygen_xml_folder {doxygen_xml_folder}.")
-        ret_status = Ret.RET_ERROR_FILEPATH_INVALID
-        is_index_file_found = False
-    else:
-        is_index_file_found = True
-
-    if is_index_file_found:
-        lobster_items = get_lobster_items_from_doxygen_xml_folder(
-            doxygen_xml_folder)
-        # Continue only if no error during parsing.
-        if lobster_items is not None:
-            # Check if lobster items are found.
-            if 0 == len(lobster_items):
-                LOG.print_warning(
-                    "No lobster items found in the doxygen XML output.")
-
-            if rule_check(lobster_items) is True:
-                write_lobster_common_interchange_format_file(
-                    lobster_items, output_file_name)
-                ret_status = Ret.RET_OK
-
-    return ret_status
-
-
 def main() -> Ret:
     """Main function to convert doxygen XML output to lobster common interchange format.
 
@@ -218,7 +168,7 @@ def main() -> Ret:
 
         # Check if the doxygen folder exists in the arguments.
         if args.doxygen_xml_folder:
-            ret_status = _convert_doxygen_xml_to_lobster_common_interchange_format(
+            ret_status = convert_doxygen_xml_to_lobster_common_interchange_format(
                 args.doxygen_xml_folder, args.output)
 
     return ret_status

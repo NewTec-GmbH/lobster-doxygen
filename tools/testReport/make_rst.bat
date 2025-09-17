@@ -46,9 +46,9 @@ set REPORT_TOOL_PATH=%~dp0
 set TEST_RESULT_REPORT_XML=sw_test_result_report.xml
 set TEST_RESULT_REPORT_TRLC=sw_test_result_report.trlc
 set TRLC_CONVERTER=pyTRLCConverter
-set CONVERTER_DIR=trlc2other/converter
+set CONVERTER_DIR=../trlc2other/converter
 set OUTPUT_DIR=out
-set CONVERTER=../%CONVERTER_DIR%/create_test_report_in_rst.py
+set CONVERTER=%CONVERTER_DIR%/create_test_report_in_rst.py
 set OUT_FORMAT=rst
 
 if not exist "%OUTPUT_DIR%" (

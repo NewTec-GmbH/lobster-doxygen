@@ -36,6 +36,8 @@ LOBSTER_RENDERER=lobster-html-report
 OUT_DIR=out
 SW_REQ_LOBSTER_CONF=./lobster-trlc-sw-req.yaml
 SW_REQ_LOBSTER_OUT=$OUT_DIR/sw_req-lobster.json
+SW_CONSTRAINT_LOBSTER_CONF=./lobster-trlc-sw-constraint.yaml
+SW_CONSTRAINT_LOBSTER_OUT=$OUT_DIR/sw_constraint-lobster.json
 SW_ARCH_LOBSTER_CONF=./lobster-trlc-sw-arch.yaml
 SW_ARCH_LOBSTER_OUT=$OUT_DIR/sw_arch-lobster.json
 SW_TEST_LOBSTER_CONF=./lobster-trlc-sw-test.yaml
@@ -68,6 +70,11 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+$LOBSTER_TRLC --config "$SW_CONSTRAINT_LOBSTER_CONF" --out "$SW_CONSTRAINT_LOBSTER_OUT"
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi
 # ********** SW-Arch **********
 $LOBSTER_TRLC --config "$SW_ARCH_LOBSTER_CONF" --out "$SW_ARCH_LOBSTER_OUT"
 
