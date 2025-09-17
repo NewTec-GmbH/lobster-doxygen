@@ -25,7 +25,6 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 
 import argparse
 import sys
-import os
 
 try:
     from lobster_doxygen.version import __version__, __author__, __email__, __repository__, __license__
