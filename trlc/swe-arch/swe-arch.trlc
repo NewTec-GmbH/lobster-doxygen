@@ -23,15 +23,21 @@ section "lobster-doxygen SW Architecture" {
 
     section "General" {
         SwArchSpec sw_arch_python_python {
-            description = "Lobster-doxygen is as implemented using Python 3.x and additional PyPI libraries available for Windows and Linux operating systems. "
+            description = "The lobster-doxygen tool is implemented using Python 3.x and additional PyPI libraries available for Windows and Linux operating systems. "
             verification_criteria = "CI testing on Linux and Windows Hosts."
             satisfies = [SwRequirements.sw_constraint_os_win, SwRequirements.sw_constraint_os_linux]
         }
 
         SwArchSpec sw_arch_cli_tool {
-            description = "Lobster-doxygen is a console application driven accepting arguments and writes messages to stdout and stderr."
+            description = "The lobster-doxygen tool is a console application driven accepting arguments and writes messages to stdout and stderr."
             verification_criteria = "Call the tool using the `lobster-doxygen` frontend. Check console output."
             satisfies = [SwRequirements.sw_req_cli, SwRequirements.sw_req_stdout_output, SwRequirements.sw_req_stderr_output]
+        }
+
+        SwArchSpec sw_arch_doxygen_xml_input {
+            description = "The lobster-doxygen tool only relies on doxygen XML output files for collecting Lobster trace information. It therefore supports the same programming languages as doxygen."
+            verification_criteria = "Check doxygen supported language list to include C and C++ languages."
+            satisfies = [SwRequirements.sw_constraint_prog_c, SwRequirements.sw_constraint_prog_cpp]
         }
     }
 

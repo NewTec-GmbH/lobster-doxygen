@@ -4,8 +4,7 @@ inputs:
 
 conversion-rules:
     - package: SwRequirements
-      record-type: SwReq
+      record-type: SwConstraint
       namespace: req
       description-fields:
         - description
-
