@@ -1,6 +1,5 @@
 package SwArch
 
-import Generic
 import AbstractRequirements
 import AbstractSwArch
 
