@@ -81,6 +81,7 @@ rem ********** SW-Requirements **********
 if errorlevel 1 (
     goto error
 )
+
 %LOBSTER_TRLC% --config %SW_CONSTRAINT_LOBSTER_CONF% --out %SW_CONSTRAINT_LOBSTER_OUT%
 
 if errorlevel 1 (

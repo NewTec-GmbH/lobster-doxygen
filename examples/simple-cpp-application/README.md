@@ -17,4 +17,4 @@ Call `doxygen` to generate XML output.
 
 Call `lobster-doxygen --verbose --output ./out/sw_test_result-lobster.json ./out/xml` to generate the LOBSTER common interchange format file.
 
-THis will create the file ```out/sw_test_result-lobster.json``` containing the trace information from the source code.
+This will create the file ```out/sw_test_result-lobster.json``` containing the trace information from the source code.

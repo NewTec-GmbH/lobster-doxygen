@@ -131,7 +131,7 @@ Please be aware of how to document in general using doxygen, see the [attention 
 ## Doxygen Configuration
 
 In order to feed lobster-doxygen with the correct data, Doxygen needs to be configured.
-The following ALIASES definitions inside the `Doxyfile` are needs to support the requirement annotations:
+The following ALIASES definitions inside the `Doxyfile` are needed to support the requirement annotations:
 
 ```bash
 ALIASES                = "implements{1}=@xrefitem implements \"Implements\" \"Requirement Traceability\" Requirement: \1" \

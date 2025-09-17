@@ -10,7 +10,7 @@ section "lobster-doxygen SW Architecture" {
             """
             This file contains the software architecture for the lobster-doxygen tool.
 
-            The lobster-doxygen tool is a converter from the Doxygen XML format into the Lobster Interchange file Format. It enables the generation of Lobster traces from from C/C++ source code based on requirement annotations in doxygen comments. In fact any Doxygen supported language should work, but validation is for C/C++ usage only.
+            The lobster-doxygen tool is a converter from the Doxygen XML format into the LOBSTER Common Interchange Format. It enables the generation of LOBSTER traces from from C/C++ source code based on requirement annotations in doxygen comments. In fact any Doxygen supported language should work, but validation is for C/C++ usage only.
             
             The following picture shows the overall tool flow:
             """
@@ -24,7 +24,7 @@ section "lobster-doxygen SW Architecture" {
     section "General" {
         SwArchSpec sw_arch_python_python {
             description = "The lobster-doxygen tool is implemented using Python 3.x and additional PyPI libraries available for Windows and Linux operating systems. "
-            verification_criteria = "CI testing on Linux and Windows Hosts."
+            verification_criteria = "CI testing on Linux and Windows hosts."
             satisfies = [SwRequirements.sw_constraint_os_win, SwRequirements.sw_constraint_os_linux]
         }
 
@@ -35,7 +35,7 @@ section "lobster-doxygen SW Architecture" {
         }
 
         SwArchSpec sw_arch_doxygen_xml_input {
-            description = "The lobster-doxygen tool only relies on doxygen XML output files for collecting Lobster trace information. It therefore supports the same programming languages as doxygen."
+            description = "The lobster-doxygen tool only relies on doxygen XML output files for collecting LOBSTER trace information. It therefore supports the same programming languages as doxygen."
             verification_criteria = "Check doxygen supported language list to include C and C++ languages."
             satisfies = [SwRequirements.sw_constraint_prog_c, SwRequirements.sw_constraint_prog_cpp]
         }
@@ -86,7 +86,7 @@ section "lobster-doxygen SW Architecture" {
                 
                 * Writes the LobsterItem list using the write_lobster_common_interchange_format_file module.
                 """
-            verification_criteria = "Call the tool using the `lobster-doxygen` frontend with valid an invalid input data. Check console and lobster file output."
+            verification_criteria = "Call the tool using the `lobster-doxygen` frontend with valid an invalid input data. Check console and LOBSTER file output."
             satisfies = [
                 SwRequirements.sw_req_cli_doxygen_xml_folder,
                 SwRequirements.sw_req_output_file_format, 
@@ -98,9 +98,9 @@ section "lobster-doxygen SW Architecture" {
         SwArchSpec sw_arch_component_get_lobster_items_from_doxygen_xml_folder {
             description = 
                 """
-                The get_lobster_items_from_doxygen_xml_folder component is parsing the Doxygen XML files with the help of the doxmlparser library. THe parsing result is a list of LobsterItem instances, each describing a trace source location with Lobster trace annotations in comments. 
+                The get_lobster_items_from_doxygen_xml_folder component is parsing the Doxygen XML files with the help of the doxmlparser library. THe parsing result is a list of LobsterItem instances, each describing a trace source location with LOBSTER trace annotations in comments. 
                 """
-            verification_criteria = "Call the tool using the `lobster-doxygen` frontend with valid an invalid input data. Check console and lobster file output."
+            verification_criteria = "Call the tool using the `lobster-doxygen` frontend with valid an invalid input data. Check console and LOBSTER file output."
             satisfies = [
                 SwRequirements.sw_req_output_file_format,
                 SwRequirements.sw_req_file_level,
@@ -120,7 +120,7 @@ section "lobster-doxygen SW Architecture" {
                 """
                 The rule_check component is validating the LobsterItem instances against semantic rules. 
                 """
-            verification_criteria = "Call the tool using the `lobster-doxygen` frontend with valid an invalid input data. Check console and lobster file output."
+            verification_criteria = "Call the tool using the `lobster-doxygen` frontend with valid an invalid input data. Check console and LOBSTER file output."
             satisfies = [
                 SwRequirements.sw_req_rule_file,
                 SwRequirements.sw_req_rule_class
@@ -130,9 +130,9 @@ section "lobster-doxygen SW Architecture" {
         SwArchSpec sw_arch_component_write_lobster_common_interchange_format_file {
             description = 
                 """
-                The write_lobster_common_interchange_format_file is converting a list of LobsterItem instances into the Lobster interchange format.
+                The write_lobster_common_interchange_format_file is converting a list of LobsterItem instances into the LOBSTER interchange format.
                 """
-            verification_criteria = "Call the tool using the `lobster-doxygen` frontend with valid an invalid input data. Check console and lobster file output."
+            verification_criteria = "Call the tool using the `lobster-doxygen` frontend with valid an invalid input data. Check console and LOBSTER file output."
             satisfies = [
                 SwRequirements.sw_req_output_file_format
             ]
