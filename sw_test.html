@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SW-Tests &#8212; lobster-doxygen  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1ddbb825" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SW-Test Results" href="sw_testresults.html" />
+    <link rel="prev" title="SW-Architecture" href="sw_architecture.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>lobster-doxygen  documentation</span></a></h1>
+        <h2 class="heading"><span>SW-Tests</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="sw_architecture.html">SW-Architecture</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="sw_testresults.html">SW-Test Results</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="sw-tests">
+<h1>SW-Tests<a class="headerlink" href="#sw-tests" title="Link to this heading">¶</a></h1>
+<section id="swe-test-rst-sw-tests">
+<span id="id1"></span><h2>SW-Tests<a class="headerlink" href="#swe-test-rst-sw-tests" title="Link to this heading">¶</a></h2>
+<p>This file contains the software test cases for the lobster-doxygen tool.</p>
+<section id="functionality">
+<span id="swe-test-rst-functionality"></span><h3>Functionality<a class="headerlink" href="#functionality" title="Link to this heading">¶</a></h3>
+<div class="admonition-tc-output-file-format admonition" id="swe-test-rst-tc-output-file-format">
+<p class="admonition-title">tc_output_file_format</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case verifies that the tool parses the ‘index.xml’ Doxygen XML output file as the root file, and that the output file is in the LOBSTER common interchange format.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-output-file-format"><span class="std std-ref">SwRequirements.sw_req_output_file_format</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-function-level admonition" id="swe-test-rst-tc-function-level">
+<p class="admonition-title">tc_function_level</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether requirements and justifications can be specified in function/prototype level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-function-level"><span class="std std-ref">SwRequirements.sw_req_function_level</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-type-level admonition" id="swe-test-rst-tc-type-level">
+<p class="admonition-title">tc_type_level</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether requirements and justifications can be specified in struct/union/class level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-type-level"><span class="std std-ref">SwRequirements.sw_req_type_level</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-namespace-level admonition" id="swe-test-rst-tc-namespace-level">
+<p class="admonition-title">tc_namespace_level</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether requirements and justifications can be specified in namespace level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-namespace-level"><span class="std std-ref">SwRequirements.sw_req_namespace_level</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-method-level admonition" id="swe-test-rst-tc-method-level">
+<p class="admonition-title">tc_method_level</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether requirements and justifications can be specified in methods level independent of visibility.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-method-level"><span class="std std-ref">SwRequirements.sw_req_method_level</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-interface-level admonition" id="swe-test-rst-tc-interface-level">
+<p class="admonition-title">tc_interface_level</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether requirements and justifications can be specified in interface level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-interface-level"><span class="std std-ref">SwRequirements.sw_req_interface_level</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-no-group admonition" id="swe-test-rst-tc-no-group">
+<p class="admonition-title">tc_no_group</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether requirements and justifications work outside of doxygen groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-no-group"><span class="std std-ref">SwRequirements.sw_req_no_group</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-group admonition" id="swe-test-rst-tc-group">
+<p class="admonition-title">tc_group</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether requirements and justifications work in doxygen groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-group"><span class="std std-ref">SwRequirements.sw_req_group</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-rule-file admonition" id="swe-test-rst-tc-rule-file">
+<p class="admonition-title">tc_rule_file</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks that the program abort with an error if requirements or justifications are specified on file level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-file-level"><span class="std std-ref">SwRequirements.sw_req_file_level</span></a></p></li>
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-rule-file"><span class="std std-ref">SwRequirements.sw_req_rule_file</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-rule-class admonition" id="swe-test-rst-tc-rule-class">
+<p class="admonition-title">tc_rule_class</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks that the program abort with an error if requirements or justifications on class/interface/namespace level and at least on of its methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-rule-class"><span class="std std-ref">SwRequirements.sw_req_rule_class</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-unspecified admonition" id="swe-test-rst-tc-unspecified">
+<p class="admonition-title">tc_unspecified</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether the program works with all supported levels without requirements or a justification.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-unspecified"><span class="std std-ref">SwRequirements.sw_req_unspecified</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-no-trace admonition" id="swe-test-rst-tc-no-trace">
+<p class="admonition-title">tc_no_trace</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether the program outputs a warning and creates a ‘empty’ lobster common interchange file.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-no-trace"><span class="std std-ref">SwRequirements.sw_req_no_trace</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="general">
+<span id="swe-test-rst-general"></span><h3>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h3>
+<div class="admonition-tc-cli admonition" id="swe-test-rst-tc-cli">
+<p class="admonition-title">tc_cli</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether the tool supports the command line arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-cli"><span class="std std-ref">SwRequirements.sw_req_cli</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-stdout admonition" id="swe-test-rst-tc-stdout">
+<p class="admonition-title">tc_stdout</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether the normal program output is printed to the stdout stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-stdout-output"><span class="std std-ref">SwRequirements.sw_req_stdout_output</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-stderr admonition" id="swe-test-rst-tc-stderr">
+<p class="admonition-title">tc_stderr</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether the program output is printed to the stderr stream if the program throws an error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-stderr-output"><span class="std std-ref">SwRequirements.sw_req_stderr_output</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="user-interface">
+<span id="swe-test-rst-user-interface"></span><h3>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading">¶</a></h3>
+<div class="admonition-tc-help admonition" id="swe-test-rst-tc-help">
+<p class="admonition-title">tc_help</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether the help information is shown with ‘--help’ argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-cli-help"><span class="std std-ref">SwRequirements.sw_req_cli_help</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-output admonition" id="swe-test-rst-tc-output">
+<p class="admonition-title">tc_output</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks that the software correctly sets the output file name when provided via the -o or --output command-line argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-cli-output"><span class="std std-ref">SwRequirements.sw_req_cli_output</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-version admonition" id="swe-test-rst-tc-version">
+<p class="admonition-title">tc_version</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether the version information is shown with ‘--version’ argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-cli-version"><span class="std std-ref">SwRequirements.sw_req_cli_version</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-verbose admonition" id="swe-test-rst-tc-verbose">
+<p class="admonition-title">tc_verbose</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case check whether in verbose mode more information is printed out.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-cli-verbose"><span class="std std-ref">SwRequirements.sw_req_cli_verbose</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-tc-doxygen-xml-folder admonition" id="swe-test-rst-tc-doxygen-xml-folder">
+<p class="admonition-title">tc_doxygen_xml_folder</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>This test case checks whether the doxygen_xml_folder is a positional argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verifies</p></td>
+<td><ul class="simple">
+<li><p><a class="reference internal" href="sw_requirements.html#swe-req-rst-sw-req-cli-doxygen-xml-folder"><span class="std std-ref">SwRequirements.sw_req_cli_doxygen_xml_folder</span></a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="sw_architecture.html">SW-Architecture</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="sw_testresults.html">SW-Test Results</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, NewTec GmbH.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

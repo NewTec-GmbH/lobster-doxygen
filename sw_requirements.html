@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SW-Requirements &#8212; lobster-doxygen  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1ddbb825" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SW-Architecture" href="sw_architecture.html" />
+    <link rel="prev" title="lobster-doxygen documentation" href="index.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>lobster-doxygen  documentation</span></a></h1>
+        <h2 class="heading"><span>SW-Requirements</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">lobster-doxygen documentation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="sw_architecture.html">SW-Architecture</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="sw-requirements">
+<h1>SW-Requirements<a class="headerlink" href="#sw-requirements" title="Link to this heading">¶</a></h1>
+<section id="sw-requirement-specification">
+<span id="swe-req-rst-sw-requirement-specification"></span><h2>SW Requirement Specification<a class="headerlink" href="#sw-requirement-specification" title="Link to this heading">¶</a></h2>
+<p>This file contains the software requirements for the lobster-doxygen tool.</p>
+<section id="software-requirements">
+<span id="swe-req-rst-software-requirements"></span><h3>Software Requirements<a class="headerlink" href="#software-requirements" title="Link to this heading">¶</a></h3>
+<section id="general">
+<span id="swe-req-rst-general"></span><h4>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h4>
+<div class="admonition-sw-req-cli admonition" id="swe-req-rst-sw-req-cli">
+<p class="admonition-title">sw_req_cli</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall be a command-line interface (CLI) application.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td><p>Every feature shall be accessible via the command line. Therefore its verified by CLI tests.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-stdout-output admonition" id="swe-req-rst-sw-req-stdout-output">
+<p class="admonition-title">sw_req_stdout_output</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall show provide all user informational texts as console output on stdout.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td><p>Every feature user visible information shall be compared with a reference by capturing the console stdout output.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-stderr-output admonition" id="swe-req-rst-sw-req-stderr-output">
+<p class="admonition-title">sw_req_stderr_output</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall show provide all user error texts as console output on stderr.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td><p>Call the tool with an invalid option and capture stderr.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functionality">
+<span id="swe-req-rst-functionality"></span><h4>Functionality<a class="headerlink" href="#functionality" title="Link to this heading">¶</a></h4>
+<div class="admonition-sw-req-output-file-format admonition" id="swe-req-rst-sw-req-output-file-format">
+<p class="admonition-title">sw_req_output_file_format</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall generate a file in the LOBSTER common interchange format based on the information from the doxygen XML output.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>The doxygen index.xml file should be parsed as root.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-file-level admonition" id="swe-req-rst-sw-req-file-level">
+<p class="admonition-title">sw_req_file_level</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support to specify requirements and justification on file level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-function-level admonition" id="swe-req-rst-sw-req-function-level">
+<p class="admonition-title">sw_req_function_level</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support to specify requirements and justification on function/prototype level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-type-level admonition" id="swe-req-rst-sw-req-type-level">
+<p class="admonition-title">sw_req_type_level</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support to specify requirements and justification on struct/union/class level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-namespace-level admonition" id="swe-req-rst-sw-req-namespace-level">
+<p class="admonition-title">sw_req_namespace_level</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support to specify requirements and justification on namespace level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-method-level admonition" id="swe-req-rst-sw-req-method-level">
+<p class="admonition-title">sw_req_method_level</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support to specify requirements and justification on method level independent of visibility.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-interface-level admonition" id="swe-req-rst-sw-req-interface-level">
+<p class="admonition-title">sw_req_interface_level</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support to specify requirements and justification on interface level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-no-group admonition" id="swe-req-rst-sw-req-no-group">
+<p class="admonition-title">sw_req_no_group</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support requirements and justification outside of doxygen groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-group admonition" id="swe-req-rst-sw-req-group">
+<p class="admonition-title">sw_req_group</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support requirements and justification in doxygen groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-rule-file admonition" id="swe-req-rst-sw-req-rule-file">
+<p class="admonition-title">sw_req_rule_file</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall abort with an error if requirements or justification are specified on file level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>Similar to the lobster-python behavior. File level is bad.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-rule-class admonition" id="swe-req-rst-sw-req-rule-class">
+<p class="admonition-title">sw_req_rule_class</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall abort with an error if requirements or justifications are specified on class/interface/namespace level and at least on of its methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>Similar to the lobster-python behavior. Mixing levels is bad.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-unspecified admonition" id="swe-req-rst-sw-req-unspecified">
+<p class="admonition-title">sw_req_unspecified</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall output all supported levels without requirements or a justification too.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>This is required to detect untraced sourcecode.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-no-trace admonition" id="swe-req-rst-sw-req-no-trace">
+<p class="admonition-title">sw_req_no_trace</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall output a warning and create a lobster common interchange file if doxygen XML contains no traces.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>This is required to detect untraced sourcecode, but doesn’t break any toolchain flow.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="user-interface">
+<span id="swe-req-rst-user-interface"></span><h4>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading">¶</a></h4>
+<div class="admonition-sw-req-cli-help admonition" id="swe-req-rst-sw-req-cli-help">
+<p class="admonition-title">sw_req_cli_help</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support the command line argument ‘-h’ or ‘--help’ to show usage help information.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td><p>Verify by calling the software with either ‘-h’ or --help’ and check if the help information is shown.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-cli-version admonition" id="swe-req-rst-sw-req-cli-version">
+<p class="admonition-title">sw_req_cli_version</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall print its version by ‘--version’.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-cli-output admonition" id="swe-req-rst-sw-req-cli-output">
+<p class="admonition-title">sw_req_cli_output</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support to set the output folder and output file name by command line argument ‘-o’ or ‘--output’.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>If this argument is not specified, the output file should be named ‘lobster.json’.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-cli-verbose admonition" id="swe-req-rst-sw-req-cli-verbose">
+<p class="admonition-title">sw_req_cli_verbose</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall verbose information about the parsed nodes in the doxygen xml input file by command line argument ‘-v’ or ‘--verbose’.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-cli-doxygen-xml-folder admonition" id="swe-req-rst-sw-req-cli-doxygen-xml-folder">
+<p class="admonition-title">sw_req_cli_doxygen_xml_folder</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall require the doxygen folder with the generated XML output as positional argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="software-constraints">
+<span id="swe-req-rst-software-constraints"></span><h4>Software Constraints<a class="headerlink" href="#software-constraints" title="Link to this heading">¶</a></h4>
+<div class="admonition-sw-constraint-os-win admonition" id="swe-req-rst-sw-constraint-os-win">
+<p class="admonition-title">sw_constraint_os_win</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support the Windows operating system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-constraint-os-linux admonition" id="swe-req-rst-sw-constraint-os-linux">
+<p class="admonition-title">sw_constraint_os_linux</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support the Linux operating system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-constraint-prog-c admonition" id="swe-req-rst-sw-constraint-prog-c">
+<p class="admonition-title">sw_constraint_prog_c</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support the programming language C.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-constraint-prog-cpp admonition" id="swe-req-rst-sw-constraint-prog-cpp">
+<p class="admonition-title">sw_constraint_prog_cpp</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall support the programming language C/C++.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">lobster-doxygen documentation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="sw_architecture.html">SW-Architecture</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, NewTec GmbH.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>
