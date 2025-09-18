@@ -117,7 +117,6 @@ if [ $? -ne 0 ]; then
 fi
 
 # ********** LOBSTER Report conversion from local files to GIT URLS **********
-
 if [ ! -z "$LOBSTER_ONLINE_REPORT_ENABLE" ]; then
     COMMIT_ID=$(git rev-parse HEAD)
     BASE_URL=$(git remote get-url origin)
@@ -127,10 +126,14 @@ if [ ! -z "$LOBSTER_ONLINE_REPORT_ENABLE" ]; then
     echo "base_url: '$BASE_URL'" >> "$SW_REQ_LOBSTER_ONLINE_REPORT_CONF"
     cat $SW_REQ_LOBSTER_ONLINE_REPORT_CONF
 
-    $LOBSTER_ONLINE_REPORT --config $SW_REQ_LOBSTER_ONLINE_REPORT_CONF
-    if [ $? -ne 0 ]; then
+    # lobster-online-report v1.0.1 failes to patch the input file without --out option.
+    # Create temporary one with ".online" extension and replace it with the input aftewards.
+    #
+    $LOBSTER_ONLINE_REPORT --config $SW_REQ_LOBSTER_ONLINE_REPORT_CONF --out "$SW_REQ_LOBSTER_REPORT_OUT.online"
+        if [ $? -ne 0 ]; then
         exit 1
     fi
+    mv "$SW_REQ_LOBSTER_REPORT_OUT.online" "$SW_REQ_LOBSTER_REPORT_OUT"
 fi
 
 # ********** Create trace report **********
