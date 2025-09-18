@@ -86,6 +86,8 @@ jobs:
       - name: Build sphinx webpages
         run: |
           pwd
+          ls
+          ls tools
           cd ./tools/plantUML
           . ./get_plantuml.sh
           echo "PLANTUML=$PLANTUML" >> $GITHUB_ENV
