@@ -79,9 +79,7 @@ jobs:
         run: |
             cd ./tools/traceReport
             chmod +x make.sh
-            ./make.sh
-            chmod +x make_online_report.sh
-            ./make_online_report.sh
+            LOBSTER_ONLINE_REPORT_ENABLE=1 ./make.sh
             rm -f ./out/*-lobster.json
             cd ../..
 

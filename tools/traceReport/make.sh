@@ -33,7 +33,10 @@ LOBSTER_TRLC=lobster-trlc
 LOBSTER_PYTHON=lobster-python
 LOBSTER_REPORT=lobster-report
 LOBSTER_RENDERER=lobster-html-report
+LOBSTER_ONLINE_REPORT=lobster-online-report
+
 OUT_DIR=out
+
 SW_REQ_LOBSTER_CONF=./lobster-trlc-sw-req.yaml
 SW_REQ_LOBSTER_OUT=$OUT_DIR/sw_req-lobster.json
 SW_CONSTRAINT_LOBSTER_CONF=./lobster-trlc-sw-constraint.yaml
@@ -49,6 +52,7 @@ SW_CODE_LOBSTER_OUT=$OUT_DIR/sw_code-lobster.json
 SW_TEST_CODE_SOURCES=./../../tests
 SW_TEST_CODE_LOBSTER_OUT=$OUT_DIR/sw_test_code-lobster.json
 SW_REQ_LOBSTER_REPORT_CONF=./lobster-report-sw-req.conf
+SW_REQ_LOBSTER_ONLINE_REPORT_CONF=$OUT_DIR/online_report_config.yaml
 SW_REQ_LOBSTER_REPORT_OUT=$OUT_DIR/lobster-report-sw-req-lobster.json
 SW_REQ_LOBSTER_HTML_OUT=$OUT_DIR/sw_req_tracing_online_report.html
 
@@ -110,6 +114,23 @@ $LOBSTER_REPORT --lobster-config "$SW_REQ_LOBSTER_REPORT_CONF" --out "$SW_REQ_LO
 
 if [ $? -ne 0 ]; then
     exit 1
+fi
+
+# ********** LOBSTER Report conversion from local files to GIT URLS **********
+
+if [ ! -z "$LOBSTER_ONLINE_REPORT_ENABLE" ]; then
+    COMMIT_ID=$(git rev-parse HEAD)
+    BASE_URL=$(git remote get-url origin)
+    echo "report: '$SW_REQ_LOBSTER_REPORT_OUT'" > "$SW_REQ_LOBSTER_ONLINE_REPORT_CONF"
+    echo "commit_id: '$COMMIT_ID'" >> "$SW_REQ_LOBSTER_ONLINE_REPORT_CONF"
+    echo "repo_root: './../..'" >> "$SW_REQ_LOBSTER_ONLINE_REPORT_CONF"
+    echo "base_url: '$BASE_URL'" >> "$SW_REQ_LOBSTER_ONLINE_REPORT_CONF"
+    cat $SW_REQ_LOBSTER_ONLINE_REPORT_CONF
+
+    $LOBSTER_ONLINE_REPORT --config $SW_REQ_LOBSTER_ONLINE_REPORT_CONF
+    if [ $? -ne 0 ]; then
+        exit 1
+    fi
 fi
 
 # ********** Create trace report **********
