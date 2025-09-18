@@ -88,3 +88,11 @@ jobs:
           cd ./tools/deployDoc
           make html
           cd ../..
+      
+      - name: Upload static files as artifacts
+        id: deployment
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./tools/deployDoc/build/html
