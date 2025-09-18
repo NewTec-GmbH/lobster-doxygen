@@ -1,1 +1,95 @@
+# Deploy documentation on Github Pages.
+name: Deploy Github Pages
 
+on:
+  release:
+    # A release, pre-release, or draft of a release is published.
+    types: [published]
+  # Allows you to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel.
+jobs:
+  # The introduction just shows some useful information.
+  intro:
+    # The type of runner that the job will run on.
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job.
+    steps:
+      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "The name of the branch is ${{ github.ref }} and the repository is ${{ github.repository }}."
+
+  # Build and deploy to gh-pages branch.
+  build-and-deploy:
+    # The type of runner that the job will run on.
+    runs-on: ubuntu-latest
+    env:
+      PLANTUML_VARIABLE: ""
+    # Steps represent a sequence of tasks that will be executed as part of the job.
+    steps:
+      - name: Setup cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y graphviz curl default-jre
+          python -m pip install --upgrade pip
+          pip install .[dev]
+          pip install .
+
+      - name: Setup PlantUML
+        run: |
+          cd ./tools/plantuml
+          chmod +x get_plantuml.sh
+          . ./get_plantuml.sh
+          echo "PLANTUML=$PLANTUML" >> $GITHUB_ENV
+          cd ../..
+
+      - name: Generate trlc conversions to reStructuredText
+        run: |
+          cd ./tools/trlc2other
+          chmod +x make_rst.sh
+          ./make_rst.sh
+          cd ../..
+
+
+      - name: Create test report
+        run: |
+          cd ./tools/testReport
+          chmod +x make_rst.sh
+          ./make_rst.sh
+          rm -f ./out/coverage/.gitignore
+          cd ../..
+
+      - name: Build tracing report
+        run: |
+            cd ./tools/traceReport
+            chmod +x make.sh
+            ./make.sh
+            chmod +x make_online_report.sh
+            ./make_online_report.sh
+            rm -f ./out/*-lobster.json
+            cd ../..
+
+      - name: Build sphinx webpages
+        run: |
+          cd ./tools/plantUML;
+          . ./get_plantuml.sh;
+          cd ../..
+          cd ./tools/deployDoc
+          make html
+          cd ../..
