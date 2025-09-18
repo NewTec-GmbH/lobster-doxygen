@@ -77,11 +77,11 @@ jobs:
 
       - name: Build tracing report
         run: |
-            cd ./tools/traceReport
-            chmod +x make.sh
-            LOBSTER_ONLINE_REPORT_ENABLE=1 ./make.sh
-            rm -f ./out/*-lobster.json
-            cd ../..
+          cd ./tools/traceReport
+          chmod +x make.sh
+          LOBSTER_ONLINE_REPORT_ENABLE=1 ./make.sh
+          rm -f ./out/*-lobster.json
+          cd ../..
 
       - name: Build sphinx webpages
         run: |
