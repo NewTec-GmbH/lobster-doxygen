@@ -33,8 +33,11 @@
 # Create reStructured Text documentation from TRLC models and files.
 (cd trlc2other; ./make_rst.sh)
 
+# Create unit test reports
+(cd testReport; ./make_rst.sh)
+
 # Create tracing report from TRLC and source files.
 (cd traceReport; ./make.sh)
 
 #Create HTML documentation.
-(cd plantUML; . ./get_plantuml.sh; cd ..;cd deployDoc; make html)
+(cd deployDoc; make html)

@@ -87,8 +87,8 @@ jobs:
 
       - name: Build sphinx webpages
         run: |
-          cd ./tools/plantUML;
-          . ./get_plantuml.sh;
+          cd ./tools/plantUML
+          . ./get_plantuml.sh
           cd ../..
           cd ./tools/deployDoc
           make html

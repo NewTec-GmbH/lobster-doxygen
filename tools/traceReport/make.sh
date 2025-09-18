@@ -52,11 +52,6 @@ SW_REQ_LOBSTER_REPORT_CONF=./lobster-report-sw-req.conf
 SW_REQ_LOBSTER_REPORT_OUT=$OUT_DIR/lobster-report-sw-req-lobster.json
 SW_REQ_LOBSTER_HTML_OUT=$OUT_DIR/sw_req_tracing_online_report.html
 
-pushd ../testReport
-chmod +x make_rst.sh
-. ./make_rst.sh
-popd
-
 if [ ! -d "$OUT_DIR" ]; then
     mkdir -p "$OUT_DIR"
 else
