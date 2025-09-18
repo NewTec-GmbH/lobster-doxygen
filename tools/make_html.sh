@@ -40,4 +40,4 @@
 (cd traceReport; ./make.sh)
 
 #Create HTML documentation.
-(cd deployDoc; make html)
+(cd plantUML; . ./get_plantuml.sh; cd ..;cd deployDoc; make html)
