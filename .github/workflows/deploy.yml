@@ -1,5 +1,5 @@
 # Deploy documentation on Github Pages.
-name: Deploy Github Pages
+name: Deploy to Github Pages
 
 on:
   release:
@@ -23,8 +23,6 @@ jobs:
   build-and-deploy:
     # The type of runner that the job will run on.
     runs-on: ubuntu-latest
-    env:
-      PLANTUML_VARIABLE: ""
     # Steps represent a sequence of tasks that will be executed as part of the job.
     steps:
       - name: Setup cache
@@ -79,8 +77,7 @@ jobs:
         run: |
           cd ./tools/traceReport
           chmod +x make.sh
-          LOBSTER_ONLINE_REPORT_ENABLE=1 ./make.sh
-          rm -f ./out/*-lobster.json
+          ./make.sh online
           cd ../..
 
       - name: Build sphinx webpages

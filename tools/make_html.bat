@@ -31,6 +31,9 @@ REM OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 REM Create reStructured Text documentation from TRLC models and files.
 call trlc2other/make_rst
 
+REM Create unit test reports
+call testReport/make_rst
+
 REM Create tracing report from TRLC and source files.
 call traceReport/make
 
