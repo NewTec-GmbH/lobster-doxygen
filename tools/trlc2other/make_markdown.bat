@@ -43,6 +43,7 @@ setlocal
 set TRLC_CONVERTER=pyTRLCConverter
 set OUTPUT_DIR=out
 set CONVERTER=converter/req2markdown.py
+set TRANSLATION=converter/translation.json
 set OUT_FORMAT=markdown
 
 if not exist "%OUTPUT_DIR%" (
@@ -51,13 +52,13 @@ if not exist "%OUTPUT_DIR%" (
     del /q /s "%OUTPUT_DIR%\*" >nul
 )
 
-%TRLC_CONVERTER%  --source=..\..\trlc\swe-req --include=..\..\trlc\model --translation=converter\translation.json --verbose --out=%OUTPUT_DIR% --project=%CONVERTER% %OUT_FORMAT%
+%TRLC_CONVERTER%  --source=..\..\trlc\swe-req --include=..\..\trlc\model --verbose --out=%OUTPUT_DIR% --project=%CONVERTER% --translation=%TRANSLATION% %OUT_FORMAT%
 
 if errorlevel 1 (
     goto error
 )
 
-%TRLC_CONVERTER%  --source=..\..\trlc\swe-arch --include=..\..\trlc\model --translation=converter\translation.json --include=..\..\trlc\swe-req --exclude=..\..\trlc\swe-req --verbose --out=%OUTPUT_DIR% --project=%CONVERTER% %OUT_FORMAT%
+%TRLC_CONVERTER%  --source=..\..\trlc\swe-arch --include=..\..\trlc\model --include=..\..\trlc\swe-req --exclude=..\..\trlc\swe-req --verbose --out=%OUTPUT_DIR% --project=%CONVERTER% --translation=%TRANSLATION% %OUT_FORMAT%
 
 if errorlevel 1 (
     goto error
@@ -65,7 +66,7 @@ if errorlevel 1 (
 
 set CONVERTER=converter/tc2markdown.py
 
-%TRLC_CONVERTER%  --source=..\..\trlc\swe-test --include=..\..\trlc\model --translation=converter\translation.json --include=..\..\trlc\swe-req --exclude=..\..\trlc\swe-req --verbose --out=%OUTPUT_DIR% --project=%CONVERTER% %OUT_FORMAT%
+%TRLC_CONVERTER%  --source=..\..\trlc\swe-test --include=..\..\trlc\model --include=..\..\trlc\swe-req --exclude=..\..\trlc\swe-req --verbose --out=%OUTPUT_DIR% --project=%CONVERTER% --translation=%TRANSLATION% %OUT_FORMAT%
 
 if errorlevel 1 (
     goto error
