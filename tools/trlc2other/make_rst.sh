@@ -46,7 +46,7 @@ else
     rm -rf "$OUTPUT_DIR"/*
 fi
 
-$TRLC_CONVERTER --source=../../trlc/swe-req --include=../../trlc/model --verbose --out="$OUTPUT_DIR" --project="$CONVERTER" --translation="$TRANSLATION" $OUT_FORMAT"
+$TRLC_CONVERTER --source=../../trlc/swe-req --include=../../trlc/model --verbose --out="$OUTPUT_DIR" --project="$CONVERTER" --translation="$TRANSLATION" "$OUT_FORMAT"
 
 if [ $? -ne 0 ]; then
     exit 1
