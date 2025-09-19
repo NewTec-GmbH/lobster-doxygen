@@ -18,13 +18,14 @@
         "note": "Note",
         "derived": "Derived"
     },
-    "SwArchSpec": {
-        "description": "Description",
-        "note": "Note",
-        "satisfies": "Satisfies"
-    },
     "SwTestCase": {
         "description": "Description",
         "verifies": "Verifies"
+    },
+    "SwArchSpec":{
+        "description": "Description",
+        "note": "Note",
+        "satisfies": "Satisfies",
+        "verification_criteria": "Verification Criteria"
     }
 }

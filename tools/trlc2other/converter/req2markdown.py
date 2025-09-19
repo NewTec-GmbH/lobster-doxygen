@@ -23,6 +23,7 @@
 
 # pylint: disable=import-error
 from generic_rsl_markdown_converter import GenericRslMarkdownConverter
+from pyTRLCConverter.base_converter import RecordsPolicy
 
 # Variables ********************************************************************
 
@@ -47,6 +48,8 @@ class ProjectMarkdownConverter(GenericRslMarkdownConverter):
                 "PlantUML": self._print_plantuml
            }
         )
+
+        self._record_policy = RecordsPolicy.RECORD_CONVERT_ALL
 
     @staticmethod
     def get_description() -> str:

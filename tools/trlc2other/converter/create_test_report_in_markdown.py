@@ -20,6 +20,8 @@
 # If not, see <https://www.gnu.org/licenses/>.
 
 # Imports **********************************************************************
+from typing import Optional
+
 from pyTRLCConverter.base_converter import RecordsPolicy
 from pyTRLCConverter.ret import Ret
 from pyTRLCConverter.markdown_converter import MarkdownConverter
@@ -42,9 +44,9 @@ class CustomMarkdownConverter(MarkdownConverter):
 
         # Set project specific record handlers for the converter.
         self._set_project_record_handlers(
-           {
-            "SwTestCaseResult": self._print_test_case_result
-           }
+            {
+                "SwTestCaseResult": self._print_test_case_result
+            }
         )
 
         self._record_policy = RecordsPolicy.RECORD_SKIP_UNDEFINED
@@ -89,12 +91,17 @@ class CustomMarkdownConverter(MarkdownConverter):
 
         self._fd.write(markdown_table_head)
 
-    def _print_test_case_result(self, test_case_result: Record_Object, level: int) -> Ret:
+    def _print_test_case_result(self,
+                                test_case_result: Record_Object,
+                                _level: int,
+                                _translation: Optional[dict]) -> Ret:
         """Prints the software test case result.
 
         Args:
-            test_case_result (Record_Object): Software test case result to print
-            level (int): Current level of the record object
+            test_case_result (Record_Object): Software test case result to print.
+            level (int): Current level of the record object.
+            translation (Optional[dict]): Translation dictionary for the record object.
+                                            If None, no translation is applied.
         """
         if self._is_table_head_req is True:
             self._print_table_head()

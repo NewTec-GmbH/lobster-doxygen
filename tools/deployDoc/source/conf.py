@@ -40,6 +40,7 @@ import fnmatch
 
 from urllib.parse import urlparse
 from sphinx.errors import ConfigError
+from typing import Optional
 
 # pylint: skip-file
 
@@ -57,16 +58,17 @@ author = "NewTec GmbH"
 
 extensions = [
     # https://www.sphinx-doc.org/en/master/usage/markdown.html
-    "myst_parser",
+    'myst_parser',
+
     # https://github.com/sphinx-contrib/plantuml
-    "sphinxcontrib.plantuml",
+    'sphinxcontrib.plantuml'
 ]
 
-templates_path = ["_templates"]
+templates_path = ['_templates']
 exclude_patterns = []
 
 # Support restructured text and Markdown
-source_suffix = [".rst", ".md"]
+source_suffix = ['.rst', '.md']
 
 rst_prolog = """
 .. include:: <s5defs.txt>
@@ -81,15 +83,16 @@ myst_heading_anchors = 6
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "haiku"
-html_static_path = ["_static"]
-html_style = "custom.css"
+html_theme = 'haiku'
+html_static_path = ['_static']
+html_style = 'custom.css'
 
-html_favicon = html_static_path[0] + "/favicon.ico"
-html_logo = html_static_path[0] + "/NewTec_Logo.png"
+html_favicon = html_static_path[0] + '/favicon.ico'
+html_logo = html_static_path[0] + '/NewTec_Logo.png'
+html_last_updated_fmt = '%b %d, %Y'
 
 # PlantUML is called OS depended and the java jar file is provided by environment variable.
-plantuml_env = os.getenv("PLANTUML")
+plantuml_env = os.getenv('PLANTUML')
 plantuml = []
 
 # Classes **********************************************************************
@@ -101,10 +104,17 @@ plantuml = []
 # The source is relative to the sphinx directory.
 # The destination is relative to the output directory.
 files_to_copy = [
-    {"source": "../testReport/out/coverage", "destination": "coverage", "exclude": []},
-    {"source": "../trlc2other/out", "destination": ".", "exclude": ["*.rst"]},
+  {
+        'source': '../testReport/out/coverage',
+        'destination': 'coverage',
+        'exclude': []
+    },
+    {
+        'source': '../trlc2other/out',
+        'destination': '.',
+        'exclude': ['*.rst']
+    }
 ]
-
 
 def setup(app: any) -> None:
     """Setup sphinx.
@@ -112,8 +122,7 @@ def setup(app: any) -> None:
     Args:
         app (any): The sphinx application.
     """
-    app.connect("builder-inited", copy_files)
-
+    app.connect('builder-inited', copy_files)
 
 def copy_files(app: any) -> None:
     """Copy files to the output directory.
@@ -122,18 +131,37 @@ def copy_files(app: any) -> None:
         app (any): The sphinx application.
     """
     for files in files_to_copy:
-        source = os.path.abspath(files["source"])
-        destination = os.path.join(app.outdir, files["destination"])
+        source = os.path.abspath(files['source'])
+        destination = os.path.join(app.outdir, files['destination'])
 
         if not os.path.exists(destination):
             os.makedirs(destination)
 
         for filename in os.listdir(source):
-            if not any(fnmatch.fnmatch(filename, pattern) for pattern in files["exclude"]):
+            if not any(fnmatch.fnmatch(filename, pattern) for pattern in files['exclude']):
                 full_file_name = os.path.join(source, filename)
                 if os.path.isfile(full_file_name):
                     shutil.copy(full_file_name, destination)
 
+def add_git_information_to_footer() -> Optional[str]:
+    """Append git commit hash to footer.
+    """
+    append_str = ''
+
+    try:
+        import subprocess
+
+        out,err = subprocess.Popen(
+                ['git', 'show', '-s', '--format=%H'],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE).communicate()
+        if out:
+            return f" from commit {out.decode().strip()}"
+        else:
+            return None
+
+    except Exception as e:
+        pass
 
 # Main *************************************************************************
 
@@ -144,10 +172,14 @@ if plantuml_env is None:
         "Set plantuml to either <path>/plantuml.jar or a server URL."
     )
 
-if urlparse(plantuml_env).scheme in ["http", "https"]:
+if urlparse(plantuml_env).scheme in ['http', 'https']:
     plantuml = [plantuml_env]
 else:
     if os.path.isfile(plantuml_env):
-        plantuml = ["java", "-jar", plantuml_env]
+        plantuml = ['java', '-jar', plantuml_env]
     else:
-        raise ConfigError(f"The environment variable PLANTUML points to a not existing file {plantuml_env}.")
+        raise ConfigError(
+            f"The environment variable PLANTUML points to a not existing file {plantuml_env}."
+        )
+
+html_last_updated_fmt += add_git_information_to_footer()

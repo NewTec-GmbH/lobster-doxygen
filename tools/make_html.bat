@@ -28,11 +28,29 @@ REM CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY
 REM OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 REM OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+setlocal
+
+set ONLINE_REPORT_OPTION=""
+
+if "%~1"=="" (
+    REM No arguments provided, proceed normally.
+) else if "%~1"=="online" (
+    set ONLINE_REPORT_OPTION="online"
+) else (
+    echo Error: Invalid argument "%~1". Only optional "online" is allowed. >&2
+    exit /b 1
+)
+
 REM Create reStructured Text documentation from TRLC models and files.
 call trlc2other/make_rst
 
+REM Create unit test reports
+call testReport/make_rst 
+
 REM Create tracing report from TRLC and source files.
-call traceReport/make
+call traceReport/make %ONLINE_REPORT_OPTION%
 
 REM Create HTML documentation.
 call deployDoc/make html
+
+endlocal
