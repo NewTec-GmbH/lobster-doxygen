@@ -74,7 +74,7 @@ if errorlevel 1 (
 )
 
 rem Convert sw test report TRLC to reStructuredText.
-%TRLC_CONVERTER% --source=..\..\trlc\swe-req --source=..\..\trlc\swe-test --source=..\..\trlc\model --exclude=..\..\trlc\swe-req --exclude=..\..\trlc\swe-test --source=%OUTPUT_DIR%\%TEST_RESULT_REPORT_TRLC% -o=%OUTPUT_DIR% --project=%CONVERTER% --verbose rst
+%TRLC_CONVERTER% --source=..\..\trlc\swe-req --source=..\..\trlc\swe-test --source=..\..\trlc\model --exclude=..\..\trlc\swe-req --exclude=..\..\trlc\swe-test --source=%OUTPUT_DIR%\%TEST_RESULT_REPORT_TRLC% -o=%OUTPUT_DIR% --project=%CONVERTER% --verbose %OUT_FORMAT%
 
 if errorlevel 1 (
     goto error

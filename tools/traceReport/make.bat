@@ -54,39 +54,39 @@ set LOBSTER_REPORT=lobster-report
 set LOBSTER_RENDERER=lobster-html-report
 set LOBSTER_ONLINE_REPORT=lobster-online-report
 
-set OUT_DIR=out
+set OUTPUT_DIR=out
 
 set SW_REQ_LOBSTER_CONF=.\lobster-trlc-sw-req.yaml
-set SW_REQ_LOBSTER_OUT=%OUT_DIR%\sw_req-lobster.json
+set SW_REQ_LOBSTER_OUT=%OUTPUT_DIR%\sw_req-lobster.json
 
 set SW_CONSTRAINT_LOBSTER_CONF=.\lobster-trlc-sw-constraint.yaml
-set SW_CONSTRAINT_LOBSTER_OUT=%OUT_DIR%\sw_constraint-lobster.json
+set SW_CONSTRAINT_LOBSTER_OUT=%OUTPUT_DIR%\sw_constraint-lobster.json
 
 set SW_ARCH_LOBSTER_CONF=.\lobster-trlc-sw-arch.yaml
-set SW_ARCH_LOBSTER_OUT=%OUT_DIR%\sw_arch-lobster.json
+set SW_ARCH_LOBSTER_OUT=%OUTPUT_DIR%\sw_arch-lobster.json
 
 set SW_TEST_LOBSTER_CONF=.\lobster-trlc-sw-test.yaml
-set SW_TEST_LOBSTER_OUT=%OUT_DIR%\sw_test-lobster.json
+set SW_TEST_LOBSTER_OUT=%OUTPUT_DIR%\sw_test-lobster.json
 
 set SW_TESTRESULT_LOBSTER_CONF=.\lobster-trlc-sw-test-result.yaml
-set SW_TESTRESULT_LOBSTER_OUT=%OUT_DIR%\sw_test_result-lobster.json
+set SW_TESTRESULT_LOBSTER_OUT=%OUTPUT_DIR%\sw_test_result-lobster.json
 
-set SW_CODE_SOURCES=.\..\..\src\lobster_doxygen
-set SW_CODE_LOBSTER_OUT=%OUT_DIR%\sw_code-lobster.json
+set SW_CODE_SOURCES=.\..\..\src\greeter
+set SW_CODE_LOBSTER_OUT=%OUTPUT_DIR%\sw_code-lobster.json
 
 set SW_TEST_CODE_SOURCES=.\..\..\tests
-set SW_TEST_CODE_LOBSTER_OUT=%OUT_DIR%\sw_test_code-lobster.json
+set SW_TEST_CODE_LOBSTER_OUT=%OUTPUT_DIR%\sw_test_code-lobster.json
 
 set SW_REQ_LOBSTER_REPORT_CONF=.\lobster-report-sw-req.conf
-set SW_REQ_LOBSTER_REPORT_OUT=%OUT_DIR%\lobster-report-sw-req-lobster.json
-set SW_REQ_LOBSTER_ONLINE_REPORT_CONF=%OUT_DIR%\online_report_config.yaml
+set SW_REQ_LOBSTER_REPORT_OUT=%OUTPUT_DIR%\lobster-report-sw-req-lobster.json
+set SW_REQ_LOBSTER_ONLINE_REPORT_CONF=%OUTPUT_DIR%\online_report_config.yaml
 
-set SW_REQ_LOBSTER_HTML_OUT=%OUT_DIR%\sw_req_tracing_online_report.html
+set SW_REQ_LOBSTER_HTML_OUT=%OUTPUT_DIR%\sw_req_tracing_online_report.html
 
-if not exist "%OUT_DIR%" (
-    md %OUT_DIR%
+if not exist "%OUTPUT_DIR%" (
+    md %OUTPUT_DIR%
 ) else (
-    del /q /s "%OUT_DIR%\*" >nul
+    del /q /s "%OUTPUT_DIR%\*" >nul
 )
 
 REM ********** SW-Requirements **********

@@ -53,41 +53,40 @@ LOBSTER_REPORT=lobster-report
 LOBSTER_RENDERER=lobster-html-report
 LOBSTER_ONLINE_REPORT=lobster-online-report
 
-OUT_DIR=out
+OUTPUT_DIR=out
 
 SW_REQ_LOBSTER_CONF=./lobster-trlc-sw-req.yaml
-SW_REQ_LOBSTER_OUT=$OUT_DIR/sw_req-lobster.json
+SW_REQ_LOBSTER_OUT=$OUTPUT_DIR/sw_req-lobster.json
 
 SW_CONSTRAINT_LOBSTER_CONF=./lobster-trlc-sw-constraint.yaml
-SW_CONSTRAINT_LOBSTER_OUT=$OUT_DIR/sw_constraint-lobster.json
+SW_CONSTRAINT_LOBSTER_OUT=$OUTPUT_DIR/sw_constraint-lobster.json
 
 SW_ARCH_LOBSTER_CONF=./lobster-trlc-sw-arch.yaml
-SW_ARCH_LOBSTER_OUT=$OUT_DIR/sw_arch-lobster.json
+SW_ARCH_LOBSTER_OUT=$OUTPUT_DIR/sw_arch-lobster.json
 
 SW_TEST_LOBSTER_CONF=./lobster-trlc-sw-test.yaml
-SW_TEST_LOBSTER_OUT=$OUT_DIR/sw_test-lobster.json
+SW_TEST_LOBSTER_OUT=$OUTPUT_DIR/sw_test-lobster.json
 
 SW_TESTRESULT_LOBSTER_CONF=./lobster-trlc-sw-test-result.yaml
-SW_TESTRESULT_LOBSTER_OUT=$OUT_DIR/sw_test_result-lobster.json
-
-SW_CODE_SOURCES=./../../src/lobster_doxygen
-SW_CODE_LOBSTER_OUT=$OUT_DIR/sw_code-lobster.json
+SW_TESTRESULT_LOBSTER_OUT=$OUTPUT_DIR/sw_test_result-lobster.json
+SW_CODE_SOURCES=./../../src/greeter
+SW_CODE_LOBSTER_OUT=$OUTPUT_DIR/sw_code-lobster.json
 
 SW_TEST_CODE_SOURCES=./../../tests
-SW_TEST_CODE_LOBSTER_OUT=$OUT_DIR/sw_test_code-lobster.json
+SW_TEST_CODE_LOBSTER_OUT=$OUTPUT_DIR/sw_test_code-lobster.json
 
 SW_REQ_LOBSTER_REPORT_CONF=./lobster-report-sw-req.conf
-SW_REQ_LOBSTER_REPORT_OUT=$OUT_DIR/lobster-report-sw-req-lobster.json
-SW_REQ_LOBSTER_ONLINE_REPORT_CONF=$OUT_DIR/online_report_config.yaml
+SW_REQ_LOBSTER_REPORT_OUT=$OUTPUT_DIR/lobster-report-sw-req-lobster.json
+SW_REQ_LOBSTER_ONLINE_REPORT_CONF=$OUTPUT_DIR/online_report_config.yaml
 
-SW_REQ_LOBSTER_HTML_OUT=$OUT_DIR/sw_req_tracing_online_report.html
+SW_REQ_LOBSTER_HTML_OUT=$OUTPUT_DIR/sw_req_tracing_online_report.html
 
 
 # ********** Prepare output directory **********
-if [ ! -d "$OUT_DIR" ]; then
-    mkdir -p "$OUT_DIR"
+if [ ! -d "$OUTPUT_DIR" ]; then
+    mkdir -p "$OUTPUT_DIR"
 else
-    rm -rf "$OUT_DIR"/*
+    rm -rf "$OUTPUT_DIR"/*
 fi
 
 # ********** SW-Requirements **********
@@ -98,7 +97,7 @@ if [ $? -ne 0 ]; then
 fi
 
 $LOBSTER_TRLC --config "$SW_CONSTRAINT_LOBSTER_CONF" --out "$SW_CONSTRAINT_LOBSTER_OUT"
-
+ 
 if [ $? -ne 0 ]; then
     exit 1
 fi
