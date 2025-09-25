@@ -28,7 +28,22 @@ REM CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY
 REM OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 REM OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-rem Keep all environment variables local to this script.
+REM ********** Argument validation **********
+REM Enable online report generation only if "online" argument is provided.
+REM If no argument is provided, only local file paths are used.
+REM If any other argument is provided, an error is raised.
+
+set LOBSTER_ONLINE_REPORT_ENABLE=0
+if "%~1"=="" (
+    REM No arguments provided, proceed normally.
+) else if "%~1"=="online" (
+    set LOBSTER_ONLINE_REPORT_ENABLE=1
+) else (
+    echo Error: Invalid argument "%~1". Only optional "online" is allowed. >&2
+    exit /b 1
+)
+
+REM Keep all environment variables local to this script.
 setlocal
 
 pushd %~dp0
@@ -37,45 +52,44 @@ set LOBSTER_TRLC=lobster-trlc
 set LOBSTER_PYTHON=lobster-python
 set LOBSTER_REPORT=lobster-report
 set LOBSTER_RENDERER=lobster-html-report
-set OUT_DIR=out
+set LOBSTER_ONLINE_REPORT=lobster-online-report
+
+set OUTPUT_DIR=out
 
 set SW_REQ_LOBSTER_CONF=.\lobster-trlc-sw-req.yaml
-set SW_REQ_LOBSTER_OUT=%OUT_DIR%\sw_req-lobster.json
+set SW_REQ_LOBSTER_OUT=%OUTPUT_DIR%\sw_req-lobster.json
 
 set SW_CONSTRAINT_LOBSTER_CONF=.\lobster-trlc-sw-constraint.yaml
-set SW_CONSTRAINT_LOBSTER_OUT=%OUT_DIR%\sw_constraint-lobster.json
+set SW_CONSTRAINT_LOBSTER_OUT=%OUTPUT_DIR%\sw_constraint-lobster.json
 
 set SW_ARCH_LOBSTER_CONF=.\lobster-trlc-sw-arch.yaml
-set SW_ARCH_LOBSTER_OUT=%OUT_DIR%\sw_arch-lobster.json
+set SW_ARCH_LOBSTER_OUT=%OUTPUT_DIR%\sw_arch-lobster.json
 
 set SW_TEST_LOBSTER_CONF=.\lobster-trlc-sw-test.yaml
-set SW_TEST_LOBSTER_OUT=%OUT_DIR%\sw_test-lobster.json
+set SW_TEST_LOBSTER_OUT=%OUTPUT_DIR%\sw_test-lobster.json
 
 set SW_TESTRESULT_LOBSTER_CONF=.\lobster-trlc-sw-test-result.yaml
-set SW_TESTRESULT_LOBSTER_OUT=%OUT_DIR%\sw_test_result-lobster.json
+set SW_TESTRESULT_LOBSTER_OUT=%OUTPUT_DIR%\sw_test_result-lobster.json
 
-set SW_CODE_SOURCES=.\..\..\src\lobster_doxygen
-set SW_CODE_LOBSTER_OUT=%OUT_DIR%\sw_code-lobster.json
+set SW_CODE_SOURCES=.\..\..\src\greeter
+set SW_CODE_LOBSTER_OUT=%OUTPUT_DIR%\sw_code-lobster.json
 
 set SW_TEST_CODE_SOURCES=.\..\..\tests
-set SW_TEST_CODE_LOBSTER_OUT=%OUT_DIR%\sw_test_code-lobster.json
+set SW_TEST_CODE_LOBSTER_OUT=%OUTPUT_DIR%\sw_test_code-lobster.json
 
 set SW_REQ_LOBSTER_REPORT_CONF=.\lobster-report-sw-req.conf
-set SW_REQ_LOBSTER_REPORT_OUT=%OUT_DIR%\lobster-report-sw-req-lobster.json
+set SW_REQ_LOBSTER_REPORT_OUT=%OUTPUT_DIR%\lobster-report-sw-req-lobster.json
+set SW_REQ_LOBSTER_ONLINE_REPORT_CONF=%OUTPUT_DIR%\online_report_config.yaml
 
-set SW_REQ_LOBSTER_HTML_OUT=%OUT_DIR%\sw_req_tracing_online_report.html
+set SW_REQ_LOBSTER_HTML_OUT=%OUTPUT_DIR%\sw_req_tracing_online_report.html
 
-if not exist "%OUT_DIR%" (
-    md %OUT_DIR%
+if not exist "%OUTPUT_DIR%" (
+    md %OUTPUT_DIR%
 ) else (
-    del /q /s "%OUT_DIR%\*" >nul
+    del /q /s "%OUTPUT_DIR%\*" >nul
 )
 
-pushd ..\testReport
-call make_rst.bat
-popd
-
-rem ********** SW-Requirements **********
+REM ********** SW-Requirements **********
 %LOBSTER_TRLC% --config %SW_REQ_LOBSTER_CONF% --out %SW_REQ_LOBSTER_OUT%
 
 if errorlevel 1 (
@@ -88,49 +102,72 @@ if errorlevel 1 (
     goto error
 )
 
-rem ********** SW-Arch **********
+REM ********** SW-Arch **********
 %LOBSTER_TRLC% --config %SW_ARCH_LOBSTER_CONF% --out %SW_ARCH_LOBSTER_OUT%
 
 if errorlevel 1 (
     goto error
 )
 
-rem ********** SW-Test **********
+REM ********** SW-Test **********
 %LOBSTER_TRLC% --config %SW_TEST_LOBSTER_CONF% --out %SW_TEST_LOBSTER_OUT%
 
 if errorlevel 1 (
     goto error
 )
 
-rem ********** SW-Test Result **********
+REM ********** SW-Test Result **********
 %LOBSTER_TRLC% --config %SW_TESTRESULT_LOBSTER_CONF% --out %SW_TESTRESULT_LOBSTER_OUT%
 
 if errorlevel 1 (
     goto error
 )
 
-rem ********** SW-Code **********
+REM ********** SW-Code **********
 %LOBSTER_PYTHON% --out %SW_CODE_LOBSTER_OUT% %SW_CODE_SOURCES%
 
 if errorlevel 1 (
     goto error
 )
 
-rem ********** SW-Test Code **********
+REM ********** SW-Test Code **********
 %LOBSTER_PYTHON% --out %SW_TEST_CODE_LOBSTER_OUT% %SW_TEST_CODE_SOURCES%
 
 if errorlevel 1 (
     goto error
 )
 
-rem ********** Combine all lobster intermediate files **********
+REM ********** Combine all lobster intermediate files **********
 %LOBSTER_REPORT% --lobster-config %SW_REQ_LOBSTER_REPORT_CONF% --out %SW_REQ_LOBSTER_REPORT_OUT%
 
 if errorlevel 1 (
     goto error
 )
 
-rem ********** Create trace report **********
+REM ********** LOBSTER Report conversion from local files to GIT URLS **********
+if not %LOBSTER_ONLINE_REPORT_ENABLE% ==1 goto skip_online
+
+    for /f "delims=" %%i in ('git rev-parse HEAD') do set COMMIT_ID=%%i
+    for /f "delims=" %%i in ('git remote get-url origin') do set BASE_URL=%%i
+    echo report: '%SW_REQ_LOBSTER_REPORT_OUT%' > %SW_REQ_LOBSTER_ONLINE_REPORT_CONF%
+    echo commit_id: '%COMMIT_ID%' >> %SW_REQ_LOBSTER_ONLINE_REPORT_CONF%
+    echo repo_root: '.\..\..' >> %SW_REQ_LOBSTER_ONLINE_REPORT_CONF%
+    echo base_url: '%BASE_URL%' >> %SW_REQ_LOBSTER_ONLINE_REPORT_CONF%
+    type "%SW_REQ_LOBSTER_ONLINE_REPORT_CONF%"
+
+    REM lobster-online-report v1.0.1 failes to patch the input file without --out option.
+    REM Create temporary one with ".online" extension and replace it with the input aftewards.
+    REM
+    %LOBSTER_ONLINE_REPORT% --config "%SW_REQ_LOBSTER_ONLINE_REPORT_CONF%" --out "%SW_REQ_LOBSTER_REPORT_OUT%.online"
+    move /Y "%SW_REQ_LOBSTER_REPORT_OUT%.online" "%SW_REQ_LOBSTER_REPORT_OUT%"
+
+    if errorlevel 1 (
+        goto error
+    )
+
+:skip_online
+
+REM ********** Create trace report **********
 %LOBSTER_RENDERER% --out %SW_REQ_LOBSTER_HTML_OUT% %SW_REQ_LOBSTER_REPORT_OUT%
 
 if errorlevel 1 (
