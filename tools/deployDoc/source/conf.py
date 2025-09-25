@@ -134,19 +134,30 @@ def copy_files(app: any) -> None:
         source = os.path.abspath(files['source'])
         destination = os.path.join(app.outdir, files['destination'])
 
-        if not os.path.exists(destination):
-            os.makedirs(destination)
+        if not os.path.exists(source):
+            print(
+                f"Warning: The source directory {source} does not exist. "
+                "Please check the configuration in conf.py."
+            )
 
-        for filename in os.listdir(source):
-            if not any(fnmatch.fnmatch(filename, pattern) for pattern in files['exclude']):
-                full_file_name = os.path.join(source, filename)
-                if os.path.isfile(full_file_name):
-                    shutil.copy(full_file_name, destination)
+        else:
+            if not os.path.exists(destination):
+                os.makedirs(destination)
+            
+            for filename in os.listdir(source):
+                if not any(fnmatch.fnmatch(filename, pattern) for pattern in files['exclude']):
+                    full_file_name = os.path.join(source, filename)
+                    if os.path.isfile(full_file_name):
+                        shutil.copy(full_file_name, destination)
 
-def add_git_information_to_footer() -> Optional[str]:
-    """Append git commit hash to footer.
+def get_git_commit_hash_info() -> Optional[str]:
+    """Get commit hash info string for current sandbox.
+
+    Returns:
+            str: Git commit hash info string.
+            None: in case of missing git output or exception.
     """
-    append_str = ''
+    result = None
 
     try:
         import subprocess
@@ -156,12 +167,12 @@ def add_git_information_to_footer() -> Optional[str]:
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE).communicate()
         if out:
-            return f" from commit {out.decode().strip()}"
-        else:
-            return None
+            result = f" from commit {out.decode().strip()}"
 
     except Exception as e:
         pass
+
+    return result
 
 # Main *************************************************************************
 
@@ -182,4 +193,4 @@ else:
             f"The environment variable PLANTUML points to a not existing file {plantuml_env}."
         )
 
-html_last_updated_fmt += add_git_information_to_footer()
+html_last_updated_fmt += get_git_commit_hash_info()
