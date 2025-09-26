@@ -30,11 +30,31 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+# ********** Argument validation **********
+# Enable online report generation only if "online" argument is provided.
+# If no argument is provided, only local file paths are used.
+# If any other argument is provided, an error is raised.
+ONLINE_REPORT_OPTION=''
+if [ "$#" -gt 1 ]; then
+    echo "Error: Too many arguments. Only optional 'online' is allowed." >&2
+    exit 1
+elif [ "$#" -eq 1 ]; then
+    if [ "$1" == "online" ]; then
+        ONLINE_REPORT_OPTION="online"
+    else
+        echo "Error: Invalid argument '$1'. Only optional 'online' is allowed." >&2
+        exit 1
+    fi
+fi
+
 # Create reStructured Text documentation from TRLC models and files.
 (cd trlc2other; ./make_rst.sh)
 
+# Create unit test reports
+(cd testReport; ./make_rst.sh)
+
 # Create tracing report from TRLC and source files.
-(cd traceReport; ./make.sh)
+(cd traceReport; ./make.sh $ONLINE_REPORT_OPTION)
 
 #Create HTML documentation.
 (cd plantUML; . ./get_plantuml.sh; cd ..;cd deployDoc; make html)

@@ -38,18 +38,18 @@ SRC_PATH=./src
 TESTS_PATH=./tests
 COVERAGE_REPORT=coverage
 REPORT_TOOL_PATH=./tools/testReport
-TEST_RESULT_REPORT_XML=test_result_report.xml
-TEST_RESULT_REPORT_TRLC=test_result_report.trlc
+TEST_RESULT_REPORT_XML=sw_test_result_report.xml
+TEST_RESULT_REPORT_TRLC=sw_test_result_report.trlc
 TRLC_CONVERTER=pyTRLCConverter
 CONVERTER_DIR=../trlc2other/converter
 OUTPUT_DIR=out
 CONVERTER=$CONVERTER_DIR/create_test_report_in_rst.py
 OUT_FORMAT=rst
 
-if [ ! -d "$OUT_DIR" ]; then
-    mkdir -p "$OUT_DIR"
+if [ ! -d "$OUTPUT_DIR" ]; then
+    mkdir -p "$OUTPUT_DIR"
 else
-    rm -f "$OUT_DIR"/*
+    rm -f "$OUTPUT_DIR"/*
 fi
 
 # Create the test report and the coverage analysis.
@@ -69,7 +69,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Convert TRLC test report to reStructuredText.
-$TRLC_CONVERTER --source=../../trlc/swe-req --source=../../trlc/swe-test --source=../../trlc/model --exclude=../../trlc/swe-req --exclude=../../trlc/swe-test --source=$OUTPUT_DIR/$TEST_RESULT_REPORT_TRLC -o=$OUTPUT_DIR --project=$CONVERTER --verbose rst
+$TRLC_CONVERTER --source=../../trlc/swe-req --source=../../trlc/swe-test --source=../../trlc/model --exclude=../../trlc/swe-req --exclude=../../trlc/swe-test --source=$OUTPUT_DIR/$TEST_RESULT_REPORT_TRLC -o=$OUTPUT_DIR --project=$CONVERTER --verbose $OUT_FORMAT
 
 if [ $? -ne 0 ]; then
     exit 1
