@@ -97,22 +97,26 @@ def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descript
     refs = []
     just_up = []
 
-    xrefdescriptions = _get_xrefdescriptions_from_detaileddescription(detaileddescription)
+    xrefdescriptions = _get_xrefdescriptions_from_detaileddescription(
+        detaileddescription)
     for xrefdescription in xrefdescriptions:
         for para in xrefdescription.get_para():
             value = para.get_valueOf_().strip()
 
             # Look for requirement reference
             if value.startswith(f"{_REQ_SPECIFIER}: "):
-                req_id = value[13:]
+                req_id = value.removeprefix(f"{_REQ_SPECIFIER}: ")
+                # Remove trailing comments parsed by doxygen.
+                req_id = req_id.split()[0]
                 refs.append(req_id)
                 LOG.print_info(indent(3, f"{_REQ_SPECIFIER}: {req_id}"))
 
             # Look for justification
             elif value.startswith(f"{_JUSTIFICATION_SPECIFIER}: "):
-                just_up_id = value[15:]
+                just_up_id = value.removeprefix(f"{_JUSTIFICATION_SPECIFIER}: ")
                 just_up.append(just_up_id)
-                LOG.print_info(indent(3, f"{_JUSTIFICATION_SPECIFIER}: {just_up_id}"))
+                LOG.print_info(
+                    indent(3, f"{_JUSTIFICATION_SPECIFIER}: {just_up_id}"))
 
     return refs, just_up
 
