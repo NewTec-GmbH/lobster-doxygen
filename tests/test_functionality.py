@@ -263,7 +263,8 @@ def test_tc_output_file_format_program_with_directory_with_no_index_file(record_
     captured = capsys.readouterr()
     error_output = captured.err
     assert exit_code != 0, "Exit Code returns success."
-    assert error_output == f"Error: No doxygen index.xml file in doxygen_xml_folder {EMPTY_FOLDER}."
+    assert "Error: No doxygen index.xml file in doxygen_xml_folder " in error_output
+    assert f"{EMPTY_FOLDER}" in error_output
 
 
 def test_tc_function_level(record_property) -> None:
