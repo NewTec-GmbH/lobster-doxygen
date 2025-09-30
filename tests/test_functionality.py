@@ -749,7 +749,8 @@ def test_tc_no_trace(record_property, capsys) -> None:
         lobster_file_content = [line.strip("\n")
                                 for line in lobster_file.readlines()]
 
-    assert lobster_file_content == EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT_NO_TRACE, "Output file content is not as expected."
+    assert lobster_file_content == \
+        EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT_NO_TRACE, "Output file content is not as expected."
 
 
 def test_tc_valid_id(record_property):

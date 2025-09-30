@@ -23,8 +23,8 @@ Author: Andreas Merkle (andreas.merkle@newtec.de)
 
 # Imports **********************************************************************
 
-import doxmlparser
 import re
+import doxmlparser
 from doxmlparser.compound import DoxCompoundKind, DoxMemberKind, compounddefType, descriptionType
 
 from lobster_doxygen.lobster_item import LobsterItem
