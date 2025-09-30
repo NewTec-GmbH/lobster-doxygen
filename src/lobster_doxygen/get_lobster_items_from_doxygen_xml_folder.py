@@ -97,8 +97,7 @@ def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descript
     refs = []
     just_up = []
 
-    xrefdescriptions = _get_xrefdescriptions_from_detaileddescription(
-        detaileddescription)
+    xrefdescriptions = _get_xrefdescriptions_from_detaileddescription(detaileddescription)
     for xrefdescription in xrefdescriptions:
         for para in xrefdescription.get_para():
             value = para.get_valueOf_().strip()
@@ -115,8 +114,7 @@ def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descript
             elif value.startswith(f"{_JUSTIFICATION_SPECIFIER}: "):
                 just_up_id = value.removeprefix(f"{_JUSTIFICATION_SPECIFIER}: ")
                 just_up.append(just_up_id)
-                LOG.print_info(
-                    indent(3, f"{_JUSTIFICATION_SPECIFIER}: {just_up_id}"))
+                LOG.print_info(indent(3, f"{_JUSTIFICATION_SPECIFIER}: {just_up_id}"))
 
     return refs, just_up
 
