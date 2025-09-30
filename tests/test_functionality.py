@@ -87,6 +87,12 @@ TEST_RULE_NAMESPACE_AND_FUNCTION_JUSTIFICATIONS_XML_FOLDER = (
 # requirement or justification.
 TEST_UNSPECIFIED_XML_FOLDER = "./tests/utils/cpp-unspecified/out/xml"
 
+# Directory with Doxygen XML files from cpp-bad-comment project..
+TEST_BAD_COMMENT_XML_FOLDER = "./tests/utils/cpp-bad-comment/out/xml"
+
+# Directory with Doxygen XML files from cpp-invalid project..
+TEST_INVALID_XML_FOLDER = "./tests/utils/cpp-invalid/out/xml"
+
 # Empty directory with no XML files.
 EMPTY_FOLDER = "./tests/utils/empty_folder"
 
@@ -744,5 +750,60 @@ def test_tc_no_trace(record_property, capsys) -> None:
                                 for line in lobster_file.readlines()]
 
     assert lobster_file_content == EXPECTED_LOBSTER_INTERCHANGE_FILE_CONTENT_NO_TRACE, "Output file content is not as expected."
+
+
+def test_tc_valid_id(record_property):
+    # lobster-trace: SwTests.tc_valid_id
+    """
+    Test if any comments parsed by doxygen in the same row as a requirement annotation are removed by the tool.
+    Doxygen parsed an incorrect identifier in this case and the software is expected to ignore the invalid part.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+    """
+    record_property("lobster-trace", "SwTests.tc_valid_id")
+
+    sys.argv = ["lobster-doxygen", "-v", "--output",
+                TEST_LOBSTER_OUTPUT_FILE, TEST_BAD_COMMENT_XML_FOLDER]
+
+    exit_code = main()
+
+    assert exit_code == 0, "Exit Code returns no success."
+
+    with open(TEST_LOBSTER_OUTPUT_FILE, encoding='utf-8') as interchange_file:
+        interchange_output = json.load(interchange_file)
+
+    # Comment present in xml should not be parsed as requirement id.
+    assert interchange_output["data"][0]["refs"][0] == "req req1"
+
+def test_tc_invalid_input(record_property, capsys) -> None:
+    # lobster-trace: SwTests.tc_invalid_input
+    """
+    This test case calls the program with cpp-invalid-input XML folder as doxygen_xml_folder and
+    ensures that the program is reporting the invalid requirement identifier.
+
+    Args:
+        record_property (Any): Used to inject the test case reference into the test results.
+        capsys (Any): Used to capture the output of the program.
+    """
+    record_property("lobster-trace", "SwTests.tc_invalid_input")
+
+    sys.argv = [
+        "lobster-doxygen",
+        "-v",
+        "--output",
+        TEST_LOBSTER_OUTPUT_FILE,
+        TEST_INVALID_XML_FOLDER,
+    ]
+
+    exit_code = main()
+
+    captured = capsys.readouterr()
+    error_output = captured.err
+
+    assert "Invalid identifier in doxygen xml: 1req." in error_output
+    assert exit_code == 0, "Exit Code returns no success."
+
+
 
 # Main *************************************************************************

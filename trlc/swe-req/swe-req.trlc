@@ -114,6 +114,23 @@ section "SW Requirement Specification" {
                 note = "This is required to detect untraced sourcecode, but doesn't break any toolchain flow."
                 valid_status = AbstractRequirements.VALID_STATUS.valid
             }
+
+            SwReq sw_req_valid_id {
+                description = '''The software shall consider TRLC identifiers matching the format [a-zA-Z][a-zA-Z0-9_]* as valid 
+                and ignore additional doxygen content when extracting requirement identifiers.'''
+                verification_criteria = ""
+                note = '''TRLC identifier format is defined in the language reference manual at https://bmw-software-engineering.github.io/trlc/lrm.html\n
+                Note that identifiers of package and requirement are concatinated via '.'.'''
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
+
+            SwReq sw_req_invalid_input {
+                verification_criteria = ""
+                description = "The software shall report an error if the doxygen xml contains no valid identifier in an entry of the tracing table."
+                note = '''Identifiers are matched to trim possible comments or else parsed by doxygen. 
+                If no valid identifier is present, an error must be present in the annotations.'''
+                valid_status = AbstractRequirements.VALID_STATUS.valid
+            }
         }
 
         section "User Interface" {
