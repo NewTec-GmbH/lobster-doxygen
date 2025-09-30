@@ -68,18 +68,15 @@ def convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder:
         is_index_file_found = True
 
     if is_index_file_found:
-        lobster_items = get_lobster_items_from_doxygen_xml_folder(
-            doxygen_xml_folder)
+        lobster_items = get_lobster_items_from_doxygen_xml_folder(doxygen_xml_folder)
         # Continue only if no error during parsing.
         if lobster_items is not None:
             # Check if lobster items are found.
             if 0 == len(lobster_items):
-                LOG.print_warning(
-                    "No lobster items found in the doxygen XML output.")
+                LOG.print_warning("No lobster items found in the doxygen XML output.")
 
             if rule_check(lobster_items) is True:
-                write_lobster_common_interchange_format_file(
-                    lobster_items, output_file_name)
+                write_lobster_common_interchange_format_file(lobster_items, output_file_name)
                 ret_status = Ret.RET_OK
 
     return ret_status
