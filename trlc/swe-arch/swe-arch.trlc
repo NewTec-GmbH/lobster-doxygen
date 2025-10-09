@@ -111,7 +111,9 @@ section "lobster-doxygen SW Architecture" {
                 SwRequirements.sw_req_interface_level,
                 SwRequirements.sw_req_no_group,
                 SwRequirements.sw_req_group,
-                SwRequirements.sw_req_unspecified
+                SwRequirements.sw_req_unspecified,
+                SwRequirements.sw_req_valid_id,
+                SwRequirements.sw_req_invalid_input
             ]
         }
 

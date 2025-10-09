@@ -126,7 +126,7 @@ section "SW Requirement Specification" {
 
             SwReq sw_req_invalid_input {
                 verification_criteria = ""
-                description = "The software shall report an error if the doxygen xml contains no valid identifier in an entry of the tracing table."
+                description = "The software shall output a warning if the doxygen xml contains no valid TRLC identifier in an entry of the tracing table."
                 note = '''Identifiers are matched to trim possible comments or else parsed by doxygen. 
                 If no valid identifier is present, an error must be present in the annotations.'''
                 valid_status = AbstractRequirements.VALID_STATUS.valid

@@ -108,7 +108,7 @@ def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descript
         for para in xrefdescription.get_para():
             value = para.get_valueOf_().strip()
 
-            # Look for requirement reference
+            # Look for requirement reference.
             if value.startswith(f"{_REQ_SPECIFIER}: "):
                 doxygen_parsed_req = value.removeprefix(f"{_REQ_SPECIFIER}: ")
 
@@ -123,7 +123,7 @@ def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descript
                 else:
                     LOG.print_warning(indent(3, f"Invalid identifier in doxygen xml: {doxygen_parsed_req}."))
 
-            # Look for justification
+            # Look for justification.
             elif value.startswith(f"{_JUSTIFICATION_SPECIFIER}: "):
                 just_up_id = value.removeprefix(f"{_JUSTIFICATION_SPECIFIER}: ")
                 just_up.append(just_up_id)
