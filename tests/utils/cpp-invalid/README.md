@@ -1,3 +1,3 @@
-# cpp-bad-comment
+# cpp-invalid
 
-This folder contains cpp source and header files to test that bad comment placement in a code does not break the tool.
+This folder contains cpp source and header files to test that requirement annotations containing no valid trlc identifier result in a warning.
