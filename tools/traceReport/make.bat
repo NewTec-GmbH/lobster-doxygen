@@ -71,7 +71,7 @@ set SW_TEST_LOBSTER_OUT=%OUTPUT_DIR%\sw_test-lobster.json
 set SW_TESTRESULT_LOBSTER_CONF=.\lobster-trlc-sw-test-result.yaml
 set SW_TESTRESULT_LOBSTER_OUT=%OUTPUT_DIR%\sw_test_result-lobster.json
 
-set SW_CODE_SOURCES=.\..\..\src\greeter
+set SW_CODE_SOURCES=.\..\..\src\lobster_doxygen
 set SW_CODE_LOBSTER_OUT=%OUTPUT_DIR%\sw_code-lobster.json
 
 set SW_TEST_CODE_SOURCES=.\..\..\tests
