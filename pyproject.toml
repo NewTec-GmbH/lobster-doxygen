@@ -30,8 +30,6 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "pytest > 5.0.0",
-    "pytest-cov[all]",
     "toml>=0.10.2",
     "tomlkit>=0.13.2",
     "pylint>=3.3.1",
