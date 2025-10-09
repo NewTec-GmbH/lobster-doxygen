@@ -23,6 +23,7 @@ Author: Andreas Merkle (andreas.merkle@newtec.de)
 
 # Imports **********************************************************************
 
+import re
 import doxmlparser
 from doxmlparser.compound import DoxCompoundKind, DoxMemberKind, compounddefType, descriptionType
 
@@ -53,6 +54,9 @@ _LOBSTER_ITEM_KINDS = [
     DoxCompoundKind.GROUP,
 ]
 
+# Regex pattern to match TRLC identifier and optional TRLC package prefix.
+_IDENTIFIER_PATTERN = re.compile(r"([a-zA-Z][a-zA-Z0-9_]*\.)?[a-zA-Z][a-zA-Z0-9_]*")
+
 # Classes **********************************************************************
 
 # Functions ********************************************************************
@@ -81,6 +85,8 @@ def _get_xrefdescriptions_from_detaileddescription(detaileddescription: descript
 
 def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descriptionType) -> tuple[list[str], list[str]]:
     # lobster-trace: SwRequirements.sw_req_output_file_format
+    # lobster-trace: SwRequirements.sw_req_valid_id
+    # lobster-trace: SwRequirements.sw_req_invalid_input
     """Parse the detaileddescription for xrefdescription to retrieve requirement
     with _REQ_SPECIFIER and justification with _JUSTIFICATION_SPECIFIER
     references and return them with two separate lists.
@@ -102,15 +108,24 @@ def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descript
         for para in xrefdescription.get_para():
             value = para.get_valueOf_().strip()
 
-            # Look for requirement reference
+            # Look for requirement reference.
             if value.startswith(f"{_REQ_SPECIFIER}: "):
-                req_id = value[13:]
-                refs.append(req_id)
-                LOG.print_info(indent(3, f"{_REQ_SPECIFIER}: {req_id}"))
+                doxygen_parsed_req = value.removeprefix(f"{_REQ_SPECIFIER}: ")
 
-            # Look for justification
+                # Check for a valid identifier.
+                req_match = _IDENTIFIER_PATTERN.search(doxygen_parsed_req)
+
+                # Keep parsing if a valid identifier was found at the expected position.
+                if req_match is not None and 0 == req_match.span()[0]:
+                    req_id = req_match.group(0)
+                    refs.append(req_id)
+                    LOG.print_info(indent(3, f"{_REQ_SPECIFIER}: {req_id}"))
+                else:
+                    LOG.print_warning(indent(3, f"Invalid identifier in doxygen xml: {doxygen_parsed_req}."))
+
+            # Look for justification.
             elif value.startswith(f"{_JUSTIFICATION_SPECIFIER}: "):
-                just_up_id = value[15:]
+                just_up_id = value.removeprefix(f"{_JUSTIFICATION_SPECIFIER}: ")
                 just_up.append(just_up_id)
                 LOG.print_info(indent(3, f"{_JUSTIFICATION_SPECIFIER}: {just_up_id}"))
 

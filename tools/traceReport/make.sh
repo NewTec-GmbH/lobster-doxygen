@@ -69,7 +69,7 @@ SW_TEST_LOBSTER_OUT=$OUTPUT_DIR/sw_test-lobster.json
 
 SW_TESTRESULT_LOBSTER_CONF=./lobster-trlc-sw-test-result.yaml
 SW_TESTRESULT_LOBSTER_OUT=$OUTPUT_DIR/sw_test_result-lobster.json
-SW_CODE_SOURCES=./../../src/greeter
+SW_CODE_SOURCES=./../../src/lobster_doxygen
 SW_CODE_LOBSTER_OUT=$OUTPUT_DIR/sw_code-lobster.json
 
 SW_TEST_CODE_SOURCES=./../../tests

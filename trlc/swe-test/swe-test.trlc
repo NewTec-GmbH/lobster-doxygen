@@ -69,6 +69,16 @@ section "SW-Tests" {
             description = "This test case checks whether the program outputs a warning and creates a 'empty' lobster common interchange file."
             verifies = [SwRequirements.sw_req_no_trace]
         }
+
+        SwTestCase tc_valid_id {
+            description = "This test case checks whether the program correctly ignores parsed doxygen output containing code comments after the requirement id."
+            verifies = [SwRequirements.sw_req_valid_id]
+        }
+
+        SwTestCase tc_invalid_input {
+            description = "This test case checks whether the program reports an error on invalid requirements identifier input."
+            verifies = [SwRequirements.sw_req_invalid_input]
+        }
     }
 
     section "General" {
