@@ -1,4 +1,4 @@
-# Safety Manual
+# Safety Manual <!-- omit in toc -->
 
 - [Introduction](#1-introduction)
   - [Purpose of this Document](#11-purpose-of-this-document)
@@ -8,7 +8,8 @@
   - [Classification Hints](#15-classification-hints)
     - [Further Considerations](#151-further-considerations)
   - [Qualification Hints](#16-qualification-hints)
-  - [Validation of the Software Tool](#17-validation-of-the-software-tool)
+  - [Evaluation of the Tool Develpment Process](#17-evaluation-of-the-tool-development-process)
+  - [Validation of the Software Tool](#18-validation-of-the-software-tool)
 - [Example Use Cases](#2-example-use-cases)
   - [Generate Lobster File from Doxygen XML Files for **non-safety-relevant** Requirements](#21-generate-lobster-file-from-doxygen-xml-files-for-non-safety-relevant-requirements)
   - [Generate Lobster File from Doxygen XML Files for **safety-relevant** Requirements](#22-generate-lobster-file-from-doxygen-xml-files-for-safety-relevant-requirements)
@@ -65,7 +66,9 @@ To avoid cases where both the ***lobster-doxygen*** conversion tool ***and*** th
 
 ### 1.6 Qualification Hints
 
-Each main release of ***lobster-doxygen*** needs to be qualified individually, covering all planned use cases classified as TCL2 or TCL3. For this qualification, only the qualification method
+Each main release of ***lobster-doxygen*** needs to be qualified individually, covering all planned use cases classified as TCL2 or TCL3. Qualification methods for each use case need to be chosen according to the ASIL of the product under development. For the qualification of ***lobster-doxygen***, only the qualification methods
+
+- 1b (Evaluation of the tool development process)
 
 - 1c (Validation of the software tool)
 
@@ -73,15 +76,19 @@ mentioned in ISO 26262-8 can be considered. Justification against other methods:
 
 - The qualification method **1a** (increased confidence from use) cannot be considered, since the ***lobster-doxygen*** tool has limited use in existing development projects.
 
-- The qualification method **1b** (evaluation of the tool development process) cannot be considered, since the development process of ***lobster-doxygen*** was not in compliance with any development standard.
-
 - The qualification method **1d** (development in accordance with a safety standard) cannot be considered, since ***lobster-doxygen*** was not developed in accordance with any safety standard.
 
-NewTec GmbH recommends qualification method **1c** for the ***lobster-doxygen*** software tool.
+NewTec GmbH recommends the qualification method **1c** for the ***lobster-doxygen*** software tool.
 
-### 1.7 Validation of the Software Tool
+### 1.7 Evaluation of the Tool Development Process
 
-Qualification methods for each use case need to be chosen according to the ASIL of the product under development. Typically, it is good practice to use a test configuration with known input data and check the corresponding output of the tool for correctness e.g. by a formal review. The test configuration and test data should be determined based on the planned use case. Where a newer version of the software is being qualified, it may be qualified  in an automated way against the output of an older, previously qualified version of the software. Another good practice is to stimulate an error and check whether the tool can detect it as expected.
+The qualification method "evaluation of the tool development process" requires that the developer assess the tool development process and provide evidence that the tool was developed in compliance with an appropriate national or international standard (or a development process based on such a standard). The ***lobster-doxygen*** tool was developed according to the NewTec standard for Python development. This standard includes documentation of tool requirements and architecture, coding guidelines, full trace and test coverage, and the PEP 8 style guide. If the developer decides to use this qualification method, the developer must provide evidence that the development process was sufficiently similar to a process defined in an existing national or international standard for tool development. Due to the relative complexity of this method and the relative simplicity of this software tool, NewTec GmbH recommends against this qualification method in favor of the method "validation of the software tool".
+
+### 1.8 Validation of the Software Tool
+
+The qualification method "validation of the software tool" requires that the developer provide evidence that the software tool fulfills the tool requirements as they relate to its purpose in the development context. This is accomplished by testing the tool against the relevant requirements. The ***lobster-doxygen*** GitHub repository includes example test scripts which may be used or adapted for this qualification method.
+
+It is good practice to use a test configuration with known input data and check the corresponding output of the tool for correctness e.g. by a formal review. The test configuration and test data should be determined based on the planned use case. Where a newer version of the software is being qualified, it may be qualified in an automated way against the output of an older, previously qualified version of the software. Another good practice is to stimulate an error and check whether the tool can detect it as expected.
 
 ## 2 Example Use Cases
 
@@ -91,7 +98,7 @@ The following table is an example of a use case where the ***lobster-doxygen*** 
 
 |||
 |---|---|
-|**Indended Purpose**|Generate a LOBSTER common interchange format (.json) file from a Doxygen XML file which contains references to non-safety-relevant features implemented by the source software. Each feature represents the implementation (in part or in whole) of the respective requirement(s) from the software requirements specification.|
+|**Intended Purpose**|Generate a LOBSTER common interchange format (.json) file from a Doxygen XML file which contains references to non-safety-relevant features implemented by the source software. Each feature represents the implementation (in part or in whole) of the respective requirement(s) from the software requirements specification.|
 |**Environmental, Functional and Process Constraints**|Operating system: Windows 10 (version 20H2, 64bit)<br><mark>***lobster-doxygen*** version: 1.0.0</mark><br><mark>[lobster-doxygen configuration, if applicable]</mark>|
 |**Description**|Run the **lobster-doxygen** python tool, using the paths of the input and output files as arguments.|
 |**Output**|LOBSTER common interchange format file which links implemented features with their respective non-safety-relevant source requirements.|
@@ -106,7 +113,7 @@ The following table is an example of a use case where the ***lobster-doxygen*** 
 
 |||
 |---|---|
-|**Indended Purpose**|Generate a LOBSTER common interchange format (.json) file from a Doxygen XML file which contains references to safety-relevant features implemented by the source software. Each feature represents the implementation (in part or in whole) of the respective requirement(s) from the software requirements specification.|
+|**Intended Purpose**|Generate a LOBSTER common interchange format (.json) file from a Doxygen XML file which contains references to safety-relevant features implemented by the source software. Each feature represents the implementation (in part or in whole) of the respective requirement(s) from the software requirements specification.|
 |**Environmental, Functional and Process Constraints**|Operating system: Windows 10 (version 20H2, 64bit)<br><mark>***lobster-doxygen*** version: 1.0.0</mark><br><mark>[lobster-doxygen configuration, if applicable]</mark>|
 |**Description**|Run the ***lobster-doxygen*** python tool, using the paths of the input and output files as arguments.|
 |**Output**|LOBSTER common interchange format file which links implemented features with their respective safety-relevant source requirements.|
