@@ -3,6 +3,7 @@
 [![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://choosealicense.com/licenses/gpl-3.0/) [![Repo Status](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![CI](https://github.com/NewTec-GmbH/lobster-doxygen/actions/workflows/test.yml/badge.svg)](https://github.com/NewTec-GmbH/lobster-doxygen/actions/workflows/test.yml)
 
 - [Overview](#overview)
+  - [Safety Manual](#safety-manual)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Tool](#tool)
@@ -40,6 +41,10 @@ The following diagram shows how lobster-doxygen fits into the LOBSTER toolchain.
 to the LOBSTER common interchange format.
 
 ![lobster-doxygen in LOBSTER toolchain](doc/architecture/toolchain.png)
+
+### Safety Manual
+
+For information about using the lobster-doxygen tool in a safety-related project, see the [safety manual](./doc/safety/safety_manual.md).
 
 ## Installation
 
