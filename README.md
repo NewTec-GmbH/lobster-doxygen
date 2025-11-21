@@ -40,7 +40,7 @@ code quite simple. The following aliases are supported:
 The following diagram shows how lobster-doxygen fits into the LOBSTER toolchain. It provides a data flow path from source code
 to the LOBSTER common interchange format.
 
-![lobster-doxygen in LOBSTER toolchain](doc/architecture/toolchain.png)
+![lobster-doxygen in LOBSTER toolchain](https://raw.githubusercontent.com/NewTec-GmbH/lobster-doxygen/refs/heads/main/doc/architecture/toolchain.png)
 
 ### Safety Manual
 
