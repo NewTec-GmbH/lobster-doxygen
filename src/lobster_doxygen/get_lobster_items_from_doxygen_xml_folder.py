@@ -202,7 +202,12 @@ def _lobster_item_from_compounddef(compounddef: compounddefType) -> LobsterItem:
     # DoxCompoundKind to LobsterKind
     lobster_item.kind = LobsterKind[compounddef.get_kind().upper()]
 
-    lobster_item.language = compounddef.get_language()
+    # A group has no language on compounddef level.
+    if compounddef.get_language() is None:
+        lobster_item.language = "unspecified"
+    else:
+        lobster_item.language = compounddef.get_language()
+
     lobster_item.name = compounddef.get_compoundname()
 
     # A group has no location information on compounddef level.
