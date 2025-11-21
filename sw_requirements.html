@@ -479,6 +479,63 @@
 </tbody>
 </table>
 </div>
+<div class="admonition-sw-req-valid-id admonition" id="swe-req-rst-sw-req-valid-id">
+<p class="admonition-title">sw_req_valid_id</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall consider TRLC identifiers matching the format [a-zA-Z][a-zA-Z0-9_]* as valid
+and ignore additional doxygen content when extracting requirement identifiers.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>TRLC identifier format is defined in the language reference manual at <a class="reference external" href="https://bmw-software-engineering.github.io/trlc/lrm.html">https://bmw-software-engineering.github.io/trlc/lrm.html</a>\n
+Note that identifiers of package and requirement are concatinated via ‘.’.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-sw-req-invalid-input admonition" id="swe-req-rst-sw-req-invalid-input">
+<p class="admonition-title">sw_req_invalid_input</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute Name</p></th>
+<th class="head"><p>Attribute Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>The software shall output a warning if the doxygen xml contains no valid TRLC identifier in an entry of the tracing table.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid Status</p></td>
+<td><p>valid</p></td>
+</tr>
+<tr class="row-even"><td><p>Note</p></td>
+<td><p>Identifiers are matched to trim possible comments or else parsed by doxygen.
+If no valid identifier is present, an error must be present in the annotations.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derived</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification Criteria</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="user-interface">
 <span id="swe-req-rst-user-interface"></span><h4>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading">¶</a></h4>
@@ -737,7 +794,7 @@
 
     <div class="footer" role="contentinfo">
     &#169; Copyright 2025, NewTec GmbH.
-      Last updated on Sep 19, 2025 from commit 691f54b620dc6f53b7ff6ebf272b84dfa8f19e19.
+      Last updated on Nov 21, 2025 from commit 26abc5392fc7af5a0a3a61b022c953d927799b4f.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     </div>
   </body>
