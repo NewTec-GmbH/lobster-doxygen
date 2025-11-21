@@ -161,8 +161,8 @@ def write_lobster_common_interchange_format_file(lobster_items: list[LobsterItem
                     if (lobster_item.has_refs() is False) and (lobster_item.has_just_up() is False):
                         skip = True
 
-            # Skip file items in general.
-            elif lobster_item.kind == LobsterKind.FILE:
+            # Skip file and group items in general.
+            elif lobster_item.kind in [LobsterKind.FILE, LobsterKind.GROUP]:
                 skip = True
 
             # If not skipped, write the lobster item to the output file.
