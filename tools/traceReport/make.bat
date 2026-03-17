@@ -77,59 +77,27 @@ if not exist "%OUTPUT_DIR%" (
 )
 
 REM ********** SW-Requirements **********
-%LOBSTER_TRLC% --config %SW_REQ_LOBSTER_CONF% --out %SW_REQ_LOBSTER_OUT%
+%LOBSTER_TRLC% --config %SW_REQ_LOBSTER_CONF% --out %SW_REQ_LOBSTER_OUT% || goto :error
 
-if errorlevel 1 (
-    goto error
-)
-
-%LOBSTER_TRLC% --config %SW_CONSTRAINT_LOBSTER_CONF% --out %SW_CONSTRAINT_LOBSTER_OUT%
-
-if errorlevel 1 (
-    goto error
-)
+%LOBSTER_TRLC% --config %SW_CONSTRAINT_LOBSTER_CONF% --out %SW_CONSTRAINT_LOBSTER_OUT% || goto :error
 
 REM ********** SW-Arch **********
-%LOBSTER_TRLC% --config %SW_ARCH_LOBSTER_CONF% --out %SW_ARCH_LOBSTER_OUT%
-
-if errorlevel 1 (
-    goto error
-)
+%LOBSTER_TRLC% --config %SW_ARCH_LOBSTER_CONF% --out %SW_ARCH_LOBSTER_OUT% || goto :error
 
 REM ********** SW-Test **********
-%LOBSTER_TRLC% --config %SW_TEST_LOBSTER_CONF% --out %SW_TEST_LOBSTER_OUT%
-
-if errorlevel 1 (
-    goto error
-)
+%LOBSTER_TRLC% --config %SW_TEST_LOBSTER_CONF% --out %SW_TEST_LOBSTER_OUT% || goto :error
 
 REM ********** SW-Test Result **********
-%LOBSTER_TRLC% --config %SW_TESTRESULT_LOBSTER_CONF% --out %SW_TESTRESULT_LOBSTER_OUT%
-
-if errorlevel 1 (
-    goto error
-)
+%LOBSTER_TRLC% --config %SW_TESTRESULT_LOBSTER_CONF% --out %SW_TESTRESULT_LOBSTER_OUT% || goto :error
 
 REM ********** SW-Code **********
-%LOBSTER_PYTHON% --out %SW_CODE_LOBSTER_OUT% %SW_CODE_SOURCES%
-
-if errorlevel 1 (
-    goto error
-)
+%LOBSTER_PYTHON% --out %SW_CODE_LOBSTER_OUT% %SW_CODE_SOURCES% || goto :error
 
 REM ********** SW-Test Code **********
-%LOBSTER_PYTHON% --out %SW_TEST_CODE_LOBSTER_OUT% %SW_TEST_CODE_SOURCES%
-
-if errorlevel 1 (
-    goto error
-)
+%LOBSTER_PYTHON% --out %SW_TEST_CODE_LOBSTER_OUT% %SW_TEST_CODE_SOURCES% || goto :error
 
 REM ********** Combine all lobster intermediate files **********
-%LOBSTER_REPORT% --lobster-config %SW_REQ_LOBSTER_REPORT_CONF% --out %SW_REQ_LOBSTER_REPORT_OUT%
-
-if errorlevel 1 (
-    goto error
-)
+%LOBSTER_REPORT% --lobster-config %SW_REQ_LOBSTER_REPORT_CONF% --out %SW_REQ_LOBSTER_REPORT_OUT% || goto :error
 
 REM ********** LOBSTER Report conversion from local files to GIT URLS **********
 if not %LOBSTER_ONLINE_REPORT_ENABLE% ==1 goto skip_online
@@ -142,24 +110,16 @@ if not %LOBSTER_ONLINE_REPORT_ENABLE% ==1 goto skip_online
     echo base_url: '%BASE_URL%' >> %SW_REQ_LOBSTER_ONLINE_REPORT_CONF%
     type "%SW_REQ_LOBSTER_ONLINE_REPORT_CONF%"
 
-    REM lobster-online-report v1.0.1 failes to patch the input file without --out option.
-    REM Create temporary one with ".online" extension and replace it with the input aftewards.
+    REM lobster-online-report v1.0.1 fails to patch the input file without --out option.
+    REM Create temporary one with ".online" extension and replace it with the input afterwards.
     REM
-    %LOBSTER_ONLINE_REPORT% --config "%SW_REQ_LOBSTER_ONLINE_REPORT_CONF%" --out "%SW_REQ_LOBSTER_REPORT_OUT%.online"
-    move /Y "%SW_REQ_LOBSTER_REPORT_OUT%.online" "%SW_REQ_LOBSTER_REPORT_OUT%"
-
-    if errorlevel 1 (
-        goto error
-    )
+    %LOBSTER_ONLINE_REPORT% --config "%SW_REQ_LOBSTER_ONLINE_REPORT_CONF%" --out "%SW_REQ_LOBSTER_REPORT_OUT%.online" || goto :error
+    move /Y "%SW_REQ_LOBSTER_REPORT_OUT%.online" "%SW_REQ_LOBSTER_REPORT_OUT%" || goto :error
 
 :skip_online
 
 REM ********** Create trace report **********
-%LOBSTER_RENDERER% --out %SW_REQ_LOBSTER_HTML_OUT% %SW_REQ_LOBSTER_REPORT_OUT%
-
-if errorlevel 1 (
-    goto error
-)
+%LOBSTER_RENDERER% --out %SW_REQ_LOBSTER_HTML_OUT% %SW_REQ_LOBSTER_REPORT_OUT% || goto :error
 
 goto finished
 
