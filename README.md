@@ -194,8 +194,8 @@ Check out the [Examples](./examples) subpage for using the included example(s).
 
 More information on the deployment and architecture can be found in the [documentation](./doc/README.md) subpage.
 
-For Detailed Software Design run `$ /doc/detailed-design/make html` to generate the detailed design documentation that then can be found
-in the folder `/doc/detailed-design/_build/html/index.html`
+For Detailed Software Design run in folder ./tools the `make_html` to generate the detailed design documentation. 
+The generated SW Document is stored in `./tools/deployDoc/build/html/index.html`.
 
 ## Used Libraries
 
