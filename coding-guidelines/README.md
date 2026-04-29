@@ -65,10 +65,8 @@ pip install sphinx-favicon
 
 [ReadTheDocs](https://sphinx-rtd-theme.readthedocs.io/en/stable/) is a popular theme, used wiht spingx
 
-A sphinx template is already prepared in the [doc/detailed-design](./doc/detailed-design/) folder
-
 The file index.rst is the first pate of the documentation and needs to be adapted to project needs.
 
 The file conf.py is the main configuration file, there project name, author, ... needs to be filled in.
 
-To generate html documentation call `make.bat html`, that can be found under `/doc/detailed-design`. The output will be located in `detailed-design/_build/html`
+To generate html documentation call `make_html.bat`, that can be found under `/tools`. The output will be located in `deployDoc/build/html/index.html`

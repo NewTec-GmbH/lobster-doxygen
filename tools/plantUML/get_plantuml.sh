@@ -1,6 +1,6 @@
 #!/bin/bash
 # lobster-doxygen - Doxygen XML to LOBSTER common interchange format converter
-# Copyright (c) NewTec GmbH 2025   -   www.newtec.de
+# Copyright (c) NewTec GmbH 2025 - 2026   -   www.newtec.de
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,5 +21,5 @@ export PLANTUML
 
 if [ ! -f "$PLANTUML" ]; then
     echo "Download PlantUML java program..."
-    curl -L -o "$PLANTUML" https://github.com/plantuml/plantuml/releases/download/v1.2024.8/plantuml-1.2024.8.jar
+    curl -L -o "$PLANTUML" https://github.com/plantuml/plantuml/releases/download/v1.2026.1/plantuml-1.2026.1.jar
 fi

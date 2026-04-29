@@ -1,6 +1,6 @@
 @echo off
 REM lobster-doxygen - Doxygen XML to LOBSTER common interchange format converter
-REM Copyright (c) NewTec GmbH 2025   -   www.newtec.de
+REM Copyright (c) NewTec GmbH 2025 - 2026   -   www.newtec.de
 REM
 REM This program is free software: you can redistribute it and/or modify
 REM it under the terms of the GNU General Public License as published by
@@ -23,5 +23,5 @@ endlocal & (
 
 if not exist "%PLANTUML%" (
     echo Download PlantUML java program...
-    powershell -Command "Invoke-WebRequest https://github.com/plantuml/plantuml/releases/download/v1.2024.8/plantuml-1.2024.8.jar -OutFile %PLANTUML%"
+    powershell -Command "Invoke-WebRequest https://github.com/plantuml/plantuml/releases/download/v1.2026.1/plantuml-1.2026.1.jar -OutFile %PLANTUML%"
 )

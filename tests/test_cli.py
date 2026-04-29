@@ -4,7 +4,7 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 """
 
 # lobster-doxygen - Doxygen XML to LOBSTER common interchange format converter
-# Copyright (c) NewTec GmbH 2025   -   www.newtec.de
+# Copyright (c) NewTec GmbH 2025 - 2026   -   www.newtec.de
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -67,6 +67,31 @@ EMPTY_FOLDER = "./tests/utils/empty_folder"
 
 # Functions ********************************************************************
 
+def _normalize_whitespace(text: str) -> str:
+    # lobster-trace: SwTests.tc_help
+    """
+    Ignore whitespace-only differences in help output formatting.
+
+    Args:
+        text (str): The input text to normalize.
+
+    Returns:
+        str: The normalized text with all whitespace removed.
+    """
+    return "".join(text.split())
+
+def _normalize_output_option_format(text: str) -> str:
+    # lobster-trace: SwTests.tc_help
+    """
+    Argparse may render short options with or without the metavar in the options table.
+
+    Args:
+        text (str): The input text to normalize.
+
+    Returns:
+        str: The normalized text with the short option format standardized.
+    """
+    return text.replace("-oOUTPUT,--outputOUTPUT", "-o,--outputOUTPUT")
 
 @pytest.fixture(autouse=True)
 def _setup_and_teardown():
@@ -118,6 +143,9 @@ def test_tc_help(record_property, capsys) -> None:
         "",
     ]
 
+    expected_output_lines_ws_normalized = _normalize_whitespace("\n".join(expected_output_lines))
+    expected_output_lines_normalized = _normalize_output_option_format(expected_output_lines_ws_normalized)
+
     sys.argv = ["lobster-doxygen", "--help"]
 
     with pytest.raises(SystemExit) as pytest_wrapped_e:
@@ -125,7 +153,10 @@ def test_tc_help(record_property, capsys) -> None:
 
     captured = capsys.readouterr()
 
-    assert expected_output_lines == captured.out.split("\n"), "Program standard output not as expected."
+    output_lines_ws_normalized = _normalize_whitespace(captured.out)
+    output_lines_normalized = _normalize_output_option_format(output_lines_ws_normalized)
+
+    assert expected_output_lines_normalized == output_lines_normalized, "Program standard output not as expected."
     assert pytest_wrapped_e.type == SystemExit, "Program exit not as expected."
     assert pytest_wrapped_e.value.code == 0, "ExitCode not as expected."
 
