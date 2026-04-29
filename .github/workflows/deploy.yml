@@ -106,7 +106,7 @@ jobs:
         with:
           publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./tools/deployDoc/root/index.html
+          publish_dir: ./tools/deployDoc/root
           destination_dir: .
 
       # Publish generated HTML documentation to the target version folder on gh-pages.
