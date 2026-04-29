@@ -6,7 +6,7 @@ Author: Andreas Merkle (andreas.merkle@newtec.de)
 """
 
 # lobster-doxygen - Doxygen XML to LOBSTER common interchange format converter
-# Copyright (c) NewTec GmbH 2025   -   www.newtec.de
+# Copyright (c) NewTec GmbH 2025 - 2026   -   www.newtec.de
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
