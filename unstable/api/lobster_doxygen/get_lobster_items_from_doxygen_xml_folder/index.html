@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lobster_doxygen.get_lobster_items_from_doxygen_xml_folder &mdash; lobster-doxygen  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=9a6cb3c1" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/version_selector.js?v=02fa0f40"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="lobster_doxygen.lobster_item" href="../lobster_item/index.html" />
+    <link rel="prev" title="lobster_doxygen.doxygen_to_lobster_converter" href="../doxygen_to_lobster_converter/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #0C2C40" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            lobster-doxygen
+              <img src="../../../_static/NewTec_Logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../sw_requirements.html">SW Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sw_architecture.html">SW Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../sw_detail_design.html">SW Detailed Design</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../sw_detail_design.html#api-reference">API Reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">lobster_doxygen</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sw_test.html">SW Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sw_tracing_report.html">SW Tracing Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sw_test_result_report.html">SW Test Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../coverage_report.html">Coverage Report</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license_include.html">License information</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #0C2C40" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">lobster-doxygen</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../sw_detail_design.html">SW Detailed Design</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">lobster_doxygen</a></li>
+      <li class="breadcrumb-item active">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/api/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-lobster_doxygen.get_lobster_items_from_doxygen_xml_folder">
+<span id="lobster-doxygen-get-lobster-items-from-doxygen-xml-folder"></span><h1>lobster_doxygen.get_lobster_items_from_doxygen_xml_folder<a class="headerlink" href="#module-lobster_doxygen.get_lobster_items_from_doxygen_xml_folder" title="Link to this heading"></a></h1>
+<p>Module to parse index.xml file.</p>
+<p>Module that parse doxygen index.xml file and returns list with LobsterItems.</p>
+<p>Author: Andreas Merkle (<a class="reference external" href="mailto:andreas&#46;merkle&#37;&#52;&#48;newtec&#46;de">andreas<span>&#46;</span>merkle<span>&#64;</span>newtec<span>&#46;</span>de</a>)</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.LOG" title="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.LOG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOG</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._IDENTIFIER_PATTERN" title="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._IDENTIFIER_PATTERN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_IDENTIFIER_PATTERN</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._JUSTIFICATION_SPECIFIER" title="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._JUSTIFICATION_SPECIFIER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_JUSTIFICATION_SPECIFIER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._LOBSTER_ITEM_KINDS" title="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._LOBSTER_ITEM_KINDS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_LOBSTER_ITEM_KINDS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._REQ_SPECIFIER" title="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._REQ_SPECIFIER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_REQ_SPECIFIER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_item_children_from_compounddef" title="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_item_children_from_compounddef"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_get_lobster_item_children_from_compounddef</span></code></a>(...)</p></td>
+<td><p>Parse the members of the compound definition and returns list of</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_items_from_compound" title="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_items_from_compound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_get_lobster_items_from_compound</span></code></a>(...)</p></td>
+<td><p>Parse the compound file and extract a list with LobsterItems inside file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_refs_and_just_up_from_detaileddescription" title="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_refs_and_just_up_from_detaileddescription"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_get_refs_and_just_up_from_detaileddescription</span></code></a>(...)</p></td>
+<td><p>Parse the detaileddescription for xrefdescription to retrieve requirement</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_xrefdescriptions_from_detaileddescription" title="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_xrefdescriptions_from_detaileddescription"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_get_xrefdescriptions_from_detaileddescription</span></code></a>(...)</p></td>
+<td><p>Get a list with xrefdescriptions from detaileddescription.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._lobster_item_from_compounddef" title="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._lobster_item_from_compounddef"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_lobster_item_from_compounddef</span></code></a>(...)</p></td>
+<td><p>Creates a LobsterItem from comppunddef.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.get_lobster_items_from_doxygen_xml_folder" title="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.get_lobster_items_from_doxygen_xml_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_lobster_items_from_doxygen_xml_folder</span></code></a>(...)</p></td>
+<td><p>Parse the doxygen XML index file, process each compound defined in it</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_item_children_from_compounddef">
+<span class="sig-prename descclassname"><span class="pre">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.</span></span><span class="sig-name descname"><span class="pre">_get_lobster_item_children_from_compounddef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compounddef</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">doxmlparser.compound.compounddefType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../lobster_item/index.html#lobster_doxygen.lobster_item.LobsterItem" title="lobster_doxygen.lobster_item.LobsterItem"><span class="pre">lobster_doxygen.lobster_item.LobsterItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder.html#_get_lobster_item_children_from_compounddef"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_item_children_from_compounddef" title="Link to this definition"></a></dt>
+<dd><p>Parse the members of the compound definition and returns list of
+children LobsterItems.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>compounddef</strong> (<em>compounddefType</em>) – The compound definition to be parsed for children.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List with LobsterItem children.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="../lobster_item/index.html#lobster_doxygen.lobster_item.LobsterItem" title="lobster_doxygen.lobster_item.LobsterItem">LobsterItem</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_items_from_compound">
+<span class="sig-prename descclassname"><span class="pre">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.</span></span><span class="sig-name descname"><span class="pre">_get_lobster_items_from_compound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compound_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../lobster_item/index.html#lobster_doxygen.lobster_item.LobsterItem" title="lobster_doxygen.lobster_item.LobsterItem"><span class="pre">lobster_doxygen.lobster_item.LobsterItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder.html#_get_lobster_items_from_compound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_items_from_compound" title="Link to this definition"></a></dt>
+<dd><p>Parse the compound file and extract a list with LobsterItems inside file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>compound_path</strong> (<em>str</em>) – The Path of the compound file to be parsed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of LobsterItems from compound.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="../lobster_item/index.html#lobster_doxygen.lobster_item.LobsterItem" title="lobster_doxygen.lobster_item.LobsterItem">LobsterItem</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_refs_and_just_up_from_detaileddescription">
+<span class="sig-prename descclassname"><span class="pre">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.</span></span><span class="sig-name descname"><span class="pre">_get_refs_and_just_up_from_detaileddescription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">detaileddescription</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">doxmlparser.compound.descriptionType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder.html#_get_refs_and_just_up_from_detaileddescription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_refs_and_just_up_from_detaileddescription" title="Link to this definition"></a></dt>
+<dd><p>Parse the detaileddescription for xrefdescription to retrieve requirement
+with _REQ_SPECIFIER and justification with _JUSTIFICATION_SPECIFIER
+references and return them with two separate lists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>detaileddescription</strong> (<em>descriptionType</em>) – The detaileddescription to be parsed</p></li>
+<li><p><strong>justifications.</strong> (<em>for requirements and</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List with requirements strings found in detaileddescription,
+List with justification strings found in detaileddescripiton</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str], list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_xrefdescriptions_from_detaileddescription">
+<span class="sig-prename descclassname"><span class="pre">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.</span></span><span class="sig-name descname"><span class="pre">_get_xrefdescriptions_from_detaileddescription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">detaileddescription</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">doxmlparser.compound.descriptionType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">doxmlparser.compound.descriptionType</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder.html#_get_xrefdescriptions_from_detaileddescription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_xrefdescriptions_from_detaileddescription" title="Link to this definition"></a></dt>
+<dd><p>Get a list with xrefdescriptions from detaileddescription.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>detaileddescription</strong> (<em>descriptionType</em>) – The detaileddescription to be parsed</p></li>
+<li><p><strong>xrefdescriptions.</strong> (<em>for</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List with xrefdescriptions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[descriptionType]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._lobster_item_from_compounddef">
+<span class="sig-prename descclassname"><span class="pre">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.</span></span><span class="sig-name descname"><span class="pre">_lobster_item_from_compounddef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compounddef</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">doxmlparser.compound.compounddefType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../lobster_item/index.html#lobster_doxygen.lobster_item.LobsterItem" title="lobster_doxygen.lobster_item.LobsterItem"><span class="pre">lobster_doxygen.lobster_item.LobsterItem</span></a></span></span><a class="reference internal" href="../../../_modules/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder.html#_lobster_item_from_compounddef"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._lobster_item_from_compounddef" title="Link to this definition"></a></dt>
+<dd><p>Creates a LobsterItem from comppunddef.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>compounddef</strong> (<em>compounddefType</em>) – The compound definition to be parsed</p></li>
+<li><p><strong>LobsterItem.</strong> (<em>for</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>LobsterItem created from compounddef.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lobster_item/index.html#lobster_doxygen.lobster_item.LobsterItem" title="lobster_doxygen.lobster_item.LobsterItem">LobsterItem</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.get_lobster_items_from_doxygen_xml_folder">
+<span class="sig-prename descclassname"><span class="pre">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.</span></span><span class="sig-name descname"><span class="pre">get_lobster_items_from_doxygen_xml_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doxygen_xml_folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../lobster_item/index.html#lobster_doxygen.lobster_item.LobsterItem" title="lobster_doxygen.lobster_item.LobsterItem"><span class="pre">lobster_doxygen.lobster_item.LobsterItem</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder.html#get_lobster_items_from_doxygen_xml_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.get_lobster_items_from_doxygen_xml_folder" title="Link to this definition"></a></dt>
+<dd><p>Parse the doxygen XML index file, process each compound defined in it
+and build the LobsterItems list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doxygen_xml_folder</strong> (<em>str</em>) – The Doxygen XML output directory, where the</p></li>
+<li><p><strong>located.</strong> (<em>file index.xml is</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of lobster items. If an error occurs,
+None is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="../lobster_item/index.html#lobster_doxygen.lobster_item.LobsterItem" title="lobster_doxygen.lobster_item.LobsterItem">LobsterItem</a>] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.LOG">
+<span class="sig-prename descclassname"><span class="pre">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.</span></span><span class="sig-name descname"><span class="pre">LOG</span></span><a class="headerlink" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.LOG" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._IDENTIFIER_PATTERN">
+<span class="sig-prename descclassname"><span class="pre">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.</span></span><span class="sig-name descname"><span class="pre">_IDENTIFIER_PATTERN</span></span><a class="headerlink" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._IDENTIFIER_PATTERN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._JUSTIFICATION_SPECIFIER">
+<span class="sig-prename descclassname"><span class="pre">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.</span></span><span class="sig-name descname"><span class="pre">_JUSTIFICATION_SPECIFIER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Justification'</span></span><a class="headerlink" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._JUSTIFICATION_SPECIFIER" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._LOBSTER_ITEM_KINDS">
+<span class="sig-prename descclassname"><span class="pre">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.</span></span><span class="sig-name descname"><span class="pre">_LOBSTER_ITEM_KINDS</span></span><a class="headerlink" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._LOBSTER_ITEM_KINDS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._REQ_SPECIFIER">
+<span class="sig-prename descclassname"><span class="pre">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.</span></span><span class="sig-name descname"><span class="pre">_REQ_SPECIFIER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Requirement'</span></span><a class="headerlink" href="#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._REQ_SPECIFIER" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../doxygen_to_lobster_converter/index.html" class="btn btn-neutral float-left" title="lobster_doxygen.doxygen_to_lobster_converter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../lobster_item/index.html" class="btn btn-neutral float-right" title="lobster_doxygen.lobster_item" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, NewTec GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<map id="inheritance899901742a" name="inheritance899901742a">
+<area shape="rect" id="node1" title="Formatter for generating usage messages and argument help strings." alt="" coords="80,5,196,31"/>
+<area shape="rect" id="node2" title="Help message formatter which retains any formatting in descriptions." alt="" coords="29,79,247,104"/>
+<area shape="rect" id="node3" href="#lobster_doxygen.__main__.RawDescriptionHelpFormatterWithNL" target="_top" title="Custom help formatter to keep newlines in the description." alt="" coords="5,152,271,177"/>
+</map>

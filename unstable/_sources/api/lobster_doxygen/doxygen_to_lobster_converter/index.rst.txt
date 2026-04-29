@@ -1,0 +1,52 @@
+lobster_doxygen.doxygen_to_lobster_converter
+============================================
+
+.. py:module:: lobster_doxygen.doxygen_to_lobster_converter
+
+.. autoapi-nested-parse::
+
+   lobster-doxygen main module.
+
+   Tool to generate LOBSTER common interchange format file from a doxygen XML output.
+
+   Author: Dominik Knoll (dominik.knoll@newtec.de)
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   lobster_doxygen.doxygen_to_lobster_converter.LOG
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   lobster_doxygen.doxygen_to_lobster_converter.convert_doxygen_xml_to_lobster_common_interchange_format
+
+
+Module Contents
+---------------
+
+.. py:function:: convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder: str, output_file_name: str) -> lobster_doxygen.ret.Ret
+
+   Convert xml files in doxygen_xml_folder to LOBSTER common interchange format file with name
+   output.
+
+   :param doxygen_xml_folder: The Doxygen XML output directory, where the file index.xml is located.
+   :type doxygen_xml_folder: str
+   :param output_file_name: Path and file name for LOBSTER common interchange format file.
+   :type output_file_name: str
+
+   :returns: LOBSTER common interchange format file successful created.
+             Ret.RET_ERROR_FILEPATH_INVALID: No index.xml file in doxygen_folder
+             Ret.RET_ERROR: Conversion not successful.
+   :rtype: Ret.RET_OK
+
+
+.. py:data:: LOG
+
