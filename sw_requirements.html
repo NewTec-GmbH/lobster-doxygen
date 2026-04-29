@@ -1,49 +1,106 @@
+
+
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SW Requirements &mdash; lobster-doxygen  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=9a6cb3c1" />
 
-    <title>SW-Requirements &#8212; lobster-doxygen  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=47202671" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1ddbb825" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <link rel="icon" href="_static/favicon.ico"/>
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/version_selector.js?v=02fa0f40"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="SW-Architecture" href="sw_architecture.html" />
+    <link rel="next" title="SW Architecture" href="sw_architecture.html" />
     <link rel="prev" title="lobster-doxygen documentation" href="index.html" /> 
-  </head><body>
-      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>lobster-doxygen  documentation</span></a></h1>
-        <h2 class="heading"><span>SW-Requirements</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="Top">
-      
-        <p>
-        «&#160;&#160;<a href="index.html">lobster-doxygen documentation</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="sw_architecture.html">SW-Architecture</a>&#160;&#160;»
-        </p>
+</head>
 
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #0C2C40" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            lobster-doxygen
+              <img src="_static/NewTec_Logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SW Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functionality">Functionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-interface">User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-constraints">Software Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sw_architecture.html">SW Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sw_detail_design.html">SW Detailed Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sw_test.html">SW Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sw_tracing_report.html">SW Tracing Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sw_test_result_report.html">SW Test Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage_report.html">Coverage Report</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license_include.html">License information</a></li>
+</ul>
+
+        </div>
       </div>
-      <div class="content" role="main">
-        
-        
-  <section id="sw-requirements">
-<h1>SW-Requirements<a class="headerlink" href="#sw-requirements" title="Link to this heading">¶</a></h1>
-<section id="sw-requirement-specification">
-<span id="swe-req-rst-sw-requirement-specification"></span><h2>SW Requirement Specification<a class="headerlink" href="#sw-requirement-specification" title="Link to this heading">¶</a></h2>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #0C2C40" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">lobster-doxygen</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SW Requirements</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/sw_requirements.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <figure class="align-right" style="width: 350px">
+<img alt="_images/NewTec_Logo_Slogan.png" src="_images/NewTec_Logo_Slogan.png" />
+</figure>
+<div class="clearboth docutils container">
+</div>
+<section id="sw-requirements">
+<span id="swe-req-rst-sw-requirements"></span><h1>SW Requirements<a class="headerlink" href="#sw-requirements" title="Link to this heading"></a></h1>
 <p>This file contains the software requirements for the lobster-doxygen tool.</p>
-<section id="software-requirements">
-<span id="swe-req-rst-software-requirements"></span><h3>Software Requirements<a class="headerlink" href="#software-requirements" title="Link to this heading">¶</a></h3>
 <section id="general">
-<span id="swe-req-rst-general"></span><h4>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h4>
+<span id="swe-req-rst-general"></span><h2>General<a class="headerlink" href="#general" title="Link to this heading"></a></h2>
 <div class="admonition-sw-req-cli admonition" id="swe-req-rst-sw-req-cli">
 <p class="admonition-title">sw_req_cli</p>
 <table class="docutils align-default">
@@ -57,7 +114,7 @@
 <td><p>The software shall be a command-line interface (CLI) application.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -84,7 +141,7 @@
 <td><p>The software shall show provide all user informational texts as console output on stdout.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -111,7 +168,7 @@
 <td><p>The software shall show provide all user error texts as console output on stderr.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -127,7 +184,7 @@
 </div>
 </section>
 <section id="functionality">
-<span id="swe-req-rst-functionality"></span><h4>Functionality<a class="headerlink" href="#functionality" title="Link to this heading">¶</a></h4>
+<span id="swe-req-rst-functionality"></span><h2>Functionality<a class="headerlink" href="#functionality" title="Link to this heading"></a></h2>
 <div class="admonition-sw-req-output-file-format admonition" id="swe-req-rst-sw-req-output-file-format">
 <p class="admonition-title">sw_req_output_file_format</p>
 <table class="docutils align-default">
@@ -141,7 +198,7 @@
 <td><p>The software shall generate a file in the LOBSTER common interchange format based on the information from the doxygen XML output.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>The doxygen index.xml file should be parsed as root.</p></td>
@@ -168,7 +225,7 @@
 <td><p>The software shall support to specify requirements and justification on file level.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -195,7 +252,7 @@
 <td><p>The software shall support to specify requirements and justification on function/prototype level.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -222,7 +279,7 @@
 <td><p>The software shall support to specify requirements and justification on struct/union/class level.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -249,7 +306,7 @@
 <td><p>The software shall support to specify requirements and justification on namespace level.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -276,7 +333,7 @@
 <td><p>The software shall support to specify requirements and justification on method level independent of visibility.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -303,7 +360,7 @@
 <td><p>The software shall support to specify requirements and justification on interface level.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -330,7 +387,7 @@
 <td><p>The software shall support requirements and justification outside of doxygen groups.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -357,7 +414,7 @@
 <td><p>The software shall support requirements and justification in doxygen groups.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -384,7 +441,7 @@
 <td><p>The software shall abort with an error if requirements or justification are specified on file level.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>Similar to the lobster-python behavior. File level is bad.</p></td>
@@ -411,7 +468,7 @@
 <td><p>The software shall abort with an error if requirements or justifications are specified on class/interface/namespace level and at least on of its methods.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>Similar to the lobster-python behavior. Mixing levels is bad.</p></td>
@@ -438,7 +495,7 @@
 <td><p>The software shall output all supported levels without requirements or a justification too.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>This is required to detect untraced sourcecode.</p></td>
@@ -465,7 +522,7 @@
 <td><p>The software shall output a warning and create a lobster common interchange file if doxygen XML contains no traces.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>This is required to detect untraced sourcecode, but doesn’t break any toolchain flow.</p></td>
@@ -493,7 +550,7 @@
 and ignore additional doxygen content when extracting requirement identifiers.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>TRLC identifier format is defined in the language reference manual at <a class="reference external" href="https://bmw-software-engineering.github.io/trlc/lrm.html">https://bmw-software-engineering.github.io/trlc/lrm.html</a>\n
@@ -521,7 +578,7 @@ Note that identifiers of package and requirement are concatinated via ‘.’.</
 <td><p>The software shall output a warning if the doxygen xml contains no valid TRLC identifier in an entry of the tracing table.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>Identifiers are matched to trim possible comments or else parsed by doxygen.
@@ -538,7 +595,7 @@ If no valid identifier is present, an error must be present in the annotations.<
 </div>
 </section>
 <section id="user-interface">
-<span id="swe-req-rst-user-interface"></span><h4>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading">¶</a></h4>
+<span id="swe-req-rst-user-interface"></span><h2>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading"></a></h2>
 <div class="admonition-sw-req-cli-help admonition" id="swe-req-rst-sw-req-cli-help">
 <p class="admonition-title">sw_req_cli_help</p>
 <table class="docutils align-default">
@@ -552,7 +609,7 @@ If no valid identifier is present, an error must be present in the annotations.<
 <td><p>The software shall support the command line argument ‘-h’ or ‘--help’ to show usage help information.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -579,7 +636,7 @@ If no valid identifier is present, an error must be present in the annotations.<
 <td><p>The software shall print its version by ‘--version’.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -606,7 +663,7 @@ If no valid identifier is present, an error must be present in the annotations.<
 <td><p>The software shall support to set the output folder and output file name by command line argument ‘-o’ or ‘--output’.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>If this argument is not specified, the output file should be named ‘lobster.json’.</p></td>
@@ -633,7 +690,7 @@ If no valid identifier is present, an error must be present in the annotations.<
 <td><p>The software shall verbose information about the parsed nodes in the doxygen xml input file by command line argument ‘-v’ or ‘--verbose’.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -660,7 +717,7 @@ If no valid identifier is present, an error must be present in the annotations.<
 <td><p>The software shall require the doxygen folder with the generated XML output as positional argument.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -676,7 +733,7 @@ If no valid identifier is present, an error must be present in the annotations.<
 </div>
 </section>
 <section id="software-constraints">
-<span id="swe-req-rst-software-constraints"></span><h4>Software Constraints<a class="headerlink" href="#software-constraints" title="Link to this heading">¶</a></h4>
+<span id="swe-req-rst-software-constraints"></span><h2>Software Constraints<a class="headerlink" href="#software-constraints" title="Link to this heading"></a></h2>
 <div class="admonition-sw-constraint-os-win admonition" id="swe-req-rst-sw-constraint-os-win">
 <p class="admonition-title">sw_constraint_os_win</p>
 <table class="docutils align-default">
@@ -690,7 +747,7 @@ If no valid identifier is present, an error must be present in the annotations.<
 <td><p>The software shall support the Windows operating system.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -714,7 +771,7 @@ If no valid identifier is present, an error must be present in the annotations.<
 <td><p>The software shall support the Linux operating system.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -738,7 +795,7 @@ If no valid identifier is present, an error must be present in the annotations.<
 <td><p>The software shall support the programming language C.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -762,7 +819,7 @@ If no valid identifier is present, an error must be present in the annotations.<
 <td><p>The software shall support the programming language C/C++.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Valid Status</p></td>
-<td><p>valid</p></td>
+<td><p>VALID_STATUS.valid</p></td>
 </tr>
 <tr class="row-even"><td><p>Note</p></td>
 <td><p>N/A</p></td>
@@ -775,27 +832,36 @@ If no valid identifier is present, an error must be present in the annotations.<
 </div>
 </section>
 </section>
-</section>
-</section>
 
 
-      </div>
-      <div class="bottomnav" role="navigation" aria-label="Bottom">
-      
-        <p>
-        «&#160;&#160;<a href="index.html">lobster-doxygen documentation</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="sw_architecture.html">SW-Architecture</a>&#160;&#160;»
-        </p>
-
-      </div>
-
-    <div class="footer" role="contentinfo">
-    &#169; Copyright 2025, NewTec GmbH.
-      Last updated on Nov 21, 2025 from commit 26abc5392fc7af5a0a3a61b022c953d927799b4f.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="lobster-doxygen documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sw_architecture.html" class="btn btn-neutral float-right" title="SW Architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  </body>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, NewTec GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

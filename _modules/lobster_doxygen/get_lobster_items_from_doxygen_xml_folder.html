@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lobster_doxygen.get_lobster_items_from_doxygen_xml_folder &mdash; lobster-doxygen  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=9a6cb3c1" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/version_selector.js?v=02fa0f40"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #0C2C40" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            lobster-doxygen
+              <img src="../../_static/NewTec_Logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sw_requirements.html">SW Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sw_architecture.html">SW Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sw_detail_design.html">SW Detailed Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sw_test.html">SW Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sw_tracing_report.html">SW Tracing Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sw_test_result_report.html">SW Test Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage_report.html">Coverage Report</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../license_include.html">License information</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #0C2C40" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">lobster-doxygen</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">lobster_doxygen.get_lobster_items_from_doxygen_xml_folder</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for lobster_doxygen.get_lobster_items_from_doxygen_xml_folder</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Module to parse index.xml file.</span>
+
+<span class="sd">Module that parse doxygen index.xml file and returns list with LobsterItems.</span>
+
+<span class="sd">Author: Andreas Merkle (andreas.merkle@newtec.de)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># lobster-doxygen - Doxygen XML to LOBSTER common interchange format converter</span>
+<span class="c1"># Copyright (c) NewTec GmbH 2025 - 2026   -   www.newtec.de</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+
+<span class="c1"># Imports **********************************************************************</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">doxmlparser</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">doxmlparser.compound</span><span class="w"> </span><span class="kn">import</span> <span class="n">DoxCompoundKind</span><span class="p">,</span> <span class="n">DoxMemberKind</span><span class="p">,</span> <span class="n">compounddefType</span><span class="p">,</span> <span class="n">descriptionType</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lobster_doxygen.lobster_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">LobsterItem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lobster_doxygen.lobster_kind</span><span class="w"> </span><span class="kn">import</span> <span class="n">LobsterKind</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lobster_doxygen.printer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Printer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lobster_doxygen.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">indent</span>
+
+
+<span class="c1"># Variables ********************************************************************</span>
+
+<span class="n">LOG</span> <span class="o">=</span> <span class="n">Printer</span><span class="p">()</span>
+
+<span class="c1"># Requirement specifier, which is configured in the doxygen configuration, see alias.</span>
+<span class="n">_REQ_SPECIFIER</span> <span class="o">=</span> <span class="s2">&quot;Requirement&quot;</span>
+
+<span class="c1"># Justification specifier, which is configured in the doxygen configuration, see alias.</span>
+<span class="n">_JUSTIFICATION_SPECIFIER</span> <span class="o">=</span> <span class="s2">&quot;Justification&quot;</span>
+
+<span class="c1"># List for DoxCompoundKinds that are converted to a LobsterItems, others kinds are skipped.</span>
+<span class="n">_LOBSTER_ITEM_KINDS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">CLASS</span><span class="p">,</span>
+    <span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">STRUCT</span><span class="p">,</span>
+    <span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">UNION</span><span class="p">,</span>
+    <span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">INTERFACE</span><span class="p">,</span>
+    <span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">FILE</span><span class="p">,</span>
+    <span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">NAMESPACE</span><span class="p">,</span>
+    <span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">GROUP</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># Regex pattern to match TRLC identifier and optional TRLC package prefix.</span>
+<span class="n">_IDENTIFIER_PATTERN</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([a-zA-Z][a-zA-Z0-9_]*\.)?[a-zA-Z][a-zA-Z0-9_]*&quot;</span><span class="p">)</span>
+
+<span class="c1"># Classes **********************************************************************</span>
+
+<span class="c1"># Functions ********************************************************************</span>
+
+
+<div class="viewcode-block" id="_get_xrefdescriptions_from_detaileddescription">
+<a class="viewcode-back" href="../../api/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder/index.html#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_xrefdescriptions_from_detaileddescription">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_xrefdescriptions_from_detaileddescription</span><span class="p">(</span><span class="n">detaileddescription</span><span class="p">:</span> <span class="n">descriptionType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">descriptionType</span><span class="p">]:</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_output_file_format</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a list with xrefdescriptions from detaileddescription.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        detaileddescription (descriptionType): The detaileddescription to be parsed</span>
+<span class="sd">        for xrefdescriptions.</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        list[descriptionType]: List with xrefdescriptions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">xrefdescriptions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">para</span> <span class="ow">in</span> <span class="n">detaileddescription</span><span class="o">.</span><span class="n">get_para</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">xrefsect</span> <span class="ow">in</span> <span class="n">para</span><span class="o">.</span><span class="n">get_xrefsect</span><span class="p">():</span>
+            <span class="n">xrefdescription</span> <span class="o">=</span> <span class="n">xrefsect</span><span class="o">.</span><span class="n">get_xrefdescription</span><span class="p">()</span>
+            <span class="n">xrefdescriptions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xrefdescription</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">xrefdescriptions</span></div>
+
+
+
+<div class="viewcode-block" id="_get_refs_and_just_up_from_detaileddescription">
+<a class="viewcode-back" href="../../api/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder/index.html#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_refs_and_just_up_from_detaileddescription">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_refs_and_just_up_from_detaileddescription</span><span class="p">(</span><span class="n">detaileddescription</span><span class="p">:</span> <span class="n">descriptionType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_output_file_format</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_valid_id</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_invalid_input</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse the detaileddescription for xrefdescription to retrieve requirement</span>
+<span class="sd">    with _REQ_SPECIFIER and justification with _JUSTIFICATION_SPECIFIER</span>
+<span class="sd">    references and return them with two separate lists.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        detaileddescription (descriptionType): The detaileddescription to be parsed</span>
+<span class="sd">        for requirements and justifications.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list[str], list[str]:</span>
+<span class="sd">        List with requirements strings found in detaileddescription,</span>
+<span class="sd">        List with justification strings found in detaileddescripiton</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">refs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">just_up</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">xrefdescriptions</span> <span class="o">=</span> <span class="n">_get_xrefdescriptions_from_detaileddescription</span><span class="p">(</span><span class="n">detaileddescription</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">xrefdescription</span> <span class="ow">in</span> <span class="n">xrefdescriptions</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">para</span> <span class="ow">in</span> <span class="n">xrefdescription</span><span class="o">.</span><span class="n">get_para</span><span class="p">():</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">para</span><span class="o">.</span><span class="n">get_valueOf_</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="c1"># Look for requirement reference.</span>
+            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_REQ_SPECIFIER</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">):</span>
+                <span class="n">doxygen_parsed_req</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_REQ_SPECIFIER</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">)</span>
+
+                <span class="c1"># Check for a valid identifier.</span>
+                <span class="n">req_match</span> <span class="o">=</span> <span class="n">_IDENTIFIER_PATTERN</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">doxygen_parsed_req</span><span class="p">)</span>
+
+                <span class="c1"># Keep parsing if a valid identifier was found at the expected position.</span>
+                <span class="k">if</span> <span class="n">req_match</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">req_match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">req_id</span> <span class="o">=</span> <span class="n">req_match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">refs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">req_id</span><span class="p">)</span>
+                    <span class="n">LOG</span><span class="o">.</span><span class="n">print_info</span><span class="p">(</span><span class="n">indent</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_REQ_SPECIFIER</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">req_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">LOG</span><span class="o">.</span><span class="n">print_warning</span><span class="p">(</span><span class="n">indent</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Invalid identifier in doxygen xml: </span><span class="si">{</span><span class="n">doxygen_parsed_req</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">))</span>
+
+            <span class="c1"># Look for justification.</span>
+            <span class="k">elif</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_JUSTIFICATION_SPECIFIER</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">):</span>
+                <span class="n">just_up_id</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_JUSTIFICATION_SPECIFIER</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">)</span>
+                <span class="n">just_up</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">just_up_id</span><span class="p">)</span>
+                <span class="n">LOG</span><span class="o">.</span><span class="n">print_info</span><span class="p">(</span><span class="n">indent</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_JUSTIFICATION_SPECIFIER</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">just_up_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">refs</span><span class="p">,</span> <span class="n">just_up</span></div>
+
+
+
+<div class="viewcode-block" id="_get_lobster_item_children_from_compounddef">
+<a class="viewcode-back" href="../../api/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder/index.html#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_item_children_from_compounddef">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_lobster_item_children_from_compounddef</span><span class="p">(</span><span class="n">compounddef</span><span class="p">:</span> <span class="n">compounddefType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">LobsterItem</span><span class="p">]:</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_output_file_format</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse the members of the compound definition and returns list of</span>
+<span class="sd">    children LobsterItems.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        compounddef (compounddefType): The compound definition to be parsed for children.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list[LobsterItem]: List with LobsterItem children.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lobster_item_children</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">function_like_kind</span> <span class="o">=</span> <span class="p">[</span><span class="n">DoxMemberKind</span><span class="o">.</span><span class="n">FUNCTION</span><span class="p">,</span> <span class="n">DoxMemberKind</span><span class="o">.</span><span class="n">PROTOTYPE</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">sectiondef</span> <span class="ow">in</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_sectiondef</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">memberdef</span> <span class="ow">in</span> <span class="n">sectiondef</span><span class="o">.</span><span class="n">get_memberdef</span><span class="p">():</span>
+            <span class="n">LOG</span><span class="o">.</span><span class="n">print_info</span><span class="p">(</span><span class="n">indent</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;member: </span><span class="si">{</span><span class="n">memberdef</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+            <span class="n">lobster_item_child</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="k">if</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_kind</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">CLASS</span><span class="p">,</span> <span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">STRUCT</span><span class="p">,</span> <span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">INTERFACE</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">memberdef</span><span class="o">.</span><span class="n">get_kind</span><span class="p">()</span> <span class="ow">in</span> <span class="n">function_like_kind</span><span class="p">:</span>
+                    <span class="c1"># Process function-like members</span>
+                    <span class="n">lobster_item_child</span> <span class="o">=</span> <span class="n">LobsterItem</span><span class="p">(</span><span class="n">memberdef</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+                    <span class="n">lobster_item_child</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="n">LobsterKind</span><span class="o">.</span><span class="n">METHOD</span>
+                    <span class="n">lobster_item_child</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">compounddef</span><span class="o">.</span><span class="n">get_compoundname</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span>
+
+            <span class="k">elif</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_kind</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">FILE</span><span class="p">,</span> <span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">NAMESPACE</span><span class="p">,</span> <span class="n">DoxCompoundKind</span><span class="o">.</span><span class="n">GROUP</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">memberdef</span><span class="o">.</span><span class="n">get_kind</span><span class="p">()</span> <span class="ow">in</span> <span class="n">function_like_kind</span><span class="p">:</span>
+                    <span class="c1"># Process function-like members</span>
+                    <span class="n">lobster_item_child</span> <span class="o">=</span> <span class="n">LobsterItem</span><span class="p">(</span><span class="n">memberdef</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+                    <span class="n">lobster_item_child</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="n">LobsterKind</span><span class="o">.</span><span class="n">FUNCTION</span>
+
+            <span class="c1"># Update only if LobsterItem was created</span>
+            <span class="k">if</span> <span class="n">lobster_item_child</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">LOG</span><span class="o">.</span><span class="n">print_info</span><span class="p">(</span><span class="n">indent</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;kind: </span><span class="si">{</span><span class="n">memberdef</span><span class="o">.</span><span class="n">get_kind</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+
+                <span class="n">lobster_item_child</span><span class="o">.</span><span class="n">language</span> <span class="o">=</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_language</span><span class="p">()</span>
+                <span class="n">lobster_item_child</span><span class="o">.</span><span class="n">name</span> <span class="o">+=</span> <span class="n">memberdef</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+                <span class="n">lobster_item_child</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="n">memberdef</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_file</span><span class="p">()</span>
+                <span class="n">lobster_item_child</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">memberdef</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_line</span><span class="p">()</span>
+                <span class="n">lobster_item_child</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="n">memberdef</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_column</span><span class="p">()</span>
+
+                <span class="n">lobster_item_child</span><span class="o">.</span><span class="n">refs</span><span class="p">,</span> <span class="n">lobster_item_child</span><span class="o">.</span><span class="n">just_up</span> <span class="o">=</span> <span class="n">_get_refs_and_just_up_from_detaileddescription</span><span class="p">(</span>
+                    <span class="n">memberdef</span><span class="o">.</span><span class="n">get_detaileddescription</span><span class="p">()</span>
+                <span class="p">)</span>
+
+                <span class="n">lobster_item_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lobster_item_child</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">LOG</span><span class="o">.</span><span class="n">print_info</span><span class="p">(</span><span class="n">indent</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;kind: </span><span class="si">{</span><span class="n">memberdef</span><span class="o">.</span><span class="n">get_kind</span><span class="p">()</span><span class="si">}</span><span class="s2"> (skipped)&quot;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">lobster_item_children</span></div>
+
+
+
+<div class="viewcode-block" id="_lobster_item_from_compounddef">
+<a class="viewcode-back" href="../../api/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder/index.html#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._lobster_item_from_compounddef">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">_lobster_item_from_compounddef</span><span class="p">(</span><span class="n">compounddef</span><span class="p">:</span> <span class="n">compounddefType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LobsterItem</span><span class="p">:</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_output_file_format</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a LobsterItem from comppunddef.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        compounddef (compounddefType): The compound definition to be parsed</span>
+<span class="sd">        for LobsterItem.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        LobsterItem: LobsterItem created from compounddef.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lobster_item</span> <span class="o">=</span> <span class="n">LobsterItem</span><span class="p">(</span><span class="n">compounddef</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+
+    <span class="c1"># DoxCompoundKind to LobsterKind</span>
+    <span class="n">lobster_item</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="n">LobsterKind</span><span class="p">[</span><span class="n">compounddef</span><span class="o">.</span><span class="n">get_kind</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()]</span>
+
+    <span class="c1"># A group has no language on compounddef level.</span>
+    <span class="k">if</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_language</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lobster_item</span><span class="o">.</span><span class="n">language</span> <span class="o">=</span> <span class="s2">&quot;unspecified&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lobster_item</span><span class="o">.</span><span class="n">language</span> <span class="o">=</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_language</span><span class="p">()</span>
+
+    <span class="n">lobster_item</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_compoundname</span><span class="p">()</span>
+
+    <span class="c1"># A group has no location information on compounddef level.</span>
+    <span class="k">if</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lobster_item</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">lobster_item</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">lobster_item</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lobster_item</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_file</span><span class="p">()</span>
+        <span class="n">lobster_item</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_line</span><span class="p">()</span>
+        <span class="n">lobster_item</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_column</span><span class="p">()</span>
+
+    <span class="c1"># Adds refs and just_up attributes</span>
+    <span class="n">lobster_item</span><span class="o">.</span><span class="n">refs</span><span class="p">,</span> <span class="n">lobster_item</span><span class="o">.</span><span class="n">just_up</span> <span class="o">=</span> <span class="n">_get_refs_and_just_up_from_detaileddescription</span><span class="p">(</span>
+        <span class="n">compounddef</span><span class="o">.</span><span class="n">get_detaileddescription</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="n">lobster_item_children</span> <span class="o">=</span> <span class="n">_get_lobster_item_children_from_compounddef</span><span class="p">(</span><span class="n">compounddef</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">lobster_item_child</span> <span class="ow">in</span> <span class="n">lobster_item_children</span><span class="p">:</span>
+        <span class="n">lobster_item</span><span class="o">.</span><span class="n">append_lobster_child</span><span class="p">(</span><span class="n">lobster_item_child</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">lobster_item</span></div>
+
+
+
+<div class="viewcode-block" id="_get_lobster_items_from_compound">
+<a class="viewcode-back" href="../../api/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder/index.html#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_items_from_compound">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_lobster_items_from_compound</span><span class="p">(</span><span class="n">compound_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">LobsterItem</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse the compound file and extract a list with LobsterItems inside file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        compound_path (str): The Path of the compound file to be parsed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list[LobsterItem]: The list of LobsterItems from compound.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_output_file_format</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_file_level</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_function_level</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_type_level</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_namespace_level</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_method_level</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_interface_level</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_no_group</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_group</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_unspecified</span>
+    <span class="n">lobster_items</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">root_obj</span> <span class="o">=</span> <span class="n">doxmlparser</span><span class="o">.</span><span class="n">compound</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">compound_path</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">compounddef</span> <span class="ow">in</span> <span class="n">root_obj</span><span class="o">.</span><span class="n">get_compounddef</span><span class="p">():</span>
+        <span class="n">LOG</span><span class="o">.</span><span class="n">print_info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;compound: </span><span class="si">{</span><span class="n">compounddef</span><span class="o">.</span><span class="n">get_compoundname</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">kind</span> <span class="o">=</span> <span class="n">compounddef</span><span class="o">.</span><span class="n">get_kind</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">kind</span> <span class="ow">in</span> <span class="n">_LOBSTER_ITEM_KINDS</span><span class="p">:</span>
+            <span class="n">LOG</span><span class="o">.</span><span class="n">print_info</span><span class="p">(</span><span class="n">indent</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;kind: </span><span class="si">{</span><span class="n">kind</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+            <span class="n">lobster_item</span> <span class="o">=</span> <span class="n">_lobster_item_from_compounddef</span><span class="p">(</span><span class="n">compounddef</span><span class="p">)</span>
+            <span class="n">lobster_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lobster_item</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">LOG</span><span class="o">.</span><span class="n">print_info</span><span class="p">(</span><span class="n">indent</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;kind: </span><span class="si">{</span><span class="n">kind</span><span class="si">}</span><span class="s2"> (skipped)&quot;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">lobster_items</span></div>
+
+
+
+<div class="viewcode-block" id="get_lobster_items_from_doxygen_xml_folder">
+<a class="viewcode-back" href="../../api/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder/index.html#lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.get_lobster_items_from_doxygen_xml_folder">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_lobster_items_from_doxygen_xml_folder</span><span class="p">(</span><span class="n">doxygen_xml_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">LobsterItem</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse the doxygen XML index file, process each compound defined in it</span>
+<span class="sd">    and build the LobsterItems list.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        doxygen_xml_folder (str): The Doxygen XML output directory, where the</span>
+<span class="sd">        file index.xml is located.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list[LobsterItem] | None: The list of lobster items. If an error occurs,</span>
+<span class="sd">        None is returned.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># lobster-trace: SwRequirements.sw_req_output_file_format</span>
+    <span class="n">lobster_items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">root_obj</span> <span class="o">=</span> <span class="n">doxmlparser</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">doxygen_xml_folder</span> <span class="o">+</span> <span class="s2">&quot;/index.xml&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">compound</span> <span class="ow">in</span> <span class="n">root_obj</span><span class="o">.</span><span class="n">get_compound</span><span class="p">():</span>  <span class="c1"># for each compound defined in the index</span>
+            <span class="n">compound_path</span> <span class="o">=</span> <span class="n">doxygen_xml_folder</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">compound</span><span class="o">.</span><span class="n">get_refid</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;.xml&quot;</span>
+            <span class="n">lobster_items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_get_lobster_items_from_compound</span><span class="p">(</span><span class="n">compound_path</span><span class="p">))</span>
+
+    <span class="c1"># pylint: disable=broad-exception-caught</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">LOG</span><span class="o">.</span><span class="n">print_error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">lobster_items</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">lobster_items</span></div>
+
+
+
+<span class="c1"># Main *************************************************************************</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, NewTec GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

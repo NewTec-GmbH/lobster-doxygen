@@ -1,0 +1,133 @@
+lobster_doxygen.get_lobster_items_from_doxygen_xml_folder
+=========================================================
+
+.. py:module:: lobster_doxygen.get_lobster_items_from_doxygen_xml_folder
+
+.. autoapi-nested-parse::
+
+   Module to parse index.xml file.
+
+   Module that parse doxygen index.xml file and returns list with LobsterItems.
+
+   Author: Andreas Merkle (andreas.merkle@newtec.de)
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.LOG
+   lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._IDENTIFIER_PATTERN
+   lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._JUSTIFICATION_SPECIFIER
+   lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._LOBSTER_ITEM_KINDS
+   lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._REQ_SPECIFIER
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_item_children_from_compounddef
+   lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_lobster_items_from_compound
+   lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_refs_and_just_up_from_detaileddescription
+   lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._get_xrefdescriptions_from_detaileddescription
+   lobster_doxygen.get_lobster_items_from_doxygen_xml_folder._lobster_item_from_compounddef
+   lobster_doxygen.get_lobster_items_from_doxygen_xml_folder.get_lobster_items_from_doxygen_xml_folder
+
+
+Module Contents
+---------------
+
+.. py:function:: _get_lobster_item_children_from_compounddef(compounddef: doxmlparser.compound.compounddefType) -> list[lobster_doxygen.lobster_item.LobsterItem]
+
+   Parse the members of the compound definition and returns list of
+   children LobsterItems.
+
+   :param compounddef: The compound definition to be parsed for children.
+   :type compounddef: compounddefType
+
+   :returns: List with LobsterItem children.
+   :rtype: list[LobsterItem]
+
+
+.. py:function:: _get_lobster_items_from_compound(compound_path: str) -> list[lobster_doxygen.lobster_item.LobsterItem]
+
+   Parse the compound file and extract a list with LobsterItems inside file.
+
+   :param compound_path: The Path of the compound file to be parsed.
+   :type compound_path: str
+
+   :returns: The list of LobsterItems from compound.
+   :rtype: list[LobsterItem]
+
+
+.. py:function:: _get_refs_and_just_up_from_detaileddescription(detaileddescription: doxmlparser.compound.descriptionType) -> tuple[list[str], list[str]]
+
+   Parse the detaileddescription for xrefdescription to retrieve requirement
+   with _REQ_SPECIFIER and justification with _JUSTIFICATION_SPECIFIER
+   references and return them with two separate lists.
+
+   :param detaileddescription: The detaileddescription to be parsed
+   :type detaileddescription: descriptionType
+   :param for requirements and justifications.:
+
+   :returns: List with requirements strings found in detaileddescription,
+             List with justification strings found in detaileddescripiton
+   :rtype: list[str], list[str]
+
+
+.. py:function:: _get_xrefdescriptions_from_detaileddescription(detaileddescription: doxmlparser.compound.descriptionType) -> list[doxmlparser.compound.descriptionType]
+
+   Get a list with xrefdescriptions from detaileddescription.
+
+   :param detaileddescription: The detaileddescription to be parsed
+   :type detaileddescription: descriptionType
+   :param for xrefdescriptions.:
+
+   :returns: List with xrefdescriptions.
+   :rtype: list[descriptionType]
+
+
+.. py:function:: _lobster_item_from_compounddef(compounddef: doxmlparser.compound.compounddefType) -> lobster_doxygen.lobster_item.LobsterItem
+
+   Creates a LobsterItem from comppunddef.
+
+   :param compounddef: The compound definition to be parsed
+   :type compounddef: compounddefType
+   :param for LobsterItem.:
+
+   :returns: LobsterItem created from compounddef.
+   :rtype: LobsterItem
+
+
+.. py:function:: get_lobster_items_from_doxygen_xml_folder(doxygen_xml_folder: str) -> list[lobster_doxygen.lobster_item.LobsterItem] | None
+
+   Parse the doxygen XML index file, process each compound defined in it
+   and build the LobsterItems list.
+
+   :param doxygen_xml_folder: The Doxygen XML output directory, where the
+   :type doxygen_xml_folder: str
+   :param file index.xml is located.:
+
+   :returns: The list of lobster items. If an error occurs,
+             None is returned.
+   :rtype: list[LobsterItem] | None
+
+
+.. py:data:: LOG
+
+.. py:data:: _IDENTIFIER_PATTERN
+
+.. py:data:: _JUSTIFICATION_SPECIFIER
+   :value: 'Justification'
+
+
+.. py:data:: _LOBSTER_ITEM_KINDS
+
+.. py:data:: _REQ_SPECIFIER
+   :value: 'Requirement'
+
+

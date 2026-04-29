@@ -1,47 +1,105 @@
+
+
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SW Tests &mdash; lobster-doxygen  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=9a6cb3c1" />
 
-    <title>SW-Tests &#8212; lobster-doxygen  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=47202671" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1ddbb825" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <link rel="icon" href="_static/favicon.ico"/>
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/version_selector.js?v=02fa0f40"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="SW-Test Results" href="sw_testresults.html" />
-    <link rel="prev" title="SW-Architecture" href="sw_architecture.html" /> 
-  </head><body>
-      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>lobster-doxygen  documentation</span></a></h1>
-        <h2 class="heading"><span>SW-Tests</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="Top">
-      
-        <p>
-        «&#160;&#160;<a href="sw_architecture.html">SW-Architecture</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="sw_testresults.html">SW-Test Results</a>&#160;&#160;»
-        </p>
+    <link rel="next" title="SW Tracing Report" href="sw_tracing_report.html" />
+    <link rel="prev" title="lobster_doxygen.write_lobster_common_interchange_format_file" href="api/lobster_doxygen/write_lobster_common_interchange_format_file/index.html" /> 
+</head>
 
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #0C2C40" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            lobster-doxygen
+              <img src="_static/NewTec_Logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sw_requirements.html">SW Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sw_architecture.html">SW Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sw_detail_design.html">SW Detailed Design</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SW Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#functionality">Functionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-interface">User Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sw_tracing_report.html">SW Tracing Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sw_test_result_report.html">SW Test Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage_report.html">Coverage Report</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license_include.html">License information</a></li>
+</ul>
+
+        </div>
       </div>
-      <div class="content" role="main">
-        
-        
-  <section id="sw-tests">
-<h1>SW-Tests<a class="headerlink" href="#sw-tests" title="Link to this heading">¶</a></h1>
-<section id="swe-test-rst-sw-tests">
-<span id="id1"></span><h2>SW-Tests<a class="headerlink" href="#swe-test-rst-sw-tests" title="Link to this heading">¶</a></h2>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #0C2C40" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">lobster-doxygen</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SW Tests</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/sw_test.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <figure class="align-right" style="width: 350px">
+<img alt="_images/NewTec_Logo_Slogan.png" src="_images/NewTec_Logo_Slogan.png" />
+</figure>
+<div class="clearboth docutils container">
+</div>
+<section id="sw-tests">
+<span id="swe-test-rst-sw-tests"></span><h1>SW Tests<a class="headerlink" href="#sw-tests" title="Link to this heading"></a></h1>
 <p>This file contains the software test cases for the lobster-doxygen tool.</p>
 <section id="functionality">
-<span id="swe-test-rst-functionality"></span><h3>Functionality<a class="headerlink" href="#functionality" title="Link to this heading">¶</a></h3>
+<span id="swe-test-rst-functionality"></span><h2>Functionality<a class="headerlink" href="#functionality" title="Link to this heading"></a></h2>
 <div class="admonition-tc-output-file-format admonition" id="swe-test-rst-tc-output-file-format">
 <p class="admonition-title">tc_output_file_format</p>
 <table class="docutils align-default">
@@ -339,7 +397,7 @@
 </div>
 </section>
 <section id="general">
-<span id="swe-test-rst-general"></span><h3>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h3>
+<span id="swe-test-rst-general"></span><h2>General<a class="headerlink" href="#general" title="Link to this heading"></a></h2>
 <div class="admonition-tc-cli admonition" id="swe-test-rst-tc-cli">
 <p class="admonition-title">tc_cli</p>
 <table class="docutils align-default">
@@ -405,7 +463,7 @@
 </div>
 </section>
 <section id="user-interface">
-<span id="swe-test-rst-user-interface"></span><h3>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading">¶</a></h3>
+<span id="swe-test-rst-user-interface"></span><h2>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading"></a></h2>
 <div class="admonition-tc-help admonition" id="swe-test-rst-tc-help">
 <p class="admonition-title">tc_help</p>
 <table class="docutils align-default">
@@ -513,26 +571,36 @@
 </div>
 </section>
 </section>
-</section>
 
 
-      </div>
-      <div class="bottomnav" role="navigation" aria-label="Bottom">
-      
-        <p>
-        «&#160;&#160;<a href="sw_architecture.html">SW-Architecture</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="sw_testresults.html">SW-Test Results</a>&#160;&#160;»
-        </p>
-
-      </div>
-
-    <div class="footer" role="contentinfo">
-    &#169; Copyright 2025, NewTec GmbH.
-      Last updated on Nov 21, 2025 from commit 26abc5392fc7af5a0a3a61b022c953d927799b4f.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api/lobster_doxygen/write_lobster_common_interchange_format_file/index.html" class="btn btn-neutral float-left" title="lobster_doxygen.write_lobster_common_interchange_format_file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sw_tracing_report.html" class="btn btn-neutral float-right" title="SW Tracing Report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  </body>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, NewTec GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>
