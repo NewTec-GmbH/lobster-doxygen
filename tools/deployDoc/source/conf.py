@@ -28,7 +28,7 @@ import json
 
 from urllib.parse import urlparse
 from sphinx.errors import ConfigError
-from typing import Optional
+from typing import Any, Optional
 
 # pylint: skip-file
 
@@ -38,7 +38,7 @@ from typing import Optional
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "lobster-doxygen"
-copyright = "2025, NewTec GmbH"
+copyright = "2025 - 2026, NewTec GmbH"
 author = "NewTec GmbH"
 
 # -- General configuration ---------------------------------------------------
@@ -220,11 +220,11 @@ files_to_copy = [
     }
 ]
 
-def setup(app: any) -> None:
+def setup(app: Any) -> None:
     """Setup sphinx.
 
     Args:
-        app (any): The sphinx application.
+        app (Any): The sphinx application.
     """
     app.connect('builder-inited', write_version_selector_data)
     app.connect('builder-inited', copy_files)
@@ -249,11 +249,11 @@ def write_version_selector_data(app: Any) -> None:
         )
 
 
-def copy_files(app: any) -> None:
+def copy_files(app: Any) -> None:
     """Copy files to the output directory.
 
     Args:
-        app (any): The sphinx application.
+        app (Any): The sphinx application.
     """
     for files in files_to_copy:
         source = os.path.abspath(files['source'])
