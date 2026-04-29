@@ -1,0 +1,30 @@
+lobster_doxygen
+===============
+
+.. py:module:: lobster_doxygen
+
+.. autoapi-nested-parse::
+
+   __init__
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /api/lobster_doxygen/__main__/index
+   /api/lobster_doxygen/doxygen_to_lobster_converter/index
+   /api/lobster_doxygen/get_lobster_items_from_doxygen_xml_folder/index
+   /api/lobster_doxygen/lobster_item/index
+   /api/lobster_doxygen/lobster_kind/index
+   /api/lobster_doxygen/printer/index
+   /api/lobster_doxygen/ret/index
+   /api/lobster_doxygen/rule_check/index
+   /api/lobster_doxygen/utils/index
+   /api/lobster_doxygen/version/index
+   /api/lobster_doxygen/write_lobster_common_interchange_format_file/index
+
+
