@@ -1,0 +1,74 @@
+lobster_doxygen.printer
+=======================
+
+.. py:module:: lobster_doxygen.printer
+
+.. autoapi-nested-parse::
+
+   Module to print errors warning an infos.
+
+   Contains the print error function and the error messages corresponding to the
+   exit codes.
+
+   Author: Dominik Knoll (dominik.knoll@newtec.de)
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   lobster_doxygen.printer.Printer
+
+
+Module Contents
+---------------
+
+.. py:class:: Printer
+
+   The printer class.
+   Prints errors, warnings and infos. Infos and warnings are only printed, if
+   verbose mode is set.
+
+
+   .. py:method:: print_error(message: str) -> None
+
+      Print error message to standard error stream.
+
+      :param args: The error information that will be printed.
+      :type args: str
+
+
+
+   .. py:method:: print_info(message: str) -> None
+
+      Print the information to the console standard output.
+
+      :param args: The information that will be printed.
+      :type args: str
+
+
+
+   .. py:method:: print_warning(message: str) -> None
+
+      Print warning message to standard error stream.
+
+      :param args: The warning information that will be printed.
+      :type args: str
+
+
+
+   .. py:method:: set_verbose()
+      :classmethod:
+
+
+      Set verbose mode for all instances of the class.
+
+
+
+   .. py:attribute:: _print_verbose
+      :value: False
+
+
+

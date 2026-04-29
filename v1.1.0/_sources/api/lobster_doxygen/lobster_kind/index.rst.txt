@@ -1,0 +1,91 @@
+lobster_doxygen.lobster_kind
+============================
+
+.. py:module:: lobster_doxygen.lobster_kind
+
+.. autoapi-nested-parse::
+
+   Module to represent the kind of lobster item.
+
+   Author: Andreas Merkle (andreas.merkle@newtec.de)
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   lobster_doxygen.lobster_kind.LobsterKind
+
+
+Module Contents
+---------------
+
+.. py:class:: LobsterKind(*args, **kwds)
+
+   Bases: :py:obj:`enum.Enum`
+
+   .. autoapi-inheritance-diagram:: lobster_doxygen.lobster_kind.LobsterKind
+      :parts: 1
+      :private-bases:
+
+
+   Enum to represent the kind of lobster item.
+
+
+   .. py:attribute:: CLASS
+      :value: 'Class'
+
+
+
+   .. py:attribute:: FILE
+      :value: 'File'
+
+
+
+   .. py:attribute:: FUNCTION
+      :value: 'Function'
+
+
+
+   .. py:attribute:: GROUP
+      :value: 'Group'
+
+
+
+   .. py:attribute:: INTERFACE
+      :value: 'Interface'
+
+
+
+   .. py:attribute:: METHOD
+      :value: 'Method'
+
+
+
+   .. py:attribute:: NAMESPACE
+      :value: 'Namespace'
+
+
+
+   .. py:attribute:: PROTOTYPE
+      :value: 'Prototype'
+
+
+
+   .. py:attribute:: STRUCT
+      :value: 'Struct'
+
+
+
+   .. py:attribute:: UNDEFINED
+      :value: 'Undefined'
+
+
+
+   .. py:attribute:: UNION
+      :value: 'Union'
+
+
+
