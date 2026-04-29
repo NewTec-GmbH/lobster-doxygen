@@ -21,6 +21,14 @@ on:
   # Allows you to run this workflow manually from the Actions tab.
   workflow_dispatch:
     inputs:
+      deploy_branch:
+        description: "Branch to deploy when no release tag is provided."
+        required: true
+        default: "develop"
+        type: choice
+        options:
+          - main
+          - develop
       release_tag:
         description: "Release tag to deploy (for example v1.2.3). Leave empty for regular branch deployment."
         required: false
@@ -44,7 +52,7 @@ jobs:
     # The type of runner that the job will run on.
     runs-on: ubuntu-latest
     env:
-      DOCS_VERSION: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.release_tag || github.ref_name == 'main' && 'latest' || github.ref_name == 'develop' && 'unstable' || github.ref_name }}
+      DOCS_VERSION: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.release_tag || github.event_name == 'workflow_dispatch' && inputs.deploy_branch == 'main' && 'latest' || github.event_name == 'workflow_dispatch' && inputs.deploy_branch == 'develop' && 'unstable' || github.ref_name == 'main' && 'latest' || github.ref_name == 'develop' && 'unstable' || github.ref_name }}
       DOCS_VERSIONS: unstable
 
     # Steps represent a sequence of tasks that will be executed as part of the job.
@@ -62,7 +70,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.release_tag || github.ref }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && (inputs.release_tag || format('refs/heads/{0}', inputs.deploy_branch)) || github.ref }}
           fetch-depth: 0
 
       # Build DOCS_VERSIONS from all tags and export it for later steps.
@@ -124,7 +132,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./tools/deployDoc/build/html
           # main -> latest, develop -> unstable, release tag -> tag name, otherwise branch name
-          destination_dir: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.release_tag || github.ref_name == 'main' && 'latest' || github.ref_name == 'develop' && 'unstable' || github.ref_name }}
+          destination_dir: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.release_tag || github.event_name == 'workflow_dispatch' && inputs.deploy_branch == 'main' && 'latest' || github.event_name == 'workflow_dispatch' && inputs.deploy_branch == 'develop' && 'unstable' || github.ref_name == 'main' && 'latest' || github.ref_name == 'develop' && 'unstable' || github.ref_name }}
 
       # Publish shared version selector metadata for release builds only.
       - name: Deploy version selector data (only for releases) to GitHub Pages
