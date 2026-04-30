@@ -1,1 +1,0 @@
-window.PYTRLC_DOCS_VERSION_SELECTOR = {"current": "unstable", "versions": [{"label": "latest", "url": "/lobster-doxygen/latest/"}, {"label": "latest", "url": "/lobster-doxygen/latest/"}, {"label": "unstable", "url": "/lobster-doxygen/unstable/"}, {"label": "v1.1.0", "url": "/lobster-doxygen/v1.1.0/"}, {"label": "v1.0.0", "url": "/lobster-doxygen/v1.0.0/"}]};
