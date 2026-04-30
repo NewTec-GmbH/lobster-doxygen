@@ -10,6 +10,7 @@
   - [Sourcecode](#sourcecode)
 - [Doxygen Configuration](#doxygen-configuration)
 - [Examples](#examples)
+- [Compile into an executable](#compile-into-an-executable)
 - [SW Documentation](#sw-documentation)
 - [Used Libraries](#used-libraries)
 - [Issues, Ideas And Bugs](#issues-ideas-and-bugs)
@@ -28,11 +29,11 @@ integration into the LOBSTER TRLC toolchain. Note, at the moment C and C++ are i
 Using [doxygen aliases](https://www.doxygen.nl/manual/config.html#cfg_aliases) inside source code comments makes tracing from
 code quite simple. The following aliases are supported:
 
-- ```@implements{<REQ-ID>}```  to link to requirments for tracing.
+- ```@implements{<REQ-ID>}```  to link to requirements for tracing.
 
 - ```@justification{<JUSTIFY-PLEASE>}```  to justify why no tracing is required, but the code fragment is needed.
 
-> [!NOTE]  
+> [!NOTE]
 > lobster-doxygen is not a standalone solution, but a component extending the
 > [BMW LOBSTER tooling](https://github.com/bmw-software-engineering/lobster). Understanding of the LOBSTER tool purpose and usage
 > is required to benefit from lobster-doxygen.
@@ -190,23 +191,31 @@ An example `Doxyfile` can be found in the [examples](./examples) directory.
 
 Check out the [Examples](./examples) subpage for using the included example(s).
 
+## Compile into an executable
+
+It is possible to create an executable that contains the tool with all its dependencies. We use `pyInstaller` for this:
+
+```cmd
+pyinstaller --noconfirm --onefile --console --name "lobster-doxygen" --add-data "./pyproject.toml;."  "src/lobster_doxygen/__main__.py"
+```
+
 ## SW Documentation
 
 More information on the deployment and architecture can be found in the [documentation](./doc/README.md) subpage.
 
-For Detailed Software Design run in folder ./tools the `make_html` to generate the detailed design documentation. 
+For Detailed Software Design run in folder ./tools the `make_html` to generate the detailed design documentation.
 The generated SW Document is stored in `./tools/deployDoc/build/html/index.html`.
 
 ## Used Libraries
 
 Used 3rd party libraries which are not part of the standard Python package:
 
-| Library | Description | License |
-| ------- | ----------- | ------- |
-| [toml](https://github.com/uiri/toml) | Parsing [TOML](https://en.wikipedia.org/wiki/TOML) | MIT |
-| [trlc](https://github.com/bmw-software-engineering/trlc) | Treat Requirements Like Code | GPL-3.0 |
-| [doxmlparser](https://github.com/doxygen/doxygen) | Parsing Doxygen XML | GPLv2 |
-| [rich](https://rich.readthedocs.io/en/stable/index.html) | Console output | MIT |
+| Library                                                  | Description                                        | License |
+| -------------------------------------------------------- | -------------------------------------------------- | ------- |
+| [toml](https://github.com/uiri/toml)                     | Parsing [TOML](https://en.wikipedia.org/wiki/TOML) | MIT     |
+| [trlc](https://github.com/bmw-software-engineering/trlc) | Treat Requirements Like Code                       | GPL-3.0 |
+| [doxmlparser](https://github.com/doxygen/doxygen)        | Parsing Doxygen XML                                | GPLv2   |
+| [rich](https://rich.readthedocs.io/en/stable/index.html) | Console output                                     | MIT     |
 
 ---
 
