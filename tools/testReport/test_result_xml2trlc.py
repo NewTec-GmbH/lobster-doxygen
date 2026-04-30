@@ -22,7 +22,7 @@
 # Imports **********************************************************************
 import sys
 import xml.etree.ElementTree as ET
-from typing import IO, Optional
+from typing import IO
 
 # Variables ********************************************************************
 
@@ -48,56 +48,68 @@ def _test_report_write_footer(fd: IO) -> None:
     fd.write('}\n')
 
 # pylint: disable=line-too-long
-def _test_report_write_test_case_result(fd: IO, test_case_name: str, test_case_result: str, lobster_trace: Optional[str]) -> None:
+def _test_report_write_test_case_result(fd: IO, test_case_name: str, test_case_result: str, lobster_traces: list[str]) -> None:
     """Write test case result to test report.
 
     Args:
         fd (IO): File descriptor
         test_case_name (str): Name of the test case.
         test_case_result (str): Result of the test case (passed/failed).
-        lobster_trace (Optional[str]): Test case id which is relates to the result.
+        lobster_traces (list[str]): Test case ids which are related to the result.
     """
     test_case_id = test_case_name + "_result"
     fd.write(f'    SwTestCaseResult {test_case_id} {{\n')
     fd.write(f'        name = "{test_case_name}"\n')
     fd.write(f'        result = {test_case_result}\n')
 
-    if lobster_trace is not None:
-        fd.write(f'        relates = {lobster_trace}\n')
+    if lobster_traces:
+        fd.write(f'        relates = [{", ".join(lobster_traces)}]\n')
 
     fd.write('    }\n\n')
 
-def convert_test_report(xml_file: str, output_file: str) -> None:
+def convert_test_report(xml_file: str, output_file: str) -> bool:
     """Convert test report from XML format to corresponding TRLC format
         by considering the project specific defined TRLC model.
 
     Args:
         xml_file (str): The test report in XML format.
         output_file (str): The test report in TRLC format.
+
+    Returns:
+        bool: True if conversion was successful otherwise False.
     """
-    tree = ET.parse(xml_file)
-    root = tree.getroot()
+    result = True
 
-    with open(output_file, 'w', encoding='utf-8') as fd:
-        _test_report_write_header(fd)
+    try:
+        tree = ET.parse(xml_file)
+        root = tree.getroot()
 
-        for testcase in root.iter('testcase'):
-            test_case_name = testcase.get('name')
-            test_case_result = 'SwTestResult.PASSED'
+        with open(output_file, 'w', encoding='utf-8') as fd:
+            _test_report_write_header(fd)
 
-            if testcase.find('failure') is not None:
-                test_case_result = 'SwTestResult.FAILED'
+            for testcase in root.iter('testcase'):
+                test_case_name = testcase.get('name', '')
+                test_case_result = 'SwTestResult.PASSED'
 
-            lobster_trace = None
-            properties = testcase.find('properties')
-            if properties is not None:
-                for prop in properties.findall('property'):
-                    if prop.get('name') == 'lobster-trace':
-                        lobster_trace = prop.get('value')
+                if testcase.find('failure') is not None:
+                    test_case_result = 'SwTestResult.FAILED'
 
-            _test_report_write_test_case_result(fd, test_case_name, test_case_result, lobster_trace)
+                lobster_traces = []
+                properties = testcase.find('properties')
+                if properties is not None:
+                    for prop in properties.findall('property'):
+                        if prop.get('name') == 'lobster-trace':
+                            lobster_traces.append(prop.get('value'))
 
-        _test_report_write_footer(fd)
+                _test_report_write_test_case_result(fd, test_case_name, test_case_result, lobster_traces)
+
+            _test_report_write_footer(fd)
+
+    except FileNotFoundError:
+        print(f"Error: File '{xml_file}' not found.")
+        result = False
+
+    return result
 
 # Main *************************************************************************
 
@@ -109,4 +121,7 @@ if __name__ == "__main__":
     test_report_xml_file = sys.argv[1]
     test_report_trlc_file = sys.argv[2]
 
-    convert_test_report(test_report_xml_file, test_report_trlc_file)
+    if convert_test_report(test_report_xml_file, test_report_trlc_file) is False:
+        sys.exit(1)
+
+    sys.exit(0)
