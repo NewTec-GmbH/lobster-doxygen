@@ -43,7 +43,6 @@ STD_OUTPUT_WITH_VERBOSE = [
     f"* output = {TEST_LOBSTER_OUTPUT_FILE}",
     "* verbose = True",
     "",
-    "",
     "compound: main.cpp",
     "    kind: file",
     "        member: print_title",

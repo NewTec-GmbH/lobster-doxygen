@@ -96,6 +96,17 @@ class RawDescriptionHelpFormatterWithNL(argparse.RawDescriptionHelpFormatter):
 # Functions ********************************************************************
 
 
+class _SentenceCaseFormatter(logging.Formatter):
+    """Formats log records with sentence-case level names (e.g. 'Error', 'Warning')
+    to match the output format of the original Printer class."""
+    _NAMES = {logging.ERROR: "Error", logging.WARNING: "Warning"}
+
+    def format(self, record: logging.LogRecord) -> str:
+        record = logging.makeLogRecord(record.__dict__)
+        record.levelname = self._NAMES.get(record.levelno, record.levelname)
+        return super().format(record)
+
+
 def _setup_logging(verbose: bool) -> None:
     # lobster-trace: SwRequirements.sw_req_cli_verbose
     # lobster-trace: SwRequirements.sw_req_stderr_output
@@ -103,9 +114,12 @@ def _setup_logging(verbose: bool) -> None:
     """Configures logging. In verbose mode INFO goes to stdout and WARNING/ERROR
     to stderr. In non-verbose mode only ERROR is written to stderr.
     """
+    # Clear existing handlers so this function is idempotent across calls
+    # (e.g. when main() is called multiple times in tests).
+    logging.getLogger().handlers.clear()
+
     stderr_handler = logging.StreamHandler(sys.stderr)
-    stderr_handler.setFormatter(
-        logging.Formatter("%(levelname)s: %(message)s"))
+    stderr_handler.setFormatter(_SentenceCaseFormatter("%(levelname)s: %(message)s"))
 
     if verbose:
         stderr_handler.setLevel(logging.WARNING)
@@ -162,6 +176,7 @@ def _print_program_arguments(args: argparse.Namespace) -> None:
     LOG.info("Program arguments: ")
     for arg in vars(args):
         LOG.info("* %s = %s", arg, vars(args)[arg])
+    LOG.info("")
 
 
 def main() -> Ret:
