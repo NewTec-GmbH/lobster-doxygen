@@ -23,15 +23,15 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 
 # Imports **********************************************************************
 import os
+import logging
 
 from lobster_doxygen.ret import Ret
-from lobster_doxygen.printer import Printer
 from lobster_doxygen.get_lobster_items_from_doxygen_xml_folder import get_lobster_items_from_doxygen_xml_folder
 from lobster_doxygen.write_lobster_common_interchange_format_file import write_lobster_common_interchange_format_file
 from lobster_doxygen.rule_check import rule_check
 
 # Variables ********************************************************************
-LOG = Printer()
+LOG: logging.Logger = logging.getLogger(__name__)
 
 # Classes **********************************************************************
 
@@ -60,8 +60,8 @@ def convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder:
     is_index_file_found = False
 
     if not os.path.isfile(doxygen_xml_folder + "/index.xml"):
-        LOG.print_error(
-            f"No doxygen index.xml file in doxygen_xml_folder {doxygen_xml_folder}.")
+        LOG.error("No doxygen index.xml file in doxygen_xml_folder %s.",
+                  doxygen_xml_folder)
         ret_status = Ret.RET_ERROR_FILEPATH_INVALID
         is_index_file_found = False
     else:
@@ -73,7 +73,7 @@ def convert_doxygen_xml_to_lobster_common_interchange_format(doxygen_xml_folder:
         if lobster_items is not None:
             # Check if lobster items are found.
             if 0 == len(lobster_items):
-                LOG.print_warning("No lobster items found in the doxygen XML output.")
+                LOG.warning("No lobster items found in the doxygen XML output.")
 
             if rule_check(lobster_items) is True:
                 write_lobster_common_interchange_format_file(lobster_items, output_file_name)

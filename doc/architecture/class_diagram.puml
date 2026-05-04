@@ -2,9 +2,8 @@
 skinparam linetype ortho
 
 package "PyPI Libraries" {
-    class bmw-lobster     
-    class doxmlparser 
-    class rich 
+    class bmw-lobster
+    class doxmlparser
 }
 
 note left of "PyPI Libraries"
@@ -13,25 +12,20 @@ note left of "PyPI Libraries"
 end note
 
 package lobster_doxygen {
-    class main {
-
-    } 
+    class main
 
     note top of main
         Entry point and
         argument handling.
     end note
 
-    class "doxygen_to_lobster_converter" as converter {
-    }
+    class "doxygen_to_lobster_converter" as converter
 
     note top of converter
         Conversion processor
     end note
 
-    class "write_lobster_common_interchange_format_file" as writer {
-
-    }
+    class "write_lobster_common_interchange_format_file" as writer
 
     note top of writer
         Lobster interchange
@@ -39,42 +33,35 @@ package lobster_doxygen {
         file writer.
     end note
 
-    class "get_lobster_items_from_doxygen_xml_folder" as reader {
-    }
-
+    class "get_lobster_items_from_doxygen_xml_folder" as reader
 
     note left of reader
-        Doxygen XML 
+        Doxygen XML
         input reader.
     end note
-    class "rule_check" as checker{
 
-    }
+    class "rule_check" as checker
 
     note top of checker
         Rule based validation
         for LobsterItem contents.
     end note
 
-    class LobsterItem {
+    class LobsterItem
 
-    }
-
-        note top of LobsterItem
+    note top of LobsterItem
         Lobster item
         representation.
     end note
-
 }
 
 package Utilities {
- 
-    class Printer    
-    class Version     
-    class utils 
-    
+    class Version
+    class utils
+    class logger
+
     utils .d[hidden].> Version
-    Version .d[hidden].> Printer
+    Version .d[hidden].> logger
 }
 
 note top of Utilities
@@ -82,16 +69,13 @@ note top of Utilities
     across lobster_doxygen.
 end note
 
-
 main .d.> converter
 converter .d.> reader
 converter .d.> writer
 converter .r.> checker
-converter "*" o.l.> LobsterItem 
+converter "*" o.l.> LobsterItem
 
 reader .d.> doxmlparser
 writer .d.> "bmw-lobster"
-
-Printer .d.> rich
 
 @enduml

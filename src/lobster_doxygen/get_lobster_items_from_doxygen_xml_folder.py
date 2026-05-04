@@ -24,18 +24,18 @@ Author: Andreas Merkle (andreas.merkle@newtec.de)
 # Imports **********************************************************************
 
 import re
+import logging
 import doxmlparser
 from doxmlparser.compound import DoxCompoundKind, DoxMemberKind, compounddefType, descriptionType
 
 from lobster_doxygen.lobster_item import LobsterItem
 from lobster_doxygen.lobster_kind import LobsterKind
-from lobster_doxygen.printer import Printer
 from lobster_doxygen.utils import indent
 
 
 # Variables ********************************************************************
 
-LOG = Printer()
+LOG: logging.Logger = logging.getLogger(__name__)
 
 # Requirement specifier, which is configured in the doxygen configuration, see alias.
 _REQ_SPECIFIER = "Requirement"
@@ -119,15 +119,16 @@ def _get_refs_and_just_up_from_detaileddescription(detaileddescription: descript
                 if req_match is not None and 0 == req_match.span()[0]:
                     req_id = req_match.group(0)
                     refs.append(req_id)
-                    LOG.print_info(indent(3, f"{_REQ_SPECIFIER}: {req_id}"))
+                    LOG.info(indent(3, "%s: %s"), _REQ_SPECIFIER, req_id)
                 else:
-                    LOG.print_warning(indent(3, f"Invalid identifier in doxygen xml: {doxygen_parsed_req}."))
+                    LOG.warning(indent(3, "Invalid identifier in doxygen xml: %s."),
+                                doxygen_parsed_req)
 
             # Look for justification.
             elif value.startswith(f"{_JUSTIFICATION_SPECIFIER}: "):
                 just_up_id = value.removeprefix(f"{_JUSTIFICATION_SPECIFIER}: ")
                 just_up.append(just_up_id)
-                LOG.print_info(indent(3, f"{_JUSTIFICATION_SPECIFIER}: {just_up_id}"))
+                LOG.info(indent(3, "%s: %s"), _JUSTIFICATION_SPECIFIER, just_up_id)
 
     return refs, just_up
 
@@ -149,7 +150,7 @@ def _get_lobster_item_children_from_compounddef(compounddef: compounddefType) ->
 
     for sectiondef in compounddef.get_sectiondef():
         for memberdef in sectiondef.get_memberdef():
-            LOG.print_info(indent(2, f"member: {memberdef.get_name()}"))
+            LOG.info(indent(2, "member: %s"), memberdef.get_name())
             lobster_item_child = None
 
             if compounddef.get_kind() in [DoxCompoundKind.CLASS, DoxCompoundKind.STRUCT, DoxCompoundKind.INTERFACE]:
@@ -167,7 +168,7 @@ def _get_lobster_item_children_from_compounddef(compounddef: compounddefType) ->
 
             # Update only if LobsterItem was created
             if lobster_item_child is not None:
-                LOG.print_info(indent(3, f"kind: {memberdef.get_kind()}"))
+                LOG.info(indent(3, "kind: %s"), memberdef.get_kind())
 
                 lobster_item_child.language = compounddef.get_language()
                 lobster_item_child.name += memberdef.get_name()
@@ -181,7 +182,7 @@ def _get_lobster_item_children_from_compounddef(compounddef: compounddefType) ->
 
                 lobster_item_children.append(lobster_item_child)
             else:
-                LOG.print_info(indent(3, f"kind: {memberdef.get_kind()} (skipped)"))
+                LOG.info(indent(3, "kind: %s (skipped)"), memberdef.get_kind())
 
     return lobster_item_children
 
@@ -255,16 +256,16 @@ def _get_lobster_items_from_compound(compound_path: str) -> list[LobsterItem]:
     root_obj = doxmlparser.compound.parse(compound_path, True)
 
     for compounddef in root_obj.get_compounddef():
-        LOG.print_info(f"compound: {compounddef.get_compoundname()}")
+        LOG.info("compound: %s", compounddef.get_compoundname())
 
         kind = compounddef.get_kind()
 
         if kind in _LOBSTER_ITEM_KINDS:
-            LOG.print_info(indent(1, f"kind: {kind}"))
+            LOG.info(indent(1, "kind: %s"), kind)
             lobster_item = _lobster_item_from_compounddef(compounddef)
             lobster_items.append(lobster_item)
         else:
-            LOG.print_info(indent(1, f"kind: {kind} (skipped)"))
+            LOG.info(indent(1, "kind: %s (skipped)"), kind)
 
     return lobster_items
 
@@ -293,7 +294,7 @@ def get_lobster_items_from_doxygen_xml_folder(doxygen_xml_folder: str) -> list[L
 
     # pylint: disable=broad-exception-caught
     except Exception as e:
-        LOG.print_error(f"{e}")
+        LOG.error("%s", e)
         lobster_items = None
 
     return lobster_items

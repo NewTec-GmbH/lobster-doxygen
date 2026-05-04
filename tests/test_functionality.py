@@ -723,8 +723,8 @@ def test_tc_no_trace(record_property, capsys) -> None:
     captured = capsys.readouterr()
     error_output = captured.err.split("\n")
 
-    assert [
-        WARNING_OUTPUT_NO_LOBSTER_ITMES] == error_output, f"Program exit with error: {error_output}"
+    assert [WARNING_OUTPUT_NO_LOBSTER_ITMES, ""] == error_output, \
+        f"Program exit with error: {error_output}"
 
     assert exit_code == 0, "Exit Code returns no success."
 
