@@ -21,13 +21,14 @@ Author: Andreas Merkle (andreas.merkle@newtec.de)
 
 # Imports **********************************************************************
 
+import logging
+
 from lobster_doxygen.lobster_item import LobsterItem
 from lobster_doxygen.lobster_kind import LobsterKind
-from lobster_doxygen.printer import Printer
 
 # Variables ********************************************************************
 
-LOG = Printer()
+LOG: logging.Logger = logging.getLogger(__name__)
 
 # Classes **********************************************************************
 
@@ -51,10 +52,8 @@ def rule_check(lobster_items: list[LobsterItem]) -> bool:
         # Its not allowed to have requirements and justifications on file level.
         if lobster_item.kind == LobsterKind.FILE:
             if lobster_item.has_refs() or lobster_item.has_just_up():
-                LOG.print_error(
-                    f"The {lobster_item.kind.value} '{lobster_item.name}' "
-                    f"has requirements or justifications on file level.",
-                )
+                LOG.error("The %s '%s' has requirements or justifications on file level.",
+                          lobster_item.kind.value, lobster_item.name)
                 success = False
 
         if success is True:
@@ -63,16 +62,14 @@ def rule_check(lobster_items: list[LobsterItem]) -> bool:
             if lobster_item.has_refs() or lobster_item.has_just_up():
                 for lobster_item_child in lobster_item.get_children():
                     if lobster_item_child.has_refs():
-                        LOG.print_error(
-                            f"The {lobster_item.kind.value} '{lobster_item.name}' "
-                            f"has child item '{lobster_item_child.name}' with requirements."
-                        )
+                        LOG.error("The %s '%s' has child item '%s' with requirements.",
+                                  lobster_item.kind.value, lobster_item.name,
+                                  lobster_item_child.name)
                         success = False
                     elif lobster_item_child.has_just_up():
-                        LOG.print_error(
-                            f"The {lobster_item.kind.value} '{lobster_item.name}' "
-                            f"has child item '{lobster_item_child.name}' with justification."
-                        )
+                        LOG.error("The %s '%s' has child item '%s' with justification.",
+                                  lobster_item.kind.value, lobster_item.name,
+                                  lobster_item_child.name)
                         success = False
 
                     if success is False:

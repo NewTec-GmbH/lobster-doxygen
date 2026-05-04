@@ -24,6 +24,7 @@ Author: Dominik Knoll (dominik.knoll@newtec.de)
 # Imports **********************************************************************
 
 import argparse
+import logging
 import sys
 
 try:
@@ -37,7 +38,6 @@ except ModuleNotFoundError:
     __repository__ = "https://github.com/NewTec-GmbH/lobster-doxygen.git"
     __license__ = "GPLv3"
 from lobster_doxygen.ret import Ret
-from lobster_doxygen.printer import Printer
 from lobster_doxygen.doxygen_to_lobster_converter import convert_doxygen_xml_to_lobster_common_interchange_format
 
 # Variables ********************************************************************
@@ -68,7 +68,7 @@ _HELP_DESCRIPTION = (
     "{JUSTIFICATION}.\n"
 )
 
-LOG = Printer()
+LOG: logging.Logger = logging.getLogger(__name__)
 
 
 # Classes **********************************************************************
@@ -94,6 +94,30 @@ class RawDescriptionHelpFormatterWithNL(argparse.RawDescriptionHelpFormatter):
 
 
 # Functions ********************************************************************
+
+
+def _setup_logging(verbose: bool) -> None:
+    # lobster-trace: SwRequirements.sw_req_cli_verbose
+    # lobster-trace: SwRequirements.sw_req_stderr_output
+    # lobster-trace: SwRequirements.sw_req_stdout_output
+    """Configures logging. In verbose mode INFO goes to stdout and WARNING/ERROR
+    to stderr. In non-verbose mode only ERROR is written to stderr.
+    """
+    stderr_handler = logging.StreamHandler(sys.stderr)
+    stderr_handler.setFormatter(
+        logging.Formatter("%(levelname)s: %(message)s"))
+
+    if verbose:
+        stderr_handler.setLevel(logging.WARNING)
+        stdout_handler = logging.StreamHandler(sys.stdout)
+        stdout_handler.setLevel(logging.INFO)
+        stdout_handler.addFilter(lambda r: r.levelno < logging.WARNING)
+        stdout_handler.setFormatter(logging.Formatter("%(message)s"))
+        logging.basicConfig(
+            level=logging.INFO, handlers=[stderr_handler, stdout_handler])
+    else:
+        stderr_handler.setLevel(logging.ERROR)
+        logging.basicConfig(level=logging.ERROR, handlers=[stderr_handler])
 
 
 def _add_parser() -> argparse.ArgumentParser:
@@ -135,10 +159,10 @@ def _print_program_arguments(args: argparse.Namespace) -> None:
     Args:
         args (argparse.Namespace): Program arguments from user.
     """
-    LOG.print_info("Program arguments: ")
+    LOG.info("Program arguments: ")
     for arg in vars(args):
-        LOG.print_info(f"* {arg} = {vars(args)[arg]}")
-    LOG.print_info("\n")
+        LOG.info("* %s = %s", arg, vars(args)[arg])
+
 
 def main() -> Ret:
     """Main function to convert doxygen XML output to lobster common interchange format.
@@ -161,9 +185,10 @@ def main() -> Ret:
     if args is None:
         ret_status = Ret.RET_ERROR_ARGPARSE
     else:
+        _setup_logging(args.verbose)
+
         # In verbose mode print all program arguments
         if args.verbose:
-            LOG.set_verbose()
             _print_program_arguments(args)
 
         # Check if the doxygen folder exists in the arguments.

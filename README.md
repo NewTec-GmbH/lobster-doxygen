@@ -215,7 +215,6 @@ Used 3rd party libraries which are not part of the standard Python package:
 | [toml](https://github.com/uiri/toml)                     | Parsing [TOML](https://en.wikipedia.org/wiki/TOML) | MIT     |
 | [trlc](https://github.com/bmw-software-engineering/trlc) | Treat Requirements Like Code                       | GPL-3.0 |
 | [doxmlparser](https://github.com/doxygen/doxygen)        | Parsing Doxygen XML                                | GPLv2   |
-| [rich](https://rich.readthedocs.io/en/stable/index.html) | Console output                                     | MIT     |
 
 ---
 
