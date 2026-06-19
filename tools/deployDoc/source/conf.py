@@ -26,9 +26,9 @@ import shutil
 import fnmatch
 import json
 
+from typing import Any
 from urllib.parse import urlparse
 from sphinx.errors import ConfigError
-from typing import Optional
 
 # pylint: skip-file
 
@@ -37,9 +37,9 @@ from typing import Optional
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "lobster-doxygen"
-copyright = "2025, NewTec GmbH"
-author = "NewTec GmbH"
+project = 'lobster-doxygen'
+copyright = '2025 - 2026, NewTec GmbH'
+author = 'NewTec GmbH'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -116,19 +116,20 @@ myst_heading_anchors = 6
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinx_rtd_theme'
-# set html_logo to None to show only the project name in the header, or set it to the path of the logo image to show both the logo and project name.
-html_theme_options = {   
-    'style_nav_header_background': '#0C2C40',   # Set the navigation header background color to NewTec black  #0C2C40
-}
 html_static_path = ['_static']
 html_css_files = ['custom.css']
 html_js_files = ['version_selector.js']
+
+html_theme_options = {   
+    'style_nav_header_background': '#0C2C40',   # Set the navigation header background color to NewTec black  #0C2C40
+}
 
 # Copy favorite icon to static path.
 html_favicon = '../../../doc/images/favicon.ico'
 
 # Copy logo to static path.
 html_logo = '../../../doc/images/NewTec_Logo.png'
+
 
 # PlantUML is called OS depended and the java jar file is provided by environment variable.
 plantuml_env = os.getenv('PLANTUML')
@@ -208,7 +209,7 @@ html_context = {
 # The source is relative to the sphinx directory.
 # The destination is relative to the output directory.
 files_to_copy = [
-  {
+    {
         'source': '../testReport/out/coverage',
         'destination': 'coverage',
         'exclude': []
@@ -220,14 +221,15 @@ files_to_copy = [
     }
 ]
 
-def setup(app: any) -> None:
+def setup(app: Any) -> None:
     """Setup sphinx.
 
     Args:
-        app (any): The sphinx application.
+        app (Any): The sphinx application.
     """
     app.connect('builder-inited', write_version_selector_data)
     app.connect('builder-inited', copy_files)
+
 
 def write_version_selector_data(app: Any) -> None:
     """Create selector data consumed by local version selector JavaScript.
@@ -248,16 +250,18 @@ def write_version_selector_data(app: Any) -> None:
             f"window.PYTRLC_DOCS_VERSION_SELECTOR = {json.dumps(selector_data)};\n"
         )
 
-
-def copy_files(app: any) -> None:
+def copy_files(app: Any) -> None:
     """Copy files to the output directory.
 
     Args:
-        app (any): The sphinx application.
+        app (Any): The sphinx application.
     """
     for files in files_to_copy:
         source = os.path.abspath(files['source'])
         destination = os.path.join(app.outdir, files['destination'])
+
+        if not os.path.exists(destination):
+            os.makedirs(destination)
 
         if not os.path.exists(source):
             print(
@@ -275,38 +279,13 @@ def copy_files(app: any) -> None:
                     if os.path.isfile(full_file_name):
                         shutil.copy(full_file_name, destination)
 
-def get_git_commit_hash_info() -> Optional[str]:
-    """Get commit hash info string for current sandbox.
-
-    Returns:
-            str: Git commit hash info string.
-            None: in case of missing git output or exception.
-    """
-    result = None
-
-    try:
-        import subprocess
-
-        out,err = subprocess.Popen(
-                ['git', 'show', '-s', '--format=%H'],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE).communicate()
-        if out:
-            result = f" from commit {out.decode().strip()}"
-
-    except Exception as e:
-        pass
-
-    return result
-
 # Main *************************************************************************
 
 if plantuml_env is None:
     raise ConfigError(
         "The environment variable PLANTUML is not defined to either the location "
         "of plantuml.jar or server URL.\n"
-        "Set plantuml to either <path>/plantuml.jar or a server URL."
-    )
+        "Set plantuml to either <path>/plantuml.jar or a server URL.")
 
 if urlparse(plantuml_env).scheme in ['http', 'https']:
     plantuml = [plantuml_env]
