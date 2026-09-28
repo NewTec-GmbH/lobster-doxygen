@@ -79,6 +79,7 @@ if not exist "%OUTPUT_DIR%" (
 REM ********** SW-Requirements **********
 %LOBSTER_TRLC% --config %SW_REQ_LOBSTER_CONF% --out %SW_REQ_LOBSTER_OUT% || goto :error
 
+REM ********** SW-Constraints **********
 %LOBSTER_TRLC% --config %SW_CONSTRAINT_LOBSTER_CONF% --out %SW_CONSTRAINT_LOBSTER_OUT% || goto :error
 
 REM ********** SW-Arch **********

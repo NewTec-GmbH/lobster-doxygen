@@ -9,7 +9,7 @@
 
 .. container:: clearboth
   
-   .. image alignment: Comment needed for clearboth container to work, otherwise the image overlaps with the text 
+    .. image alignment: Comment needed for clearboth container to work, otherwise the image overlaps with the text 
 
 lobster-doxygen documentation
 =============================
@@ -29,7 +29,7 @@ Doxygen XML to LOBSTER common interchange format converter.
    sw_requirements
    sw_architecture
    sw_detail_design
-   sw_test
+   sw_tests
    sw_tracing_report
    sw_test_result_report
    coverage_report
